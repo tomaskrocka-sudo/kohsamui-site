@@ -879,7 +879,7 @@
   "closed_to": "",
   "cxl": "day",
   "park_fee": "Party entry about 200 THB, paid at the party (we do not sell tickets)",
-  "notice": "Runs on Full Moon Party dates only. Choose a party date in the calendar.",
+  "notice": "Runs on Full Moon Party nights only (New Year's Eve party: 1,800 THB). Choose a highlighted date.",
   "sku_ref": "speedboatsamui.com/full-moon-party-speedboat-transfer/",
   "short": "Door to door from your Koh Samui hotel to the Full Moon Party on Haad Rin and back, by speedboat with hotel pickup and drop-off. 1,400 THB return, booked and paid online.",
   "included": [
@@ -915,14 +915,14 @@
  {
   "slug": "full-moon-party-private-speedboat-koh-samui",
   "name": "Full Moon Party Private Speedboat from Koh Samui (up to 10)",
-  "price": 35800,
+  "price": 19500,
   "child": null,
   "per": "boat",
   "cat": [
    "Parties",
    "Private charter"
   ],
-  "duration": "Return trip, your times",
+  "duration": "One way or return, your times",
   "boat": "Private speedboat, up to 10 guests (VIP boats available)",
   "pier": "[ask Mea]",
   "pickup_window": "Departures 18:00–23:00, hotel pickup and drop-off on Koh Samui included",
@@ -933,7 +933,7 @@
   "cxl": "day",
   "park_fee": "Party entry about 200 THB per person, paid at the gate",
   "max_guests": "10",
-  "notice": "[ask Mea: confirm price — 35,800 THB return (angthongmarinepark.com) vs 19,500 THB one way (kohphangan.com)]",
+  "notice": "Runs on Full Moon Party nights only. Choose a party date in the calendar.",
   "sku_ref": "angthongmarinepark.com/trips/full-moon-party-private-speedboat/",
   "short": "Your own speedboat to the Full Moon Party and back, for up to 10 guests, with hotel pickup and drop-off on Koh Samui and departure and return times you choose. VIP boats available.",
   "included": [
@@ -959,7 +959,20 @@
    "How far ahead should we book a private Full Moon boat? | At least a week for most dates and two to three weeks for the Christmas Eve and New Year's Eve parties.",
    "What happens if the party date moves? | Full Moon Party dates occasionally shift by a day for Buddhist holidays. Your booking moves with the party, or you can take a full refund.",
    "What if the sea is unsafe on party night? | We cancel and you choose a full refund or a new date."
-  ]
+  ],
+  "options": [
+   {
+    "label": "One way to Haad Rin",
+    "price": 19500,
+    "max_guests": 10
+   },
+   {
+    "label": "Return trip (your times)",
+    "price": 35800,
+    "max_guests": 10
+   }
+  ],
+  "dates_from": "full-moon-party-speedboat-koh-samui"
  },
  {
   "slug": "half-moon-festival-package-koh-samui",

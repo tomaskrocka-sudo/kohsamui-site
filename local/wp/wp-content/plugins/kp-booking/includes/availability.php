@@ -49,6 +49,22 @@ function kpb_booked_counts( $product_id ) {
 	set_transient( $key, $counts, 5 * MINUTE_IN_SECONDS );
 	return $counts;
 }
+/** Event-only products (party boats): bookable only on the dates of the kp_event posts that sell this product (or the product named in kp_dates_from). Returns [date => price|null]. */
+function kpb_event_dates( $product_id ) {
+	$src = get_post_meta( $product_id, 'kp_dates_from', true ); $pid = $product_id;
+	if ( $src ) { $p = get_page_by_path( $src, OBJECT, 'product' ); if ( $p ) $pid = $p->ID; }
+	$key = 'kpb_evd_' . $product_id; $cached = get_transient( $key ); if ( is_array( $cached ) ) return $cached;
+	$q = new WP_Query( array( 'post_type' => 'kp_event', 'post_status' => 'publish', 'posts_per_page' => -1, 'no_found_rows' => true, 'fields' => 'ids', 'meta_query' => array( array( 'key' => 'kp_ticket_product', 'value' => (string) $pid ) ) ) );
+	$out = array(); $today = kpb_now()->format( 'Y-m-d' );
+	foreach ( $q->posts as $eid ) {
+		if ( in_array( get_post_meta( $eid, 'kp_status', true ), array( 'cancelled', 'postponed' ), true ) ) continue;
+		$d = substr( (string) get_post_meta( $eid, 'kp_start', true ), 0, 10 ); if ( ! $d || $d < $today ) continue;
+		$pf = get_post_meta( $eid, 'kp_price_from', true );
+		$out[ $d ] = ( $pid === $product_id && is_numeric( $pf ) && (float) $pf > 0 ) ? (float) $pf : null; // per-date price only for the product the event sells
+	}
+	ksort( $out ); set_transient( $key, $out, HOUR_IN_SECONDS ); return $out;
+}
+add_action( 'save_post_kp_event', function () { global $wpdb; $wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_kpb_evd_%' OR option_name LIKE '_transient_timeout_kpb_evd_%'" ); } );
 function kpb_closed_dates( $product_id ) {
 	$all = array_unique( array_merge( kpb_seasonal_closed( $product_id ), kpb_blackout_dates( $product_id ), kpb_soldout_dates( $product_id ) ) );
 	sort( $all );

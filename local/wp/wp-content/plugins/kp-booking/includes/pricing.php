@@ -22,7 +22,7 @@ function kpb_config( $product_id ) {
 		'pickup'       => array(
 			'enabled'   => (bool) $m( 'kp_pickup_enabled', $per === 'person' ? '1' : '' ),
 			'included'  => $zones['included'] ?? array( 'Chaweng', 'Chaweng Noi', 'Lamai', 'Bophut', 'Fisherman\'s Village', 'Maenam', 'Bang Por', 'Choeng Mon', 'Bang Rak', 'Plai Laem' ),
-			'surcharge' => $zones['surcharge'] ?? array( 'Nathon' => 400, 'Lipa Noi' => 400, 'Taling Ngam' => 400, 'Bang Kao' => 400, 'Thong Krut' => 400 ),
+			'surcharge' => $zones['surcharge'] ?? array( 'Nathon' => 400, 'Lipa Noi' => 400, 'Taling Ngam' => 400, 'Bang Kao' => 400, 'Thong Krut' => 400, 'Laem Yai' => 400 ),
 			'meet'      => (bool) $m( 'kp_pickup_meet', '1' ),    // "I'll come to the pier" option
 		),
 		'cxl'          => $m( 'kp_cxl_policy', 'day' ),
@@ -32,6 +32,8 @@ function kpb_config( $product_id ) {
 		'closed'       => kpb_closed_dates( $product_id ),       // Y-m-d list (seasonal closure + blackouts + sold out)
 		'weekdays'     => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_weekdays' ) ) ) ) ), // e.g. Mon,Wed,Sat; empty = daily
 		'notice'       => $m( 'kp_booking_notice' ),            // e.g. "Season reopens 16 December"
+		'open_dates'   => array_keys( $ev = kpb_event_dates( $product_id ) ),   // non-empty = only these dates (party boats)
+		'date_prices'  => array_filter( $ev, fn( $v ) => $v !== null ),        // e.g. New Year's Eve price
 		'options'      => kpb_options( $product_id ),             // [{label, price, child?, max_guests?}] e.g. durations or boat sizes
 		'currency'     => 'THB',
 	);
@@ -53,6 +55,7 @@ function kpb_price( $product_id, $sel ) {
 	if ( ! $cfg ) return array( 0, array(), array( 'Product not found.' ) );
 	$adults = max( 0, (int) ( $sel['adults'] ?? 0 ) ); $children = max( 0, (int) ( $sel['children'] ?? 0 ) ); $infants = max( 0, (int) ( $sel['infants'] ?? 0 ) );
 	$date = (string) ( $sel['date'] ?? '' ); $pickup = (string) ( $sel['pickup'] ?? '' );
+	if ( isset( $cfg['date_prices'][ $date ] ) ) $cfg['adult'] = $cfg['date_prices'][ $date ];
 	$opt_label = '';
 	if ( $cfg['options'] ) { $oi = (int) ( $sel['option'] ?? 0 ); if ( ! isset( $cfg['options'][ $oi ] ) ) { $errors[] = 'Please choose an option.'; $oi = 0; }
 		$o = $cfg['options'][ $oi ]; $cfg['adult'] = $o['price']; if ( $o['child'] !== null ) $cfg['child'] = $o['child']; if ( $o['max_guests'] ) $cfg['max_guests'] = $o['max_guests']; $opt_label = $o['label']; }
@@ -61,6 +64,7 @@ function kpb_price( $product_id, $sel ) {
 	if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) $errors[] = 'Please choose a departure date.';
 	elseif ( $date < $cfg['first_date'] ) $errors[] = 'Online bookings for tomorrow close at midnight Thailand time. For same-day trips, message us on WhatsApp.';
 	elseif ( in_array( $date, $cfg['closed'], true ) ) $errors[] = 'This date is not available. ' . ( $cfg['notice'] ?: 'Please choose another date.' );
+	elseif ( $cfg['open_dates'] && ! in_array( $date, $cfg['open_dates'], true ) ) $errors[] = 'This trip runs on party dates only. Please choose one of the highlighted dates.';
 	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
 
 	if ( $cfg['per'] === 'boat' ) {
