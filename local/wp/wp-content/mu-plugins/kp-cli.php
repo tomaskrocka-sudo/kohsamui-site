@@ -93,7 +93,7 @@ class KP_CLI {
 	public function faq_registry() {
 		$seen = array(); $dups = 0; $rows = array();
 		$q = new WP_Query( array( 'post_type' => array( 'page', 'post', 'product', 'kp_event', 'kp_place' ), 'posts_per_page' => -1, 'post_status' => array( 'publish', 'draft' ), 'no_found_rows' => true ) );
-		foreach ( $q->posts as $p ) foreach ( kp_faqs( $p ) as $f ) { $k = strtolower( trim( ltrim( $f['q'], '~' ) ) ); $rows[] = array( $f['q'], get_permalink( $p ) ); if ( isset( $seen[ $k ] ) && ! str_starts_with( $f['q'], '~' ) ) { $dups++; WP_CLI::warning( "Duplicate: \"{$f['q']}\" on " . get_permalink( $p ) . ' and ' . $seen[ $k ] ); } else $seen[ $k ] = get_permalink( $p ); }
+		foreach ( $q->posts as $p ) foreach ( kp_faqs( $p ) as $f ) { $k = strtolower( trim( ltrim( $f['q'], '~' ) ) ); $rows[] = array( $f['q'], get_permalink( $p ) ); if ( str_starts_with( $f['q'], '~' ) ) continue; if ( isset( $seen[ $k ] ) ) { $dups++; WP_CLI::warning( "Duplicate: \"{$f['q']}\" on " . get_permalink( $p ) . ' and ' . $seen[ $k ] ); } else $seen[ $k ] = get_permalink( $p ); }
 		$csv = ABSPATH . '../../docs/faq-registry.csv'; $fh = fopen( $csv, 'w' ); fputcsv( $fh, array( 'question', 'url' ) ); foreach ( $rows as $r ) fputcsv( $fh, $r ); fclose( $fh );
 		WP_CLI::log( count( $rows ) . " questions written to docs/faq-registry.csv" ); $dups ? WP_CLI::error( "$dups duplicate questions" ) : WP_CLI::success( 'No duplicate FAQ questions' );
 	}

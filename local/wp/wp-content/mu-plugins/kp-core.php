@@ -32,7 +32,7 @@ function kp_allowed_link_hosts() {
 	$hosts = array_merge( $hosts, array(
 		'wa.me', 'api.whatsapp.com', 'www.google.com', 'maps.google.com', 'maps.app.goo.gl', 'goo.gl',
 		'www.windy.com', 'open-meteo.com', 'www.tmd.go.th', 'tdac.immigration.go.th', 'www.immigration.go.th',
-		'www.gov.uk', 'www.mfa.go.th', 'thaiembassy.org', 'www.thailand.go.th', 'www.dnp.go.th',
+		'www.gov.uk', 'go.th', 'thaiembassy.org',
 	) );
 	return apply_filters( 'kp_allowed_link_hosts', $hosts );
 }
@@ -147,3 +147,8 @@ function kp_strip_unverified( $c ) {
 add_filter( 'the_content', function ( $c ) { return is_admin() ? $c : kp_strip_unverified( $c ); }, 99 );
 add_filter( 'woocommerce_short_description', 'kp_strip_unverified', 99 );
 add_filter( 'get_the_excerpt', function ( $c ) { return is_admin() ? $c : kp_strip_unverified( $c ); }, 99 );
+
+// ---- WooCommerce shop archive → our tours hub (one catalogue URL) ----
+add_action( 'template_redirect', function () {
+	if ( function_exists( 'is_shop' ) && is_shop() && ! is_admin() ) { $t = get_page_by_path( 'koh-samui-tours' ); if ( $t && $t->post_status === 'publish' ) { wp_safe_redirect( get_permalink( $t ), 301 ); exit; } }
+} );
