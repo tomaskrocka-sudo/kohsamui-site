@@ -6,7 +6,7 @@ add_filter( 'woocommerce_checkout_fields', function ( $f ) {
 	unset( $f['billing']['billing_company'], $f['billing']['billing_address_2'], $f['shipping'] );
 	$f['billing']['billing_address_1']['required'] = false; $f['billing']['billing_address_1']['label'] = 'Home address (optional)';
 	$f['billing']['billing_city']['required'] = false; $f['billing']['billing_postcode']['required'] = false; $f['billing']['billing_state']['required'] = false;
-	$f['billing']['billing_phone']['label'] = 'WhatsApp number (with country code)'; $f['billing']['billing_phone']['placeholder'] = '+44 7…'; $f['billing']['billing_phone']['priority'] = 25;
+	$f['billing']['billing_phone']['label'] = 'WhatsApp number (with country code)'; $f['billing']['billing_phone']['required'] = true; $f['billing']['billing_phone']['placeholder'] = '+44 7…'; $f['billing']['billing_phone']['priority'] = 25;
 	$f['order']['kpb_hotel'] = array( 'type' => 'text', 'label' => 'Hotel or villa name on Koh Samui', 'placeholder' => 'e.g. Chaweng Garden Beach Resort', 'required' => true, 'priority' => 5, 'class' => array( 'form-row-wide' ) );
 	$f['order']['order_comments']['label'] = 'Special requests (diet, mobility, pickup notes)'; $f['order']['order_comments']['placeholder'] = '';
 	return $f;

@@ -86,7 +86,7 @@ add_action( 'init', function () {
 		'labels' => array( 'name' => 'Places', 'singular_name' => 'Place', 'add_new_item' => 'Add place', 'edit_item' => 'Edit place' ),
 		'public' => true, 'show_in_rest' => true, 'has_archive' => false, 'menu_icon' => 'dashicons-location-alt',
 		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
-		'rewrite' => array( 'slug' => '/', 'with_front' => false ), // top-level slugs like /chaweng-koh-samui/
+		'rewrite' => false, 'query_var' => false, // top-level slugs like /chaweng-koh-samui/ are resolved in pre_get_posts via the page rule
 		'menu_position' => 22,
 	) );
 	register_post_type( 'kp_villa', array(
@@ -117,16 +117,12 @@ add_filter( 'post_type_link', function ( $link, $post ) {
 }, 10, 2 );
 add_action( 'pre_get_posts', function ( $q ) {
 	if ( is_admin() || ! $q->is_main_query() ) return;
-	if ( ! empty( $q->query['pagename'] ) && ! $q->get( 'post_type' ) ) {
-		// let pages win; if no page exists with that slug, try kp_place
-		$name = $q->query['pagename'];
-		if ( strpos( $name, '/' ) !== false ) return;
-		$page = get_page_by_path( $name, OBJECT, 'page' );
-		if ( ! $page ) {
-			$place = get_page_by_path( $name, OBJECT, 'kp_place' );
-			if ( $place ) { $q->set( 'post_type', 'kp_place' ); $q->set( 'name', $name ); unset( $q->query_vars['pagename'] ); $q->is_page = false; $q->is_single = true; $q->is_singular = true; }
-		}
-	}
+	$name = $q->query['pagename'] ?? ( $q->query['name'] ?? '' );
+	if ( ! $name || strpos( $name, '/' ) !== false || $q->get( 'post_type' ) ) return;
+	// A page or post with this slug wins; otherwise resolve a top-level place URL.
+	if ( get_page_by_path( $name, OBJECT, array( 'page', 'post' ) ) ) return;
+	$place = get_page_by_path( $name, OBJECT, 'kp_place' );
+	if ( $place ) { $q->set( 'post_type', 'kp_place' ); $q->set( 'name', $name ); $q->set( 'pagename', '' ); $q->is_page = false; $q->is_single = true; $q->is_singular = true; }
 } );
 
 /* ---------------------------------------------------------------------------
