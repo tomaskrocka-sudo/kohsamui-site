@@ -4,6 +4,7 @@ local/wp/*
 !local/wp/wp-content/
 local/wp/wp-content/*
 !local/wp/wp-content/mu-plugins/
+!local/wp/wp-content/kp-data/
 !local/wp/wp-content/plugins/
 local/wp/wp-content/plugins/*
 !local/wp/wp-content/plugins/kp-*/

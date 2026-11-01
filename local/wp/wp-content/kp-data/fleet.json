@@ -1,0 +1,18 @@
+[
+  {"slug":"pp-speed-boat-30ft","name":"PP Speed Boat 30 ft","type":"Speedboat","max_guests":8,"price_basis":"4 guests","from_thb":19000,"duration":"8 hours","ref":"speedboatsamui.com/speedboats/pp-speed-boat/"},
+  {"slug":"np-speed-boat","name":"NP Speed Boat","type":"Speedboat","max_guests":16,"price_basis":"6 guests","from_thb":28000,"ref":"speedboatsamui.com/speedboats/np-speed-boat/"},
+  {"slug":"pp-speed-boat-35ft","name":"PP Speed Boat 35 ft","type":"Speedboat","max_guests":28,"price_basis":"6 guests","from_thb":29000,"ref":"speedboatsamui.com/speedboats/pp-speed-boat-3/"},
+  {"slug":"ap-speed-boat","name":"AP Speed Boat","type":"Speedboat","max_guests":30,"price_basis":"12 guests","from_thb":30000,"ref":"speedboatsamui.com/speedboats/ap-speed-boat-2/"},
+  {"slug":"fs-speed-boat","name":"FS Speed Boat","type":"Speedboat","max_guests":28,"price_basis":"6 guests","from_thb":30000,"ref":"speedboatsamui.com/speedboats/fs-speed-boat/"},
+  {"slug":"kt-speed-boat","name":"KT Speed Boat","type":"Speedboat","max_guests":14,"price_basis":"6 guests","from_thb":30000,"ref":"speedboatsamui.com/speedboats/kt-speed-boat/"},
+  {"slug":"pp-speed-boat-40ft","name":"PP Speed Boat 40 ft","type":"Speedboat","max_guests":22,"price_basis":"6 guests","from_thb":33000,"ref":"speedboatsamui.com/speedboats/pp-speed-boat-2/"},
+  {"slug":"coco-cay","name":"Coco Cay","type":"Speedboat","max_guests":10,"price_basis":"2 guests","from_thb":38000,"ref":"speedboatsamui.com/speedboats/coco-cay-speedboat/"},
+  {"slug":"mn-speed-boat","name":"MN Speed Boat","type":"Speedboat","max_guests":37,"price_basis":"10 guests","from_thb":46000,"ref":"speedboatsamui.com/speedboats/mn-speed-boat/"},
+  {"slug":"victoria-sailing","name":"Victoria Sailing","type":"Sailing catamaran","max_guests":13,"price_basis":"10 guests","from_thb":20000,"ref":"speedboatsamui.com/catamarans/victoria-private-sailing-catamaran/"},
+  {"slug":"blue-coco","name":"Blue Coco","type":"Catamaran","max_guests":25,"price_basis":"10 guests","from_thb":36000,"ref":"speedboatsamui.com/catamarans/blue-coco/"},
+  {"slug":"kia-ora","name":"Kia Ora","type":"Catamaran","max_guests":45,"price_basis":"15 guests","from_thb":36000,"note":"plus 7% VAT","ref":"speedboatsamui.com/catamarans/kia-ora-catamaran/"},
+  {"slug":"coco-paradise","name":"Coco Paradise","type":"Twin-engine catamaran","max_guests":45,"price_basis":"10 guests","from_thb":45000,"ref":"speedboatsamui.com/catamarans/coco-paradise-catamaran/"},
+  {"slug":"red-baron","name":"Red Baron","type":"Junk yacht","max_guests":70,"price_basis":"20 guests","from_thb":41000,"ref":"speedboatsamui.com/yachts/red-baron/"},
+  {"slug":"casablanca","name":"Casablanca","type":"Motor yacht","max_guests":12,"price_basis":"","from_thb":50000,"ref":"speedboatsamui.com/yachts/casablanca-motor-yacht/"},
+  {"slug":"minor-affair","name":"Minor Affair","type":"Motor yacht","max_guests":12,"price_basis":"","from_thb":255000,"ref":"speedboatsamui.com/yachts/minor-affair-motor-yacht/"}
+]
