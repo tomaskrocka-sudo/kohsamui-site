@@ -6,6 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function kpt_hero_id( $post_id = null ) {
 	$post_id = $post_id ?: get_the_ID();
 	if ( has_post_thumbnail( $post_id ) ) return (int) get_post_thumbnail_id( $post_id );
+	// A sea/boat photo only where it matches the topic; every other page gets the designed (photo-less) hero until it has its own photo.
+	$slug = (string) get_post_field( 'post_name', $post_id );
+	$sea = (bool) preg_match( '/(boat|charter|yacht|catamaran|speedboat|cruise|island|ang-thong|pig-island|koh-tan|snorkel|diving|sea-conditions|tides|koh-tao|koh-phangan|sail|fishing|kayak|jet-ski|water-sports)/', $slug ) || get_post_type( $post_id ) === 'product' && preg_match( '/(boat|charter|yacht|catamaran|speedboat|cruise|junk|sail|fishing|dive|snorkel|transfer)/', $slug );
+	if ( ! $sea ) return 0;
 	$fb = array_values( array_filter( array_map( 'intval', explode( ',', (string) get_option( 'kp_hero_fallbacks', '' ) ) ) ) );
 	return $fb ? $fb[ $post_id % count( $fb ) ] : 0;
 }

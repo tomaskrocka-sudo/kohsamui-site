@@ -241,3 +241,8 @@ html,body{overflow-x:clip}
 .kpa-hero .kpa-bc li{display:inline}
 @media(max-width:600px){.kpa-hero .kpa-bc li[aria-current]{display:none}}
 .kpv-gallery:empty{display:none}
+
+/* Designed hero for pages without their own photo: deep-sea gradient + soft wave lines (never a random photo) */
+.kpa-hero:not(:has(img)){background:radial-gradient(120% 90% at 85% 0%,#1F5E7A 0%,rgba(31,94,122,0) 55%),radial-gradient(90% 70% at 0% 100%,#0E3B52 0%,rgba(14,59,82,0) 60%),linear-gradient(160deg,#0B1F33 0%,#020A1C 100%)}
+.kpa-hero:not(:has(img))::before{content:"";position:absolute;inset:0;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='60' viewBox='0 0 240 60'%3E%3Cpath d='M0 30 Q30 10 60 30 T120 30 T180 30 T240 30' fill='none' stroke='%23C1DF0F' stroke-width='1.2'/%3E%3C/svg%3E");background-size:240px 60px}
+.kpa-hero:not(:has(img)){min-height:clamp(300px,44vh,460px)}
