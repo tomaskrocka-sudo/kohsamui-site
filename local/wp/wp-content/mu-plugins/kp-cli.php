@@ -68,7 +68,7 @@ class KP_CLI {
 			if ( $pt === 'product' && $id ) { unset( $arr['post_title'], $arr['post_excerpt'] ); } // keep product name/short desc from products.json
 			$id = wp_insert_post( $arr, true ); if ( is_wp_error( $id ) ) { WP_CLI::warning( $slug ); continue; }
 			foreach ( array( 'kp_kind' => $meta['kind'] ?? '', 'rank_math_title' => $meta['seo_title'] ?? '', 'rank_math_description' => $meta['meta'] ?? '', 'kp_content_updated' => $meta['updated'] ?? wp_date( 'Y-m-d' ), 'kp_first_hand' => $meta['first_hand'] ?? '', 'kp_author' => $meta['author'] ?? '' ) as $k => $v ) if ( $v !== '' ) update_post_meta( $id, $k, $v );
-			if ( ! empty( $meta['faq_file'] ) && file_exists( dirname( $f ) . '/' . $meta['faq_file'] ) ) update_post_meta( $id, 'kp_faq', file_get_contents( dirname( $f ) . '/' . $meta['faq_file'] ) );
+			$ff = dirname( $f ) . '/' . ( $meta['faq_file'] ?? basename( $f, '.html' ) . '.faq.txt' ); if ( file_exists( $ff ) ) update_post_meta( $id, 'kp_faq', trim( file_get_contents( $ff ) ) );
 			if ( ! empty( $meta['category'] ) && $pt === 'post' ) wp_set_post_terms( $id, array( $meta['category'] ), 'category' );
 			if ( ! empty( $meta['parent'] ) ) { $par = $this->by_slug( $meta['parent'], 'page' ); if ( $par ) wp_update_post( array( 'ID' => $id, 'post_parent' => $par ) ); }
 			$n++; WP_CLI::log( "✓ $pt #$id /$slug/ (" . str_word_count( wp_strip_all_tags( $body ) ) . ' words)' );

@@ -58,9 +58,14 @@ add_shortcode( 'kp_tours', function ( $a ) {
 	if ( ! function_exists( 'wc_get_products' ) ) return '';
 	$args = array( 'status' => 'publish', 'limit' => (int) ( $a['limit'] ?? 12 ), 'orderby' => 'menu_order', 'order' => 'ASC' );
 	if ( ! empty( $a['ids'] ) ) $args['include'] = array_map( 'intval', explode( ',', $a['ids'] ) ); if ( ! empty( $a['cat'] ) ) $args['category'] = array( $a['cat'] );
-	$h = '<div class="kp-rail kp-rail-tours">';
-	foreach ( wc_get_products( $args ) as $p ) { $id = $p->get_id(); $closed = function_exists( 'kp_product_is_closed_today' ) && kp_product_is_closed_today( $id );
-		$h .= '<a class="kpg-card" href="' . esc_url( $p->get_permalink() ) . '">' . ( $p->get_image_id() ? wp_get_attachment_image( $p->get_image_id(), 'medium_large', false, array( 'loading' => 'lazy' ) ) : '' ) . '<span class="kpg-card-b"><span class="kpg-card-t">' . esc_html( $p->get_name() ) . '</span><span class="kpg-card-m">' . esc_html( get_post_meta( $id, 'kp_duration', true ) ) . ( $p->get_review_count() ? ' · ★ ' . esc_html( $p->get_average_rating() ) : '' ) . '</span><span class="kpg-card-p">' . ( $closed ? 'Season reopens ' . esc_html( get_option( 'kp_angthong_reopen', '16 December' ) ) : 'from ' . number_format( (float) $p->get_price() ) . ' THB' ) . '</span><span class="kc kpg-btn">See the trip</span></span></a>'; }
+	$grid = ! empty( $a['chips'] ); $products = wc_get_products( $args ); $h = '';
+	if ( $grid ) { $cats = array(); foreach ( $products as $p ) foreach ( wp_get_post_terms( $p->get_id(), 'product_cat' ) as $t ) $cats[ $t->slug ] = $t->name;
+		$order = array_map( 'trim', explode( ',', $a['chips'] ) ); $chips = array( 'all' => 'All tours' ); foreach ( $order as $c ) { $k = sanitize_title( $c ); if ( isset( $cats[ $k ] ) ) $chips[ $k ] = $cats[ $k ]; }
+		$h .= '<div class="kp-ev-filters" role="tablist" aria-label="Filter tours">'; foreach ( $chips as $k => $l ) $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . esc_attr( $k ) . '">' . esc_html( $l ) . '</button>'; $h .= '</div>'; }
+	$h .= $grid ? '<div class="kp-tour-grid">' : '<div class="kp-rail kp-rail-tours">';
+	foreach ( $products as $p ) { $id = $p->get_id(); $closed = function_exists( 'kp_product_is_closed_today' ) && kp_product_is_closed_today( $id );
+		$tags = implode( ' ', wp_list_pluck( wp_get_post_terms( $id, 'product_cat' ), 'slug' ) );
+		$h .= '<a class="kpg-card" data-tags="' . esc_attr( $tags ) . '" href="' . esc_url( $p->get_permalink() ) . '">' . ( $p->get_image_id() ? wp_get_attachment_image( $p->get_image_id(), 'medium_large', false, array( 'loading' => 'lazy' ) ) : '' ) . '<span class="kpg-card-b"><span class="kpg-card-t">' . esc_html( $p->get_name() ) . '</span><span class="kpg-card-m">' . esc_html( get_post_meta( $id, 'kp_duration', true ) ) . ( $p->get_review_count() ? ' · ★ ' . esc_html( $p->get_average_rating() ) : '' ) . '</span><span class="kpg-card-p">' . ( $closed ? 'Season reopens ' . esc_html( get_option( 'kp_angthong_reopen', '16 December' ) ) : 'from ' . number_format( (float) $p->get_price() ) . ' THB' ) . '</span><span class="kc kpg-btn">See the trip</span></span></a>'; }
 	return $h . '</div>';
 } );
 /** At-a-glance box for places */
@@ -82,7 +87,7 @@ add_shortcode( 'kp_places_map', function ( $a ) {
 	$places = kp_places( $a['type'] ?? '', $a['area'] ?? '' );
 	if ( ! empty( $a['ids'] ) ) { $ids = array_map( 'intval', explode( ',', $a['ids'] ) ); $places = array_filter( $places, fn( $p ) => in_array( $p['id'], $ids, true ) ); }
 	$places = array_values( array_filter( $places, fn( $p ) => $p['lat'] && $p['lng'] ) ); if ( ! $places ) return '';
-	wp_enqueue_style( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', array(), '1.9.4', true );
+	$lv = get_stylesheet_directory_uri() . '/assets/vendor/leaflet/'; wp_enqueue_style( 'leaflet', $lv . 'leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', $lv . 'leaflet.js', array(), '1.9.4', true );
 	wp_enqueue_script( 'kp-map', get_stylesheet_directory_uri() . '/assets/js/kp-map.js', array( 'leaflet' ), '0.1', true );
 	$types = array_unique( array_column( $places, 'type' ) );
 	$h = '<div class="kpg-split" data-tiles="' . esc_attr( get_option( 'kp_tiles_url', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' ) ) . '">';

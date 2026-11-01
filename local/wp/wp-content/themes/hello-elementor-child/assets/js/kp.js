@@ -27,7 +27,7 @@
       var chip = e.target.closest('.kp-ev-chip'); if (!chip) return;
       bar.querySelectorAll('.kp-ev-chip').forEach(function (x) { x.classList.toggle('is-on', x === chip); });
       var f = chip.dataset.f;
-      grid.querySelectorAll('.kp-ev-card').forEach(function (card) { var tags = (card.dataset.tags || '').split(' '); card.classList.toggle('is-hidden', f !== 'all' && tags.indexOf(f) < 0); });
+      grid.querySelectorAll('[data-tags]').forEach(function (card) { var tags = (card.dataset.tags || '').split(' '); card.classList.toggle('is-hidden', f !== 'all' && tags.indexOf(f) < 0); });
     });
   });
   /* Reading progress */
