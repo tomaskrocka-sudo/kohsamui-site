@@ -36,6 +36,15 @@ for path,fn in PAGES.items():
     h=re.sub(r'<script type="speculationrules">.*?</script>','',h,flags=re.S)
     h=re.sub(r'<script[^>]*id="wp-[^"]*"[^>]*>.*?</script>','',h,flags=re.S)
     h=re.sub(r'<style[^>]*id="(wp|global|classic|woocommerce|core)[^"]*"[^>]*>.*?</style>','',h,flags=re.S)
+    # images: drop srcset/sizes, copy each referenced upload into the preview and point to it relatively
+    h=re.sub(r'\s(srcset|sizes)="[^"]*"','',h)
+    def img(m):
+        u=m.group(2); rel=u.split('/wp-content/uploads/',1)[1]
+        src='/home/claude/kohsamui-site/local/wp/wp-content/uploads/'+rel; dst=f'{OUT}/uploads/'+rel
+        if os.path.exists(src):
+            os.makedirs(os.path.dirname(dst),exist_ok=True); shutil.copy(src,dst); return m.group(1)+'uploads/'+rel+m.group(3)
+        return m.group(0)
+    h=re.sub(r'((?:src|content)=")('+re.escape(BASE)+r'/wp-content/uploads/[^"]+)(")',img,h)
     h=re.sub(r'(href=")([^"]+)(")',link,h)
     h=re.sub(r'(action=")([^"]+)(")',lambda m:m.group(1)+'#'+m.group(3),h)
     assets='<link rel="stylesheet" href="assets/css/tokens.css"><link rel="stylesheet" href="assets/css/kp.css">'+('<link rel="stylesheet" href="assets/css/kpb.css">' if 'id="kpb"' in h else '')
