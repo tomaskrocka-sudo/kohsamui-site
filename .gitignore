@@ -1,11 +1,20 @@
-local/wp/wp-content/uploads/
-local/wp/wp-content/database/
-local/wp/wp-content/debug.log
-local/wp/wp-content/upgrade/
-local/wp/wp-content/cache/
+# WordPress core, third-party plugins/themes and runtime are reproducible; only our code is versioned
+local/wp/*
+!local/wp/wp-config.php
+!local/wp/wp-content/
+local/wp/wp-content/*
+!local/wp/wp-content/mu-plugins/
+!local/wp/wp-content/plugins/
+local/wp/wp-content/plugins/*
+!local/wp/wp-content/plugins/kp-*/
+!local/wp/wp-content/themes/
+local/wp/wp-content/themes/*
+!local/wp/wp-content/themes/hello-elementor-child/
 local/dl/
+local/sqlite-db/
+local/hello-theme/
 local/*.zip
 local/*.phar
-local/build-elementor.log
+local/*.log
 parts/
 node_modules/
