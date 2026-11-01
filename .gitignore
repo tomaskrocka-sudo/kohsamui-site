@@ -18,3 +18,6 @@ local/*.phar
 local/*.log
 parts/
 node_modules/
+preview/
+local/fonts/
+local/cloudflared

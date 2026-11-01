@@ -1,0 +1,31 @@
+/* Design tokens: measured on kohphangan.com, 31 Oct 2026 (Part B2). Do not change values without Mea's approval. */
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/inter-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/inter-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/inter-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/inter-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/playfair-display-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/playfair-display-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/playfair-display-latin-700-normal.woff2) format("woff2")}
+
+:root{
+  --kp-sans:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --kp-serif:"Playfair Display",Georgia,serif;
+  --kp-ink:#0B1F33; --kp-text:#142C47; --kp-muted:#5C6675; --kp-muted2:#6E7886;
+  --kp-border:#E7E9EC; --kp-surface:#F6F8FA; --kp-warm:#F6F2EA; --kp-white:#fff; --kp-bg:#fff;
+  --kp-accent:#C1DF0F; --kp-accent-hover:#ADC90B; --kp-accent-ink:#14202E; --kp-accent-dark:#5E6E00; --kp-brass:#5E6E00; --kp-gold:#C1DF0F;
+  --kp-trust:#1E7A4C; --kp-danger:#9f1239;
+  --kp-night:#020A1C; --kp-night-text:#93A3B8; --kp-night-line:#33425F;
+  --kpd-card:#fff; --kpd-card2:#F6F8FA; --kpd-line:#E7E9EC; --kpd-text:#0B1F33; --kpd-muted:#5C6675; --kpd-link:#0B1F33; --kpd-navy:#0B1F33;
+  --kp-w:1148px; --kp-gutter:max(20px,5.5vw); --kp-sec:clamp(40px,4.4vw,60px);
+  --kp-radius:12px; --kp-radius-lg:16px; --kp-radius-pill:999px;
+  --kp-shadow:0 6px 24px rgba(11,31,51,.06); --kp-shadow-lg:0 16px 48px rgba(11,31,51,.12);
+  --kp-header-h:72px;
+  color-scheme:light;
+}
+html.kpts-dark{
+  color-scheme:dark;
+  --kp-ink:#E6EDF5; --kp-text:#E6EDF5; --kp-muted:#A9B6C6; --kp-muted2:#97A5B7; --kp-border:#263A55; --kp-surface:#111F33; --kp-warm:#132339; --kp-bg:#0A1422;
+  --kp-accent-dark:#C1DF0F; --kp-brass:#C1DF0F; --kp-trust:#5BCB93;
+  --kpd-bg:#0A1422; --kpd-card:#111F33; --kpd-card2:#172A43; --kpd-line:#263A55; --kpd-text:#E6EDF5; --kpd-muted:#A9B6C6; --kpd-link:#8FD8E8; --kpd-navy:#1F3452;
+  --kp-shadow:0 6px 24px rgba(0,0,0,.35); --kp-shadow-lg:0 16px 48px rgba(0,0,0,.5);
+}

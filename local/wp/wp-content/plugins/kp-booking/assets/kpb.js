@@ -14,10 +14,10 @@
   var view = new Date(cfg.first_date + 'T00:00:00'); view.setDate(1);
   function render() {
     var html = '';
-    for (var m = 0; m < 2; m++) {
+    for (var m = 0; m < 1; m++) {
       var first = new Date(view.getFullYear(), view.getMonth() + m, 1);
       var label = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-      html += '<div class="kpb-month"><div class="kpb-mhead">' + (m === 0 ? '<button type="button" class="kpb-nav" data-nav="-1" aria-label="Previous month">‹</button>' : '<span></span>') + '<strong>' + label + '</strong>' + (m === 1 ? '<button type="button" class="kpb-nav" data-nav="1" aria-label="Next month">›</button>' : '<span></span>') + '</div><div class="kpb-grid" role="grid">';
+      html += '<div class="kpb-month"><div class="kpb-mhead">' + (m === 0 ? '<button type="button" class="kpb-nav" data-nav="-1" aria-label="Previous month">‹</button>' : '<span></span>') + '<strong>' + label + '</strong>' + '<button type="button" class="kpb-nav" data-nav="1" aria-label="Next month">›</button>' + '</div><div class="kpb-grid" role="grid">';
       ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].forEach(function (d) { html += '<span class="kpb-dow">' + d + '</span>'; });
       var offset = (first.getDay() + 6) % 7; for (var i = 0; i < offset; i++) html += '<span></span>';
       var days = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
