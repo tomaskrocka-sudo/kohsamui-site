@@ -14,7 +14,7 @@ function kpb_config( $product_id ) {
 		'child'        => $m( 'kp_child_price' ) !== '' ? (float) $m( 'kp_child_price' ) : null,
 		'infant'       => 0.0,
 		'child_label'  => 'Child (3–11)',
-		'adult_label'  => 'Adult (12+)',
+		'adult_label'  => $m( 'kp_adult_label', 'Adult (12+)' ),
 		'infant_label' => 'Infant (0–2, free)',
 		'min_adults'   => (int) $m( 'kp_min_adults', 1 ),
 		'max_pax'      => (int) $m( 'kp_max_pax', 20 ),
@@ -64,7 +64,7 @@ function kpb_price( $product_id, $sel ) {
 	if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) $errors[] = 'Please choose a departure date.';
 	elseif ( $date < $cfg['first_date'] ) $errors[] = 'Online bookings for tomorrow close at midnight Thailand time. For same-day trips, message us on WhatsApp.';
 	elseif ( in_array( $date, $cfg['closed'], true ) ) $errors[] = 'This date is not available. ' . ( $cfg['notice'] ?: 'Please choose another date.' );
-	elseif ( $cfg['open_dates'] && ! in_array( $date, $cfg['open_dates'], true ) ) $errors[] = 'This trip runs on party dates only. Please choose one of the highlighted dates.';
+	elseif ( $cfg['open_dates'] && ! in_array( $date, $cfg['open_dates'], true ) ) $errors[] = 'This runs on set dates only. Please choose one of the highlighted dates.';
 	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
 
 	if ( $cfg['per'] === 'boat' ) {
