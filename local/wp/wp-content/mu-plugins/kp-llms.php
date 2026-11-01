@@ -71,7 +71,7 @@ function kp_llms_short() {
 	foreach ( array( 'Pages' => 'page', 'Guides and places' => 'kp_place', 'Posts' => 'post' ) as $label => $pt ) {
 		$q = new WP_Query( array( 'post_type' => $pt, 'posts_per_page' => -1, 'post_status' => 'publish', 'orderby' => 'title', 'order' => 'ASC', 'no_found_rows' => true ) );
 		if ( ! $q->posts ) continue; $t .= "\n## $label\n";
-		foreach ( $q->posts as $p ) { if ( get_post_meta( $p->ID, 'kp_noindex', true ) ) continue; $t .= "- [" . get_the_title( $p ) . "](" . get_permalink( $p ) . "): " . wp_trim_words( wp_strip_all_tags( get_the_excerpt( $p ) ?: $p->post_content ), 22, '…' ) . "\n"; }
+		foreach ( $q->posts as $p ) { if ( get_post_meta( $p->ID, 'kp_noindex', true ) ) continue; $t .= "- [" . get_the_title( $p ) . "](" . get_permalink( $p ) . "): " . wp_trim_words( wp_strip_all_tags( get_the_excerpt( $p ) ?: kp_strip_unverified( $p->post_content ) ), 22, '…' ) . "\n"; }
 	}
 	$t .= "\n## Sitemaps\n- [XML Sitemap](" . home_url( '/sitemap_index.xml' ) . ")\n";
 	return $t;
@@ -99,7 +99,7 @@ function kp_llms_full() {
 	foreach ( $q->posts as $p ) {
 		if ( get_post_meta( $p->ID, 'kp_noindex', true ) ) continue;
 		$t .= "### " . get_the_title( $p ) . "\nURL: " . get_permalink( $p ) . "\nUpdated: " . kp_content_updated( $p ) . "\n";
-		$lead = wp_trim_words( wp_strip_all_tags( strip_shortcodes( $p->post_content ) ), 90, '…' ); if ( $lead ) $t .= "$lead\n";
+		$lead = wp_trim_words( wp_strip_all_tags( strip_shortcodes( kp_strip_unverified( $p->post_content ) ) ), 90, '…' ); if ( $lead ) $t .= "$lead\n";
 		foreach ( kp_faqs( $p ) as $f ) { if ( str_starts_with( $f['q'], '~' ) ) continue; $t .= "Q: {$f['q']}\nA: " . wp_strip_all_tags( $f['a'] ) . "\n"; }
 		$t .= "\n";
 	}

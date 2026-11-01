@@ -212,7 +212,7 @@ function kp_schema_itemlist( $url ) {
 /** Meta description: Rank Math's if set, else excerpt, else lead. */
 function kp_meta_description() {
 	$post = get_post();
-	if ( $post ) { $rm = get_post_meta( $post->ID, 'rank_math_description', true ); if ( $rm ) return $rm; if ( $post->post_excerpt ) return wp_strip_all_tags( $post->post_excerpt ); return wp_trim_words( wp_strip_all_tags( strip_shortcodes( $post->post_content ) ), 25, '…' ); }
+	if ( $post ) { $rm = get_post_meta( $post->ID, 'rank_math_description', true ); if ( $rm ) return $rm; if ( $post->post_excerpt ) return wp_strip_all_tags( $post->post_excerpt ); return wp_trim_words( wp_strip_all_tags( strip_shortcodes( kp_strip_unverified( $post->post_content ) ) ), 25, '…' ); }
 	return get_bloginfo( 'description' );
 }
 

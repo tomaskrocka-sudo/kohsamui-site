@@ -124,6 +124,17 @@ function kp_page_kind() {
 function kp_is_unverified( $s ) { return (bool) preg_match( '/\[(ask mea|check|confirm|gps|field-check|slug tbc)[^\]]*\]|\[[^\]]*ask mea[^\]]*\]/i', (string) $s ); }
 function kp_public_lines( $lines ) { return array_values( array_filter( (array) $lines, fn( $l ) => ! kp_is_unverified( $l ) ) ); }
 add_filter( 'kp_faqs', function ( $faqs ) { return array_values( array_filter( $faqs, fn( $f ) => ! kp_is_unverified( $f['q'] . ' ' . $f['a'] ) ) ); }, 5 );
-add_filter( 'the_content', function ( $c ) { return is_admin() ? $c : preg_replace( '/\s*\[(ask Mea|check|confirm|GPS|field-check)[^\]]*\]/i', '', $c ); }, 99 );
-add_filter( 'woocommerce_short_description', function ( $c ) { return preg_replace( '/\s*\[(ask Mea|check|confirm|GPS)[^\]]*\]/i', '', $c ); }, 99 );
-add_filter( 'get_the_excerpt', function ( $c ) { return is_admin() ? $c : preg_replace( '/\s*\[(ask Mea|check|confirm|GPS|field-check)[^\]]*\]/i', '', $c ); }, 99 );
+/** Remove unverified content from public output: whole <li>/<tr> or the whole sentence carrying a tag; HTML comments too. */
+function kp_strip_unverified( $c ) {
+	$tag = '\[(?:ask mea|check|confirm|gps|field-check|slug tbc)[^\]]*\]';
+	$c = preg_replace( '/<!--.*?-->/s', '', $c );
+	$c = preg_replace( '#<(li|tr)\b[^>]*>(?:(?!</\1>).)*?' . $tag . '.*?</\1>#is', '', $c );
+	// sentence = run of text after a sentence end / tag boundary up to the tag (+ trailing punctuation)
+	$c = preg_replace( '/(^|[.!?:]\s|<(?:p|li|td|th|div|h[2-6]|dd|summary)\b[^>]*>)\s*(?:[^<>.!?]|\.(?=\d)|<\/?(?:strong|em|b|i|a|span|code)\b[^>]*>)*?' . $tag . '[.!?]?(?:\s*<\/(?:strong|em|b|i|a|span)>)*/i', '$1', $c );
+	$c = preg_replace( '/\s*' . $tag . '/i', '', $c ); // any leftovers
+	$c = preg_replace( '#<p[^>]*>\s*</p>|<(ul|ol)[^>]*>\s*</\1>#i', '', $c );
+	return $c;
+}
+add_filter( 'the_content', function ( $c ) { return is_admin() ? $c : kp_strip_unverified( $c ); }, 99 );
+add_filter( 'woocommerce_short_description', 'kp_strip_unverified', 99 );
+add_filter( 'get_the_excerpt', function ( $c ) { return is_admin() ? $c : kp_strip_unverified( $c ); }, 99 );
