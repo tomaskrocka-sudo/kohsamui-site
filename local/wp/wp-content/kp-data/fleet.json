@@ -10,9 +10,14 @@
   {"slug":"mn-speed-boat","name":"MN Speed Boat","type":"Speedboat","max_guests":37,"price_basis":"10 guests","from_thb":46000,"ref":"speedboatsamui.com/speedboats/mn-speed-boat/"},
   {"slug":"victoria-sailing","name":"Victoria Sailing","type":"Sailing catamaran","max_guests":13,"price_basis":"10 guests","from_thb":20000,"ref":"speedboatsamui.com/catamarans/victoria-private-sailing-catamaran/"},
   {"slug":"blue-coco","name":"Blue Coco","type":"Catamaran","max_guests":25,"price_basis":"10 guests","from_thb":36000,"ref":"speedboatsamui.com/catamarans/blue-coco/"},
-  {"slug":"kia-ora","name":"Kia Ora","type":"Catamaran","max_guests":45,"price_basis":"15 guests","from_thb":36000,"note":"plus 7% VAT","ref":"speedboatsamui.com/catamarans/kia-ora-catamaran/"},
+  {"slug":"kia-ora","name":"Kia Ora","type":"Sailing catamaran (54 ft)","max_guests":45,"price_basis":"15 guests","from_thb":36000,"note":"plus 7% VAT","ref":"speedboatsamui.com/catamarans/kia-ora-catamaran/"},
   {"slug":"coco-paradise","name":"Coco Paradise","type":"Twin-engine catamaran","max_guests":45,"price_basis":"10 guests","from_thb":45000,"ref":"speedboatsamui.com/catamarans/coco-paradise-catamaran/"},
   {"slug":"red-baron","name":"Red Baron","type":"Junk yacht","max_guests":70,"price_basis":"20 guests","from_thb":41000,"ref":"speedboatsamui.com/yachts/red-baron/"},
   {"slug":"casablanca","name":"Casablanca","type":"Motor yacht","max_guests":12,"price_basis":"","from_thb":50000,"ref":"speedboatsamui.com/yachts/casablanca-motor-yacht/"},
-  {"slug":"minor-affair","name":"Minor Affair","type":"Motor yacht","max_guests":12,"price_basis":"","from_thb":255000,"ref":"speedboatsamui.com/yachts/minor-affair-motor-yacht/"}
+  {"slug":"minor-affair","name":"Minor Affair","type":"Motor yacht","max_guests":12,"price_basis":"","from_thb":255000,"ref":"speedboatsamui.com/yachts/minor-affair-motor-yacht/"},
+  {"slug":"grand-voyage-42","name":"Grand Voyage 42","type":"Sailing catamaran (16 m)","max_guests":15,"price_basis":"10 guests","from_thb":25000,"duration":"3 hours","note":"departs Ban Tai, Koh Phangan","ref":"speedboatsamui.com/catamarans/grand-voyage-42-sailing-catamaran/"},
+  {"slug":"orana","name":"Orana","type":"Sailing catamaran (44 ft)","max_guests":20,"price_basis":"10 guests","from_thb":43000,"duration":"4 hours","ref":"speedboatsamui.com/catamarans/orana-sailing-catamaran/"},
+  {"slug":"serenity-max","name":"Serenity Max","type":"Power catamaran (71 ft)","max_guests":60,"price_basis":"20 guests","from_thb":46000,"duration":"2 hours","ref":"speedboatsamui.com/catamarans/serenity-max-power-catamaran/"},
+  {"slug":"super-king","name":"Super King","type":"Catamaran (50 ft)","max_guests":50,"price_basis":"","from_thb":44000,"duration":"4 hours","ref":"speedboatsamui.com/catamarans/super-king-catamaran/"},
+  {"slug":"prestige","name":"Prestige","type":"Motor yacht (50 ft)","max_guests":13,"price_basis":"10 guests","from_thb":60000,"duration":"2 hours","ref":"speedboatsamui.com/yachts/prestige-motor-yacht/"}
 ]
