@@ -14,17 +14,28 @@ function kpt_hero_id( $post_id = null ) {
 	return $fb ? $fb[ $post_id % count( $fb ) ] : 0;
 }
 function kpt_hero( $args = array() ) {
-	$post = get_post();
 	$title = $args['title'] ?? get_the_title();
 	$kicker = $args['kicker'] ?? get_post_meta( get_the_ID(), 'kp_kicker', true );
+	$lead = $args['lead'] ?? ( has_excerpt() ? wp_strip_all_tags( get_the_excerpt() ) : '' );
 	$hid = kpt_hero_id();
-	$img = $hid ? wp_get_attachment_image( $hid, 'kp-hero', false, array( 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => esc_attr( get_post_meta( $hid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) : '';
-	echo '<section class="kpa-hero">' . $img . '<div class="kpa-hero-g"></div><div class="kpa-w kpa-hero-tx">';
+	$img = $hid ? wp_get_attachment_image( $hid, 'full', false, array( 'class' => 'kpa-hero-img', 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'sync', 'sizes' => '100vw', 'alt' => esc_attr( get_post_meta( $hid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) : '';
+	$credit = $hid ? get_post_meta( $hid, 'kp_credit', true ) : '';
+	echo '<section class="kpa-hero' . ( $img ? ' has-img' : '' ) . '">' . $img . '<div class="kpa-hero-g"></div><div class="kpa-w kpa-hero-tx">';
 	echo function_exists( 'kp_breadcrumbs_html' ) ? kp_breadcrumbs_html() : '';
 	if ( $kicker ) echo '<p class="kpa-k">' . esc_html( $kicker ) . '</p>';
 	echo '<h1>' . esc_html( $title ) . '</h1>';
-	echo '</div></section>';
+	if ( $lead ) echo '<p class="kpa-hero-lead">' . esc_html( wp_trim_words( $lead, 30, '…' ) ) . '</p>';
+	echo '</div>';
+	if ( $img ) echo '<a class="kpa-hero-cue" href="#kp-main-content" aria-label="Scroll to content"><span></span></a>';
+	if ( $credit ) echo '<span class="kpa-hero-credit">Photo: ' . esc_html( $credit ) . ( ( $l = get_post_meta( $hid, 'kp_licence', true ) ) ? ', ' . esc_html( $l ) : '' ) . '</span>';
+	echo '</section><span id="kp-main-content"></span>';
 }
+/** Preload the hero image (LCP) on singular pages. */
+add_action( 'wp_head', function () {
+	if ( ! is_singular() || is_front_page() ) return; $hid = kpt_hero_id( get_queried_object_id() ); if ( ! $hid ) return;
+	$src = wp_get_attachment_image_src( $hid, 'full' ); $set = wp_get_attachment_image_srcset( $hid, 'full' );
+	if ( $src ) echo '<link rel="preload" as="image" href="' . esc_url( $src[0] ) . '"' . ( $set ? ' imagesrcset="' . esc_attr( $set ) . '" imagesizes="100vw"' : '' ) . ' fetchpriority="high">' . "\n";
+}, 2 );
 function kpt_byline() {
 	$upd = function_exists( 'kp_updated_label' ) ? kp_updated_label() : '';
 	$brand = defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' );
