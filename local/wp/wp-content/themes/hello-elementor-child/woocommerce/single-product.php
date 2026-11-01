@@ -33,9 +33,13 @@ while ( have_posts() ) : the_post();
 	if ( $lines( 'kp_not_included' ) ) { echo '<h2>Not included</h2><ul class="kp-notinc">'; foreach ( $lines( 'kp_not_included' ) as $l ) echo '<li>' . esc_html( $l ) . '</li>'; echo '</ul>'; }
 	// Prices table
 	echo '<h2>Prices ' . esc_html( function_exists( 'kp_year' ) ? kp_year() : '' ) . '</h2><table class="kp-glance"><thead><tr><th>Ticket</th><th>Price (THB)</th></tr></thead><tbody>';
-	if ( $m( 'kp_per' ) === 'boat' ) echo '<tr><td>Private boat' . ( $m( 'kp_max_guests' ) && ! str_contains( $m( 'kp_max_guests' ), '[' ) ? ' (up to ' . esc_html( $m( 'kp_max_guests' ) ) . ' guests)' : '' ) . '</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>';
-	else { echo '<tr><td>Adult (12+)</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>'; echo '<tr><td>Child (3–11)</td><td>' . ( $m( 'kp_child_price' ) !== '' ? number_format( (float) $m( 'kp_child_price' ) ) : 'Ask us on WhatsApp' ) . '</td></tr><tr><td>Infant (0–2)</td><td>Free</td></tr>'; }
-	echo '<tr><td>Remote-area pickup (per person, return)</td><td>+400 (see pickup areas)</td></tr></tbody></table>';
+	$opts = function_exists( 'kpb_options' ) ? kpb_options( $id ) : array();
+	if ( $opts ) foreach ( $opts as $o ) echo '<tr><td>' . esc_html( $o['label'] ) . ( $o['max_guests'] ? ' (up to ' . (int) $o['max_guests'] . ' guests)' : '' ) . '</td><td>' . number_format( $o['price'] ) . ( $m( 'kp_per' ) === 'boat' ? ' per boat' : ' per adult' ) . ( $o['child'] !== null ? ' · child ' . number_format( $o['child'] ) : '' ) . '</td></tr>';
+	elseif ( $m( 'kp_per' ) === 'boat' ) echo '<tr><td>Private boat' . ( $m( 'kp_max_guests' ) && ! str_contains( $m( 'kp_max_guests' ), '[' ) ? ' (up to ' . esc_html( $m( 'kp_max_guests' ) ) . ' guests)' : '' ) . '</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>';
+	if ( ! $opts && $m( 'kp_per' ) !== 'boat' ) { echo '<tr><td>Adult (12+)</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>'; echo '<tr><td>Child (3–11)</td><td>' . ( $m( 'kp_child_price' ) !== '' ? number_format( (float) $m( 'kp_child_price' ) ) : 'Ask us on WhatsApp' ) . '</td></tr><tr><td>Infant (0–2)</td><td>Free</td></tr>'; }
+	if ( $opts && $m( 'kp_per' ) !== 'boat' ) echo '<tr><td>Infant (0–2)</td><td>Free</td></tr>';
+	if ( get_post_meta( $id, 'kp_pickup_enabled', true ) ) echo '<tr><td>Remote-area pickup (per person, return)</td><td>+400 (see pickup areas)</td></tr>';
+	echo '</tbody></table>';
 	// Cancellation
 	echo '<h2>Cancellation policy</h2>' . do_shortcode( '[kp_cxl policy="' . esc_attr( $m( 'kp_cxl_policy' ) ?: 'day' ) . '"]' );
 	// FAQ

@@ -95,11 +95,13 @@ function kp_cancellation_text( $key = 'day' ) {
 	$t = array(
 		'day' => 'Full refund if you cancel 48 hours or more before departure. 50% refund between 24 and 48 hours before departure. No refund under 24 hours or for a no-show. If we cancel because of weather or sea conditions, you choose a full refund or a new date.',
 		'angthong' => 'Full refund if you cancel 48 hours or more before departure. No refund under 48 hours or for a no-show. If we cancel because of weather or sea conditions, you choose a full refund or a new date.',
+		'partner' => 'Full refund minus the bank fee if you cancel 4 days or more before departure. 50% refund if you cancel 1 to 3 days before departure. No refund under 24 hours or for a no-show. If the trip is cancelled because of weather or sea conditions, you choose a full refund or a new date.',
 	);
 	return $t[ $key ] ?? $t['day'];
 }
 /** Pickup wording, one string everywhere (rule A4.8). */
 function kp_pickup_text( $product_id = 0 ) {
+	if ( $product_id && ( $note = get_post_meta( $product_id, 'kp_pickup_note', true ) ) ) return $note;
 	$zones = $product_id ? json_decode( (string) get_post_meta( $product_id, 'kp_pickup_zones', true ), true ) : null;
 	$s = 'Hotel pickup included from most areas of Koh Samui.';
 	if ( ! empty( $zones['surcharge'] ) ) {

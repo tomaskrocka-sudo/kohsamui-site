@@ -10,7 +10,7 @@ add_action( 'rest_api_init', function () {
 	} ) );
 	register_rest_route( 'kp/v1', '/quote', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => function ( $r ) {
 		$id = (int) $r->get_param( 'product' ); if ( ! kpb_is_bookable( $id ) ) return new WP_Error( 'kpb_not_bookable', 'Not a bookable product', array( 'status' => 404 ) );
-		[ $total, $lines, $errors ] = kpb_price( $id, array( 'date' => $r->get_param( 'date' ), 'adults' => $r->get_param( 'adults' ), 'children' => $r->get_param( 'children' ), 'infants' => $r->get_param( 'infants' ), 'pickup' => $r->get_param( 'pickup' ) ) );
+		[ $total, $lines, $errors ] = kpb_price( $id, array( 'date' => $r->get_param( 'date' ), 'adults' => $r->get_param( 'adults' ), 'children' => $r->get_param( 'children' ), 'infants' => $r->get_param( 'infants' ), 'pickup' => $r->get_param( 'pickup' ), 'option' => (int) $r->get_param( 'option' ) ) );
 		return array( 'total_thb' => $total, 'lines' => $lines, 'errors' => $errors );
 	} ) );
 } );

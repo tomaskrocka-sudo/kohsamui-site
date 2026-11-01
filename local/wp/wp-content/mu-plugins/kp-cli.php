@@ -11,10 +11,10 @@ class KP_CLI {
 	private function by_slug( $slug, $pt ) { $p = get_page_by_path( $slug, OBJECT, $pt ); return $p ? $p->ID : 0; }
 
 	/** Import/update WooCommerce products from kp-data/products.json. */
-	public function import_products() {
+	public function import_products( $args = array() ) {
 		if ( ! function_exists( 'wc_get_product' ) ) WP_CLI::error( 'WooCommerce not active' );
 		$n = 0;
-		foreach ( $this->data( 'products.json' ) as $d ) {
+		foreach ( $this->data( $args[0] ?? 'products.json' ) as $d ) {
 			$id = $this->by_slug( $d['slug'], 'product' );
 			$p = $id ? wc_get_product( $id ) : new WC_Product_Simple();
 			$p->set_name( $d['name'] ); $p->set_slug( $d['slug'] ); $p->set_status( 'publish' ); $p->set_regular_price( (string) $d['price'] ); $p->set_short_description( $d['short'] ?? '' );
@@ -22,9 +22,15 @@ class KP_CLI {
 			$terms = array(); foreach ( $d['cat'] ?? array() as $c ) { $t = term_exists( $c, 'product_cat' ) ?: wp_insert_term( $c, 'product_cat' ); if ( ! is_wp_error( $t ) ) $terms[] = (int) $t['term_id']; }
 			$p->set_category_ids( $terms );
 			$id = $p->save();
-			$meta = array( 'kp_bookable' => '1', 'kp_per' => $d['per'] ?? 'person', 'kp_child_price' => $d['child'] ?? '', 'kp_duration' => $d['duration'] ?? '', 'kp_boat' => $d['boat'] ?? '', 'kp_pier' => $d['pier'] ?? '', 'kp_pickup_window' => $d['pickup_window'] ?? '', 'kp_return' => $d['return'] ?? '', 'kp_season' => $d['season'] ?? '', 'kp_closed_from' => $d['closed_from'] ?? '', 'kp_closed_to' => $d['closed_to'] ?? '', 'kp_cxl_policy' => $d['cxl'] ?? 'day', 'kp_park_fee' => $d['park_fee'] ?? '', 'kp_booking_notice' => $d['notice'] ?? '', 'kp_vip_note' => $d['vip_note'] ?? '', 'kp_max_guests' => $d['max_guests'] ?? '', 'kp_sku_ref' => $d['sku_ref'] ?? '', 'kp_is_ticket' => ! empty( $d['is_ticket'] ) ? '1' : '', 'kp_pickup_enabled' => ( $d['per'] ?? 'person' ) === 'person' ? '1' : '', 'kp_pickup_meet' => '1', 'kp_kind' => 'money', 'kp_content_updated' => wp_date( 'Y-m-d' ),
+			$meta = array( 'kp_bookable' => ( $d['bookable'] ?? true ) ? '1' : '', 'kp_per' => $d['per'] ?? 'person', 'kp_child_price' => $d['child'] ?? '', 'kp_duration' => $d['duration'] ?? '', 'kp_boat' => $d['boat'] ?? '', 'kp_pier' => $d['pier'] ?? '', 'kp_pickup_window' => $d['pickup_window'] ?? '', 'kp_return' => $d['return'] ?? '', 'kp_season' => $d['season'] ?? '', 'kp_closed_from' => $d['closed_from'] ?? '', 'kp_closed_to' => $d['closed_to'] ?? '', 'kp_cxl_policy' => $d['cxl'] ?? 'day', 'kp_park_fee' => $d['park_fee'] ?? '', 'kp_booking_notice' => $d['notice'] ?? '', 'kp_vip_note' => $d['vip_note'] ?? '', 'kp_max_guests' => $d['max_guests'] ?? '', 'kp_sku_ref' => $d['sku_ref'] ?? '', 'kp_is_ticket' => ! empty( $d['is_ticket'] ) ? '1' : '', 'kp_pickup_enabled' => ( $d['per'] ?? 'person' ) === 'person' ? '1' : '', 'kp_pickup_meet' => '1', 'kp_kind' => 'money', 'kp_content_updated' => wp_date( 'Y-m-d' ),
 				'kp_included' => implode( "\n", $d['included'] ?? array() ), 'kp_not_included' => implode( "\n", $d['not_included'] ?? array() ), 'kp_itinerary' => implode( "\n", $d['itinerary'] ?? array() ), 'kp_faq' => implode( "\n", $d['faq'] ?? array() ) );
 			if ( str_contains( $d['slug'], 'pig-island' ) || str_contains( $d['slug'], 'koh-madsum' ) || str_contains( $d['slug'], 'koh-rap' ) ) $meta['kp_pickup_zones'] = wp_json_encode( array( 'included' => array( 'Chaweng', 'Chaweng Noi', 'Lamai', 'Bophut', 'Maenam', 'Choeng Mon', 'Bang Rak', 'Nathon', 'Lipa Noi', 'Taling Ngam', 'Thong Krut', 'Bang Kao', 'Hua Thanon' ), 'surcharge' => new stdClass() ) ); // [ask Mea: Thong Krut departures surcharge zones]
+			// Optional keys (partner products, charters)
+			if ( isset( $d['options'] ) ) $meta['kp_options'] = is_array( $d['options'] ) ? implode( "\n", array_map( fn( $o ) => is_array( $o ) ? implode( ' | ', array( $o['label'], $o['price'], $o['child'] ?? '', $o['max_guests'] ?? '' ) ) : $o, $d['options'] ) ) : $d['options'];
+			foreach ( array( 'pickup_note' => 'kp_pickup_note', 'weekdays' => 'kp_weekdays', 'min_age' => 'kp_min_age', 'what_to_bring' => 'kp_what_to_bring', 'max_pax' => 'kp_max_pax', 'partner' => 'kp_partner' ) as $k => $mk ) if ( isset( $d[ $k ] ) ) $meta[ $mk ] = is_array( $d[ $k ] ) ? implode( "\n", $d[ $k ] ) : (string) $d[ $k ];
+			if ( array_key_exists( 'pickup_enabled', $d ) ) $meta['kp_pickup_enabled'] = $d['pickup_enabled'] ? '1' : '';
+			if ( ! empty( $d['zones'] ) ) $meta['kp_pickup_zones'] = wp_json_encode( $d['zones'] );
+			if ( ! empty( $d['menu_order'] ) ) wp_update_post( array( 'ID' => $id, 'menu_order' => (int) $d['menu_order'] ) );
 			foreach ( $meta as $k => $v ) update_post_meta( $id, $k, $v );
 			$n++; WP_CLI::log( "✓ product #$id {$d['slug']}" );
 		}

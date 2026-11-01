@@ -1,0 +1,2125 @@
+[
+ {
+  "src_url": "https://www.kohsanuk.com/tours/horseback-riding-samui",
+  "name": "Beach and Jungle Horseback Riding",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 1700,
+  "child_thb": null,
+  "child_age_rule": "From 5-6 with guide on own horse; same price",
+  "infant_rule": null,
+  "private_from_thb": 2900,
+  "price_tiers": [
+   {
+    "label": "Group ride 07:00",
+    "thb": 1700
+   },
+   {
+    "label": "Group ride 08:30",
+    "thb": 1800
+   },
+   {
+    "label": "Group ride 16:00",
+    "thb": 1900
+   },
+   {
+    "label": "Group sunset ride 17:30",
+    "thb": 2500
+   },
+   {
+    "label": "Group lesson 07:00-16:00",
+    "thb": 2200
+   },
+   {
+    "label": "Private lesson 07:00",
+    "thb": 2900
+   },
+   {
+    "label": "Private lesson 08:30",
+    "thb": 3100
+   },
+   {
+    "label": "Private lesson 16:00",
+    "thb": 3300
+   },
+   {
+    "label": "Private sunset lesson 17:30",
+    "thb": 3500
+   },
+   {
+    "label": "Private van one way (up to 4)",
+    "thb": 1100
+   },
+   {
+    "label": "Private van round trip (up to 4)",
+    "thb": 2500
+   },
+   {
+    "label": "Extra transfer passenger",
+    "thb": 200
+   }
+  ],
+  "max_guests": 20,
+  "duration": "1 h",
+  "start_time": "07:00, 08:30, 16:00, 17:30",
+  "return_time": null,
+  "departure_pier_or_location": "Stable near Ban Khao beach (south Samui); beach and jungle trails",
+  "pickup": "Optional private van (1,100 one way / 2,500 round, up to 4)",
+  "boat_or_vehicle": "~20 horses",
+  "itinerary": [
+   "07:00 | 1 h ride on Ban Khao beach and jungle trails"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide"
+  ],
+  "not_included": [
+   "Transfer (see tiers)"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "From age 5-6; weight, height and riding level (0-10) needed at booking",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Group lesson tiers 2,200-2,500 by slot. 50% deposit to confirm.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/elephant-mud-spa",
+  "name": "Elephant Mud SPA Sanctuary",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 2000,
+  "child_thb": 1500,
+  "child_age_rule": "4-10; adult 11+",
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Feed & Shower, adult",
+    "thb": 2000
+   },
+   {
+    "label": "Feed & Shower, child 4-10",
+    "thb": 1500
+   },
+   {
+    "label": "Mud Spa, adult",
+    "thb": 3000
+   },
+   {
+    "label": "Mud Spa, child 4-10",
+    "thb": 2000
+   }
+  ],
+  "max_guests": null,
+  "duration": "Feed & Shower ~3 h; Mud Spa ~4 h",
+  "start_time": "Pickup 08:30 or 13:30 (sidebar says 10:00/14:00)",
+  "return_time": "~11:30/16:30 (F&S); ~12:30/17:30 (Mud Spa)",
+  "departure_pier_or_location": "Sanctuary camp, inland Koh Samui",
+  "pickup": "Round-trip hotel lobby pickup included",
+  "boat_or_vehicle": "Shared minivan or 4x4 (page inconsistent)",
+  "itinerary": [
+   "08:30 | Hotel pickup",
+   "09:00 | Welcome, orientation",
+   "09:30 | Prepare supplements, feed elephants",
+   "10:00 | Jungle walk with elephants",
+   "10:30 | Mud spa",
+   "11:00 | Freshwater bath",
+   "11:30 | Thai noodle-soup cooking (Mud Spa)",
+   "12:30 | Return transfer"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide",
+   "Towels",
+   "Transfer",
+   "Soft drinks/water",
+   "Elephant food",
+   "Showers, lockers",
+   "Mud Spa only: lunch, cooking class, fruit"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Tips",
+   "Lunch (Feed & Shower option)"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "All ages; no riding; bring swimwear",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Sidebar times conflict with itinerary.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/samui-elephant-sanctuary-chaweng-noi-project",
+  "name": "Heart Shape Elephant Sanctuary on Chaweng Noi",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 3500,
+  "child_thb": 1500,
+  "child_age_rule": "4-11 (also stated 6-11); adult 12+",
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Adult 12+",
+    "thb": 3500
+   },
+   {
+    "label": "Child",
+    "thb": 1500
+   }
+  ],
+  "max_guests": null,
+  "duration": "3 h",
+  "start_time": "09:00, 14:00",
+  "return_time": null,
+  "departure_pier_or_location": "Sanctuary at Chaweng Noi, Koh Samui",
+  "pickup": "Hotel pickup (mountain areas on request)",
+  "boat_or_vehicle": "Minibus",
+  "itinerary": [
+   "Hotel pickup",
+   "Welcome video",
+   "Observation platform, feeding",
+   "Jungle walk",
+   "Thai set lunch at rooftop restaurant",
+   "Return"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide",
+   "Lunch",
+   "Snacks",
+   "Soft drinks/water",
+   "Coffee/tea",
+   "Transfer"
+  ],
+  "not_included": null,
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/lamai-view-point",
+  "name": "Lamai View Point Zip Line",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 800,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "H: 2 zips, hike up",
+    "thb": 800
+   },
+   {
+    "label": "E: 2 zips + drone video",
+    "thb": 1100
+   },
+   {
+    "label": "G: Sky Adventure + 1 zip, hike, drone video",
+    "thb": 1100
+   },
+   {
+    "label": "D: 2 zips, cable car, drone video",
+    "thb": 1300
+   },
+   {
+    "label": "F: Sky Adventure, 1 zip, cable car, drone video",
+    "thb": 1300
+   },
+   {
+    "label": "C: 3 zips, cable car",
+    "thb": 1500
+   },
+   {
+    "label": "B: 3 zips, cable car, drone video",
+    "thb": 1800
+   },
+   {
+    "label": "A: 4 zips, Sky Adventure, cable car, drone video",
+    "thb": 2400
+   },
+   {
+    "label": "Two-way private van 1-10",
+    "thb": 2500
+   }
+  ],
+  "max_guests": null,
+  "duration": "~2 h",
+  "start_time": "09:00",
+  "return_time": "11:00",
+  "departure_pier_or_location": "Lamai Viewpoint, Koh Samui",
+  "pickup": "Not included; van 2,500",
+  "boat_or_vehicle": "Cable car or hike; zip cables ~440 m, 80 m high",
+  "itinerary": [
+   "09:00 | Check-in",
+   "09:15 | Cable car or hike up",
+   "09:30 | Briefing, zips, sky bridge",
+   "11:00 | Viewpoint, cafe, descend"
+  ],
+  "included": [
+   "Entrance",
+   "Guide",
+   "Harness",
+   "Zips per package",
+   "Cable car (A-D, F)",
+   "Drone video (A, B, D-G)"
+  ],
+  "not_included": [
+   "Transfer",
+   "Food/drinks"
+  ],
+  "season_or_days": "Daily (weather permitting)",
+  "min_age_or_restrictions": "No pregnancy, heart or mental conditions; max 100 kg; age limit not stated",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Page says 2 cables but packages list up to 4 zips.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/premium-waterspeak-private-and-group-scuba-diving-and-snorkeling-tours",
+  "name": "Premium waterspeak private and group scuba diving and snorkeling tours",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 5900,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 22000,
+  "price_tiers": [
+   {
+    "label": "Shared Sail Rock + Angthong, certified diver",
+    "thb": 5900
+   },
+   {
+    "label": "Shared Sail Rock + Angthong, non-certified",
+    "thb": 6900
+   },
+   {
+    "label": "Private snorkel Koh Phangan, up to 4",
+    "thb": 22000
+   },
+   {
+    "label": "Private snorkel Pig Island / Koh Rap, up to 4",
+    "thb": 26000
+   },
+   {
+    "label": "Private scuba Koh Ma, certified, up to 4",
+    "thb": 27000
+   },
+   {
+    "label": "Private snorkel Angthong, up to 4",
+    "thb": 29000
+   },
+   {
+    "label": "Private scuba Koh Ma, non-certified",
+    "thb": 30000
+   },
+   {
+    "label": "Private scuba Sail Rock / N. Angthong, certified",
+    "thb": 32000
+   },
+   {
+    "label": "Private snorkel Koh Tao",
+    "thb": 32000
+   },
+   {
+    "label": "Private scuba Sail Rock, non-certified / Koh Tao certified",
+    "thb": 35000
+   },
+   {
+    "label": "Private scuba Koh Tao, non-certified",
+    "thb": 39000
+   },
+   {
+    "label": "Private extra person",
+    "thb": 4500
+   }
+  ],
+  "max_guests": 10,
+  "duration": "Full day (2 dives)",
+  "start_time": null,
+  "return_time": null,
+  "departure_pier_or_location": "Koh Samui",
+  "pickup": "Resort transfer from Maenam, Bophut, Bangrak, Choeng Mon, Chaweng, Chaweng Noi",
+  "boat_or_vehicle": "Twin-engine speedboat",
+  "itinerary": null,
+  "included": [
+   "Accident insurance",
+   "Dive gear",
+   "Instructor",
+   "Guide",
+   "Life jackets",
+   "Lunch",
+   "Snacks, fruit",
+   "Soft drinks/water",
+   "Resort transfer",
+   "2 dives"
+  ],
+  "not_included": [],
+  "season_or_days": "Private daily; shared Sail Rock trip usually Wednesdays",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "PRICE CONFLICT: listing shows 'private from 4,500' (= extra-person fee); cheapest private boat 22,000. Courses also listed: PADI Open Water 19,800 (3 days), Advanced 16,500 (2 days).",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/quad-motor-atv",
+  "name": "Quad motor ATV jungle safari",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 1800,
+  "child_thb": null,
+  "child_age_rule": "Passengers from 5 (up to 12 must ride with adult); drivers 12+ after test",
+  "infant_rule": null,
+  "private_from_thb": 1800,
+  "price_tiers": [
+   {
+    "label": "1 h join-in, rider",
+    "thb": 1800
+   },
+   {
+    "label": "1 h passenger add-on",
+    "thb": 900
+   },
+   {
+    "label": "1 h private personal guide",
+    "thb": 1800
+   },
+   {
+    "label": "2 h join-in, rider",
+    "thb": 2800
+   },
+   {
+    "label": "2 h passenger add-on",
+    "thb": 1400
+   },
+   {
+    "label": "2 h private personal guide",
+    "thb": 2800
+   }
+  ],
+  "max_guests": null,
+  "duration": "1 or 2 h ride",
+  "start_time": "10:00, 14:00 (pickup)",
+  "return_time": "Hotel by ~12:00 (1 h) / 13:00 (2 h)",
+  "departure_pier_or_location": "ATV park, Koh Samui (location not named)",
+  "pickup": "Free hotel pickup and drop-off",
+  "boat_or_vehicle": "Automatic quads 125-450cc",
+  "itinerary": [
+   "10:00 | Hotel pickup",
+   "10:30 | Briefing, training",
+   "10:45 | Jungle trail, streams, hills",
+   "11:45 | Waterfall, jungle bar (seasonal)",
+   "12:15 | Viewpoints",
+   "12:45 | Base; hotel by 13:00"
+  ],
+  "included": [
+   "Guide",
+   "Helmet",
+   "Quad",
+   "Briefing",
+   "Transfer",
+   "Drink at jungle bar (2 h)"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Lunch",
+   "Photos/GoPro",
+   "Tips"
+  ],
+  "season_or_days": "Daily; waterfall stop seasonal",
+  "min_age_or_restrictions": "Drivers 12+; passengers 5+; not for pregnancy, back/heart conditions",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "'Private' tier is the same price as join-in (adds personal guide).",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/samui-elephant-home-ethical-care-museum-wellness-programs",
+  "name": "Samui Elephant Home Sanctuary - Ethical Care, Museum & Wellness Programs",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 1800,
+  "child_thb": 1200,
+  "child_age_rule": "5-11; adult 12+",
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Museum & jungle walk, adult",
+    "thb": 1800
+   },
+   {
+    "label": "Museum & jungle walk, child",
+    "thb": 1200
+   },
+   {
+    "label": "Let Nature Heal You (wellness), adult",
+    "thb": 2100
+   },
+   {
+    "label": "Let Nature Heal You, child",
+    "thb": 1500
+   },
+   {
+    "label": "Half day, adult",
+    "thb": 3000
+   },
+   {
+    "label": "Half day, child",
+    "thb": 2000
+   }
+  ],
+  "max_guests": null,
+  "duration": "Half day ~4-4.5 h; museum ~3.75 h; wellness ~5.75 h",
+  "start_time": "Half day 07:45 or 12:45; museum/wellness 08:00",
+  "return_time": "12:00 / 17:00; museum 11:45; wellness 13:45",
+  "departure_pier_or_location": "Sanctuary, Koh Samui",
+  "pickup": "Island-wide hotel pickup and return included",
+  "boat_or_vehicle": "A/C minibus",
+  "itinerary": [
+   "07:45 | Hotel pickup",
+   "08:30 | Welcome, briefing",
+   "09:00 | Prepare food, feed elephants",
+   "10:00 | Jungle walk with elephants",
+   "11:00 | Observation; 11:30 lunch",
+   "12:00 | Return"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide",
+   "Lunch",
+   "Fruit",
+   "Soft drinks/water",
+   "Transfer",
+   "Elephant food"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Moderate mobility; closed shoes; under-5 rule not stated",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Summary widget shows 10:00 for all options.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/samui-exotic-park-family-trip-by-private-van",
+  "name": "Samui Exotic Park Family Trip by Private Van",
+  "category": "activity",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 3000,
+  "price_tiers": [
+   {
+    "label": "Private van, up to 5",
+    "thb": 3000
+   },
+   {
+    "label": "Park admission adult (paid at gate)",
+    "thb": 500
+   },
+   {
+    "label": "Park admission child (paid at gate)",
+    "thb": 300
+   },
+   {
+    "label": "Lion cub play 10 min pp (optional)",
+    "thb": 500
+   }
+  ],
+  "max_guests": "5 base, up to 10 with extra charge",
+  "duration": null,
+  "start_time": "To confirm",
+  "return_time": null,
+  "departure_pier_or_location": "Hotel pickup; Samui Exotic Park, Koh Samui",
+  "pickup": "Pickup from accommodation; van waits",
+  "boat_or_vehicle": "Private A/C van",
+  "itinerary": [
+   "Hotel pickup",
+   "Arrive park, buy tickets",
+   "Self-guided visit",
+   "Optional lion cub session",
+   "Return to hotel"
+  ],
+  "included": [
+   "Private van",
+   "Waiting time"
+  ],
+  "not_included": [
+   "Park admission 500 adult / 300 child",
+   "Lion cub play 500 THB pp"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Lion cub limits to confirm",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Per vehicle. Transfer-only product.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/secret-samui",
+  "name": "Secret Samui vegan-friendly full day jeep safari",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 2000,
+  "child_thb": 1800,
+  "child_age_rule": "4-11 (also 4-12)",
+  "infant_rule": "Not advised under 3-4",
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Adult",
+    "thb": 2000
+   },
+   {
+    "label": "Child 4-11",
+    "thb": 1800
+   }
+  ],
+  "max_guests": null,
+  "duration": "~7 h",
+  "start_time": "09:30 (pickup 09:00)",
+  "return_time": "16:00",
+  "departure_pier_or_location": "Hotel pickup, Koh Samui",
+  "pickup": "Free return hotel transfer",
+  "boat_or_vehicle": "Open 4x4 jeep",
+  "itinerary": [
+   "09:00 | Pickup",
+   "10:15 | Jungle viewpoint toward Koh Phangan",
+   "10:45 | Standing (walking) Buddha temple",
+   "11:15 | Mountain pool / dinosaur park swim",
+   "12:00 | Vegan buffet lunch",
+   "13:30 | Lipa Noi cultural centre (Thai costume)"
+  ],
+  "included": [
+   "Accident insurance",
+   "Entrance fees",
+   "English-speaking guide",
+   "Vegan buffet lunch",
+   "Fruit",
+   "Soft drinks/water",
+   "Transfer",
+   "Thai costume dress-up"
+  ],
+  "not_included": [
+   "Alcohol"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Not for pregnancy or spine problems",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/muay-thai",
+  "name": "Tickets to Thai boxing \"Muay Thai\" fights",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 1500,
+  "child_thb": 750,
+  "child_age_rule": "Under 140 cm (Phetchbuncha only)",
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Phetchbuncha normal seat adult",
+    "thb": 1500
+   },
+   {
+    "label": "Phetchbuncha normal seat child <140 cm",
+    "thb": 750
+   },
+   {
+    "label": "Phetchbuncha ringside adult",
+    "thb": 2000
+   },
+   {
+    "label": "Phetchbuncha ringside child",
+    "thb": 1000
+   },
+   {
+    "label": "Samui International standard",
+    "thb": 1500
+   },
+   {
+    "label": "Samui International comfort",
+    "thb": 2000
+   },
+   {
+    "label": "Samui International VIP",
+    "thb": 2500
+   },
+   {
+    "label": "Samui International VIP lounge",
+    "thb": 3000
+   }
+  ],
+  "max_guests": null,
+  "duration": "~3 h",
+  "start_time": "21:00 (Samui Intl gates 20:00)",
+  "return_time": "~00:00",
+  "departure_pier_or_location": "Stadiums in Chaweng: Phetchbuncha or Samui International",
+  "pickup": "Not included; private transfer on request (price not stated)",
+  "boat_or_vehicle": null,
+  "itinerary": [
+   "21:00 | Fights start",
+   "00:00 | Fights end"
+  ],
+  "included": [
+   "Ticket"
+  ],
+  "not_included": [
+   "Transfer"
+  ],
+  "season_or_days": "Phetchbuncha Mon, Wed, Sat; Samui International Tue, Fri, Sun",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/x-quad-samui",
+  "name": "X-Quad Samui - Quads & Buggies to the highest point on Samui and hidden Waterfall",
+  "category": "activity",
+  "per": "person",
+  "adult_thb": 2800,
+  "child_thb": null,
+  "child_age_rule": "11-12 may drive single ATV; under 10 ride as passenger",
+  "infant_rule": null,
+  "private_from_thb": 9000,
+  "price_tiers": [
+   {
+    "label": "Beginner 1.5-2 h, single ATV",
+    "thb": 2800
+   },
+   {
+    "label": "Beginner, double ATV 400cc (2 adults)",
+    "thb": 3800
+   },
+   {
+    "label": "Beginner child-under-10 surcharge",
+    "thb": 200
+   },
+   {
+    "label": "Mountain 4 h join-in, single ATV",
+    "thb": 4500
+   },
+   {
+    "label": "Mountain 4 h, double ATV adult + child <10",
+    "thb": 4800
+   },
+   {
+    "label": "Mountain 4 h, double ATV 400cc (2 adults)",
+    "thb": 6800
+   },
+   {
+    "label": "Mountain 4 h, double ATV 520cc (2 adults)",
+    "thb": 7300
+   },
+   {
+    "label": "Mountain 4 h, buggy CFMoto Z8 2-seat",
+    "thb": 8200
+   },
+   {
+    "label": "Mountain 4 h, buggy Z10 2-seat",
+    "thb": 9200
+   },
+   {
+    "label": "Mountain 4 h, buggy Z950 4-seat",
+    "thb": 12200
+   },
+   {
+    "label": "Private mountain 4 h, single ATV",
+    "thb": 9000
+   },
+   {
+    "label": "Private mountain 4 h, double ATV / Z8 buggy",
+    "thb": 11300
+   }
+  ],
+  "max_guests": null,
+  "duration": "4 h mountain; 1.5-2 h beginner",
+  "start_time": "10:00, 14:00 (pickup 09:00)",
+  "return_time": "15:00 hotel (mountain); ~12:00 (beginner)",
+  "departure_pier_or_location": "Base at Maenam, Koh Samui",
+  "pickup": "Round-trip hotel transfer included",
+  "boat_or_vehicle": "Single/double ATVs (400/520cc), CFMoto Z8/Z10/Z950 buggies",
+  "itinerary": [
+   "09:00 | Pickup",
+   "09:30 | Briefing",
+   "10:00 | Trail to island's highest point",
+   "11:30 | Hidden waterfall swim",
+   "13:00 | Thai buffet lunch at jungle restaurant",
+   "15:00 | Hotel"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide",
+   "Lunch (mountain)",
+   "Soft drinks/water",
+   "Transfer",
+   "Helmet, raincoat"
+  ],
+  "not_included": [
+   "Lunch (beginner)",
+   "Child surcharge 200 (beginner)"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Buggy drivers need licence",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Prices are per vehicle. Private Z8 buggy 12,700.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/premium-diving-discovery",
+  "name": "Premium group diving and snorkeling tours by speedboat",
+  "category": "group-tour",
+  "per": "person",
+  "adult_thb": 2950,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Snorkeller",
+    "thb": 2950
+   },
+   {
+    "label": "Certified diver, 2 dives",
+    "thb": 5540
+   },
+   {
+    "label": "Non-certified (max 12 m), 2 dives",
+    "thb": 6220
+   },
+   {
+    "label": "South Samui transfer surcharge two-way",
+    "thb": 800
+   }
+  ],
+  "max_guests": 16,
+  "duration": "~7-8.75 h",
+  "start_time": "08:00-08:45 (pickup 06:30-08:10)",
+  "return_time": "13:00-16:00 by site",
+  "departure_pier_or_location": "Chaweng area pier, Koh Samui",
+  "pickup": "A/C minivan hotel pickup included (south Samui +800)",
+  "boat_or_vehicle": "47 ft triple-engine 750 hp speedboats; also twin 450 hp",
+  "itinerary": [
+   "Koh Tao: 07:15 | Pickup",
+   "08:45 | Depart (90 min)",
+   "10:15 | Dive/snorkel 1",
+   "12:00 | Lunch, surface interval",
+   "13:15 | Dive/snorkel 2",
+   "16:00 | Pier, hotel"
+  ],
+  "included": [
+   "Accident + PADI dive insurance",
+   "Breakfast",
+   "Dive gear",
+   "Instructor/guide",
+   "Life jackets",
+   "Lunch",
+   "Snorkel gear",
+   "Soft drinks/water",
+   "Transfer"
+  ],
+  "not_included": [
+   "Alcohol",
+   "South Samui surcharge"
+  ],
+  "season_or_days": "Daily (sites: Koh Tao, Sail Rock, Angthong)",
+  "min_age_or_restrictions": "Sail Rock certified only; non-certified max 12 m",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/three-islands-and-bbq-on-the-koh-rab-island-beach",
+  "name": "Triple-Island Adventure with Beach BBQ on Koh Rab",
+  "category": "group-tour",
+  "per": "person",
+  "adult_thb": 1800,
+  "child_thb": 1400,
+  "child_age_rule": "4-9",
+  "infant_rule": null,
+  "private_from_thb": null,
+  "price_tiers": [
+   {
+    "label": "Adult",
+    "thb": 1800
+   },
+   {
+    "label": "Child 4-9",
+    "thb": 1400
+   }
+  ],
+  "max_guests": null,
+  "duration": "~6.5 h",
+  "start_time": "Pickup 09:30; boat 10:00",
+  "return_time": "16:00 hotel",
+  "departure_pier_or_location": "South Koh Samui pier (not named)",
+  "pickup": "Hotel pickup included",
+  "boat_or_vehicle": "Speedboat",
+  "itinerary": [
+   "09:30 | Pickup",
+   "10:15 | Snorkel Koh Tan",
+   "11:15 | Koh Madsum beach",
+   "12:15 | BBQ lunch on Koh Rap",
+   "14:15 | Leave Koh Rap",
+   "16:00 | Hotel"
+  ],
+  "included": [
+   "Accident insurance",
+   "BBQ lunch",
+   "Island entrance fee",
+   "Guide",
+   "Kayak",
+   "Fruit",
+   "Soft drinks/water",
+   "Transfer"
+  ],
+  "not_included": null,
+  "season_or_days": "Mon, Wed, Sun",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/little-voyager-private-single-engine-speedboat-charter",
+  "name": "Little Voyager Private Single-Engine Speedboat Charter",
+  "category": "private-boat",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": "Extra child 4-9 250; extra adult 10+ 500 (from 6th guest)",
+  "infant_rule": null,
+  "private_from_thb": 14000,
+  "price_tiers": [
+   {
+    "label": "Half day Koh Phangan",
+    "thb": 14000
+   },
+   {
+    "label": "Half day Koh Tan + Pig Island",
+    "thb": 14000
+   },
+   {
+    "label": "Half day Koh Tan + Pig + Koh Rap",
+    "thb": 16000
+   },
+   {
+    "label": "Full day Koh Phangan",
+    "thb": 18000
+   },
+   {
+    "label": "Full day Koh Tan + Pig Island",
+    "thb": 18000
+   },
+   {
+    "label": "Full day Koh Tan + Pig + Koh Rap",
+    "thb": 20000
+   },
+   {
+    "label": "Full day Angthong",
+    "thb": 20000
+   },
+   {
+    "label": "Van Zone 1",
+    "thb": 2000
+   },
+   {
+    "label": "Van Zone 2",
+    "thb": 2500
+   },
+   {
+    "label": "Koh Phangan pickup",
+    "thb": 4000
+   }
+  ],
+  "max_guests": 5,
+  "duration": "4 h or ~8 h",
+  "start_time": "Angthong 08:30; full day 10:00; half day 09:00 / 14:00",
+  "return_time": "17:00 / 18:00 / 13:00 / 18:00",
+  "departure_pier_or_location": "Bangrak pier, Koh Samui",
+  "pickup": "Not included (see tiers)",
+  "boat_or_vehicle": "8 m (25 ft) single-outboard speedboat, crew 2",
+  "itinerary": [
+   "Angthong: 08:30 | Board",
+   "09:30 | Snorkel",
+   "11:30 | Emerald Lake viewpoint",
+   "12:30 | Beach, lunch (own cost)",
+   "14:00 | Kayak/viewpoints",
+   "15:30 | Return"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide (EN/TH)",
+   "Life jackets",
+   "Snorkel gear",
+   "Fruit, snacks",
+   "Soft drinks/water"
+  ],
+  "not_included": [
+   "National park fees (cash, amount not stated)",
+   "Lunch",
+   "Transfer"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/little-voyager-private-single-engine-speedboat-charter"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/private-speedboat-charter-island-hopping-snorkeling",
+  "name": "Private two-engine speed boat Wally",
+  "category": "private-boat",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 25000,
+  "price_tiers": [
+   {
+    "label": "Koh Phangan, 1-4",
+    "thb": 25000
+   },
+   {
+    "label": "Koh Tan, Pig Island, Koh Rap, 1-4",
+    "thb": 28000
+   },
+   {
+    "label": "Angthong, 1-4",
+    "thb": 32000
+   },
+   {
+    "label": "Koh Tao, 1-4",
+    "thb": 36000
+   },
+   {
+    "label": "Extra guest 5-15, pp",
+    "thb": 1000
+   }
+  ],
+  "max_guests": 15,
+  "duration": "~8 h",
+  "start_time": "08:30 (pickup 08:00-09:00)",
+  "return_time": "16:30",
+  "departure_pier_or_location": "North Koh Samui pier (not named)",
+  "pickup": "Free return transfer from north Samui resorts",
+  "boat_or_vehicle": "Twin-outboard speedboat, covered seating, crew 2 + guide",
+  "itinerary": [
+   "Angthong: 08:30 | Board",
+   "09:45 | Arrive park",
+   "10:30 | Koh Mae Koh, Emerald Lake, caves",
+   "12:30 | Beach restaurant lunch (own cost)",
+   "14:00 | Snorkel, beach, kayak",
+   "16:30 | Return"
+  ],
+  "included": [
+   "Accident insurance",
+   "Park entrance fee",
+   "Guide",
+   "Life jackets",
+   "Fruit",
+   "Snorkel gear",
+   "Soft drinks/water",
+   "Transfer (north Samui)"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Lunch (FAQ says included)",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Base price for 1-4 guests.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/private-speedboat-charter-island-hopping-snorkeling"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/siriwan-private-speedboat-charter-2-engine",
+  "name": "Siriwan Private Two-Engine Speedboat",
+  "category": "private-boat",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": "Extra child 3-7",
+  "infant_rule": null,
+  "private_from_thb": 27000,
+  "price_tiers": [
+   {
+    "label": "Full day Koh Tan + Pig Island, 1-8",
+    "thb": 27000
+   },
+   {
+    "label": "Full day Koh Phangan, 1-8",
+    "thb": 29500
+   },
+   {
+    "label": "Full day Koh Tan + Pig Island + Koh Rap, 1-8",
+    "thb": 32500
+   },
+   {
+    "label": "Full day Angthong, 1-8",
+    "thb": 36000
+   },
+   {
+    "label": "Full day Koh Tao & Nang Yuan, 1-8",
+    "thb": 38000
+   },
+   {
+    "label": "Extra adult (9-15)",
+    "thb": 500
+   },
+   {
+    "label": "Extra child 3-7 (9-15)",
+    "thb": 300
+   },
+   {
+    "label": "Koh Phangan pickup",
+    "thb": 4000
+   },
+   {
+    "label": "Two-way van transfer",
+    "thb": 2000
+   }
+  ],
+  "max_guests": 15,
+  "duration": "~8.5 h",
+  "start_time": "08:30",
+  "return_time": "17:00",
+  "departure_pier_or_location": "Koh Samui pier (not named)",
+  "pickup": "Not included; van 2,000 THB; Phangan pickup 4,000 THB",
+  "boat_or_vehicle": "Twin-engine speedboat, crew 2",
+  "itinerary": [
+   "Koh Tao: 08:30 | Depart Samui",
+   "10:00 | Koh Nang Yuan viewpoint, beach, snorkel",
+   "12:00 | Lunch on Koh Tao (own cost)",
+   "13:30 | Snorkel Mango Bay / Hin Wong / Shark Bay",
+   "15:30 | Head back",
+   "17:00 | Samui pier"
+  ],
+  "included": [
+   "Accident insurance",
+   "Guide",
+   "Life jackets",
+   "Fruit",
+   "Snorkel gear",
+   "Soft drinks/water"
+  ],
+  "not_included": [
+   "National park / island fees (amount not stated, cash)",
+   "Lunch",
+   "Transfers"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/siriwan-private-speedboat-charter-2-engine"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/sapphire-speedboat",
+  "name": "The premium two-engine 600 hp speed boat trio of Sapphire, Ti and Of Course",
+  "category": "private-boat",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 23000,
+  "price_tiers": [
+   {
+    "label": "Half day Koh Phangan morning, 1-10",
+    "thb": 23000
+   },
+   {
+    "label": "Half day Phangan morning 11-20 / sunset 1-10",
+    "thb": 26000
+   },
+   {
+    "label": "Half day sunset 11-20 (labelled join-in pp)",
+    "thb": 29000
+   },
+   {
+    "label": "Honeymoon sunset 6 h, 2 people",
+    "thb": 28000
+   },
+   {
+    "label": "Full day Samui islands, 1-10",
+    "thb": 35000
+   },
+   {
+    "label": "Full day Samui islands, 11-20",
+    "thb": 38000
+   },
+   {
+    "label": "Full day Phangan + Koh Ma, 1-10",
+    "thb": 36000
+   },
+   {
+    "label": "Full day Phangan + Koh Ma, 11-20",
+    "thb": 39000
+   },
+   {
+    "label": "Full day Angthong, 1-10",
+    "thb": 38000
+   },
+   {
+    "label": "Full day Angthong, 11-20",
+    "thb": 41000
+   },
+   {
+    "label": "Full day Koh Tao & Nang Yuan, 1-10",
+    "thb": 40000
+   },
+   {
+    "label": "Full day Koh Tao, 11-20",
+    "thb": 43000
+   }
+  ],
+  "max_guests": 20,
+  "duration": "4 h / 6 h / full day",
+  "start_time": "08:30-09:00; honeymoon 13:30; sunset 14:00",
+  "return_time": "13:00 / 16:30 / 18:00 / 19:30",
+  "departure_pier_or_location": "Koh Samui pier/marina (not named)",
+  "pickup": "Paid van add-on 2,000 THB (1-10)",
+  "boat_or_vehicle": "39 ft (12 m) twin-engine 600 hp speedboats (Sapphire, Ti, Of Course), 2025, toilet/shower, crew 2",
+  "itinerary": [
+   "Honeymoon: 13:30 | Depart",
+   "14:15 | Snorkel Koh Ma reef/sandbar",
+   "15:45 | Secret Beach (Haad Son)",
+   "17:00 | Sunset dinner at Koh Raham cliff restaurant (own cost)",
+   "19:00 | Cruise back",
+   "19:30 | Samui"
+  ],
+  "included": [
+   "Captain and crew",
+   "Fuel",
+   "Accident insurance",
+   "Guide",
+   "Ice",
+   "Life jackets",
+   "Fruit",
+   "Snorkel gear",
+   "Soft drinks/water"
+  ],
+  "not_included": [
+   "Entrance fees (amount not stated)",
+   "Alcohol",
+   "Meals",
+   "Fishing rod 500",
+   "Discover Scuba 2 dives 6,500 pp",
+   "Certified 2 dives 5,500 pp",
+   "Van 2,000",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "PRICE CONFLICT: listing shows 'join-in from 29,000 per person' (> private from 23,000); the 29,000 tier appears to be a mislabelled group-size price, not a real per-person rate.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/sapphire-speedboat"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/jungle-experience-party-on-koh-phangan",
+  "name": "Jungle Experience Party on Koh Phangan",
+  "category": "transfer",
+  "per": "person",
+  "adult_thb": 3700,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 16000,
+  "price_tiers": [
+   {
+    "label": "Join-in: return speedboat, transfers, entry, 4 drinks",
+    "thb": 3700
+   },
+   {
+    "label": "Private 2-engine speedboat one way, up to 10",
+    "thb": 16000
+   },
+   {
+    "label": "Private 3-engine speedboat one way, up to 10",
+    "thb": 18500
+   },
+   {
+    "label": "Private extra guest (up to 45)",
+    "thb": 500
+   },
+   {
+    "label": "Remote pickup Laem Sor/Taling Ngam/Lipa Noi pp",
+    "thb": 300
+   }
+  ],
+  "max_guests": 45,
+  "duration": "Night (~21:00-04:00)",
+  "start_time": "Group 21:00 (early option 17:00); private 20:00",
+  "return_time": "Group 04:00 (early 01:30); private 04:30",
+  "departure_pier_or_location": "Koh Samui -> Ban Tai pier, Koh Phangan (venue in jungle)",
+  "pickup": "Samui hotel pickup; remote +300 pp; no mountain villas",
+  "boat_or_vehicle": "Shared speedboat; private 2- or 3-engine",
+  "itinerary": [
+   "21:00 | Pickup",
+   "22:00 | Speedboat",
+   "22:30 | Ban Tai pier, transfer to venue",
+   "22:45 | Entry, party",
+   "04:00 | Return boat, hotel"
+  ],
+  "included": [
+   "Accident insurance",
+   "Entry ticket",
+   "4 drinks",
+   "Life jackets",
+   "Return speedboat",
+   "Land transfers"
+  ],
+  "not_included": [
+   "Remote pickup 300 pp",
+   "Extra drinks/food",
+   "Private: entry and drinks"
+  ],
+  "season_or_days": "Twice-monthly party dates. Remaining 2026: 3 Nov, 17 Nov (Magic Forest venue), 2-3 Dec, 16-17 Dec; 2027 dates listed through Dec",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Overview still shows 2024 dates. Venue named Magic Forest in itinerary.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/private-speedboat-koh-samui-to-surat-thani",
+  "name": "Surat Thani Airport & Donsak Pier to Samui by Private Speedboat",
+  "category": "transfer",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": "Extra child 3-10",
+  "infant_rule": null,
+  "private_from_thb": 36500,
+  "price_tiers": [
+   {
+    "label": "Two-engine, Donsak pier, up to 10",
+    "thb": 36500
+   },
+   {
+    "label": "Two-engine, Tha Pee pier, up to 10",
+    "thb": 38500
+   },
+   {
+    "label": "Three-engine, Donsak",
+    "thb": 48000
+   },
+   {
+    "label": "Three-engine, Tha Pee",
+    "thb": 52000
+   },
+   {
+    "label": "Surat Thani airport van per van",
+    "thb": 2000
+   },
+   {
+    "label": "Koh Phangan van",
+    "thb": 1900
+   },
+   {
+    "label": "Early/late fee",
+    "thb": 1500
+   },
+   {
+    "label": "High-season fee",
+    "thb": 700
+   },
+   {
+    "label": "Extra adult 7+",
+    "thb": 500
+   },
+   {
+    "label": "Extra child 3-10",
+    "thb": 250
+   }
+  ],
+  "max_guests": 10,
+  "duration": "1.5-2 h crossing",
+  "start_time": "Chosen",
+  "return_time": null,
+  "departure_pier_or_location": "Donsak or Tha Pee pier (Surat Thani) <-> Koh Samui/Koh Phangan",
+  "pickup": "Optional vans: Surat airport 2,000; Samui airport 600; Samui hotels 1,000-1,500; Phangan 1,900",
+  "boat_or_vehicle": "Private 2- or 3-engine speedboat",
+  "itinerary": [
+   "Surat Thani airport/pier pickup",
+   "1.5-2 h speedboat",
+   "Arrive Samui/Phangan"
+  ],
+  "included": [
+   "Accident insurance",
+   "Life jackets",
+   "Water/soft drinks"
+  ],
+  "not_included": [
+   "Vans (see tiers)",
+   "Second suitcase 200 THB"
+  ],
+  "season_or_days": "Daily; high-season fee 20 Dec 2026-20 Jan 2027",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Engine type not labelled beside price blocks (assumed). 50% deposit online, balance cash.",
+  "alt_urls": []
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/yachts/blue-dragon-yacht",
+  "name": "Junk boat \"Blue Dragon\"",
+  "category": "yacht",
+  "per": "person",
+  "adult_thb": 2500,
+  "child_thb": 1500,
+  "child_age_rule": "3-9; adult 10+",
+  "infant_rule": null,
+  "private_from_thb": 25900,
+  "price_tiers": [
+   {
+    "label": "Koh Tan join-in adult",
+    "thb": 2500
+   },
+   {
+    "label": "Koh Tan join-in child",
+    "thb": 1500
+   },
+   {
+    "label": "Koh Tan private up to 6",
+    "thb": 25900
+   },
+   {
+    "label": "Koh Tan private extra adult",
+    "thb": 1200
+   },
+   {
+    "label": "Koh Tan private extra child",
+    "thb": 800
+   },
+   {
+    "label": "Angthong join-in adult",
+    "thb": 4200
+   },
+   {
+    "label": "Angthong join-in child",
+    "thb": 2300
+   },
+   {
+    "label": "Angthong private up to 6",
+    "thb": 41400
+   },
+   {
+    "label": "Angthong private extra adult",
+    "thb": 1500
+   },
+   {
+    "label": "Angthong private extra child",
+    "thb": 1200
+   }
+  ],
+  "max_guests": "14 (overview says 18 for Koh Tan); licensed 35",
+  "duration": "Angthong ~10 h (8 h private); Koh Tan 5-6 h",
+  "start_time": "08:00 (pickup 08:30-09:20)",
+  "return_time": "Angthong 18:15; Koh Tan 14:00 (itinerary 17:30)",
+  "departure_pier_or_location": "River jetty on Samui (Angthong); SW coast pier (Koh Tan)",
+  "pickup": "Hotel transfer included",
+  "boat_or_vehicle": "Teak junk, 68 ft (21 m), 380 hp, cruise 10 kn, 15 hp dinghy",
+  "itinerary": [
+   "08:30 | Pickup to jetty",
+   "09:30 | Depart past Five Islands",
+   "11:30 | Koh Tai Plao caves, optional kayak",
+   "12:30 | Snorkel Koh Wao",
+   "13:30 | Buffet lunch under way",
+   "14:30 | Koh Mae Koh viewpoint, Emerald Lake",
+   "16:00 | Sunset cruise back",
+   "18:15 | Jetty, hotel"
+  ],
+  "included": [
+   "Accident insurance",
+   "Breakfast",
+   "Lunch",
+   "Guide",
+   "Life jackets",
+   "Snorkel gear",
+   "Towels",
+   "Dinghy",
+   "Soft drinks/water",
+   "Snacks, fruit",
+   "Transfer"
+  ],
+  "not_included": [
+   "Alcohol (buy on board or corkage)",
+   "Kayak 250 THB pp (FAQ 200)",
+   "Angthong park fee (amount not stated)",
+   "Pig Island fee 50 THB adult"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Min 8 guests to run",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Blue or Red Dragon assigned daily for shared trips. Also at /tours/blue-dragon-yacht.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/tours/blue-dragon-yacht"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/lagoon-500-luxury-private-catamaran-charter",
+  "name": "Luxury Sailing Catamaran Coco Paradise (Lagoon 500)",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 48000,
+  "price_tiers": [
+   {
+    "label": "Half day morning 08:30-12:30, up to 10",
+    "thb": 48000
+   },
+   {
+    "label": "Half day afternoon 13:30-18:30, up to 10",
+    "thb": 55000
+   },
+   {
+    "label": "Full day Koh Tan & Pig Island 10:30-18:30",
+    "thb": 69000
+   },
+   {
+    "label": "Full day Koh Phangan 09:00-17:00",
+    "thb": 79000
+   },
+   {
+    "label": "Full day Angthong 08:30-18:30",
+    "thb": 89000
+   },
+   {
+    "label": "Extra guest 11-45, pp",
+    "thb": 2000
+   },
+   {
+    "label": "Pool + water slide add-on",
+    "thb": 3000
+   },
+   {
+    "label": "Two-way private van 1-10",
+    "thb": 2800
+   }
+  ],
+  "max_guests": 45,
+  "duration": "4-10 h",
+  "start_time": "08:30 / 13:30 / 10:30 / 09:00",
+  "return_time": "12:30 / 18:30 / 17:00",
+  "departure_pier_or_location": "Koh Samui pier (not named)",
+  "pickup": "Van 2,800 THB two-way",
+  "boat_or_vehicle": "Lagoon 500 sailing catamaran, 50 ft / 16 m, max 45",
+  "itinerary": [
+   "08:30 | Depart, welcome drink",
+   "09:30 | Koh Madsum (Pig Island)",
+   "11:00 | Koh Tan snorkel, SUP",
+   "12:30 | Back at pier",
+   "Afternoon: 13:30 depart, 14:30 Pig Island, 16:30 Koh Tan + sunset, 18:30 back"
+  ],
+  "included": [
+   "Captain and crew",
+   "Butler",
+   "Fuel surcharge",
+   "Ice",
+   "Life jackets",
+   "Paddle boards",
+   "Fruit, snacks, pastries",
+   "Snorkel gear",
+   "Soft drinks/water",
+   "Towels",
+   "Welcome drink"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Lunch / food add-ons",
+   "National park / entrance fees (amount not stated)"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": "Pool/slide not allowed inside Angthong park",
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Text says 3 cabins, specs 2. Angthong extra-guest rate shown 1,500 vs 2,000 elsewhere. Base covers 10 guests.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/lagoon-500-luxury-private-catamaran-charter"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/buddy-samui",
+  "name": "Motor catamaran \"Samui Buddy\"",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": "Extra kid 4-12 1,000 (guests 11-45)",
+  "infant_rule": null,
+  "private_from_thb": 39000,
+  "price_tiers": [
+   {
+    "label": "Sunset 2 h 16:30-18:30",
+    "thb": 39000
+   },
+   {
+    "label": "Half day 4 h near Samui (AM / PM sunset)",
+    "thb": 62000
+   },
+   {
+    "label": "Full day 8 h Angthong",
+    "thb": 97000
+   },
+   {
+    "label": "Full day Koh Tan, Pig Island, Koh Rap",
+    "thb": 97000
+   },
+   {
+    "label": "Full day Koh Phangan",
+    "thb": 97000
+   },
+   {
+    "label": "Extra adult 11-45",
+    "thb": 2000
+   },
+   {
+    "label": "Extra kid 4-12",
+    "thb": 1000
+   },
+   {
+    "label": "Extra hour",
+    "thb": 17000
+   },
+   {
+    "label": "Thai lunch pp",
+    "thb": 800
+   },
+   {
+    "label": "Seafood lunch pp",
+    "thb": 1200
+   },
+   {
+    "label": "Round transfer up to 10",
+    "thb": 2000
+   },
+   {
+    "label": "Koh Phangan pickup",
+    "thb": 10000
+   }
+  ],
+  "max_guests": "40 (specs 45)",
+  "duration": "2 / 4 / 8 h",
+  "start_time": "09:00-10:00 / 09:00 / 14:30 / 16:30",
+  "return_time": "17:00-18:00 / 13:00 / 18:30",
+  "departure_pier_or_location": "Koh Samui pier (not named)",
+  "pickup": "Extra 2,000; Phangan 10,000",
+  "boat_or_vehicle": "16 m motor catamaran, 2 x 315 hp, 2 cabins, 3 bathrooms, flybridge, crew 5",
+  "itinerary": [
+   "09:30 | Depart",
+   "10:30 | Cruise to Angthong",
+   "11:30 | Koh Mae Koh, Emerald Lake",
+   "12:30 | Anchor Koh Wua Talap",
+   "14:00 | Viewpoint, beach",
+   "15:30 | Snorkel, swim"
+  ],
+  "included": [
+   "Accident insurance",
+   "Dinghy",
+   "Fishing gear",
+   "Guide",
+   "Ice",
+   "Life jackets",
+   "Fruit, snacks",
+   "Snorkel gear",
+   "Soft drinks/water"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Lunch 800/1,200 pp",
+   "Angthong park fee 300 adult / 150 child 4-11 (cash)",
+   "Koh Rap / Madsum fee 50 pp",
+   "Transfer 2,000",
+   "Catering fee 250 pp",
+   "Corkage 250 pp"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/buddy-samui"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/minor-affair-yacht",
+  "name": "Motor yacht \"Minor Affair\"",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 205000,
+  "price_tiers": [
+   {
+    "label": "Sunset 17:00-19:00, up to 6",
+    "thb": 205000
+   },
+   {
+    "label": "Koh Phangan & near Samui, up to 6",
+    "thb": 300000
+   },
+   {
+    "label": "Angthong, up to 6",
+    "thb": 310000
+   },
+   {
+    "label": "Koh Tao & Nang Yuan, up to 6",
+    "thb": 330000
+   },
+   {
+    "label": "Overnight, up to 6",
+    "thb": 650000
+   },
+   {
+    "label": "Sunset extra adult",
+    "thb": 4500
+   }
+  ],
+  "max_guests": 12,
+  "duration": "8 h (day)",
+  "start_time": "10:00",
+  "return_time": null,
+  "departure_pier_or_location": "Resort beach (Arrival Sala / main beach), Koh Samui",
+  "pickup": "Round hotel/villa transfer included",
+  "boat_or_vehicle": "Sunseeker Manhattan 60, 19.6 m, 1,800 hp, 23 kn cruise, 3 cabins",
+  "itinerary": [
+   "10:00 | Depart resort",
+   "12:30 | Koh Tao lunch, snorkel",
+   "15:30 | Depart Koh Tao",
+   "17:00 | Angthong sunset/beach",
+   "19:00 | Beach BBQ dinner",
+   "20:30 | Stargazing on yacht"
+  ],
+  "included": [
+   "Accident insurance",
+   "Entrance fee",
+   "Thai/Western set lunch",
+   "Snacks",
+   "Soft drinks",
+   "Snorkel gear",
+   "Life jackets",
+   "Towels",
+   "Transfer",
+   "Welcome drink"
+  ],
+  "not_included": [
+   "7% VAT + 10% service charge",
+   "Sunset extra adult 4,500"
+  ],
+  "season_or_days": null,
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Prices exclude 7% VAT and 10% service.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/minor-affair-yacht"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/aloha",
+  "name": "Sailing catamaran Aloha",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 15000,
+  "price_tiers": [
+   {
+    "label": "Half day morning 4 h",
+    "thb": 15000
+   },
+   {
+    "label": "Half day afternoon + sunset 4 h",
+    "thb": 15000
+   },
+   {
+    "label": "Full day + sunset 8 h",
+    "thb": 20000
+   },
+   {
+    "label": "Two-way van up to 8",
+    "thb": 2500
+   },
+   {
+    "label": "BBQ lunch mix",
+    "thb": 3500
+   },
+   {
+    "label": "Charcoal grill rental",
+    "thb": 500
+   }
+  ],
+  "max_guests": 8,
+  "duration": "4 or 8 h",
+  "start_time": "10:00 / 14:30",
+  "return_time": "14:00 / 18:30 / 18:00",
+  "departure_pier_or_location": "River mooring SW Samui, ~1 km south of Raja ferry pier (Lipa Noi)",
+  "pickup": "Not included; 2,500 per van",
+  "boat_or_vehicle": "9.5 m sailing catamaran, 20 hp, crew 3, sun deck, no cabins/AC",
+  "itinerary": [
+   "10:00 | Board at river mooring",
+   "10:20 | Sail to Koh Tan",
+   "11:15 | Snorkel Koh Tan",
+   "12:15 | Koh Madsum beach",
+   "13:15 | Fishing, sashimi",
+   "14:00 | Back"
+  ],
+  "included": [
+   "Crew of 3",
+   "Accident insurance",
+   "Fishing gear",
+   "Guide",
+   "Ice",
+   "Life jackets",
+   "SUP",
+   "Snorkel gear",
+   "Soft drinks/water",
+   "Sashimi if fish caught"
+  ],
+  "not_included": [
+   "Alcohol",
+   "BBQ 3,500 + grill 500",
+   "Entrance fee (amount not stated)",
+   "Transfer 2,500",
+   "Lunch (full day)",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Start 09:00 vs 10:00 inconsistency.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/aloha"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/elizabeth-catamaran",
+  "name": "Sailing catamaran Elizabeth",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 20000,
+  "price_tiers": [
+   {
+    "label": "Half day morning 09:00-13:00, 1-8",
+    "thb": 20000
+   },
+   {
+    "label": "Half day afternoon + sunset, 1-8",
+    "thb": 20000
+   },
+   {
+    "label": "Full day Koh Phangan 10:00-18:00, up to 8",
+    "thb": 36000
+   },
+   {
+    "label": "Extra person 9-15 half day",
+    "thb": 800
+   },
+   {
+    "label": "Extra person 9-15 full day",
+    "thb": 1200
+   },
+   {
+    "label": "Extra hour",
+    "thb": 4500
+   },
+   {
+    "label": "Thai lunch + pork/chicken BBQ pp",
+    "thb": 700
+   },
+   {
+    "label": "Thai lunch + seafood BBQ pp",
+    "thb": 900
+   },
+   {
+    "label": "Two-way van 1-10",
+    "thb": 2000
+   }
+  ],
+  "max_guests": 15,
+  "duration": "4 or 8 h",
+  "start_time": "09:00 / 14:00-14:30 / 10:00",
+  "return_time": "13:00 / 18:00-18:30 / 18:00",
+  "departure_pier_or_location": "Koh Samui pier (not named)",
+  "pickup": "Not included; 2,000",
+  "boat_or_vehicle": "Prout/Pescott 10.6 sailing catamaran, 11 m, 2009, 2 cabins, A/C, crew 2",
+  "itinerary": [
+   "09:00 | Board",
+   "09:30 | Sail along coast",
+   "10:30 | Snorkel/swim in bay",
+   "11:30 | Snacks",
+   "12:15 | Return",
+   "13:00 | Pier"
+  ],
+  "included": [
+   "Accident insurance",
+   "Fishing gear",
+   "Guide",
+   "Life jackets",
+   "SUP",
+   "Fruit, snacks",
+   "Snorkel gear",
+   "Soft drinks/water",
+   "BBQ equipment"
+  ],
+  "not_included": [
+   "Lunch 700-900 pp",
+   "Transfer 2,000",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/elizabeth-catamaran"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/sailing-catamaran-madam-c",
+  "name": "Sailing catamaran Madam C",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 15000,
+  "price_tiers": [
+   {
+    "label": "Sunset, up to 15",
+    "thb": 15000
+   },
+   {
+    "label": "Half day, up to 15",
+    "thb": 23000
+   },
+   {
+    "label": "Night fishing, up to 15",
+    "thb": 23000
+   },
+   {
+    "label": "Dolphin tour, up to 15",
+    "thb": 26000
+   },
+   {
+    "label": "Full day, up to 15",
+    "thb": 34000
+   },
+   {
+    "label": "Extra guest 16-30: sunset",
+    "thb": 900
+   },
+   {
+    "label": "Extra guest: half day / dolphin",
+    "thb": 1100
+   },
+   {
+    "label": "Extra guest: full day / night fishing",
+    "thb": 1300
+   },
+   {
+    "label": "Beach BBQ on Koh Tan pp",
+    "thb": 1100
+   }
+  ],
+  "max_guests": 30,
+  "duration": "Full day 8 h",
+  "start_time": "Pickup 09:00; board 09:45",
+  "return_time": "18:00 pier; 18:45 hotel",
+  "departure_pier_or_location": "South Koh Samui pier (not named)",
+  "pickup": "VIP A/C transfer included",
+  "boat_or_vehicle": "40 ft sailing catamaran, kayak, SUP, snorkel and fishing gear",
+  "itinerary": [
+   "09:00 | Pickup",
+   "09:45 | Board",
+   "10:30 | Koh Madsum",
+   "11:45 | Snorkel Koh Tan",
+   "13:00 | Koh Tan beach, optional lunch",
+   "15:00 | Five Islands, Koh Rap"
+  ],
+  "included": [
+   "Accident insurance",
+   "Fishing gear",
+   "Kayak",
+   "Life jackets",
+   "SUP",
+   "Snorkel gear",
+   "Transfer",
+   "Fruit, snacks",
+   "Soft drinks/water"
+  ],
+  "not_included": [
+   "Koh Madsum / Koh Rap fees (cash, amount not stated)",
+   "Lunch / BBQ",
+   "Alcohol"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": null,
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/sailing-catamaran-madam-c"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/winner-catamaram",
+  "name": "Sailing catamaran Winner",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 18000,
+  "price_tiers": [
+   {
+    "label": "Half day (AM/PM), 1-8",
+    "thb": 18000
+   },
+   {
+    "label": "Full day Koh Phangan or Samui coast, 1-8",
+    "thb": 33000
+   },
+   {
+    "label": "Extra hour",
+    "thb": 4500
+   },
+   {
+    "label": "Extra person 9-16",
+    "thb": 800
+   },
+   {
+    "label": "Two-way van 1-10",
+    "thb": 2000
+   },
+   {
+    "label": "Thai BBQ lunch pp",
+    "thb": 700
+   }
+  ],
+  "max_guests": 16,
+  "duration": "4 or 8 h",
+  "start_time": "09:00 / 10:00-10:30 / 14:00",
+  "return_time": "13:00 / 18:00-18:30",
+  "departure_pier_or_location": "Bangrak / Choeng Mon area, north Koh Samui",
+  "pickup": "Not included; 2,000",
+  "boat_or_vehicle": "Sailing catamaran, 1 cabin, crew 2",
+  "itinerary": [
+   "09:00 | Board",
+   "09:30 | Sail past Bangrak",
+   "10:15 | Anchor at Koh Som: swim, snorkel, SUP",
+   "12:00 | Snacks",
+   "13:00 | Pier"
+  ],
+  "included": [
+   "Captain, crew, fuel",
+   "Accident insurance",
+   "Fishing gear",
+   "Guide",
+   "Life jackets",
+   "SUP",
+   "Snorkel gear",
+   "Soft drinks, ice",
+   "Snacks, fruit"
+  ],
+  "not_included": [
+   "Alcohol",
+   "Lunch (BBQ 700-900 pp)",
+   "Transfer",
+   "Entrance fees (amount not stated)",
+   "Tips"
+  ],
+  "season_or_days": "Daily",
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Phangan route switches to Samui coast in bad weather, same price.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/winner-catamaram"
+  ]
+ },
+ {
+  "src_url": "https://www.kohsanuk.com/tours/ocean-emerald-yacht",
+  "name": "Super yacht \"Ocean Emerald\"",
+  "category": "yacht",
+  "per": "boat",
+  "adult_thb": null,
+  "child_thb": null,
+  "child_age_rule": null,
+  "infant_rule": null,
+  "private_from_thb": 620000,
+  "price_tiers": [
+   {
+    "label": "24 h day/night cruise",
+    "thb": 620000
+   },
+   {
+    "label": "1 week cruise",
+    "thb": 3700000
+   },
+   {
+    "label": "Repositioning to Koh Samui if yacht elsewhere",
+    "thb": 200000
+   }
+  ],
+  "max_guests": "40 day / 12 overnight",
+  "duration": "24 h or 1 week",
+  "start_time": null,
+  "return_time": null,
+  "departure_pier_or_location": "Koh Samui base (also Phuket / Pattaya / Koh Phangan listed)",
+  "pickup": "Per voucher",
+  "boat_or_vehicle": "41 m superyacht, 2 x 1,400 hp CAT, 14 kn cruise, crew 9, sleeps 12",
+  "itinerary": [
+   "Custom route"
+  ],
+  "included": [
+   "Accident insurance",
+   "Life jackets",
+   "Yacht amenities",
+   "Taxes"
+  ],
+  "not_included": [
+   "Fuel",
+   "Food",
+   "Drinks"
+  ],
+  "season_or_days": null,
+  "min_age_or_restrictions": null,
+  "cancellation": "4+ days before: 100% refund minus bank fee; 1-3 days before: 50% refund (cancellation fee applies); within 24 h: no refund",
+  "notes": "Cabin count and build year inconsistent. Fuel and food extra.",
+  "alt_urls": [
+   "https://www.kohsanuk.com/yachts/ocean-emerald-yacht"
+  ]
+ }
+]

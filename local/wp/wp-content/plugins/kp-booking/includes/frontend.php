@@ -51,6 +51,10 @@ function kpb_render_booking_card() {
 				<small class="kpb-hint">Next-day bookings close at midnight Thailand time. Same-day: <a href="<?php echo esc_url( 'https://wa.me/' . ( defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '66637040888' ) ); ?>">WhatsApp us</a>.</small>
 			</label>
 			<div class="kpb-cal" id="kpb_cal" aria-live="polite"></div>
+			<?php if ( $cfg['options'] ) : ?>
+			<label class="kpb-field"><span>Option</span>
+				<select name="kpb_option" id="kpb_option"><?php foreach ( $cfg['options'] as $i => $o ) echo '<option value="' . (int) $i . '" data-price="' . esc_attr( $o['price'] ) . '"' . ( $o['child'] !== null ? ' data-child="' . esc_attr( $o['child'] ) . '"' : '' ) . ( $o['max_guests'] ? ' data-max="' . (int) $o['max_guests'] . '"' : '' ) . '>' . esc_html( $o['label'] ) . ' · ' . esc_html( number_format( $o['price'] ) ) . ' THB</option>'; ?></select></label>
+			<?php endif; ?>
 			<?php if ( $cfg['per'] === 'boat' ) : ?>
 				<label class="kpb-field"><span>Guests<?php echo $cfg['max_guests'] ? ' (up to ' . (int) $cfg['max_guests'] . ')' : ''; ?></span>
 					<select name="kpb_adults" id="kpb_adults"><?php for ( $i = 1; $i <= max( 1, $cfg['max_guests'] ?: 12 ); $i++ ) echo '<option value="' . $i . '">' . $i . '</option>'; ?></select></label>

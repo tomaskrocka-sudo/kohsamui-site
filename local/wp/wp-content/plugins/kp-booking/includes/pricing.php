@@ -32,17 +32,30 @@ function kpb_config( $product_id ) {
 		'closed'       => kpb_closed_dates( $product_id ),       // Y-m-d list (seasonal closure + blackouts + sold out)
 		'weekdays'     => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_weekdays' ) ) ) ) ), // e.g. Mon,Wed,Sat; empty = daily
 		'notice'       => $m( 'kp_booking_notice' ),            // e.g. "Season reopens 16 December"
+		'options'      => kpb_options( $product_id ),             // [{label, price, child?, max_guests?}] e.g. durations or boat sizes
 		'currency'     => 'THB',
 	);
 	return apply_filters( 'kpb_config', $cfg, $product_id );
 }
 
+/** Price options from kp_options meta: one per line "Label | price | child price | max guests" (child/max optional). */
+function kpb_options( $product_id ) {
+	$out = array();
+	foreach ( preg_split( '/\r?\n/', (string) get_post_meta( $product_id, 'kp_options', true ) ) as $l ) {
+		$f = array_map( 'trim', explode( '|', $l ) ); if ( count( $f ) < 2 || ! is_numeric( str_replace( ',', '', $f[1] ) ) ) continue;
+		$out[] = array( 'label' => $f[0], 'price' => (float) str_replace( ',', '', $f[1] ), 'child' => isset( $f[2] ) && $f[2] !== '' && is_numeric( str_replace( ',', '', $f[2] ) ) ? (float) str_replace( ',', '', $f[2] ) : null, 'max_guests' => isset( $f[3] ) ? (int) $f[3] : 0 );
+	}
+	return $out;
+}
 /** Compute price breakdown. $sel = [date, adults, children, infants, pickup]. Returns [total, lines[], errors[]]. */
 function kpb_price( $product_id, $sel ) {
 	$cfg = kpb_config( $product_id ); $lines = array(); $errors = array(); $total = 0.0;
 	if ( ! $cfg ) return array( 0, array(), array( 'Product not found.' ) );
 	$adults = max( 0, (int) ( $sel['adults'] ?? 0 ) ); $children = max( 0, (int) ( $sel['children'] ?? 0 ) ); $infants = max( 0, (int) ( $sel['infants'] ?? 0 ) );
 	$date = (string) ( $sel['date'] ?? '' ); $pickup = (string) ( $sel['pickup'] ?? '' );
+	$opt_label = '';
+	if ( $cfg['options'] ) { $oi = (int) ( $sel['option'] ?? 0 ); if ( ! isset( $cfg['options'][ $oi ] ) ) { $errors[] = 'Please choose an option.'; $oi = 0; }
+		$o = $cfg['options'][ $oi ]; $cfg['adult'] = $o['price']; if ( $o['child'] !== null ) $cfg['child'] = $o['child']; if ( $o['max_guests'] ) $cfg['max_guests'] = $o['max_guests']; $opt_label = $o['label']; }
 
 	// Date validation
 	if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) $errors[] = 'Please choose a departure date.';
@@ -54,13 +67,13 @@ function kpb_price( $product_id, $sel ) {
 		$guests = $adults + $children + $infants;
 		if ( $cfg['max_guests'] && $guests > $cfg['max_guests'] ) $errors[] = 'This boat takes up to ' . $cfg['max_guests'] . ' guests. For bigger groups, message us on WhatsApp.';
 		if ( $guests < 1 ) $errors[] = 'Please tell us how many guests.';
-		$lines[] = array( 'label' => 'Private boat (' . $guests . ' guests)', 'qty' => 1, 'unit' => $cfg['adult'], 'amount' => $cfg['adult'] );
+		$lines[] = array( 'label' => ( $opt_label ?: 'Private boat' ) . ' (' . $guests . ' guests)', 'qty' => 1, 'unit' => $cfg['adult'], 'amount' => $cfg['adult'] );
 		$total += $cfg['adult'];
 	} else {
 		if ( $adults < $cfg['min_adults'] ) $errors[] = 'At least ' . $cfg['min_adults'] . ' adult is required.';
 		if ( $adults + $children > $cfg['max_pax'] ) $errors[] = 'For groups over ' . $cfg['max_pax'] . ', please message us on WhatsApp for a group price.';
 		if ( $children && $cfg['child'] === null ) $errors[] = 'Child price not set for this tour — please book on WhatsApp.';
-		$lines[] = array( 'label' => $cfg['adult_label'], 'qty' => $adults, 'unit' => $cfg['adult'], 'amount' => $adults * $cfg['adult'] ); $total += $adults * $cfg['adult'];
+		$lines[] = array( 'label' => $cfg['adult_label'] . ( $opt_label ? ' · ' . $opt_label : '' ), 'qty' => $adults, 'unit' => $cfg['adult'], 'amount' => $adults * $cfg['adult'] ); $total += $adults * $cfg['adult'];
 		if ( $children ) { $lines[] = array( 'label' => $cfg['child_label'], 'qty' => $children, 'unit' => (float) $cfg['child'], 'amount' => $children * (float) $cfg['child'] ); $total += $children * (float) $cfg['child']; }
 		if ( $infants ) $lines[] = array( 'label' => $cfg['infant_label'], 'qty' => $infants, 'unit' => 0, 'amount' => 0 );
 	}

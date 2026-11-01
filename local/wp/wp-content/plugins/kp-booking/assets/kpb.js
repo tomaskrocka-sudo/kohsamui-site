@@ -47,12 +47,13 @@
   /* Live total: instant local estimate, then authoritative server quote */
   function sel() {
     var g = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; };
-    return { date: g('kpb_date'), adults: parseInt(g('kpb_adults') || 0, 10), children: parseInt(g('kpb_children') || 0, 10), infants: parseInt(g('kpb_infants') || 0, 10), pickup: g('kpb_pickup') };
+    return { date: g('kpb_date'), adults: parseInt(g('kpb_adults') || 0, 10), children: parseInt(g('kpb_children') || 0, 10), infants: parseInt(g('kpb_infants') || 0, 10), pickup: g('kpb_pickup'), option: parseInt(g('kpb_option') || 0, 10) };
   }
   function local(s) {
-    var t = 0, lines = [];
-    if (cfg.per === 'boat') { t = cfg.adult; lines.push(['Private boat', 1, cfg.adult]); }
-    else { t += s.adults * cfg.adult; lines.push([cfg.adult_label, s.adults, cfg.adult]); if (s.children && cfg.child !== null) { t += s.children * cfg.child; lines.push([cfg.child_label, s.children, cfg.child]); } if (s.infants) lines.push([cfg.infant_label, s.infants, 0]); }
+    var t = 0, lines = [], adult = cfg.adult, child = cfg.child, o = cfg.options && cfg.options[s.option];
+    if (o) { adult = o.price; if (o.child !== null) child = o.child; }
+    if (cfg.per === 'boat') { t = adult; lines.push([o ? o.label : 'Private boat', 1, adult]); }
+    else { t += s.adults * adult; lines.push([cfg.adult_label, s.adults, adult]); if (s.children && child !== null) { t += s.children * child; lines.push([cfg.child_label, s.children, child]); } if (s.infants) lines.push([cfg.infant_label, s.infants, 0]); }
     var fee = cfg.pickup && cfg.pickup.surcharge && cfg.pickup.surcharge[s.pickup];
     if (fee) { var n = cfg.per === 'boat' ? 1 : (s.adults + s.children); t += n * fee; lines.push(['Remote-area transfer: ' + s.pickup, n, fee]); }
     return { total: t, lines: lines };

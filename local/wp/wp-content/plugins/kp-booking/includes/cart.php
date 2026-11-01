@@ -18,7 +18,7 @@ add_action( 'template_redirect', function () {
 } );
 
 function kpb_selection_from_request( $r ) {
-	return array( 'date' => sanitize_text_field( $r['kpb_date'] ?? '' ), 'adults' => (int) ( $r['kpb_adults'] ?? 0 ), 'children' => (int) ( $r['kpb_children'] ?? 0 ), 'infants' => (int) ( $r['kpb_infants'] ?? 0 ), 'pickup' => sanitize_text_field( $r['kpb_pickup'] ?? '' ) );
+	return array( 'date' => sanitize_text_field( $r['kpb_date'] ?? '' ), 'adults' => (int) ( $r['kpb_adults'] ?? 0 ), 'children' => (int) ( $r['kpb_children'] ?? 0 ), 'infants' => (int) ( $r['kpb_infants'] ?? 0 ), 'pickup' => sanitize_text_field( $r['kpb_pickup'] ?? '' ), 'option' => (int) ( $r['kpb_option'] ?? 0 ) );
 }
 
 /** Each booking is unique in the cart (date/pax differ). */
@@ -43,6 +43,7 @@ add_filter( 'woocommerce_get_item_data', function ( $data, $item ) {
 	$data[] = array( 'key' => 'Date', 'value' => wp_date( 'D j M Y', strtotime( $b['date'] ) ) );
 	foreach ( $b['lines'] ?? array() as $l ) $data[] = array( 'key' => $l['label'], 'value' => $l['qty'] . ( $l['unit'] ? ' × ' . number_format( $l['unit'] ) . ' THB' : '' ) );
 	if ( ! empty( $b['pickup'] ) ) $data[] = array( 'key' => 'Pickup', 'value' => $b['pickup'] );
+	$ol = kpb_option_label( $item['product_id'], $b ); if ( $ol ) $data[] = array( 'key' => 'Option', 'value' => $ol );
 	return $data;
 }, 10, 2 );
 
@@ -55,6 +56,7 @@ add_action( 'woocommerce_checkout_create_order_line_item', function ( $item, $ca
 	if ( (int) $b['children'] ) $item->add_meta_data( 'Children', (int) $b['children'] );
 	if ( (int) $b['infants'] ) $item->add_meta_data( 'Infants', (int) $b['infants'] );
 	if ( ! empty( $b['pickup'] ) ) $item->add_meta_data( 'Pickup', $b['pickup'] );
+	$ol = kpb_option_label( $values['product_id'] ?? $item->get_product_id(), $b ); if ( $ol ) $item->add_meta_data( 'Option', $ol );
 	$item->add_meta_data( '_kpb_adults', (int) $b['adults'] ); $item->add_meta_data( '_kpb_children', (int) $b['children'] ); $item->add_meta_data( '_kpb_infants', (int) $b['infants'] ); $item->add_meta_data( '_kpb_date', $b['date'] );
 	$item->add_meta_data( '_kpb_lines', wp_json_encode( $b['lines'] ) );
 }, 10, 3 );
@@ -66,3 +68,6 @@ add_filter( 'woocommerce_loop_add_to_cart_link', function ( $html, $product ) {
 	if ( ! kpb_is_bookable( $product->get_id() ) ) return $html;
 	return '<a class="kpv-btn kpv-btn-o" href="' . esc_url( $product->get_permalink() ) . '">See the trip</a>';
 }, 10, 2 );
+
+/** Human label of the chosen price option (or ''). */
+function kpb_option_label( $pid, $b ) { $o = kpb_options( $pid ); $i = (int) ( $b['option'] ?? 0 ); return $o && isset( $o[ $i ] ) ? $o[ $i ]['label'] : ''; }
