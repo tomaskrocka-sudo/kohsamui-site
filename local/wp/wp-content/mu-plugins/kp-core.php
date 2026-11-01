@@ -124,15 +124,24 @@ function kp_page_kind() {
 function kp_is_unverified( $s ) { return (bool) preg_match( '/\[(ask mea|check|confirm|gps|field-check|slug tbc)[^\]]*\]|\[[^\]]*ask mea[^\]]*\]/i', (string) $s ); }
 function kp_public_lines( $lines ) { return array_values( array_filter( (array) $lines, fn( $l ) => ! kp_is_unverified( $l ) ) ); }
 add_filter( 'kp_faqs', function ( $faqs ) { return array_values( array_filter( $faqs, fn( $f ) => ! kp_is_unverified( $f['q'] . ' ' . $f['a'] ) ) ); }, 5 );
-/** Remove unverified content from public output: whole <li>/<tr> or the whole sentence carrying a tag; HTML comments too. */
+/** Remove unverified content from public output: whole <li>/<tr> or the whole sentence carrying a tag; HTML comments too. Never returns less than the input on a regex failure. */
 function kp_strip_unverified( $c ) {
-	$tag = '\[(?:ask mea|check|confirm|gps|field-check|slug tbc)[^\]]*\]';
-	$c = preg_replace( '/<!--.*?-->/s', '', $c );
-	$c = preg_replace( '#<(li|tr)\b[^>]*>(?:(?!</\1>).)*?' . $tag . '.*?</\1>#is', '', $c );
-	// sentence = run of text after a sentence end / tag boundary up to the tag (+ trailing punctuation)
-	$c = preg_replace( '/(^|[.!?:]\s|<(?:p|li|td|th|div|h[2-6]|dd|summary)\b[^>]*>)\s*(?:[^<>.!?]|\.(?=\d)|<\/?(?:strong|em|b|i|a|span|code)\b[^>]*>)*?' . $tag . '[.!?]?(?:\s*<\/(?:strong|em|b|i|a|span)>)*/i', '$1', $c );
-	$c = preg_replace( '/\s*' . $tag . '/i', '', $c ); // any leftovers
-	$c = preg_replace( '#<p[^>]*>\s*</p>|<(ul|ol)[^>]*>\s*</\1>#i', '', $c );
+	if ( ! is_string( $c ) || $c === '' ) return $c;
+	$tag = '\[(?:ask mea|check|confirm|gps|field-check|slug tbc)[^\]]{0,80}\]';
+	$safe = function ( $r, $prev ) { return is_string( $r ) ? $r : $prev; };
+	$c = $safe( preg_replace( '/<!--.*?-->/s', '', $c ), $c );
+	if ( ! preg_match( '/' . $tag . '/i', $c ) ) return $c;
+	$c = $safe( preg_replace_callback( '#<(li|tr)\b[^>]*>.*?</\1>#is', function ( $m ) use ( $tag ) { return preg_match( '/' . $tag . '/i', $m[0] ) ? '' : $m[0]; }, $c ), $c );
+	// Work block by block (p, td, h2..h6, dd) so the sentence regex only sees short strings.
+	$c = $safe( preg_replace_callback( '#(<(p|td|th|dd|h[2-6]|summary)\b[^>]*>)(.*?)(</\2>)#is', function ( $m ) use ( $tag, $safe ) {
+		if ( ! preg_match( '/' . $tag . '/i', $m[3] ) ) return $m[0];
+		$in = $m[3];
+		$out = $safe( preg_replace( '/(^|[.!?:]\s)\s*(?:[^<>.!?]|\.(?=\d)|<\/?(?:strong|em|b|i|a|span|code|br)\b[^>]*>)*?' . $tag . '[.!?]?(?:\s*<\/(?:strong|em|b|i|a|span)>)*/i', '$1', $in ), $in );
+		$out = $safe( preg_replace( '/\s*' . $tag . '/i', '', $out ), $out );
+		return trim( wp_strip_all_tags( $out ) ) === '' ? '' : $m[1] . $out . $m[4];
+	}, $c ), $c );
+	$c = $safe( preg_replace( '/\s*' . $tag . '/i', '', $c ), $c );
+	$c = $safe( preg_replace( '#<(ul|ol)\b[^>]*>\s*</\1>#i', '', $c ), $c );
 	return $c;
 }
 add_filter( 'the_content', function ( $c ) { return is_admin() ? $c : kp_strip_unverified( $c ); }, 99 );
