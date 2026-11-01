@@ -1,0 +1,5 @@
+Who took the photos on this site? | Most photos are our own team photos; openly licensed photos from Wikimedia Commons are credited in the table on this page with author and licence.
+Can I use your photos? | Please ask us on WhatsApp first. Wikimedia photos follow their own licence, shown in the table.
+I found my photo without credit. What should I do? | Message us on WhatsApp with the page and the photo, and we will correct the credit or remove the photo.
+Why are the credits not clickable? | We keep outbound links to a minimum, so the source address is shown as text you can copy.
+Do you edit the photos? | We only resize, crop and convert them to WebP for faster loading.

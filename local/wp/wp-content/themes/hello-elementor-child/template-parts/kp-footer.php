@@ -7,7 +7,7 @@ $cols = array(
 	'Villas' => array( array( 'Holiday villas', '/koh-samui-villas/#short-stay' ), array( 'Long-term villas', '/koh-samui-villas/#long-term' ), array( 'Where to stay', '/where-to-stay-koh-samui/' ) ),
 	'Events' => array( array( 'Events this week', '/koh-samui-events/' ), array( 'Full Moon dates', '/full-moon-party-dates/' ), array( 'Nightlife', '/koh-samui-nightlife/' ) ),
 	'Plan your trip' => array( array( 'Travel guide', '/koh-samui-travel-guide/' ), array( 'How to get here', '/how-to-get-to-koh-samui/' ), array( 'Weather by month', '/koh-samui-weather/' ), array( 'Koh Samui facts', '/koh-samui-facts/' ), array( 'FAQ', '/faq/' ), array( 'Safety', '/precautions-safety/' ) ),
-	'Company' => array( array( 'About us', '/about-us/' ), array( 'Contact', '/contact/' ), array( 'Editorial policy', '/editorial-policy/' ), array( 'Terms and cancellation', '/terms-and-conditions/' ), array( 'Privacy', '/privacy-policy/' ) ),
+	'Company' => array( array( 'About us', '/about-us/' ), array( 'Contact', '/contact/' ), array( 'Editorial policy', '/editorial-policy/' ), array( 'Terms and cancellation', '/terms-and-conditions/' ), array( 'Privacy', '/privacy-policy/' ), array( 'Photo credits', '/photo-credits/' ) ),
 );
 $live = function_exists( 'kpt_url_live' ) ? 'kpt_url_live' : fn() => true;
 ?>

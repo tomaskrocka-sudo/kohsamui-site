@@ -96,3 +96,12 @@ add_shortcode( 'kp_places_map', function ( $a ) {
 	foreach ( $places as $i => $p ) $h .= '<li class="kpg-row" data-i="' . $i . '" data-lat="' . esc_attr( $p['lat'] ) . '" data-lng="' . esc_attr( $p['lng'] ) . '" data-type="' . esc_attr( $p['type'] ) . '" data-name="' . esc_attr( $p['name'] ) . '" data-url="' . esc_url( $p['url'] ) . '" data-thumb="' . esc_url( $p['thumb'] ?: '' ) . '"><span class="kpg-dot kpg-dot-' . esc_attr( $p['type'] ) . '">' . ( $i + 1 ) . '</span><a href="' . esc_url( $p['url'] ) . '">' . esc_html( $p['name'] ) . '</a><span class="kpg-row-m">' . esc_html( $p['short'] ) . '</span> <a class="kpg-dir" href="https://www.google.com/maps/dir/?api=1&destination=' . esc_attr( $p['lat'] . ',' . $p['lng'] ) . '" rel="noopener">Directions</a></li>';
 	return $h . '</ol></div>';
 } );
+
+/** Photo credits list for third-party photos (plain text: licences need attribution, our link policy allows no outbound links). */
+add_shortcode( 'kp_photo_credits', function () {
+	$q = new WP_Query( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => -1, 'no_found_rows' => true, 'meta_key' => 'kp_credit', 'orderby' => 'title', 'order' => 'ASC' ) );
+	if ( ! $q->posts ) return '<p>All photos on this site are our own unless a credit is shown here.</p>';
+	$h = '<div class="kp-tbl"><table class="kp-glance"><thead><tr><th>Photo</th><th>Author</th><th>Licence</th><th>Source</th></tr></thead><tbody>';
+	foreach ( $q->posts as $a ) $h .= '<tr><td>' . esc_html( get_the_title( $a ) ) . '</td><td>' . esc_html( get_post_meta( $a->ID, 'kp_credit', true ) ) . '</td><td>' . esc_html( get_post_meta( $a->ID, 'kp_licence', true ) ) . '</td><td><code>' . esc_html( get_post_meta( $a->ID, 'kp_source_page', true ) ) . '</code></td></tr>';
+	return $h . '</tbody></table></div>';
+} );
