@@ -1,0 +1,11 @@
+local/wp/wp-content/uploads/
+local/wp/wp-content/database/
+local/wp/wp-content/debug.log
+local/wp/wp-content/upgrade/
+local/wp/wp-content/cache/
+local/dl/
+local/*.zip
+local/*.phar
+local/build-elementor.log
+parts/
+node_modules/
