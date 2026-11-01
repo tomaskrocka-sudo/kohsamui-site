@@ -1,0 +1,83 @@
+/* KP Tour Booking — booking card: custom calendar (closed dates, cut-off, weekdays), live total, currency display, server-side quote. */
+(function () {
+  if (!window.KPB) return;
+  var cfg = KPB.cfg, root = document.getElementById('kpb'); if (!root) return;
+  var dateIn = root.querySelector('#kpb_date'), cal = root.querySelector('#kpb_cal'), totalEl = root.querySelector('#kpb_total'), errEl = root.querySelector('#kpb_errors'), form = root.querySelector('.kpb-form');
+  var closed = {}; (cfg.closed || []).forEach(function (d) { closed[d] = 1; });
+  var weekdays = cfg.weekdays || [];
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function isOpen(s, d) { if (s < cfg.first_date) return false; if (closed[s]) return false; if (weekdays.length && weekdays.indexOf(DAYS[d.getDay()]) < 0) return false; return true; }
+
+  /* Calendar: two months, keyboard accessible */
+  var view = new Date(cfg.first_date + 'T00:00:00'); view.setDate(1);
+  function render() {
+    var html = '';
+    for (var m = 0; m < 2; m++) {
+      var first = new Date(view.getFullYear(), view.getMonth() + m, 1);
+      var label = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+      html += '<div class="kpb-month"><div class="kpb-mhead">' + (m === 0 ? '<button type="button" class="kpb-nav" data-nav="-1" aria-label="Previous month">‹</button>' : '<span></span>') + '<strong>' + label + '</strong>' + (m === 1 ? '<button type="button" class="kpb-nav" data-nav="1" aria-label="Next month">›</button>' : '<span></span>') + '</div><div class="kpb-grid" role="grid">';
+      ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].forEach(function (d) { html += '<span class="kpb-dow">' + d + '</span>'; });
+      var offset = (first.getDay() + 6) % 7; for (var i = 0; i < offset; i++) html += '<span></span>';
+      var days = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
+      for (var d = 1; d <= days; d++) {
+        var dt = new Date(first.getFullYear(), first.getMonth(), d), s = ymd(dt), open = isOpen(s, dt), sel = dateIn.value === s;
+        html += '<button type="button" class="kpb-day' + (open ? '' : ' is-off') + (sel ? ' is-sel' : '') + (s === KPB.today ? ' is-today' : '') + '" data-d="' + s + '"' + (open ? '' : ' disabled aria-disabled="true"') + ' aria-label="' + dt.toDateString() + (open ? '' : ' (not available)') + '">' + d + '</button>';
+      }
+      html += '</div></div>';
+    }
+    cal.innerHTML = html;
+  }
+  cal.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.nav) { view.setMonth(view.getMonth() + parseInt(b.dataset.nav, 10)); render(); return; }
+    if (b.dataset.d && !b.disabled) { dateIn.value = b.dataset.d; render(); quote(); }
+  });
+  dateIn.addEventListener('change', function () { render(); quote(); });
+
+  /* Currency display (kpcur) */
+  function fmt(thb) {
+    var out = Math.round(thb).toLocaleString('en-GB') + ' THB';
+    var cur = (window.KPCUR && window.KPCUR.cur) || localStorage.getItem('kp-cur');
+    if (window.KPCUR && cur && cur !== 'THB' && KPCUR.r && KPCUR.r[cur]) out += ' <small>(≈ ' + Math.round(thb * KPCUR.r[cur]).toLocaleString('en-GB') + ' ' + cur + ')</small>';
+    return out;
+  }
+
+  /* Live total: instant local estimate, then authoritative server quote */
+  function sel() {
+    var g = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; };
+    return { date: g('kpb_date'), adults: parseInt(g('kpb_adults') || 0, 10), children: parseInt(g('kpb_children') || 0, 10), infants: parseInt(g('kpb_infants') || 0, 10), pickup: g('kpb_pickup') };
+  }
+  function local(s) {
+    var t = 0, lines = [];
+    if (cfg.per === 'boat') { t = cfg.adult; lines.push(['Private boat', 1, cfg.adult]); }
+    else { t += s.adults * cfg.adult; lines.push([cfg.adult_label, s.adults, cfg.adult]); if (s.children && cfg.child !== null) { t += s.children * cfg.child; lines.push([cfg.child_label, s.children, cfg.child]); } if (s.infants) lines.push([cfg.infant_label, s.infants, 0]); }
+    var fee = cfg.pickup && cfg.pickup.surcharge && cfg.pickup.surcharge[s.pickup];
+    if (fee) { var n = cfg.per === 'boat' ? 1 : (s.adults + s.children); t += n * fee; lines.push(['Remote-area transfer: ' + s.pickup, n, fee]); }
+    return { total: t, lines: lines };
+  }
+  function show(q) {
+    totalEl.innerHTML = q.lines.map(function (l) { return '<div class="kpb-line"><span>' + l[0] + (l[1] > 1 || l[2] ? ' × ' + l[1] : '') + '</span><span>' + (l[2] ? Math.round(l[1] * l[2]).toLocaleString('en-GB') + ' THB' : 'free') + '</span></div>'; }).join('') + '<div class="kpb-sum"><span>Total</span><strong>' + fmt(q.total) + '</strong></div>';
+  }
+  var timer;
+  function quote() {
+    var s = sel(); show(local(s)); errEl.textContent = '';
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fetch((KPB.rest || '/wp-json/') + 'kp/v1/quote', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ product: cfg.product_id }, s)) })
+        .then(function (r) { return r.json(); }).then(function (j) {
+          if (j.errors && j.errors.length) { errEl.innerHTML = j.errors.map(function (e) { return '<p>' + e + '</p>'; }).join(''); }
+          if (typeof j.total_thb === 'number') show({ total: j.total_thb, lines: j.lines.map(function (l) { return [l.label, l.qty, l.unit]; }) });
+        }).catch(function () {});
+    }, 250);
+  }
+  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', quote); });
+  document.addEventListener('kp:currency', quote);
+  form.addEventListener('submit', function (e) {
+    var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a departure date.</p>'; cal.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (cfg.pickup && cfg.pickup.enabled && !s.pickup) { e.preventDefault(); errEl.innerHTML = '<p>Please choose your pickup area.</p>'; return; }
+    var btn = root.querySelector('#kpb_submit'); btn.disabled = true; btn.textContent = KPB.i18n.adding;
+  });
+  render(); quote();
+})();

@@ -1,0 +1,76 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+/** Product booking config (single source for front-end, cart and REST). */
+function kpb_config( $product_id ) {
+	$p = wc_get_product( $product_id ); if ( ! $p ) return null;
+	$m = fn( $k, $d = '' ) => ( $v = get_post_meta( $product_id, $k, true ) ) !== '' ? $v : $d;
+	$zones = json_decode( (string) $m( 'kp_pickup_zones' ), true ) ?: array();
+	$per = $m( 'kp_per', 'person' );
+	$cfg = array(
+		'product_id'   => $product_id,
+		'per'          => $per,                                  // person | boat
+		'adult'        => (float) $p->get_price(),
+		'child'        => $m( 'kp_child_price' ) !== '' ? (float) $m( 'kp_child_price' ) : null,
+		'infant'       => 0.0,
+		'child_label'  => 'Child (3–11)',
+		'adult_label'  => 'Adult (12+)',
+		'infant_label' => 'Infant (0–2, free)',
+		'min_adults'   => (int) $m( 'kp_min_adults', 1 ),
+		'max_pax'      => (int) $m( 'kp_max_pax', 20 ),
+		'max_guests'   => (int) $m( 'kp_max_guests', 0 ),         // per-boat products
+		'pickup'       => array(
+			'enabled'   => (bool) $m( 'kp_pickup_enabled', $per === 'person' ? '1' : '' ),
+			'included'  => $zones['included'] ?? array( 'Chaweng', 'Chaweng Noi', 'Lamai', 'Bophut', 'Fisherman\'s Village', 'Maenam', 'Bang Por', 'Choeng Mon', 'Bang Rak', 'Plai Laem' ),
+			'surcharge' => $zones['surcharge'] ?? array( 'Nathon' => 400, 'Lipa Noi' => 400, 'Taling Ngam' => 400, 'Bang Kao' => 400, 'Thong Krut' => 400 ),
+			'meet'      => (bool) $m( 'kp_pickup_meet', '1' ),    // "I'll come to the pier" option
+		),
+		'cxl'          => $m( 'kp_cxl_policy', 'day' ),
+		'duration'     => $m( 'kp_duration' ),
+		'pier'         => $m( 'kp_pier' ),
+		'first_date'   => kpb_first_bookable_date( $product_id ),
+		'closed'       => kpb_closed_dates( $product_id ),       // Y-m-d list (seasonal closure + blackouts + sold out)
+		'weekdays'     => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_weekdays' ) ) ) ) ), // e.g. Mon,Wed,Sat; empty = daily
+		'notice'       => $m( 'kp_booking_notice' ),            // e.g. "Season reopens 16 December"
+		'currency'     => 'THB',
+	);
+	return apply_filters( 'kpb_config', $cfg, $product_id );
+}
+
+/** Compute price breakdown. $sel = [date, adults, children, infants, pickup]. Returns [total, lines[], errors[]]. */
+function kpb_price( $product_id, $sel ) {
+	$cfg = kpb_config( $product_id ); $lines = array(); $errors = array(); $total = 0.0;
+	if ( ! $cfg ) return array( 0, array(), array( 'Product not found.' ) );
+	$adults = max( 0, (int) ( $sel['adults'] ?? 0 ) ); $children = max( 0, (int) ( $sel['children'] ?? 0 ) ); $infants = max( 0, (int) ( $sel['infants'] ?? 0 ) );
+	$date = (string) ( $sel['date'] ?? '' ); $pickup = (string) ( $sel['pickup'] ?? '' );
+
+	// Date validation
+	if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $date ) ) $errors[] = 'Please choose a departure date.';
+	elseif ( $date < $cfg['first_date'] ) $errors[] = 'Online bookings for tomorrow close at midnight Thailand time. For same-day trips, message us on WhatsApp.';
+	elseif ( in_array( $date, $cfg['closed'], true ) ) $errors[] = 'This date is not available. ' . ( $cfg['notice'] ?: 'Please choose another date.' );
+	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
+
+	if ( $cfg['per'] === 'boat' ) {
+		$guests = $adults + $children + $infants;
+		if ( $cfg['max_guests'] && $guests > $cfg['max_guests'] ) $errors[] = 'This boat takes up to ' . $cfg['max_guests'] . ' guests. For bigger groups, message us on WhatsApp.';
+		if ( $guests < 1 ) $errors[] = 'Please tell us how many guests.';
+		$lines[] = array( 'label' => 'Private boat (' . $guests . ' guests)', 'qty' => 1, 'unit' => $cfg['adult'], 'amount' => $cfg['adult'] );
+		$total += $cfg['adult'];
+	} else {
+		if ( $adults < $cfg['min_adults'] ) $errors[] = 'At least ' . $cfg['min_adults'] . ' adult is required.';
+		if ( $adults + $children > $cfg['max_pax'] ) $errors[] = 'For groups over ' . $cfg['max_pax'] . ', please message us on WhatsApp for a group price.';
+		if ( $children && $cfg['child'] === null ) $errors[] = 'Child price not set for this tour — please book on WhatsApp.';
+		$lines[] = array( 'label' => $cfg['adult_label'], 'qty' => $adults, 'unit' => $cfg['adult'], 'amount' => $adults * $cfg['adult'] ); $total += $adults * $cfg['adult'];
+		if ( $children ) { $lines[] = array( 'label' => $cfg['child_label'], 'qty' => $children, 'unit' => (float) $cfg['child'], 'amount' => $children * (float) $cfg['child'] ); $total += $children * (float) $cfg['child']; }
+		if ( $infants ) $lines[] = array( 'label' => $cfg['infant_label'], 'qty' => $infants, 'unit' => 0, 'amount' => 0 );
+	}
+	// Pickup surcharge (per person return, adults + children)
+	if ( $cfg['pickup']['enabled'] ) {
+		if ( $pickup === '' ) $errors[] = 'Please choose your pickup area (or "I will come to the pier").';
+		elseif ( isset( $cfg['pickup']['surcharge'][ $pickup ] ) ) {
+			$n = $cfg['per'] === 'boat' ? 1 : ( $adults + $children ); $fee = (float) $cfg['pickup']['surcharge'][ $pickup ];
+			$lines[] = array( 'label' => 'Remote-area transfer: ' . $pickup, 'qty' => $n, 'unit' => $fee, 'amount' => $n * $fee ); $total += $n * $fee;
+		}
+	}
+	return array( round( $total, 2 ), $lines, $errors );
+}
