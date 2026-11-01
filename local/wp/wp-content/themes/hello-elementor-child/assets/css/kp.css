@@ -218,3 +218,6 @@ html.kpts-dark .kpg-card .kc.kpg-btn{background:var(--kpd-card2);color:var(--kpd
 .kpg-pin span{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;color:#fff;font:700 12px/1 var(--kp-sans,Inter,sans-serif);border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)}
 .kpg-chips{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
 .kpg-chip{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--kp-border);background:var(--kpd-card);color:var(--kp-muted);font:600 13px/1 var(--kp-sans,Inter,sans-serif);cursor:pointer}.kpg-chip.is-on{background:var(--kp-accent);color:var(--kp-accent-ink);border-color:transparent}
+/* Long mega menus: compact rows and scroll inside the panel instead of running off-screen */
+.kph-mega.kph-mega-wide{max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain}
+@media(min-width:1025px){.kph-mega-wide li a{padding:3px 0;font-size:13.5px;line-height:1.35}.kph-mega-wide .kph-cat{margin-top:12px}}
