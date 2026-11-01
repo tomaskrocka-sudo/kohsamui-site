@@ -58,7 +58,7 @@ function kpt_menu_raw() {
 			array( 'All retreats', '/koh-samui-retreats/' ), array( 'Yoga', '/koh-samui-yoga/' ), array( 'Meditation', '/koh-samui-meditation/' ), array( 'Spa and massage', '/koh-samui-spa/' ),
 		) ) ) ) ),
 		array( 'label' => 'Villas', 'url' => '/koh-samui-villas/', 'cols' => array( array( array( 'cat' => '', 'items' => array(
-			array( 'Holiday villas', '/koh-samui-villas/#short-stay' ), array( 'Long-term villas', '/koh-samui-villas/#long-term' ), array( 'Where to stay', '/where-to-stay-koh-samui/' ),
+			array( 'All villas with live prices', '/koh-samui-villas/' ), array( 'Where to stay', '/where-to-stay-koh-samui/' ), array( 'Chaweng vs Lamai', '/chaweng-vs-lamai/' ),
 		) ) ) ) ),
 		array( 'label' => 'Events', 'url' => '/koh-samui-events/', 'cols' => array( array( array( 'cat' => '', 'items' => array(
 			array( 'Events this week', '/koh-samui-events/' ), array( 'Full Moon Party from Samui', '/full-moon-party-from-koh-samui/' ), array( 'Full Moon Party dates', '/full-moon-party-dates/' ),

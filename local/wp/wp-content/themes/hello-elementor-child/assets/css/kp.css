@@ -270,3 +270,21 @@ html,body{overflow-x:clip}
 .kpg-hero .kpg-hero-g{z-index:-1;background:linear-gradient(180deg,rgba(2,10,28,.35) 0%,rgba(2,10,28,0) 25%,rgba(2,10,28,.1) 55%,rgba(2,10,28,.82) 100%)}
 @media(max-width:600px){.kpg-hero{min-height:86svh}}
 @media(max-width:600px){.kpa-hero-lead{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
+/* Villas */
+.kpv-filters{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;margin:0 0 18px;padding:14px;border:1px solid var(--kp-border);border-radius:16px;background:var(--kpd-card)}
+.kpv-filters label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600;color:var(--kp-muted);text-transform:uppercase;letter-spacing:.04em}
+.kpv-filters select{height:40px;border:1px solid var(--kp-border);border-radius:10px;padding:0 10px;font:inherit;font-size:14px;text-transform:none;letter-spacing:0;color:var(--kp-ink);background:var(--kpd-card)}
+.kpv-filters .kpv-chk{flex-direction:row;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:14px;color:var(--kp-ink);height:40px}
+.kpv-count{margin-left:auto;font-weight:700;color:var(--kp-ink);font-size:14px}
+.kpv-grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.kpv-card{display:flex;flex-direction:column;border:1px solid var(--kp-border);border-radius:16px;overflow:hidden;background:var(--kpd-card);color:var(--kp-ink);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.kpv-card:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(11,31,51,.12)}.kpv-card[hidden]{display:none}
+.kpv-card img{width:100%;aspect-ratio:4/3;object-fit:cover}.kpv-card-b{display:flex;flex-direction:column;gap:4px;padding:12px 14px 16px}
+.kpv-card-t{font-weight:700;font-size:16px}.kpv-card-m{font-size:13px;color:var(--kp-muted)}.kpv-card-p{font-weight:700;color:var(--kp-ink);margin-top:4px}
+.kpv-gallery{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));margin:0 0 20px}.kpv-gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:10px;display:block}
+.kpv-avail{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}.kpv-avail span{display:flex;flex-direction:column;min-width:96px;padding:8px 10px;border-radius:10px;font-size:13px;border:1px solid var(--kp-border)}
+.kpv-avail .is-free{background:rgba(30,122,76,.08);border-color:rgba(30,122,76,.35)}.kpv-avail .is-busy{opacity:.55;text-decoration:line-through}
+.kpv-feat{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}.kpv-feat h3{font-size:15px;margin:0 0 6px}.kpv-feat ul{margin:0;padding-left:18px;font-size:14px}
+.kpv-book .kpv-2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kpv-quote{border-top:1px solid var(--kp-border);padding:10px 0;margin:4px 0 10px;font-size:14px}
+.kpv-quote.is-ok strong{color:var(--kp-trust,#1E7A4C);font-size:20px}.kpv-quote.is-no{color:#9f1239}.kpv-msg.is-ok{color:#1E7A4C}.kpv-msg.is-no{color:#9f1239}
+.kpv-wa{display:block;text-align:center;margin-top:10px;font-weight:600;color:var(--kp-ink)}

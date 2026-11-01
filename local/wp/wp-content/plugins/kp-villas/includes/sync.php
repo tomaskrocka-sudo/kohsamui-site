@@ -57,6 +57,7 @@ function kpv_sync_one( $slug, $info ) {
 		'kpv_faq' => wp_json_encode( $d['faq'] ), 'kpv_photos' => wp_json_encode( array_slice( $d['photos'], 0, 40 ) ), 'kpv_checkin' => $d['checkin'] ?? '', 'kpv_checkout' => $d['checkout'] ?? '', 'kpv_deposit' => $d['deposit_pct'] ?? '',
 		'kp_noindex' => kpv_opt( 'noindex' ) ? '1' : '', 'kp_content_updated' => wp_date( 'Y-m-d' ), 'kp_kind' => 'money',
 	);
+	$meta['kp_faq'] = kpv_make_faq( $title, $area, $d, $from_thb, $meta );
 	foreach ( $meta as $k => $v ) update_post_meta( $id, $k, $v );
 	// Cover photo stored locally once (WebP via WordPress image editor), gallery stays on the partner CDN.
 	if ( ! has_post_thumbnail( $id ) && ( $cover = $d['cover'] ?? ( $d['photos'][0] ?? '' ) ) ) {
@@ -107,4 +108,19 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		/** Refresh availability now. */
 		public function availability() { delete_transient( 'kpv_lock_hourly' ); kpv_hourly(); WP_CLI::success( wp_json_encode( get_option( 'kpv_avail_status' ) ) ); }
 	} );
+}
+
+/** Villa-specific FAQ (unique questions: they include the villa name). */
+function kpv_make_faq( $t, $area, $d, $from_thb, $meta ) {
+	$q = array();
+	$beds = ( ! empty( $d['bedrooms_min'] ) && $d['bedrooms_min'] < ( $d['bedrooms'] ?? 0 ) ) ? $d['bedrooms_min'] . ' to ' . $d['bedrooms'] : ( $d['bedrooms'] ?? '' );
+	if ( $beds ) $q[] = "How many bedrooms and guests does $t have? | $t has $beds bedrooms" . ( ! empty( $d['bathrooms'] ) ? ", {$d['bathrooms']} bathrooms" : '' ) . ( ! empty( $d['guests'] ) ? " and sleeps up to {$d['guests']} guests" : '' ) . '.' . ( ! empty( $d['bedrooms_min'] ) && $d['bedrooms_min'] < ( $d['bedrooms'] ?? 0 ) ? ' You can book fewer bedrooms; unused rooms stay locked and the villa stays private.' : '' );
+	if ( $from_thb ) $q[] = "How much does $t cost per night? | From " . number_format( $from_thb ) . " THB per night for the whole villa in low season. Peak season (Christmas, New Year) costs more and needs a longer minimum stay; see the rates table. Pick your dates in the booking box for the live price.";
+	if ( ! empty( $meta['kp_min_nights'] ) ) $q[] = "What is the minimum stay at $t? | At least {$meta['kp_min_nights']} nights, and longer over peak season. The rates table shows the minimum for each period.";
+	if ( ! empty( $d['checkin'] ) ) $q[] = "What are the check-in and check-out times at $t? | Check-in is after {$d['checkin']}" . ( ! empty( $d['checkout'] ) ? " and check-out until {$d['checkout']}" : '' ) . '. Ask us about early arrival or late departure.';
+	if ( ! empty( $d['deposit_pct'] ) ) $q[] = "How do I pay for $t? | A {$d['deposit_pct']}% deposit confirms the booking and the balance is due before arrival, as set out in the payment terms on this page. We send a secure payment link in THB after we confirm availability.";
+	if ( ! empty( $d['cancellation'] ) ) $q[] = "What is the cancellation policy for $t? | " . implode( ' ', array_slice( $d['cancellation'], 0, 3 ) );
+	$q[] = "Where is $t? | In $area on Koh Samui. The map link on this page opens the approximate location in Google Maps; we send the exact address after booking.";
+	$q[] = "Can you arrange transfers and boat trips for guests at $t? | Yes. We arrange airport transfers, a private chef and our own boat trips to Ang Thong and Pig Island. Add what you need to your booking request or message us on WhatsApp.";
+	return implode( "\n", $q );
 }
