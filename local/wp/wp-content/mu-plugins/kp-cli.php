@@ -66,7 +66,7 @@ class KP_CLI {
 			$id = $this->by_slug( $slug, $pt );
 			$arr = array( 'ID' => $id, 'post_type' => $pt, 'post_status' => $meta['status'] ?? 'draft', 'post_title' => $meta['title'] ?? $slug, 'post_name' => $slug, 'post_content' => $body, 'post_excerpt' => $meta['excerpt'] ?? '' );
 			if ( $pt === 'product' && $id ) { unset( $arr['post_title'], $arr['post_excerpt'] ); } // keep product name/short desc from products.json
-			$id = wp_insert_post( $arr, true ); if ( is_wp_error( $id ) ) { WP_CLI::warning( $slug ); continue; }
+			$id = ( $pt === 'product' && $id ) ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true ); if ( is_wp_error( $id ) ) { WP_CLI::warning( $slug ); continue; }
 			foreach ( array( 'kp_kind' => $meta['kind'] ?? '', 'rank_math_title' => $meta['seo_title'] ?? '', 'rank_math_description' => $meta['meta'] ?? '', 'kp_content_updated' => $meta['updated'] ?? wp_date( 'Y-m-d' ), 'kp_first_hand' => $meta['first_hand'] ?? '', 'kp_author' => $meta['author'] ?? '' ) as $k => $v ) if ( $v !== '' ) update_post_meta( $id, $k, $v );
 			$ff = dirname( $f ) . '/' . ( $meta['faq_file'] ?? basename( $f, '.html' ) . '.faq.txt' ); if ( file_exists( $ff ) ) update_post_meta( $id, 'kp_faq', trim( file_get_contents( $ff ) ) );
 			if ( ! empty( $meta['category'] ) && $pt === 'post' ) wp_set_post_terms( $id, array( $meta['category'] ), 'category' );
