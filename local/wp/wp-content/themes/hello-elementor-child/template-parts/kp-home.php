@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 $ang = get_page_by_path( 'ang-thong-marine-park-day-tour-koh-samui', OBJECT, 'product' );
 $ang_closed = $ang && function_exists( 'kp_product_is_closed_today' ) && kp_product_is_closed_today( $ang->ID );
 $tonight = function_exists( 'kp_upcoming_events' ) ? count( array_filter( kp_upcoming_events( array( 'to' => 'tomorrow 06:00', 'limit' => 50 ) ), fn( $e ) => $e['start']->format( 'Y-m-d' ) === wp_date( 'Y-m-d' ) ) ) : 0;
-$hero = get_the_post_thumbnail_url( get_the_ID(), 'kp-hero' );
+$hero_id = function_exists( 'kpt_hero_id' ) ? kpt_hero_id() : 0; $hero = $hero_id ? wp_get_attachment_image_url( $hero_id, 'kp-hero' ) : '';
 ?>
 <section class="kpg-hero">
-	<?php if ( $hero ) : ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>" alt="Koh Samui coastline from the water" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
+	<?php if ( $hero ) : ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>" alt="<?php echo esc_attr( $hero_id ? ( get_post_meta( $hero_id, '_wp_attachment_image_alt', true ) ?: 'Koh Samui from the water' ) : '' ); ?>" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
 	<div class="kpg-hero-g"></div>
 	<div class="kp-w kpg-hero-tx">
 		<p class="kpa-k">Koh Samui tours, boats, villas &amp; events · local since 2006</p>

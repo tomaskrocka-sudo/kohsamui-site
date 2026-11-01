@@ -2,11 +2,19 @@
 /** Shared template pieces: article hero, byline, sidebar booking card, mobile bar, related rail. */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+/** Hero image attachment ID: featured image, else a rotating sea/island fallback from option kp_hero_fallbacks. */
+function kpt_hero_id( $post_id = null ) {
+	$post_id = $post_id ?: get_the_ID();
+	if ( has_post_thumbnail( $post_id ) ) return (int) get_post_thumbnail_id( $post_id );
+	$fb = array_values( array_filter( array_map( 'intval', explode( ',', (string) get_option( 'kp_hero_fallbacks', '' ) ) ) ) );
+	return $fb ? $fb[ $post_id % count( $fb ) ] : 0;
+}
 function kpt_hero( $args = array() ) {
 	$post = get_post();
 	$title = $args['title'] ?? get_the_title();
 	$kicker = $args['kicker'] ?? get_post_meta( get_the_ID(), 'kp_kicker', true );
-	$img = has_post_thumbnail() ? get_the_post_thumbnail( null, 'kp-hero', array( 'loading' => 'eager', 'fetchpriority' => 'high', 'alt' => esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ?: $title ) ) ) : '';
+	$hid = kpt_hero_id();
+	$img = $hid ? wp_get_attachment_image( $hid, 'kp-hero', false, array( 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => esc_attr( get_post_meta( $hid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) : '';
 	echo '<section class="kpa-hero">' . $img . '<div class="kpa-hero-g"></div><div class="kpa-w kpa-hero-tx">';
 	echo function_exists( 'kp_breadcrumbs_html' ) ? kp_breadcrumbs_html() : '';
 	if ( $kicker ) echo '<p class="kpa-k">' . esc_html( $kicker ) . '</p>';

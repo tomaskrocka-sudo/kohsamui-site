@@ -30,6 +30,9 @@
       grid.querySelectorAll('[data-tags]').forEach(function (card) { var tags = (card.dataset.tags || '').split(' '); card.classList.toggle('is-hidden', f !== 'all' && tags.indexOf(f) < 0); });
     });
   });
+  /* Deep link to a filter chip: /koh-samui-tours/#yachts */
+  function chipFromHash() { var h = (location.hash || '').slice(1); if (!h) return; var c = d.querySelector('.kp-ev-chip[data-f="' + h.replace(/[^a-z0-9-]/g, '') + '"]'); if (c) { c.click(); var bar = c.closest('.kp-ev-filters'); bar && bar.scrollIntoView({ block: 'start' }); } }
+  chipFromHash(); window.addEventListener('hashchange', chipFromHash);
   /* Reading progress */
   var prog = d.getElementById('kpa-prog');
   if (prog) window.addEventListener('scroll', function () { var h = d.documentElement; var pct = h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100; prog.style.width = pct + '%'; }, { passive: true });

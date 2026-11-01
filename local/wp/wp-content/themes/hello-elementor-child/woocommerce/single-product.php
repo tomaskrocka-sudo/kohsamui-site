@@ -6,16 +6,16 @@ while ( have_posts() ) : the_post();
 	global $product; $product = wc_get_product( get_the_ID() ); $id = $product->get_id(); $m = fn( $k ) => get_post_meta( $id, $k, true );
 	$lines = fn( $k ) => kp_public_lines( array_filter( array_map( 'trim', preg_split( '/\r?\n/', (string) $m( $k ) ) ) ) );
 	$per = $m( 'kp_per' ) === 'boat' ? 'per boat' : 'per adult';
-	echo '<div class="kpa-w"><div style="padding-top:20px">' . ( function_exists( 'kp_breadcrumbs_html' ) ? kp_breadcrumbs_html() : '' ) . '</div>';
+	kpt_hero();
+	echo '<div class="kpa-w" style="padding-top:22px">';
 	woocommerce_output_all_notices();
-	echo '<h1 style="margin-top:6px">' . esc_html( get_the_title() ) . '</h1>';
 	echo '<p class="kp-lead">' . esc_html( wp_strip_all_tags( $product->get_short_description() ) ) . '</p>';
 	echo '<div class="kpv-product"><div>';
 	// Gallery
 	$ids = array_filter( array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() ) );
 	echo '<div class="kpv-gallery">';
-	if ( $ids ) { foreach ( array_slice( $ids, 0, 5 ) as $i => $iid ) echo wp_get_attachment_image( $iid, $i ? 'kp-card' : 'kp-hero', false, array( 'loading' => $i ? 'lazy' : 'eager', 'fetchpriority' => $i ? 'auto' : 'high' ) ); }
-	else echo '<div style="grid-column:1/-1;aspect-ratio:16/9;border-radius:12px;background:linear-gradient(135deg,#0B1F33,#1F3452);display:flex;align-items:center;justify-content:center;color:#93A3B8;font-size:14px">Photos: Mea\'s own WebP photos go here</div>';
+	if ( count( $ids ) > 1 ) { $ids = array_slice( $ids, 1 ); foreach ( array_slice( $ids, 0, 5 ) as $i => $iid ) echo wp_get_attachment_image( $iid, $i ? 'kp-card' : 'kp-hero', false, array( 'loading' => $i ? 'lazy' : 'eager', 'fetchpriority' => $i ? 'auto' : 'high' ) ); }
+
 	echo '</div>';
 	// At a glance
 	echo '<h2>' . esc_html( get_the_title() ) . ' at a glance</h2><table class="kp-glance"><tbody>';

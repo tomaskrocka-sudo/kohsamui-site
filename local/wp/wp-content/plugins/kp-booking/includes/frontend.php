@@ -30,7 +30,7 @@ add_action( 'wp_enqueue_scripts', function () {
 
 /** The booking card markup (classes follow kohphangan.com's kpb/kpv naming so the cloned CSS applies). */
 function kpb_render_booking_card() {
-	$pid = get_the_ID(); if ( ! kpb_is_bookable( $pid ) ) return;
+	$pid = get_the_ID(); if ( ! kpb_is_bookable( $pid ) ) { kpb_render_enquiry_card( $pid ); return; }
 	$cfg = kpb_config( $pid ); $p = wc_get_product( $pid );
 	$closed_today = in_array( kpb_now()->format( 'Y-m-d' ), $cfg['closed'], true );
 	$cxl = function_exists( 'kp_cancellation_text' ) ? kp_cancellation_text( $cfg['cxl'] ) : '';
@@ -105,3 +105,16 @@ add_shortcode( 'kpb_card', function ( $a ) {
 	$p = wc_get_product( $pid ); if ( ! $p ) return '';
 	return '<a class="kpa-sd-l" href="' . esc_url( $p->get_permalink() ) . '"><span class="kpa-sd-t">' . esc_html( $p->get_name() ) . '</span><span class="kpa-sd-p">from ' . esc_html( number_format( (float) $p->get_price() ) ) . ' THB</span></a>';
 } );
+
+/** Enquiry-only products: price guide + WhatsApp button (no checkout). */
+function kpb_render_enquiry_card( $pid ) {
+	$p = wc_get_product( $pid ); if ( ! $p ) return;
+	$per = get_post_meta( $pid, 'kp_per', true ) === 'boat' ? 'per boat' : 'per person';
+	$notice = get_post_meta( $pid, 'kp_booking_notice', true );
+	$wa = 'https://wa.me/' . ( defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '66637040888' ) . '?text=' . rawurlencode( 'Hi, I would like a quote for: ' . $p->get_name() . ' (' . get_permalink( $pid ) . ')' );
+	echo '<div class="kpb" id="kpb"><div class="kpb-head"><div class="kpb-price">' . ( (float) $p->get_price() > 0 ? '<span class="kpb-per">from</span> ' . esc_html( number_format( (float) $p->get_price() ) ) . ' THB <span class="kpb-per">' . esc_html( $per ) . '</span>' : 'Price on request' ) . '</div></div>';
+	if ( $notice ) echo '<div class="kpb-notice">' . esc_html( $notice ) . '</div>';
+	echo '<p style="margin:0 0 14px;font-size:14px">We confirm the exact price, date and extras for this trip on WhatsApp, then send you a secure payment link in THB.</p>';
+	echo '<a class="kpb-submit" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="' . esc_url( $wa ) . '" rel="noopener">Ask for a quote on WhatsApp</a>';
+	echo '<ul class="kpb-trust"><li>Local team since 2006</li><li>TAT licence ' . esc_html( defined( 'KP_TAT_LICENCE' ) ? KP_TAT_LICENCE : '43/01467' ) . '</li><li>Secure payment link in THB</li></ul></div>';
+}

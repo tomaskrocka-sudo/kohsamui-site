@@ -33,14 +33,18 @@ function kpt_menu_raw() {
 			),
 			array(
 				array( 'cat' => 'On the island', 'items' => array(
-					array( 'Jungle safari', '/koh-samui-jungle-safari/' ), array( 'Elephant sanctuary', '/koh-samui-elephant-sanctuary/' ), array( 'Zipline', '/koh-samui-zipline/' ),
-					array( 'ATV and quad bike', '/koh-samui-atv-quad-bike/' ), array( 'Thai cooking class', '/koh-samui-cooking-class/' ), array( 'Muay Thai', '/koh-samui-muay-thai/' ),
+					array( 'Things to do', '/activities/' ), array( 'Jeep safari (no animals)', '/product/jungle-discovery-jeep-safari-no-animals-koh-samui/' ), array( 'Elephant sanctuary (no riding)', '/product/elephant-sanctuary-visit-bophut-hills-koh-samui/' ),
+					array( 'Zipline park', '/product/jungle-zipline-park-silver-golden-courses-koh-samui/' ), array( 'ATV and buggy tours', '/product/atv-buggy-jungle-tour-maenam-koh-samui/' ), array( 'Thai cooking class', '/product/thai-cooking-class-garden-kitchen-koh-samui/' ),
+					array( 'Rum distillery', '/product/rum-distillery-tour-tasting-koh-samui/' ), array( 'Horse riding', '/product/horse-riding-beach-jungle-koh-samui/' ), array( 'Muay Thai tickets', '/product/muay-thai-fight-tickets-chaweng-koh-samui/' ),
+					array( 'Island sightseeing tour', '/product/koh-samui-island-sightseeing-half-day-tour/' ), array( 'Khao Sok 2-day trip', '/product/khao-sok-2-day-trip-koh-samui/' ), array( 'All island tours', '/koh-samui-tours/#island-tours' ),
 				) ),
 			),
 			array(
-				array( 'cat' => 'Water sports', 'items' => array(
-					array( 'Diving', '/koh-samui-diving/' ), array( 'Snorkelling', '/koh-samui-snorkeling/' ), array( 'Water sports', '/koh-samui-water-sports/' ), array( 'Kitesurfing', '/koh-samui-kitesurfing/' ), array( 'Fishing trips', '/koh-samui-fishing/' ),
+				array( 'cat' => 'Water sports and fishing', 'items' => array(
+					array( 'Sail Rock dive and snorkel', '/product/shared-dive-snorkel-speedboat-koh-tao-sail-rock-koh-samui/' ), array( 'Parasailing', '/product/parasailing-lamai-beach-koh-samui/' ), array( 'Guided jet ski tour', '/product/guided-jet-ski-tour-koh-phangan-from-maenam/' ),
+					array( 'Diving guide', '/koh-samui-diving/' ), array( 'Snorkelling guide', '/koh-samui-snorkeling/' ), array( 'Thai fishing boat trip', '/product/thai-fishing-boat-day-trip-big-buddha-pier-koh-samui/' ), array( 'All fishing trips', '/koh-samui-tours/#fishing' ),
 				) ),
+				array( 'cat' => 'Yachts and transfers', 'items' => array( array( 'All yachts and catamarans', '/koh-samui-tours/#yachts' ), array( 'Private van with driver', '/product/private-van-hire-driver-koh-samui/' ), array( 'All transfers', '/koh-samui-tours/#transfers' ) ) ),
 				array( 'cat' => '', 'items' => array( array( 'All tours', '/koh-samui-tours/' ), array( 'Things to do', '/activities/' ), array( 'Private speedboat', '/koh-samui-private-speedboat/' ), array( 'Sunset cruise', '/koh-samui-sunset-cruise/' ) ) ),
 			),
 		) ),
