@@ -2,12 +2,12 @@
 /**
  * Plugin Name: KP Tour Booking
  * Description: Tour booking for WooCommerce (WooTour replacement): date picker with closures, blackout dates and the midnight-ICT cut-off; adult/child/infant pricing; pickup zones with surcharge; per-boat products; live total; checkout fields; order meta in emails; bookings hub webhook; review-request email; availability REST.
- * Version: 0.1.3
+ * Version: 0.1.4
  * Requires Plugins: woocommerce
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'KPB_VER', '0.1.3' );
+define( 'KPB_VER', '0.1.4' );
 define( 'KPB_DIR', plugin_dir_path( __FILE__ ) );
 define( 'KPB_URL', plugin_dir_url( __FILE__ ) );
 

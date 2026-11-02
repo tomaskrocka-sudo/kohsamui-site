@@ -117,8 +117,12 @@ function kpc_media( $batch ) {
 	require_once ABSPATH . 'wp-admin/includes/file.php'; require_once ABSPATH . 'wp-admin/includes/media.php'; require_once ABSPATH . 'wp-admin/includes/image.php';
 	$media = kpc_manifest()['media'] ?? array(); $keys = array_slice( array_keys( $media ), $batch * 4, 4 ); $map = get_option( 'kpc_media_map', array() );
 	foreach ( $keys as $k ) {
-		if ( ! empty( $map[ $k ] ) && get_post( $map[ $k ] ) ) continue;
-		$it = $media[ $k ]; $tmp = download_url( $it['url'], 120 );
+		$it = $media[ $k ]; $uk = 'u' . md5( $it['url'] );
+		if ( ! empty( $map[ $uk ] ) && get_post( $map[ $uk ] ) ) continue;
+		// Already imported (any earlier key numbering): find it by its exact alt text instead of downloading again.
+		$prev = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_wp_attachment_image_alt', 'meta_value' => $it['alt'] ) );
+		if ( $prev ) { $map[ $uk ] = (int) $prev[0]; update_option( 'kpc_media_map', $map, false ); continue; }
+		$tmp = download_url( $it['url'], 120 );
 		if ( is_wp_error( $tmp ) ) { KP_Log::warning( "Download failed ({$tmp->get_error_message()}): {$it['url']}" ); continue; }
 		$name = sanitize_title( mb_substr( $it['alt'], 0, 70 ) ) . '-' . substr( md5( $it['url'] ), 0, 6 );
 		$ed = wp_get_image_editor( $tmp ); $file = $tmp; $fname = $name . '.' . pathinfo( wp_parse_url( $it['url'], PHP_URL_PATH ), PATHINFO_EXTENSION );
@@ -128,12 +132,14 @@ function kpc_media( $batch ) {
 		update_post_meta( $aid, '_wp_attachment_image_alt', $it['alt'] );
 		wp_update_post( array( 'ID' => $aid, 'post_excerpt' => $it['credit'] ? 'Photo: ' . $it['credit'] . ( $it['licence'] ? ', ' . $it['licence'] : '' ) : 'Photo: Koh Samui Trips team' ) );
 		foreach ( array( 'credit', 'licence', 'source_page' ) as $f ) if ( ! empty( $it[ $f ] ) ) update_post_meta( $aid, 'kp_' . $f, $it[ $f ] );
-		$map[ $k ] = $aid; update_option( 'kpc_media_map', $map, false ); KP_Log::log( "Photo #$aid: {$it['alt']}" );
+		$map[ $uk ] = $aid; update_option( 'kpc_media_map', $map, false ); KP_Log::log( "Photo #$aid: {$it['alt']}" );
 	}
 }
 
 function kpc_assign() {
-	$m = kpc_manifest(); $map = get_option( 'kpc_media_map', array() ); $n = 0;
+	$m = kpc_manifest(); $raw = get_option( 'kpc_media_map', array() ); $n = 0;
+	// Photos are tracked by source URL (key numbers can change between manifest versions).
+	$map = array(); foreach ( $m['media'] ?? array() as $k => $it ) { $id = (int) ( $raw[ 'u' . md5( $it['url'] ) ] ?? 0 ); if ( $id && get_post( $id ) ) $map[ $k ] = $id; }
 	foreach ( $m['posts'] ?? array() as $p ) {
 		$post = get_page_by_path( $p['slug'], OBJECT, $p['type'] ); if ( ! $post ) continue;
 		if ( $p['featured'] && ! empty( $map[ $p['featured'] ] ) ) { set_post_thumbnail( $post->ID, $map[ $p['featured'] ] ); $n++; }

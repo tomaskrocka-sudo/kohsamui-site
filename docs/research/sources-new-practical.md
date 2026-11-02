@@ -103,3 +103,9 @@ Note: the shared WebSearch budget ran out partway through research. Items that c
 - Coworking: Khan Space, Be Productive, Mantra Work Lounge, WYSIWYG, SETADA operating status and prices
 - Long-stay: owner electricity rates per unit, PEA tariff, deposits, water charges, monthly villa ranges by area
 - Non-O-A insurance minimum; Land Office / district office / municipality locations on Samui
+
+## Notes for the editor (2 Nov 2026)
+- private-speedboat-koh-samui-to-koh-phangan: the brief asked for [CXL-DAY], but the matching product (koh-phangan-private-speedboat-transfer-from-big-buddha-pier, products-partner-3.json) uses the partner policy (4+ days full refund minus bank fee; 1–3 days 50%; under 24 h none; weather: new date or full refund). The page states the product's policy. Confirm with Mea which applies.
+- Pages link newly created hubs that now exist in content/: /koh-samui-jungle-safari/, /koh-samui-cooking-class/, /koh-samui-buffalo-fighting/.
+- history-of-koh-samui links https://angthongmarinepark.com/ (sister site).
+- Mu Ko Ang Thong national park declaration year (1980) not verified: [check].

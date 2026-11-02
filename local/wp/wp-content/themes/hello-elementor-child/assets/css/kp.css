@@ -486,3 +486,20 @@ a.kpv-strip-all{flex:0 0 auto;align-self:center;margin-left:4px;padding:10px 16p
 /* Tables: drop the min-width floor where the script sets real widths */
 .kp-tbl table:has(tr>:nth-child(5)){min-width:0}
 .kp-tbl table:has(tr>:nth-child(4)) :is(th,td){min-width:6.5em}
+
+/* Pill buttons for inline actions (directions, maps, Book links in tables and text) */
+.kp-pills{display:inline-flex;flex-wrap:wrap;gap:8px;margin:6px 0 0}
+a.kp-pill{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--kp-border);background:var(--kpd-card);color:var(--kp-ink)!important;font-size:14px;font-weight:600;line-height:1.2;text-decoration:none!important;white-space:nowrap;vertical-align:middle;transition:border-color .15s,background .15s}
+a.kp-pill:hover{border-color:var(--kp-ink)}
+a.kp-pill.kp-pill-accent{background:var(--kp-accent);border-color:var(--kp-accent);color:var(--kp-accent-ink)!important}
+a.kp-pill.kp-pill-accent:hover{background:var(--kp-accent-hover);border-color:var(--kp-accent-hover)}
+a.kp-pill svg{flex:none}
+.kp-tbl a.kp-pill{min-height:32px;padding:0 12px;font-size:13.5px}
+.kp-gps{font-variant-numeric:tabular-nums;color:var(--kp-text);margin-right:4px}
+.kpg-row .kpg-dir{margin-left:auto;min-height:32px;font-size:13px}
+.kpg-chip{min-height:36px}
+.kp-muted{color:var(--kp-muted);font-size:13.5px}
+/* Section "All …" links: clearly clickable */
+.kp-h a{color:var(--kp-ink);text-decoration:underline;text-decoration-color:var(--kp-accent);text-decoration-thickness:2px;text-underline-offset:4px}
+.kp-h a:hover{color:var(--kp-accent-dark)}
+html.kpts-dark .kp-h a{color:var(--kp-ink)}

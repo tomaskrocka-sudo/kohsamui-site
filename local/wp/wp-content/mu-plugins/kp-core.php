@@ -164,3 +164,22 @@ add_filter( 'the_content', function ( $c ) {
 		return '<div class="kp-tbl">' . $m[2] . '</div>';
 	}, $c ) ?? $c;
 }, 20 );
+
+// Content links that are calls to action ("Book …", "Reserve …", "Buy …", "Get tickets", "Get directions") render as buttons.
+add_filter( 'the_content', function ( $c ) {
+	if ( stripos( $c, '<a ' ) === false ) return $c;
+	return preg_replace_callback( '~<a\b([^>]*)>((?:(?!</a>).){1,80})</a>~is', function ( $m ) {
+		$txt = trim( wp_strip_all_tags( $m[2] ) ); if ( ! preg_match( '~^(book|reserve|buy|get tickets|get directions|book now|request)\b~i', $txt ) ) return $m[0];
+		if ( preg_match( '~class="([^"]*)"~', $m[1], $cm ) ) { if ( strpos( $cm[1], 'kp-pill' ) !== false || strpos( $cm[1], 'btn' ) !== false ) return $m[0]; $attrs = str_replace( $cm[0], 'class="' . $cm[1] . ' kp-pill kp-pill-accent"', $m[1] ); }
+		else $attrs = $m[1] . ' class="kp-pill kp-pill-accent"';
+		return '<a' . $attrs . '>' . $m[2] . '</a>';
+	}, $c ) ?? $c;
+}, 21 ); // kp_cta_links
+	}, $c ) ?? $c;
+}, 21 ); // kp_cta_links
+
+// "Updated" date and the page FAQ are editable over the REST API by editors (used by the scheduled fact-check).
+add_action( 'init', function () {
+	foreach ( array( 'page', 'kp_place', 'product', 'kp_event' ) as $pt ) foreach ( array( 'kp_content_updated', 'kp_faq' ) as $k )
+		register_post_meta( $pt, $k, array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'auth_callback' => fn() => current_user_can( 'edit_posts' ) ) );
+}, 20 );

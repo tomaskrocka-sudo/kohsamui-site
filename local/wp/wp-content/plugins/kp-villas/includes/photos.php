@@ -36,7 +36,7 @@ function kpv_import_photos( $id, $limit = 4 ) {
 		$i++; $k = md5( $url ); if ( ! empty( $map[ $k ] ) && get_post_type( $map[ $k ] ) === 'attachment' ) continue;
 		if ( $cover && $cover_src && preg_replace( '#/cf/\w+/#', '/', $cover_src ) === preg_replace( '#/cf/\w+/#', '/', $url ) ) { $map[ $k ] = $cover; continue; }
 		if ( $n >= $limit ) break;
-		$tmp = download_url( $url, 60 ); if ( is_wp_error( $tmp ) ) { kpv_log( "Photo download failed for $title: " . $tmp->get_error_message() ); $map[ $k ] = -1; continue; }
+		$tmp = download_url( $url, 60 ); if ( is_wp_error( $tmp ) || ! filesize( $tmp ) ) { if ( ! is_wp_error( $tmp ) ) @unlink( $tmp ); $fails = ( $fails ?? 0 ) + 1; $map[ $k ] = -1; continue; } // skipped for good (empty or missing at source)
 		$file = $tmp; $ext = 'jpg';
 		$ed = wp_get_image_editor( $tmp );
 		if ( ! is_wp_error( $ed ) ) { $ed->resize( 1600, 1600, false ); if ( $ed->supports_mime_type( 'image/webp' ) ) { $ed->set_quality( 80 ); $sv = $ed->save( $tmp . '.webp', 'image/webp' ); if ( ! is_wp_error( $sv ) ) { @unlink( $tmp ); $file = $sv['path']; $ext = 'webp'; } } }
@@ -44,10 +44,11 @@ function kpv_import_photos( $id, $limit = 4 ) {
 		add_filter( 'intermediate_image_sizes_advanced', 'kpv_photo_sizes' );
 		$aid = media_handle_sideload( array( 'name' => sanitize_title( $title ) . '-' . $i . '-' . substr( $k, 0, 6 ) . '.' . $ext, 'tmp_name' => $file ), $id, $alt );
 		remove_filter( 'intermediate_image_sizes_advanced', 'kpv_photo_sizes' );
-		if ( is_wp_error( $aid ) ) { @unlink( $file ); kpv_log( "Photo import failed for $title: " . $aid->get_error_message() ); continue; }
+		if ( is_wp_error( $aid ) ) { @unlink( $file ); $fails = ( $fails ?? 0 ) + 1; $map[ $k ] = -1; continue; }
 		update_post_meta( $aid, '_wp_attachment_image_alt', $alt ); update_post_meta( $aid, '_source_url', $url ); update_post_meta( $aid, 'kpv_villa_photo', $id );
 		$map[ $k ] = (int) $aid; $n++;
 	}
+	if ( ! empty( $fails ) ) kpv_log( "Photos: $fails could not be downloaded for $title (skipped)." );
 	update_post_meta( $id, 'kpv_photo_map', wp_json_encode( $map ) );
 	$ordered = array(); foreach ( kpv_source_photos( $id ) as $u ) { $a = (int) ( $map[ md5( $u ) ] ?? 0 ); if ( $a > 0 ) $ordered[] = $a; }
 	update_post_meta( $id, 'kpv_photo_ids', wp_json_encode( array_values( array_unique( $ordered ) ) ) );

@@ -106,7 +106,7 @@ function kpv_live_prices( array $slugs, $from, $to, $guests = 2 ) {
 	$qs = array(); foreach ( array_values( $slugs ) as $s ) $qs[] = 'slugs%5B%5D=' . rawurlencode( $s );
 	$qs[] = 'guests=' . max( 1, (int) $guests ); $qs[] = 'host=' . rawurlencode( wp_parse_url( kpv_opt( 'base' ), PHP_URL_HOST ) );
 	$body = kpv_http( '/' . kpv_opt( 'locale' ) . "/api/result-prices/$from/$to?" . implode( '&', $qs ), array( 'headers' => array( 'X-Requested-With' => 'XMLHttpRequest', 'Accept' => 'application/json', 'User-Agent' => 'KohSamuiGuide-VillaSync/1.0' ) ) );
-	$j = $body ? json_decode( $body, true ) : null; if ( ! is_array( $j ) ) return null;
+	$j = $body ? json_decode( $body, true ) : null; $GLOBALS['kpv_last_api'] = array( 'bytes' => strlen( (string) $body ), 'keys' => is_array( $j ) ? array_slice( array_keys( $j ), 0, 4 ) : null ); if ( ! is_array( $j ) ) return null;
 	$out = array(); foreach ( $slugs as $s ) {
 		if ( isset( $j[ $s ]['price'] ) ) { $p = $j[ $s ]['price']; $out[ $s ] = array( 'ok' => true, 'total' => (float) ( $p['discountedPrice'] ?? $p['originalPrice'] ?? 0 ), 'original' => (float) ( $p['originalPrice'] ?? 0 ), 'discount' => (float) ( $p['discountRate'] ?? 0 ), 'currency' => strtoupper( $p['currency']['code'] ?? kpv_opt( 'currency' ) ), 'promotions' => $j[ $s ]['promotions'] ?? array() ); }
 		else $out[ $s ] = array( 'ok' => false );

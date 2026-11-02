@@ -97,6 +97,7 @@ function kpv_avail_step( $calls = 12 ) {
 		if ( $cur['w'] >= count( $weeks ) ) { update_option( 'kpv_avail_status', array( 'time' => time(), 'villas' => count( $slugs ), 'weeks' => count( $weeks ), 'pass_started' => $cur['pass'] ), false ); $cur = array( 'w' => 0, 'c' => 0, 'pass' => time() ); break; }
 		$from = $weeks[ $cur['w'] ]; $to = ( new DateTimeImmutable( $from ) )->modify( "+$nights days" )->format( 'Y-m-d' ); $chunk = $chunks[ $cur['c'] ] ?? array();
 		$res = $chunk ? kpv_live_prices( $chunk, $from, $to, 2 ) : array(); $made++;
+		$dbg = get_option( 'kpv_avail_dbg', array() ); $dbg['calls'] = ( $dbg['calls'] ?? 0 ) + 1; if ( ! is_array( $res ) ) $dbg['null'] = ( $dbg['null'] ?? 0 ) + 1; else { $okn = count( array_filter( $res, fn( $r ) => ! empty( $r['ok'] ) ) ); $dbg['ok'] = ( $dbg['ok'] ?? 0 ) + $okn; $dbg['no'] = ( $dbg['no'] ?? 0 ) + count( $res ) - $okn; } $dbg['last'] = $GLOBALS['kpv_last_api'] ?? null; $dbg['at'] = array( $from, $cur['c'], wp_date( 'H:i' ) ); update_option( 'kpv_avail_dbg', $dbg, false );
 		if ( is_array( $res ) ) foreach ( $res as $slug => $r ) {
 			$id = kpv_post_id( $slug ); if ( ! $id ) continue;
 			$av = kpv_json( $id, 'kpv_avail' ); $av = array_filter( $av, fn( $k ) => $k >= $weeks[0], ARRAY_FILTER_USE_KEY ); // drop past weeks
