@@ -31,7 +31,7 @@ function kpb_config( $product_id ) {
 		'first_date'   => kpb_first_bookable_date( $product_id ),
 		'closed'       => kpb_closed_dates( $product_id ),       // Y-m-d list (seasonal closure + blackouts + sold out)
 		'weekdays'     => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_weekdays' ) ) ) ) ), // e.g. Mon,Wed,Sat; empty = daily
-		'notice'       => $m( 'kp_booking_notice' ),            // e.g. "Season reopens 16 December"
+		'notice'       => trim( preg_replace( array( '/\s*\[[^\]]{0,300}\]/', '/\s+\./' ), array( '', '.' ), (string) $m( 'kp_booking_notice' ) ) ), // e.g. "Season reopens 16 December"; [editor notes] never shown
 		'open_dates'   => array_keys( $ev = kpb_event_dates( $product_id ) ),   // non-empty = only these dates (party boats)
 		'date_prices'  => array_filter( $ev, fn( $v ) => $v !== null ),        // e.g. New Year's Eve price
 		'options'      => kpb_options( $product_id ),             // [{label, price, child?, max_guests?}] e.g. durations or boat sizes
