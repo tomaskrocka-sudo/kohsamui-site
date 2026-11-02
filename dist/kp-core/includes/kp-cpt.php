@@ -74,7 +74,7 @@ add_action( 'init', function () {
 	register_post_type( 'kp_event', array(
 		'labels' => array( 'name' => 'Events', 'singular_name' => 'Event', 'add_new_item' => 'Add event', 'edit_item' => 'Edit event' ),
 		'public' => true, 'show_in_rest' => true, 'has_archive' => false, 'menu_icon' => 'dashicons-calendar-alt',
-		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ),
+		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields' ),
 		'rewrite' => array( 'slug' => 'koh-samui-events/event', 'with_front' => false ),
 		'menu_position' => 21,
 	) );
@@ -85,14 +85,14 @@ add_action( 'init', function () {
 	register_post_type( 'kp_place', array(
 		'labels' => array( 'name' => 'Places', 'singular_name' => 'Place', 'add_new_item' => 'Add place', 'edit_item' => 'Edit place' ),
 		'public' => true, 'show_in_rest' => true, 'has_archive' => false, 'menu_icon' => 'dashicons-location-alt',
-		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'page-attributes' ),
+		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields' ),
 		'rewrite' => false, 'query_var' => false, // top-level slugs like /chaweng-koh-samui/ are resolved in pre_get_posts via the page rule
 		'menu_position' => 22,
 	) );
 	register_post_type( 'kp_villa', array(
 		'labels' => array( 'name' => 'Villas', 'singular_name' => 'Villa', 'add_new_item' => 'Add villa', 'edit_item' => 'Edit villa' ),
 		'public' => true, 'show_in_rest' => true, 'has_archive' => false, 'menu_icon' => 'dashicons-admin-home',
-		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions' ),
+		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'custom-fields' ),
 		'rewrite' => array( 'slug' => 'koh-samui-villas/villa', 'with_front' => false ),
 		'menu_position' => 23,
 	) );
