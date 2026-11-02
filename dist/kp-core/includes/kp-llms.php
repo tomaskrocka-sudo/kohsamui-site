@@ -16,14 +16,30 @@ add_filter( 'query_vars', function ( $v ) { $v[] = 'kp_llms'; return $v; } );
 add_filter( 'redirect_canonical', function ( $redirect ) { return get_query_var( 'kp_llms' ) ? false : $redirect; } );
 add_action( 'template_redirect', function () {
 	$which = get_query_var( 'kp_llms' ); if ( ! $which ) return;
-	$key = 'kp_llms_' . $which; $txt = get_transient( $key );
-	if ( $txt === false ) { $txt = $which === 'full' ? kp_llms_full() : ( $which === 'faq' ? kp_llms_faq() : kp_llms_short() ); set_transient( $key, $txt, 12 * HOUR_IN_SECONDS ); }
+	$key = 'kp_llms2_' . $which; $txt = get_transient( $key );
+	if ( $txt === false ) { $txt = kp_llms_clean( $which === 'full' ? kp_llms_full() : ( $which === 'faq' ? kp_llms_faq() : kp_llms_short() ) ); set_transient( $key, $txt, 12 * HOUR_IN_SECONDS ); }
 	header( 'Content-Type: text/plain; charset=utf-8' ); header( 'Cache-Control: public, max-age=3600' ); header( 'X-Robots-Tag: noindex' );
 	echo $txt; exit;
 } );
-add_action( 'save_post', function () { foreach ( array( 'short', 'full', 'faq' ) as $k ) delete_transient( 'kp_llms_' . $k ); } );
+/** Unverified facts ([check], [ask Mea]…) never reach AI files: a marked part of a line is dropped, a line that is only that is dropped whole. */
+function kp_llms_clean( $txt ) {
+	$out = array();
+	foreach ( explode( "\n", $txt ) as $line ) {
+		if ( ! kp_is_unverified( $line ) ) { $out[] = $line; continue; }
+		$pre = preg_match( '/^((?:- )?[A-Z][A-Za-z ]{1,30}:\s)/', $line, $pm ) ? $pm[1] : ''; $line = substr( $line, strlen( $pre ) );
+		foreach ( array( ' · ', '; ' ) as $sep ) {
+			if ( ! str_contains( $line, $sep ) ) continue;
+			$parts = explode( $sep, $line ); $keep = array();
+			foreach ( $parts as $i => $part ) $keep[] = kp_is_unverified( $part ) ? ( $sep === ' · ' && $i > 0 ? 'n/a' : null ) : $part;
+			$line = implode( $sep, array_filter( $keep, fn( $x ) => $x !== null ) );
+		}
+		if ( trim( $line ) !== '' && ! kp_is_unverified( $line ) ) $out[] = $pre . $line;
+	}
+	return implode( "\n", $out );
+}
+add_action( 'save_post', function () { foreach ( array( 'short', 'full', 'faq' ) as $k ) delete_transient( 'kp_llms2_' . $k ); } );
 if ( ! wp_next_scheduled( 'kp_llms_regen' ) ) wp_schedule_event( strtotime( 'tomorrow 03:10' ), 'daily', 'kp_llms_regen' );
-add_action( 'kp_llms_regen', function () { foreach ( array( 'short', 'full', 'faq' ) as $k ) { delete_transient( 'kp_llms_' . $k ); } } );
+add_action( 'kp_llms_regen', function () { foreach ( array( 'short', 'full', 'faq' ) as $k ) { delete_transient( 'kp_llms2_' . $k ); } } );
 
 function kp_llms_header() {
 	$d = kp_domain(); $brand = KP_BRAND;
