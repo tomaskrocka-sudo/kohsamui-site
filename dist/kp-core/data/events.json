@@ -674,5 +674,217 @@
   "confidence": "verified",
   "last_verified": "2026-10-31",
   "excerpt": "A week of keelboat racing off Chaweng with beach parties and a closing gala."
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "ARKbar Beach Club",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "arkbar-beach-party-fire-show",
+  "title": "ARKbar beach party and fire show",
+  "start": "2026-11-02T20:00:00+07:00",
+  "end": "2026-11-03T02:00:00+07:00",
+  "venue": "ARKbar Beach Club, Chaweng Beach",
+  "area": "Chaweng",
+  "cats": [
+   "Party"
+  ],
+  "recurrence": "weekly:Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+  "excerpt": "Every night on Chaweng Beach: free fire show from 20:00 to about midnight, resident DJs from 22:00 and the beach party until 02:00. Free entry; family-friendly until 21:00, adults only after that.",
+  "content": "<p>ARKbar on central Chaweng Beach runs the island's best-known nightly beach party. The fire show starts at 20:00 and runs on and off until about midnight, resident DJs play from 22:00, and the party peaks between midnight and 02:00, when it closes (later on special nights).</p><p>Entry is free; you pay for what you order. Children are welcome until 21:00, after that it is adults only. A beachfront sunbed for walk-ins has a minimum spend of about 300 THB.</p><p>Getting there: walk along the beach from anywhere in central Chaweng. Need a taxi back to your hotel or a table on a big night? Message us on WhatsApp.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "ARKbar Beach Club",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "arkbar-pool-party",
+  "title": "ARKbar pool party",
+  "start": "2026-11-04T14:00:00+07:00",
+  "end": "2026-11-04T19:00:00+07:00",
+  "venue": "ARKbar Beach Club, Chaweng Beach",
+  "area": "Chaweng",
+  "cats": [
+   "Party"
+  ],
+  "recurrence": "weekly:Wed,Fri",
+  "excerpt": "Wednesday and Friday afternoons: DJs at the ARKbar pool from 14:00 to sunset, then the beach party and fire show from 20:00. Free entry.",
+  "content": "<p>Twice a week ARKbar turns its pool into an afternoon party: DJs from 14:00 until about 19:00, then everyone moves to the beach for the nightly fire show at 20:00 and the beach party until 02:00.</p><p>Free entry; pool loungers and day beds go early, so arrive by 15:00 on busy weeks. Bring ID: the beach is adults only after 21:00.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Coco Tam's",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "coco-tams-fire-show",
+  "title": "Coco Tam's fire shows",
+  "start": "2026-11-02T19:15:00+07:00",
+  "end": "2026-11-02T22:00:00+07:00",
+  "venue": "Coco Tam's, Bophut Beach",
+  "area": "Bophut",
+  "cats": [
+   "Live Music",
+   "Party"
+  ],
+  "recurrence": "weekly:Mon,Tue,Wed,Thu,Fri,Sat,Sun",
+  "excerpt": "Nightly fire shows on the sand at Coco Tam's in Fisherman's Village, at about 19:15 and 21:30. Bean bags and swings on the beach; no entry fee.",
+  "content": "<p>Coco Tam's, the beach bar with bean bags and swing seats on Bophut Beach in Fisherman's Village, puts on two fire shows every night: around 19:15 and 21:30. There is no entry fee, but beach seats fill up on Friday Walking Street nights, so arrive before 19:00.</p><p>The bar is open from midday to about 01:00. Combine it with dinner in Fisherman's Village or the Friday Walking Street.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-amazing-sundays-brunch",
+  "title": "Nikki Beach Amazing Sundays brunch",
+  "start": "2026-11-08T12:00:00+07:00",
+  "end": "2026-11-08T16:30:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink",
+   "Party"
+  ],
+  "recurrence": "weekly:Sun",
+  "excerpt": "Sunday brunch party at Nikki Beach on the west coast, 12:00–16:30, with DJ and sunset afterwards. Book ahead; about 40 minutes from Chaweng.",
+  "content": "<p>Nikki Beach's Amazing Sundays brunch runs from 12:00 to 16:30 at the beach club on Lipa Noi, on Koh Samui's quiet west coast. Expect a long buffet, a DJ and a dressed-up crowd; many people stay on for the sunset over the Five Islands.</p><p>Book a table in advance. Lipa Noi is about 40 minutes by car from Chaweng: we can arrange a private driver for the return trip on WhatsApp.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-friday-bbq-fire-show",
+  "title": "Nikki Beach BBQ dinner and fire show",
+  "start": "2026-11-06T18:00:00+07:00",
+  "end": "2026-11-06T21:00:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink"
+  ],
+  "recurrence": "weekly:Fri",
+  "excerpt": "Friday evening BBQ dinner with a fire show at Nikki Beach on the west coast, 18:00–21:00, right after sunset.",
+  "content": "<p>Every Friday from 18:00 to 21:00 Nikki Beach serves a BBQ dinner with a fire show, just after sunset on the west coast. Reserve ahead.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-christmas-eve-dinner-2026",
+  "title": "Christmas Eve dinner at Nikki Beach",
+  "start": "2026-12-24T18:00:00+07:00",
+  "end": "2026-12-24T22:30:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink"
+  ],
+  "recurrence": "",
+  "excerpt": "Festive dinner at Nikki Beach on Lipa Noi, 18:00–22:30. Book ahead; we can arrange your transfer on WhatsApp.",
+  "content": "<p>Festive dinner at Nikki Beach on Lipa Noi, 18:00–22:30. Book with the venue in advance. Lipa Noi is about 40 minutes from Chaweng: ask us on WhatsApp for a private driver there and back.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-christmas-day-brunch-2026",
+  "title": "Christmas Day brunch at Nikki Beach",
+  "start": "2026-12-25T12:00:00+07:00",
+  "end": "2026-12-25T16:30:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink"
+  ],
+  "recurrence": "",
+  "excerpt": "Christmas Day brunch from 12:00 at Nikki Beach, Lipa Noi. Book ahead; we can arrange your transfer on WhatsApp.",
+  "content": "<p>Christmas Day brunch from 12:00 at Nikki Beach, Lipa Noi. Book with the venue in advance. Lipa Noi is about 40 minutes from Chaweng: ask us on WhatsApp for a private driver there and back.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-bazaar-by-the-beach-2026",
+  "title": "Bazaar by the Beach at Nikki Beach",
+  "start": "2026-12-26T12:00:00+07:00",
+  "end": "2026-12-26T22:00:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Market"
+  ],
+  "recurrence": "",
+  "excerpt": "Boxing Day beach market at Nikki Beach, 12:00–22:00. Book ahead; we can arrange your transfer on WhatsApp.",
+  "content": "<p>Boxing Day beach market at Nikki Beach, 12:00–22:00. Book with the venue in advance. Lipa Noi is about 40 minutes from Chaweng: ask us on WhatsApp for a private driver there and back.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-new-years-eve-gala-2026",
+  "title": "New Year's Eve gala dinner at Nikki Beach",
+  "start": "2026-12-31T18:00:00+07:00",
+  "end": "2027-01-01T01:00:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink"
+  ],
+  "recurrence": "",
+  "excerpt": "New Year's Eve gala dinner at Nikki Beach on Lipa Noi, 18:00–01:00. Book ahead; we can arrange your transfer on WhatsApp.",
+  "content": "<p>New Year's Eve gala dinner at Nikki Beach on Lipa Noi, 18:00–01:00. Book with the venue in advance. Lipa Noi is about 40 minutes from Chaweng: ask us on WhatsApp for a private driver there and back.</p>"
+ },
+ {
+  "lat": "",
+  "lng": "",
+  "ticket_product": "",
+  "organizer": "Nikki Beach Koh Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "price_from": "0",
+  "slug": "nikki-beach-new-years-day-brunch-2027",
+  "title": "New Year's Day brunch at Nikki Beach",
+  "start": "2027-01-01T12:00:00+07:00",
+  "end": "2027-01-01T16:30:00+07:00",
+  "venue": "Nikki Beach Koh Samui, Lipa Noi",
+  "area": "Lipa Noi",
+  "cats": [
+   "Food & Drink"
+  ],
+  "recurrence": "",
+  "excerpt": "New Year's Day brunch from 12:00 at Nikki Beach, Lipa Noi. Book ahead; we can arrange your transfer on WhatsApp.",
+  "content": "<p>New Year's Day brunch from 12:00 at Nikki Beach, Lipa Noi. Book with the venue in advance. Lipa Noi is about 40 minutes from Chaweng: ask us on WhatsApp for a private driver there and back.</p>"
  }
 ]

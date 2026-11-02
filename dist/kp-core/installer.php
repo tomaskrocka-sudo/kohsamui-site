@@ -13,6 +13,7 @@ function kpc_steps() {
 		array( 'home', 'Homepage', 1 ),
 		array( 'media', 'Photos (downloaded from their sources, converted to WebP)', max( 1, (int) ceil( count( $media ) / 4 ) ) ),
 		array( 'assign', 'Hero photos and galleries', 1 ),
+		array( 'boats', 'Real photo galleries of the charter boats', max( 1, (int) ceil( count( function_exists( 'kp_boat_map' ) ? kp_boat_map() : array() ) / 2 ) ) ),
 		array( 'finish', 'Permalinks, caches, first syncs', 1 ),
 	);
 }
@@ -41,7 +42,7 @@ function kpc_setup_page() {
 	echo '</ul>';
 	if ( in_array( false, $req, true ) ) { echo '<p><strong>Install and activate the missing items first.</strong></p></div>'; return; }
 	echo '<table class="widefat striped" style="max-width:820px"><thead><tr><th>Step</th><th>Status</th></tr></thead><tbody>';
-	$upd = array( 'pages', 'media', 'assign', 'finish' );
+	$upd = array( 'pages', 'media', 'assign', 'boats', 'finish' );
 	foreach ( $steps as $s ) echo '<tr data-step="' . esc_attr( $s[0] ) . '" data-batches="' . (int) $s[2] . '"' . ( in_array( $s[0], $upd, true ) ? ' data-upd="1"' : '' ) . '><td>' . esc_html( $s[1] ) . '</td><td class="st">' . ( isset( $done[ $s[0] ] ) ? 'done ' . esc_html( wp_date( 'j M H:i', $done[ $s[0] ] ) ) : '—' ) . '</td></tr>';
 	echo '</tbody></table><p><button class="button button-primary button-hero" id="kpc-upd">Update content and photos</button> <button class="button button-hero" id="kpc-run">Run full setup</button></p><p class="description">Update: imports new and changed guide pages, downloads new photos and assigns them. Full setup also re-applies settings and re-imports tours, events and places.</p><pre id="kpc-log" style="max-height:340px;overflow:auto;background:#fff;padding:10px;border:1px solid #ccd0d4"></pre>';
 	?>
@@ -80,6 +81,9 @@ function kpc_run_step( $step, $batch ) {
 		case 'home': kpc_home(); break;
 		case 'media': kpc_media( $batch ); break;
 		case 'assign': kpc_assign(); break;
+		case 'boats':
+			foreach ( array_slice( kp_boat_map(), $batch * 2, 2, true ) as $slug => $path ) { $n = kp_boat_import( $slug, $path ); KP_Log::log( $n === -1 ? "Boat photos already done: $slug" : ( $n ? "Boat photos: $n for $slug" : "Boat photos: none found for $slug (kept current photos)" ) ); }
+			break;
 		case 'finish': kpc_finish(); break;
 		default: throw new RuntimeException( 'Unknown step ' . $step );
 	}
@@ -142,6 +146,7 @@ function kpc_assign() {
 	$map = array(); foreach ( $m['media'] ?? array() as $k => $it ) { $id = (int) ( $raw[ 'u' . md5( $it['url'] ) ] ?? 0 ); if ( $id && get_post( $id ) ) $map[ $k ] = $id; }
 	foreach ( $m['posts'] ?? array() as $p ) {
 		$post = get_page_by_path( $p['slug'], OBJECT, $p['type'] ); if ( ! $post ) continue;
+		if ( get_post_meta( $post->ID, 'kp_boat_gallery_done', true ) ) continue; // real boat photos win over stand-ins
 		if ( $p['featured'] && ! empty( $map[ $p['featured'] ] ) ) { set_post_thumbnail( $post->ID, $map[ $p['featured'] ] ); $n++; }
 		$g = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $p['gallery'] ?? array() ) ) ); if ( $g && $p['type'] === 'product' ) update_post_meta( $post->ID, '_product_image_gallery', implode( ',', $g ) );
 	}

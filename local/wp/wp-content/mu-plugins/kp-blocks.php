@@ -63,6 +63,20 @@ function kp_event_label( $e ) {
 	}
 	return array( trim( preg_replace( '/\s{2,}/', ' ', $t ) ), $v );
 }
+/** Keep one card per weekly regular (its next night, labelled "Every night" / "Every Wed, Fri"), all dated events, up to $limit. */
+function kp_events_collapse( $ev, $limit ) {
+	$out = array(); $seen = array(); $order = array( 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' );
+	foreach ( $ev as $e ) {
+		$rec = (string) get_post_meta( $e['id'], 'kp_recurrence', true );
+		if ( $rec && str_starts_with( $rec, 'weekly:' ) ) {
+			if ( isset( $seen[ $e['id'] ] ) ) continue; $seen[ $e['id'] ] = 1;
+			$days = array_values( array_intersect( $order, array_map( 'trim', explode( ',', substr( $rec, 7 ) ) ) ) );
+			$e['days'] = $days; $e['rec_label'] = count( $days ) === 7 ? 'Every night' : ( $days === array( 'Fri', 'Sat', 'Sun' ) ? 'Every weekend' : 'Every ' . implode( ', ', $days ) );
+		}
+		$out[] = $e; if ( count( $out ) >= $limit ) break;
+	}
+	return $out;
+}
 /** Picture for an event card: its flyer, else a photo for its category. */
 function kp_event_image( $e ) {
 	if ( ! empty( $e['thumb'] ) ) return $e['thumb'];
@@ -73,16 +87,17 @@ function kp_event_image( $e ) {
 /** Event cards: [kp_events limit="30" to="+30 days" category="" chips="1" layout="grid|rail"] */
 add_shortcode( 'kp_events', function ( $a ) {
 	$a = (array) $a;
-	$ev = kp_upcoming_events( array( 'to' => $a['to'] ?? '+30 days', 'limit' => (int) ( $a['limit'] ?? 30 ), 'category' => $a['category'] ?? '' ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
+	// Weekly regulars (ARKbar every night, walking streets…) appear once with their days; dated nights are listed one by one.
+	$ev = kp_events_collapse( kp_upcoming_events( array( 'to' => $a['to'] ?? '+30 days', 'limit' => 600, 'category' => $a['category'] ?? '' ) ), (int) ( $a['limit'] ?? 30 ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
 	$rail = ( $a['layout'] ?? '' ) === 'rail'; $chips_on = ! $rail && ( $a['chips'] ?? '1' ) !== '0'; $h = '';
 	if ( $chips_on ) { $chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
 		$present = array(); foreach ( $ev as $e ) foreach ( $e['cats'] as $c ) $present[ sanitize_title( $c ) ] = 1;
 		$h .= '<div class="kp-ev-filters" role="tablist">'; foreach ( $chips as $k => $l ) { if ( ! in_array( $k, array( 'all', 'live', 'today', 'tomorrow', 'weekend' ), true ) && empty( $present[ $k ] ) ) continue; $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . $k . '">' . $l . '</button>'; } $h .= '</div>'; }
 	$h .= $rail ? '<div class="kp-rail kp-ev-grid" data-rail>' : '<div class="kp-ev-grid">';
 	$today = wp_date( 'Y-m-d' ); $tom = wp_date( 'Y-m-d', strtotime( '+1 day' ) );
-	foreach ( $ev as $e ) { $d = $e['start']->format( 'Y-m-d' ); $dow = (int) $e['start']->format( 'N' ); $tags = array_map( fn( $c ) => sanitize_title( $c ), $e['cats'] ); if ( $e['live'] ) $tags[] = 'live'; if ( $d === $today ) $tags[] = 'today'; if ( $d === $tom ) $tags[] = 'tomorrow'; if ( $dow >= 5 ) $tags[] = 'weekend';
-		[ $title, $venue ] = kp_event_label( $e ); $img = kp_event_image( $e ); $when = $e['live'] ? 'Live now' : ( $d === $today ? 'Today' : ( $d === $tom ? 'Tomorrow' : $e['start']->format( 'D j M' ) ) );
-		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '"' . kp_when_attrs( $e ) . '>' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title . ( $venue ? ' at ' . $venue : '' ) . ', Koh Samui' ) . '" loading="lazy" decoding="async" width="768" height="576">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $when . ' · ' . $e['start']->format( 'H:i' ) ) . ( $e['end'] ? '–' . esc_html( $e['end']->format( 'H:i' ) ) : '' ) . '</span><span class="kp-ev-title">' . esc_html( $title ) . '</span>' . ( $venue ? '<span class="kp-ev-venue">' . esc_html( $venue ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">From ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
+	foreach ( $ev as $e ) { $d = $e['start']->format( 'Y-m-d' ); $dow = (int) $e['start']->format( 'N' ); $tags = array_map( fn( $c ) => sanitize_title( $c ), $e['cats'] ); if ( $e['live'] ) $tags[] = 'live'; if ( $d === $today ) $tags[] = 'today'; if ( $d === $tom ) $tags[] = 'tomorrow'; if ( $dow >= 5 ) $tags[] = 'weekend'; if ( ! empty( $e['days'] ) ) { $td = wp_date( 'D' ); $tmd = wp_date( 'D', strtotime( '+1 day' ) ); if ( in_array( $td, $e['days'], true ) ) $tags[] = 'today'; if ( in_array( $tmd, $e['days'], true ) ) $tags[] = 'tomorrow'; if ( array_intersect( array( 'Fri', 'Sat', 'Sun' ), $e['days'] ) ) $tags[] = 'weekend'; $tags = array_values( array_unique( $tags ) ); }
+		[ $title, $venue ] = kp_event_label( $e ); $img = kp_event_image( $e ); $when = ! empty( $e['rec_label'] ) ? $e['rec_label'] : ( $e['live'] ? 'Live now' : ( $d === $today ? 'Today' : ( $d === $tom ? 'Tomorrow' : $e['start']->format( 'D j M' ) ) ) );
+		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '"' . ( empty( $e['days'] ) ? kp_when_attrs( $e ) : '' ) . '>' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title . ( $venue ? ' at ' . $venue : '' ) . ', Koh Samui' ) . '" loading="lazy" decoding="async" width="768" height="576">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $when . ' · ' . $e['start']->format( 'H:i' ) ) . ( $e['end'] ? '–' . esc_html( $e['end']->format( 'H:i' ) ) : '' ) . '</span><span class="kp-ev-title">' . esc_html( $title ) . '</span>' . ( $venue ? '<span class="kp-ev-venue">' . esc_html( $venue ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">From ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
 	return $h . '</div>';
 } );
 /** One product card (kohphangan.com kp-g style): photo + badge, kicker, title, meta, real rating, cancellation, From price. */

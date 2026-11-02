@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KP Site Core (Koh Samui Trips)
  * Description: Core features of kohsamuitrips.com: tours and villas data model, events, places, schema, breadcrumbs, llms.txt, live weather/sea/tides, opening hours, phangan.events sync, shortcodes, plus the one-click site installer (Tools → Koh Samui Trips setup).
- * Version: 1.1.11
+ * Version: 1.2.1
  * Requires PHP: 8.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -19,7 +19,7 @@ if ( ! class_exists( 'KP_Log' ) ) {
 		public static function error( $m ) { self::$lines[] = 'Error: ' . $m; throw new RuntimeException( $m ); }
 	}
 }
-foreach ( array( 'kp-core', 'kp-cpt', 'kp-content-meta', 'kp-schema', 'kp-breadcrumbs', 'kp-llms', 'kp-live', 'kp-blocks', 'kp-hours', 'kp-sync-phev', 'kp-cli' ) as $f ) require_once KPC_DIR . 'includes/' . $f . '.php';
+foreach ( array( 'kp-core', 'kp-cpt', 'kp-content-meta', 'kp-schema', 'kp-breadcrumbs', 'kp-llms', 'kp-live', 'kp-blocks', 'kp-hours', 'kp-sync-phev', 'kp-boat-photos', 'kp-cli' ) as $f ) require_once KPC_DIR . 'includes/' . $f . '.php';
 if ( is_admin() || wp_doing_ajax() ) require_once KPC_DIR . 'installer.php';
 
 register_activation_hook( __FILE__, function () { update_option( 'kpc_flush_rewrite', 1 ); } );
