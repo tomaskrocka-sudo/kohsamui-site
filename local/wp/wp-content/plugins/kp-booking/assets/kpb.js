@@ -9,7 +9,7 @@
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
   var open = cfg.open_dates || [];
-  function isOpen(s, d) { if (s < cfg.first_date) return false; if (open.length && open.indexOf(s) < 0) return false; if (closed[s]) return false; if (weekdays.length && weekdays.indexOf(DAYS[d.getDay()]) < 0) return false; return true; }
+  function isOpen(s, d) { if (s < cfg.first_date) return false; if (open.length && open.indexOf(s) < 0) return false; if (closed[s]) return false; if (weekdays.length && weekdays.indexOf(DAYS[d.getDay()]) < 0) return false; var os = root.querySelector('#kpb_option'), oc = (cfg.opt_closed || [])[os ? +os.value || 0 : 0]; if (oc && s.slice(5) >= oc[0] && s.slice(5) <= oc[1]) return false; return true; }
 
   /* Calendar: two months, keyboard accessible */
   var firstOpen = open.filter(function (x) { return x >= cfg.first_date; })[0] || cfg.first_date;
@@ -106,7 +106,7 @@
     if (chw) { chw.hidden = !(showX && ex.child !== null); fill(chw.querySelector('select'), 0, n); root.querySelector('#kpb_chlab').textContent = ex && ex.child !== null ? ' ' + (ex.child_band ? ex.child_band + ' ' : '') + '(+' + Math.round(ex.child).toLocaleString('en-GB') + ' THB if extra)' : ''; }
     if (frw) { frw.hidden = !(showX && ex.free_band); fill(frw.querySelector('select'), 0, n); root.querySelector('#kpb_frlab').textContent = ex && ex.free_band ? ' ' + ex.free_band + ' (free)' : ''; }
   }
-  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', function () { touched = true; if (el.id === 'kpb_option' || el.id === 'kpb_guests') boatUi(); quote(); }); });
+  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', function () { touched = true; if (el.id === 'kpb_option' || el.id === 'kpb_guests') boatUi(); if (el.id === 'kpb_option') render(); quote(); }); });
   boatUi();
   document.addEventListener('kp:currency', quote);
   form.addEventListener('submit', function (e) {

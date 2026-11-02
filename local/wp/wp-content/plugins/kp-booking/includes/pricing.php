@@ -39,7 +39,12 @@ function kpb_config( $product_id ) {
 	);
 	$cfg['extra'] = $per === 'boat' ? kpb_extra_rules( $product_id, $cfg['options'], $cfg['max_guests'] ) : array(); // per option index: extra-guest fees or null
 	if ( array_filter( $cfg['extra'] ) && $cfg['notice'] ) $cfg['notice'] = kpb_extra_notice( $cfg['notice'] );
+	$cfg['opt_closed'] = array_map( 'kpb_option_closure', array_column( $cfg['options'], 'label' ) ); // per option index: [from MM-DD, to MM-DD] or null
 	return apply_filters( 'kpb_config', $cfg, $product_id );
+}
+/** An option that goes to Ang Thong is closed with the park (1 Nov–15 Dec), whatever the boat's own season. */
+function kpb_option_closure( $label ) {
+	return preg_match( '/ang\s?thong/i', (string) $label ) ? array( '11-01', '12-15' ) : null;
 }
 
 /** Price options from kp_options meta: one per line "Label | price | child price | max guests" (child/max optional). */
@@ -87,6 +92,7 @@ function kpb_price( $product_id, $sel ) {
 	elseif ( in_array( $date, $cfg['closed'], true ) ) $errors[] = 'This date is not available. ' . ( $cfg['notice'] ?: 'Please choose another date.' );
 	elseif ( $cfg['open_dates'] && ! in_array( $date, $cfg['open_dates'], true ) ) $errors[] = 'This runs on set dates only. Please choose one of the highlighted dates.';
 	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
+	elseif ( ( $oc = kpb_option_closure( $opt_label ) ) && substr( $date, 5 ) >= $oc[0] && substr( $date, 5 ) <= $oc[1] ) $errors[] = 'Ang Thong Marine Park is closed from 1 November to 15 December. Choose a date from 16 December, or another trip on this boat.';
 
 	if ( $cfg['per'] === 'boat' ) {
 		$guests = $adults + $children + $infants; $ex = $cfg['extra'][ $cfg['options'] ? (int) ( $sel['option'] ?? 0 ) : 0 ] ?? null;
