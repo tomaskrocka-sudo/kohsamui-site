@@ -80,12 +80,13 @@ function kp_sea_state( $waves ) {
 /* ---------- Shortcodes for the live strip ---------- */
 add_shortcode( 'kp_time', fn() => '<span class="kp-time" data-tz="Asia/Bangkok">' . esc_html( wp_date( 'H:i' ) ) . ' ICT</span>' );
 add_shortcode( 'kp_weather_now', function ( $a ) {
-	$w = kp_weather(); if ( empty( $w['current'] ) ) return '<span class="kp-wx kp-wx-off">Live weather unavailable</span>';
+	$w = kp_weather(); if ( empty( $w['current'] ) ) return '<span class="kp-wx kp-wx-loading" data-kp-live="weather" data-lat="' . esc_attr( KP_ISLAND_LAT ) . '" data-lng="' . esc_attr( KP_ISLAND_LNG ) . '">Loading live weather…</span>';
 	$c = $w['current']; $d = $w['daily'];
 	return '<span class="kp-wx" data-updated="' . esc_attr( $w['updated'] ) . '">' . round( $c['temperature_2m'] ) . '°C · H ' . round( $d['temperature_2m_max'][0] ) . '° L ' . round( $d['temperature_2m_min'][0] ) . '° · rain ' . (int) $d['precipitation_probability_max'][0] . '% · wind ' . round( $c['wind_speed_10m'] ) . ' km/h</span>';
 } );
 add_shortcode( 'kp_tide_now', function ( $a ) {
-	$m = kp_marine( $a['point'] ?? 'chaweng' ); if ( empty( $m['tide']['now'] ) ) return '<span class="kpl-tnow kp-wx-off">Live tide unavailable</span>';
+	$pt = kp_marine_points()[ $a['point'] ?? 'chaweng' ] ?? kp_marine_points()['chaweng'];
+	$m = kp_marine( $a['point'] ?? 'chaweng' ); if ( empty( $m['tide']['now'] ) ) return '<span class="kpl-tnow kp-wx-loading" data-kp-live="tide" data-lat="' . esc_attr( $pt[0] ) . '" data-lng="' . esc_attr( $pt[1] ) . '">Loading live tide…</span>';
 	$t = $m['tide']; $tz = new DateTimeZone( KP_TZ ); $now = new DateTimeImmutable( 'now', $tz );
 	$h = '<span class="kpl-tnow">Tide now (' . substr( $t['now']['time'], 11, 5 ) . ') ' . number_format( $t['now']['height'], 2 ) . ' m ' . ucfirst( $t['now']['trend'] );
 	if ( ! empty( $t['next_high'] ) ) { $nh = new DateTimeImmutable( $t['next_high']['time'], $tz ); $diff = $now->diff( $nh ); $h .= ' · Next high tide ' . $nh->format( 'H:i' ) . ' ' . number_format( $t['next_high']['height'], 2 ) . ' m · in ' . $diff->h . ' h ' . $diff->i . ' min'; }
@@ -93,6 +94,19 @@ add_shortcode( 'kp_tide_now', function ( $a ) {
 	return $h . '</span>';
 } );
 add_shortcode( 'kp_sea_now', function ( $a ) {
-	$m = kp_marine( $a['point'] ?? 'chaweng' ); if ( empty( $m['sea_state'] ) ) return '<span class="kp-sea kp-wx-off">Live sea data unavailable</span>';
+	$pt = kp_marine_points()[ $a['point'] ?? 'chaweng' ] ?? kp_marine_points()['chaweng'];
+	$m = kp_marine( $a['point'] ?? 'chaweng' ); if ( empty( $m['sea_state'] ) ) return '<span class="kp-sea kp-wx-loading" data-kp-live="sea" data-lat="' . esc_attr( $pt[0] ) . '" data-lng="' . esc_attr( $pt[1] ) . '">Loading live sea conditions…</span>';
 	return '<span class="kp-sea kp-sea-' . strtolower( $m['sea_state']['label'] ) . '"><strong>' . esc_html( $m['sea_state']['label'] ) . '</strong> · waves up to ' . $m['sea_state']['max_wave_today_m'] . ' m today · ' . esc_html( $m['sea_state']['verdict'] ) . '</span>';
 } );
+
+/* Browser fallback: if the server could not fetch live data (or the page was cached), the visitor's browser loads it straight from Open-Meteo (free, CORS-enabled) and renders the same text. */
+add_action( 'wp_footer', function () { ?>
+<script id="kp-live">(function(){var els=document.querySelectorAll('[data-kp-live]');if(!els.length)return;
+function r(n){return Math.round(n)}function hm(t){return t.slice(11,16)}
+function fail(el){el.classList.remove('kp-wx-loading');el.classList.add('kp-wx-off');el.innerHTML='Live data is loading slowly. <a href="https://www.windy.com/9.512/100.013?waves,9.512,100.013,9" target="_blank" rel="noopener">See the live forecast on Windy</a>';}
+function sea(w){var t=w.slice(0,24).filter(function(x){return x!=null}),m=Math.max.apply(null,t);var l=m<0.5?'Calm':m<1?'Slight':m<1.5?'Choppy':'Rough';var v=m<1?'Good conditions for boat trips.':m<1.5?'Choppy: speedboats run but expect bumps; take seasickness tablets.':'Rough: trips may be rescheduled for safety. We contact booked guests the evening before.';return{l:l,m:Math.round(m*10)/10,v:v}}
+function tide(times,lv){var now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'})),ex=[],idx=-1,i;for(i=1;i<lv.length-1;i++){if(lv[i]==null)continue;if(lv[i]>lv[i-1]&&lv[i]>=lv[i+1])ex.push(['high',times[i],lv[i]]);if(lv[i]<lv[i-1]&&lv[i]<=lv[i+1])ex.push(['low',times[i],lv[i]])}for(i=0;i<times.length;i++)if(new Date(times[i])<=now)idx=i;if(idx<0)return null;var o={now:[times[idx],lv[idx],lv[idx+1]>lv[idx]?'Rising':'Falling']};for(i=0;i<ex.length;i++)if(new Date(ex[i][1])>now&&ex[i][0]==='high'){o.hi=ex[i];break}return o}
+els.forEach(function(el){var k=el.getAttribute('data-kp-live'),la=el.getAttribute('data-lat'),lo=el.getAttribute('data-lng');
+if(k==='weather'){fetch('https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+'&timezone=Asia%2FBangkok&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=1').then(function(x){return x.json()}).then(function(j){el.classList.remove('kp-wx-loading');el.textContent=r(j.current.temperature_2m)+'°C · H '+r(j.daily.temperature_2m_max[0])+'° L '+r(j.daily.temperature_2m_min[0])+'° · rain '+(j.daily.precipitation_probability_max[0]|0)+'% · wind '+r(j.current.wind_speed_10m)+' km/h'}).catch(function(){fail(el)})}
+else{fetch('https://marine-api.open-meteo.com/v1/marine?latitude='+la+'&longitude='+lo+'&timezone=Asia%2FBangkok&hourly=sea_level_height_msl,wave_height&forecast_days=3').then(function(x){return x.json()}).then(function(j){el.classList.remove('kp-wx-loading');if(k==='sea'){var s=sea(j.hourly.wave_height);el.className='kp-sea kp-sea-'+s.l.toLowerCase();el.innerHTML='<strong>'+s.l+'</strong> · waves up to '+s.m+' m today · '+s.v}else{var t=tide(j.hourly.time,j.hourly.sea_level_height_msl);if(!t){fail(el);return}var h='Tide now ('+hm(t.now[0])+') '+t.now[1].toFixed(2)+' m '+t.now[2];if(t.hi){var d=(new Date(t.hi[1])-new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'})))/60000;h+=' · Next high tide '+hm(t.hi[1])+' '+t.hi[2].toFixed(2)+' m · in '+Math.floor(d/60)+' h '+Math.round(d%60)+' min'}el.textContent=h}}).catch(function(){fail(el)})}});})();</script>
+<?php }, 40 );
