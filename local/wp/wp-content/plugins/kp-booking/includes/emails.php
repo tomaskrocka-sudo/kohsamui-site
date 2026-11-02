@@ -84,11 +84,9 @@ function kpb_owner_summary_html( $order ) {
 
 // The owner alert is Woo's "New order" email, sent to the Bookings alert addresses (Bookings → Settings).
 add_filter( 'woocommerce_email_recipient_new_order', function ( $r ) { $a = kpb_alert_addresses(); return $a ? implode( ',', $a ) : $r; } );
-// Guests who reply reach the team inbox.
-add_filter( 'woocommerce_email_headers', function ( $headers, $id, $obj ) {
-	if ( str_starts_with( (string) $id, 'customer_' ) && ( $a = kpb_alert_addresses() ) ) $headers .= 'Reply-To: ' . ( defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' ) ) . ' <' . $a[0] . ">\r\n";
-	return $headers;
-}, 10, 3 );
+// Every site email (review requests, password resets…) goes out from the booking address, not wordpress@; guests' replies land there too.
+add_filter( 'wp_mail_from', function ( $f ) { $a = (string) get_option( 'woocommerce_email_from_address' ); return ( str_starts_with( (string) $f, 'wordpress@' ) && is_email( $a ) ) ? $a : $f; } );
+add_filter( 'wp_mail_from_name', function ( $n ) { return $n === 'WordPress' ? ( defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' ) ) : $n; } );
 // Subjects and headings that say what the email is.
 function kpb_first_trip( $order ) { $t = kpb_order_trips( $order ); return $t ? $t[0] : array( 'name' => '', 'date' => '' ); }
 add_filter( 'woocommerce_email_subject_customer_processing_order', function ( $s, $order ) { if ( ! $order ) return $s; $t = kpb_first_trip( $order ); return 'Booking received: ' . $t['name'] . ( $t['date'] ? ', ' . $t['date'] : '' ) . ' (' . kpb_order_ref( $order ) . ')'; }, 10, 2 );

@@ -54,11 +54,17 @@ function kpb_bookings_page() {
 }
 function kpb_settings_page() {
 	if ( isset( $_POST['kpb_save'] ) && check_admin_referer( 'kpb_settings' ) ) {
-		foreach ( array( 'kpb_ref_prefix', 'kpb_hub_url', 'kpb_hub_secret', 'kpb_site_id', 'kp_gbp_review_url', 'kpb_alert_emails', 'kpb_gmaps_key' ) as $k ) update_option( $k, sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ) );
+		foreach ( array( 'kpb_ref_prefix', 'kpb_hub_url', 'kpb_hub_secret', 'kpb_site_id', 'kp_gbp_review_url', 'kpb_alert_emails', 'kpb_gmaps_key' ) as $k ) {
+			$v = sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) );
+			if ( in_array( $k, array( 'kpb_gmaps_key', 'kpb_hub_secret' ), true ) && $v === '' && empty( $_POST[ $k . '_clear' ] ) ) continue; // secrets: an empty box keeps the saved value
+			update_option( $k, $v );
+		}
 		echo '<div class="updated"><p>Saved.</p></div>';
 	}
 	echo '<div class="wrap"><h1>Booking settings</h1><form method="post">'; wp_nonce_field( 'kpb_settings' ); echo '<table class="form-table">';
 	foreach ( array( 'kpb_ref_prefix' => 'Booking reference prefix (e.g. KS)', 'kpb_site_id' => 'Site ID sent to the bookings hub (e.g. kohsamui)', 'kpb_hub_url' => 'Bookings hub webhook URL (https://bookings.speedboatsamui.com/wp-json/…)', 'kpb_hub_secret' => 'Hub shared secret (HMAC)', 'kpb_alert_emails' => 'New-booking alert emails (comma separated)', 'kpb_gmaps_key' => 'Google Maps API key for the hotel picker (Places API (New), restrict to kohsamuitrips.com/*)', 'kp_gbp_review_url' => 'Google review link (for the day+1 email)' ) as $k => $l )
+		if ( in_array( $k, array( 'kpb_gmaps_key', 'kpb_hub_secret' ), true ) ) { $cur = (string) get_option( $k, '' );
+			echo '<tr><th><label for="' . $k . '">' . esc_html( $l ) . '</label></th><td><input type="password" autocomplete="off" class="regular-text" id="' . $k . '" name="' . $k . '" value="" placeholder="' . esc_attr( $cur !== '' ? 'Saved (ends …' . substr( $cur, -4 ) . '). Paste a new one to replace it.' : 'Not set' ) . '">' . ( $cur !== '' ? ' <label><input type="checkbox" name="' . $k . '_clear" value="1"> Remove</label>' : '' ) . '</td></tr>'; continue; }
 		echo '<tr><th><label for="' . $k . '">' . esc_html( $l ) . '</label></th><td><input type="text" class="regular-text" id="' . $k . '" name="' . $k . '" value="' . esc_attr( get_option( $k, '' ) ) . '"></td></tr>';
 	echo '</table><p><button class="button button-primary" name="kpb_save" value="1">Save</button></p></form></div>';
 }
