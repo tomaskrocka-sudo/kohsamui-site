@@ -12,7 +12,7 @@
   var found = document.createElement('p'); found.className = 'kpb-hl-found'; found.hidden = true; row.appendChild(found);
   function hidden(name) { var h = form.querySelector('input[name="' + name + '"]'); if (!h) { h = document.createElement('input'); h.type = 'hidden'; h.name = name; form.appendChild(h); } return h; }
   var hLat = hidden('kpb_hotel_lat'), hLng = hidden('kpb_hotel_lng'), hPid = hidden('kpb_hotel_pid');
-  var items = [], active = -1, timer = null, google = !!KPBH.gkey, gLib = null, gToken = null, osm = null, seq = 0;
+  var items = [], active = -1, timer = null, useG = !!KPBH.gkey, gLib = null, gToken = null, osm = null, seq = 0;
   var BOUNDS = { south: 9.39, west: 99.90, north: 9.61, east: 100.11 };
 
   function clearPick() { hLat.value = ''; hLng.value = ''; hPid.value = ''; found.hidden = true; }
@@ -27,7 +27,7 @@
       list.appendChild(li);
     });
     var foot = document.createElement('li'); foot.className = 'kpb-hl-foot'; foot.setAttribute('aria-hidden', 'true');
-    foot.innerHTML = (note ? esc(note) + ' · ' : '') + (google ? 'powered by Google' : 'Hotel list © OpenStreetMap contributors');
+    foot.innerHTML = (note ? esc(note) + ' · ' : '') + (useG ? 'powered by Google' : 'Hotel list © OpenStreetMap contributors');
     list.appendChild(foot);
     list.hidden = false; input.setAttribute('aria-expanded', 'true');
     if (active >= 0) input.setAttribute('aria-activedescendant', 'kpb-hl-' + active); else input.removeAttribute('aria-activedescendant');
@@ -64,12 +64,12 @@
   function gLoad() {
     if (gLib) return Promise.resolve(gLib);
     return new Promise(function (ok, fail) {
-      if (window.google && google.maps && google.maps.importLibrary) return ok();
+      if (window.google && window.google.maps && window.google.maps.importLibrary) return ok();
       window.__kpbGmaps = ok;
       var s = document.createElement('script'); s.async = true; s.onerror = fail;
       s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(KPBH.gkey) + '&v=weekly&loading=async&callback=__kpbGmaps&language=en&region=TH';
       document.head.appendChild(s);
-    }).then(function () { return google.maps.importLibrary('places'); }).then(function (lib) { gLib = lib; return lib; });
+    }).then(function () { return window.google.maps.importLibrary('places'); }).then(function (lib) { gLib = lib; return lib; });
   }
   function gSearch(q) {
     return gLoad().then(function (lib) {
@@ -84,13 +84,13 @@
   function search() {
     var q = input.value.trim(); if (q.length < 2) { close(); return; }
     var my = ++seq;
-    (google ? gSearch(q).catch(function () { google = false; return osmSearch(q); }) : osmSearch(q)).then(function (res) {
+    (useG ? gSearch(q).catch(function (e) { if (window.console) console.warn('KP hotel picker: Google search failed, using the OpenStreetMap list.', e); useG = false; return osmSearch(q); }) : osmSearch(q)).then(function (res) {
       if (my !== seq) return; items = res; active = -1;
       render(res.length ? '' : 'Not on the list? Keep typing, the name is enough');
     }).catch(function () { close(); });
   }
-  input.addEventListener('input', function () { clearPick(); clearTimeout(timer); timer = setTimeout(search, google ? 300 : 120); });
-  input.addEventListener('focus', function () { if (!google) osmLoad(); });
+  input.addEventListener('input', function () { clearPick(); clearTimeout(timer); timer = setTimeout(search, useG ? 300 : 120); });
+  input.addEventListener('focus', function () { if (useG) gLoad().catch(function () {}); else osmLoad(); });
   input.addEventListener('keydown', function (e) {
     if (list.hidden) return;
     if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, items.length - 1); render(); }
