@@ -150,3 +150,24 @@
   var c = read();
   if (c) { if (c.indexOf('a1') > -1) apply(1, false); } else { open(false); }
 })();
+
+/* Galleries: swipe/arrow/keyboard stage, thumbnail strip, counter; hero thumbnails open the gallery at that photo. */
+(function () {
+  var gal = document.querySelector('.kpv-gal'); if (!gal) return;
+  var track = gal.querySelector('.kpv-gal-track'), figs = track.querySelectorAll('figure'), strip = gal.querySelectorAll('.kpv-gal-strip button'), num = gal.querySelector('[data-kpg-i]'), hero = document.querySelectorAll('.kpv-thumbs [data-kpg]');
+  var cur = 0;
+  function mark(i) {
+    cur = i; if (num) num.textContent = i + 1;
+    strip.forEach(function (b, k) { b.classList.toggle('on', k === i); if (k === i && b.scrollIntoView && b.parentNode.scrollWidth > b.parentNode.clientWidth) { var p = b.parentNode; p.scrollTo({ left: b.offsetLeft - p.clientWidth / 2 + b.clientWidth / 2, behavior: 'smooth' }); } });
+    hero.forEach(function (b) { b.classList.toggle('on', +b.getAttribute('data-kpg') === i); });
+  }
+  function go(i, smooth) { i = (i + figs.length) % figs.length; track.scrollTo({ left: i * track.clientWidth, behavior: smooth === false ? 'auto' : 'smooth' }); mark(i); }
+  var t; track.addEventListener('scroll', function () { clearTimeout(t); t = setTimeout(function () { var i = Math.round(track.scrollLeft / track.clientWidth); if (i !== cur) mark(i); }, 60); }, { passive: true });
+  gal.addEventListener('click', function (e) { var b = e.target.closest('[data-kpg-d],[data-kpg]'); if (!b) return; if (b.hasAttribute('data-kpg-d')) go(cur + +b.getAttribute('data-kpg-d')); else go(+b.getAttribute('data-kpg')); });
+  track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); } });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.kpv-thumbs [data-kpg]'); if (!b) return; e.preventDefault();
+    var i = +b.getAttribute('data-kpg'); gal.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(function () { go(i, false); }, 350);
+  });
+  window.addEventListener('resize', function () { go(cur, false); });
+})();

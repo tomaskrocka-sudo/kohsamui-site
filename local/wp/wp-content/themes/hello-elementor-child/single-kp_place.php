@@ -9,7 +9,6 @@ while ( have_posts() ) : the_post();
 	echo '<div class="kpa-w"><div class="kpa-main"><article class="kpa-body">';
 	kpt_byline();
 	if ( has_excerpt() ) echo '<p class="kp-lead">' . esc_html( get_the_excerpt() ) . '</p>';
-	if ( count( $photo_ids ) > 2 && function_exists( 'kpt_photo_grid' ) ) echo kpt_photo_grid( $photo_ids, get_the_title() );
 	$raw = (string) get_post_field( 'post_content', get_the_ID() );
 	// Pages that bring their own at-a-glance table or map don't get a second one from the template.
 	if ( stripos( $raw, 'at a glance' ) === false ) echo '<h2>At a glance</h2>' . do_shortcode( '[kp_glance]' );
@@ -20,6 +19,7 @@ while ( have_posts() ) : the_post();
 	echo '</article>';
 	kpt_side_card();
 	echo '</div></div>';
+	if ( count( $photo_ids ) > 1 && function_exists( 'kpt_gallery' ) ) echo kpt_gallery( $photo_ids, get_the_title(), 'Photos of ' . trim( preg_replace( '/[:(,].*$/', '', get_the_title() ) ) . '. Swipe or use the arrows to look around before you go.' );
 	kpt_related( 'More places on Koh Samui' );
 	kpt_mbar();
 endwhile;

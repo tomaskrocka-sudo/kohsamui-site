@@ -12,8 +12,6 @@ while ( have_posts() ) : the_post();
 	woocommerce_output_all_notices();
 	echo '<p class="kp-lead">' . esc_html( wp_strip_all_tags( $product->get_short_description() ) ) . '</p>';
 	echo '<div class="kpv-product"><div>';
-	// Gallery (lightbox; the hero strip shows the same photos)
-	if ( count( $photo_ids ) > 1 ) echo kpt_photo_grid( $photo_ids, get_the_title() );
 	// At a glance
 	echo '<h2>' . esc_html( get_the_title() ) . ' at a glance</h2><table class="kp-glance"><tbody>';
 	foreach ( array( 'kp_duration' => 'Duration', 'kp_boat' => 'Boat', 'kp_pier' => 'Departure pier', 'kp_pickup_window' => 'Pickup', 'kp_return' => 'Return', 'kp_season' => 'Season', 'kp_park_fee' => 'Fees not included' ) as $k => $l ) { $v = $m( $k ); if ( $v && ! kp_is_unverified( $v ) ) echo '<tr><th>' . esc_html( $l ) . '</th><td>' . esc_html( $v ) . '</td></tr>'; }
@@ -49,7 +47,10 @@ while ( have_posts() ) : the_post();
 	foreach ( array( 'woocommerce_template_single_title' => 5, 'woocommerce_template_single_rating' => 10, 'woocommerce_template_single_price' => 10, 'woocommerce_template_single_excerpt' => 20, 'woocommerce_template_single_meta' => 40, 'woocommerce_template_single_sharing' => 50 ) as $fn => $pr ) remove_action( 'woocommerce_single_product_summary', $fn, $pr );
 	if ( ! ( function_exists( 'kpb_is_bookable' ) && kpb_is_bookable( $id ) ) ) remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 	echo '</div><div class="kpv-book">'; do_action( 'woocommerce_single_product_summary' ); echo '</div></div>';
-	echo '<h2>More trips from Koh Samui</h2>' . do_shortcode( '[kp_tours limit="4"]' );
+	echo '</div>';
+	// Full-width gallery (kohphangan.com style); the hero thumbnails open it.
+	if ( count( $photo_ids ) > 1 ) echo kpt_gallery( $photo_ids, get_the_title(), $m( 'kp_per' ) === 'boat' ? 'Photos of the boat and its trips. Swipe or use the arrows to look through them before you book.' : 'Real photos from this trip. Swipe or use the arrows to look through the day before you book.' );
+	echo '<div class="kpa-w"><h2>More trips from Koh Samui</h2>' . do_shortcode( '[kp_tours limit="4"]' );
 	echo '</div>';
 	kpt_mbar( get_the_title(), 'from ' . number_format( (float) $product->get_price() ) . ' THB ' . $per, '#kpb' );
 endwhile;

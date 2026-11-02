@@ -5,7 +5,7 @@
  * Page bodies can still be built in Elementor; templates below wrap them in the kp shell.
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
-define( 'KPT_VER', '0.3.11' );
+define( 'KPT_VER', '0.3.13' );
 require_once __DIR__ . '/inc/menu.php';
 require_once __DIR__ . '/inc/template-tags.php';
 
@@ -130,3 +130,5 @@ add_action( 'wp_footer', function () {
 	</div>
 </div>
 <?php }, 5 );
+/* Our own gallery replaces WooCommerce's: no zoom/lightbox/slider support, so no hidden PhotoSwipe markup in the footer. */
+add_action( 'after_setup_theme', function () { remove_theme_support( 'wc-product-gallery-zoom' ); remove_theme_support( 'wc-product-gallery-lightbox' ); remove_theme_support( 'wc-product-gallery-slider' ); }, 100 );

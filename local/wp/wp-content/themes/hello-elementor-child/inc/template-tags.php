@@ -68,17 +68,29 @@ function kpt_related( $title = 'More guides from Koh Samui' ) {
 
 /** Hero photo strip: thumbnails of a page's local photos (first = hero, so it is skipped). Clicks open the lightbox. */
 function kpt_photo_strip( $ids, $all_anchor = '#photos' ) {
+	// Hero thumbnails (kohphangan.com style): 5 photos + a "+N Show all" tile; each opens that photo in the gallery below.
 	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( count( $ids ) < 2 ) return '';
-	$show = array_slice( $ids, 1, 7 ); $more = count( $ids ) - 1 - count( $show );
-	$h = '<div class="kpv-strip" aria-label="Photos">';
-	foreach ( $show as $k => $aid ) { $last = $k === count( $show ) - 1 && $more > 0; $h .= '<a class="kpv-strip-i' . ( $last ? ' has-more' : '' ) . '" href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . ( $k + 1 ) . '">' . wp_get_attachment_image( $aid, 'medium', false, array( 'loading' => 'eager', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ) ) ) . ( $last ? '<span>+' . (int) $more . ' photos</span>' : '' ) . '</a>'; }
-	return $h . '<a class="kpv-strip-all" href="' . esc_attr( $all_anchor ) . '">All ' . count( $ids ) . ' photos</a></div>';
+	$show = array_slice( $ids, 0, 5 ); $more = count( $ids ) - count( $show );
+	$h = '<div class="kpa-w kpv-thumbs-w"><div class="kpv-thumbs" aria-label="Photos">';
+	foreach ( $show as $k => $aid ) $h .= '<button type="button" data-kpg="' . $k . '"' . ( $k === 0 ? ' class="on"' : '' ) . ' aria-label="Show photo ' . ( $k + 1 ) . '">' . wp_get_attachment_image( $aid, 'medium', false, array( 'loading' => 'eager', 'alt' => '', 'sizes' => '200px' ) ) . '</button>';
+	$h .= '<a class="all" href="' . esc_attr( $all_anchor ) . '" data-kpg="' . min( 5, count( $ids ) - 1 ) . '">' . ( $more > 0 ? '<b>+' . $more . '</b>' : '<b>' . count( $ids ) . '</b>' ) . 'Show all</a>';
+	return $h . '</div></div>';
 }
-/** Photo grid for the same photos (lightbox links). */
-function kpt_photo_grid( $ids, $title = '' ) {
-	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( ! $ids ) return '';
-	$h = '<div class="kpv-gallery" id="photos">';
-	$n = count( $ids );
-	foreach ( $ids as $i => $aid ) $h .= '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '"' . ( $i === 6 && $n > 7 ? ' data-more="+' . ( $n - 7 ) . ' photos"' : '' ) . '>' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) . '</a>';
-	return $h . '</div>';
+/** Full-width photo gallery (kohphangan.com style): swipeable stage with caption, count and arrows, thumbnail strip below. */
+function kpt_gallery( $ids, $title = '', $lead = '' ) {
+	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( count( $ids ) < 2 ) return '';
+	$n = count( $ids ); $title = $title ?: get_the_title();
+	$arrow = fn( $d ) => '<svg class="kpv-ic" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' . ( $d < 0 ? 'M15 6l-6 6 6 6' : 'M9 6l6 6-6 6' ) . '"/></svg>';
+	$h = '<section class="kpv-gal" id="photos" aria-label="' . esc_attr( $title . ' photos' ) . '"><div class="kpv-gal-stage"><div class="kpv-gal-track" tabindex="0" aria-roledescription="carousel">';
+	foreach ( $ids as $i => $aid ) {
+		$alt = get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: $title . ' – photo ' . ( $i + 1 );
+		$cap = wp_get_attachment_caption( $aid );
+		$h .= '<figure aria-label="' . esc_attr( 'Photo ' . ( $i + 1 ) . ' of ' . $n ) . '">' . wp_get_attachment_image( $aid, 'full', false, array( 'loading' => $i ? 'lazy' : 'eager', 'decoding' => 'async', 'sizes' => '100vw', 'alt' => $alt ) ) . ( $cap ? '<figcaption>' . esc_html( $cap ) . '</figcaption>' : '' ) . '</figure>';
+	}
+	$h .= '</div><div class="kpv-gal-ov"></div><div class="kpv-gal-cap"><div class="kpa-w"><h2>Gallery</h2><p>' . esc_html( $lead ?: 'Real photos. Swipe or use the arrows to look through them before you book.' ) . '</p><div class="kpv-gal-n"><div><b data-kpg-i>1</b><span>of ' . $n . ' photos</span></div></div><div class="kpv-gal-btns"><button type="button" class="kpv-round" data-kpg-d="-1" aria-label="Previous photo">' . $arrow( -1 ) . '</button><button type="button" class="kpv-round" data-kpg-d="1" aria-label="Next photo">' . $arrow( 1 ) . '</button></div></div></div></div>';
+	$h .= '<div class="kpv-gal-strip">';
+	foreach ( $ids as $i => $aid ) $h .= '<button type="button" data-kpg="' . $i . '"' . ( $i ? '' : ' class="on"' ) . ' aria-label="Show photo ' . ( $i + 1 ) . '">' . wp_get_attachment_image( $aid, 'thumbnail', false, array( 'loading' => 'lazy', 'alt' => '' ) ) . '</button>';
+	return $h . '</div></section>';
 }
+/** Old name kept for templates that call it: now the full-width gallery. */
+function kpt_photo_grid( $ids, $title = '' ) { return kpt_gallery( $ids, $title ); }

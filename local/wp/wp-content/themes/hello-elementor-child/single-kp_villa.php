@@ -5,13 +5,7 @@ while ( have_posts() ) : the_post();
 	$id = get_the_ID(); $m = fn( $k ) => get_post_meta( $id, $k, true ); $j = fn( $k ) => function_exists( 'kpv_json' ) ? kpv_json( $id, $k ) : array();
 	$area = $m( 'kp_area' ); $beds = (int) $m( 'kp_bedrooms' ); $bmin = (int) $m( 'kpv_bedrooms_min' ); $guests = (int) $m( 'kp_guests' ); $baths = (int) $m( 'kpv_bathrooms' );
 	$photos = function_exists( 'kpv_local_photos' ) ? kpv_local_photos( $id ) : array();
-	$strip = '';
-	if ( count( $photos ) > 1 ) {
-		$show = array_slice( $photos, 1, 7 ); $more = count( $photos ) - 1 - count( $show );
-		$strip = '<div class="kpv-strip" aria-label="Villa photos">';
-		foreach ( $show as $k => $aid ) { $last = $k === count( $show ) - 1 && $more > 0; $strip .= '<a class="kpv-strip-i' . ( $last ? ' has-more' : '' ) . '" href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . ( $k + 1 ) . '">' . wp_get_attachment_image( $aid, 'medium', false, array( 'loading' => 'eager', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ) ) ) . ( $last ? '<span>+' . (int) $more . ' photos</span>' : '' ) . '</a>'; }
-		$strip .= '<a class="kpv-strip-all" href="#photos">All ' . count( $photos ) . ' photos</a></div>';
-	}
+	$strip = count( $photos ) > 1 ? kpt_photo_strip( $photos ) : '';
 	kpt_hero( array( 'strip' => $strip, 'kicker' => $area ? $area . ' · Koh Samui villa' : 'Koh Samui villa', 'lead' => ( $bmin && $bmin < $beds ? "$bmin–$beds" : $beds ) . ' bedrooms · ' . $baths . ' bathrooms · up to ' . $guests . ' guests' . ( $m( 'kp_price_night' ) ? ' · from ' . number_format( (float) $m( 'kp_price_night' ) ) . ' THB a night' : '' ) ) );
 	echo '<div class="kpa-w"><div class="kpa-main kpv-main"><article class="kpa-body">';
 	kpt_byline();
@@ -24,8 +18,6 @@ while ( have_posts() ) : the_post();
 	// Highlights + description
 	if ( $hl = $j( 'kpv_highlights' ) ) { echo '<h2>Why stay here</h2><ul class="kp-inc">'; foreach ( $hl as $h ) echo '<li>' . esc_html( $h ) . '</li>'; echo '</ul>'; }
 	if ( get_the_content() ) { echo '<h2>About ' . esc_html( get_the_title() ) . '</h2>'; the_content(); }
-	// Gallery: photos stored on this site (downloaded from the source once, served locally)
-	if ( $photos ) { echo '<h2 id="photos">Photos</h2><div class="kpv-gallery">'; foreach ( $photos as $i => $aid ) echo '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '">' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: get_the_title() . ', photo ' . ( $i + 1 ) ) ) ) . '</a>'; echo '</div>'; }
 	// Rates
 	if ( $rates = $j( 'kpv_rates' ) ) {
 		$cols = array(); foreach ( $rates as $r ) foreach ( array_keys( $r['prices'] ) as $c ) $cols[ $c ] = 1; ksort( $cols );
@@ -67,6 +59,7 @@ while ( have_posts() ) : the_post();
 	echo '<label class="kpb-field"><span>Name</span><input name="name" required autocomplete="name"></label><label class="kpb-field"><span>Email</span><input type="email" name="email" required autocomplete="email"></label><label class="kpb-field"><span>WhatsApp (optional)</span><input name="whatsapp" autocomplete="tel"></label><label class="kpb-field"><span>Message</span><textarea name="message" rows="3" style="width:100%;border:1px solid var(--kp-border);border-radius:12px;padding:10px"></textarea></label><input name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">';
 	echo '<button class="kpb-submit" type="submit">Request to book</button><p class="kpv-msg" aria-live="polite"></p><a class="kpv-wa" href="https://wa.me/' . esc_attr( defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '' ) . '" rel="noopener" target="_blank">Or ask on WhatsApp</a></form>';
 	echo '<ul class="kpb-trust"><li>No payment until we confirm</li><li>Live prices, updated hourly</li><li>Local team since 2006</li></ul></div></aside></div></div>';
+	if ( count( $photos ) > 1 && function_exists( 'kpt_gallery' ) ) echo kpt_gallery( $photos, get_the_title(), 'Every room, the pool and the view. Swipe or use the arrows to look around the villa.' );
 	kpt_mbar( get_the_title(), $m( 'kp_price_night' ) ? 'from ' . number_format( (float) $m( 'kp_price_night' ) ) . ' THB / night' : 'Price on request', '#kpv-book' );
 endwhile;
 get_footer();
