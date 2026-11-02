@@ -18,7 +18,11 @@ add_action( 'template_redirect', function () {
 } );
 
 function kpb_selection_from_request( $r ) {
-	return array( 'date' => sanitize_text_field( $r['kpb_date'] ?? '' ), 'adults' => (int) ( $r['kpb_adults'] ?? 0 ), 'children' => (int) ( $r['kpb_children'] ?? 0 ), 'infants' => (int) ( $r['kpb_infants'] ?? 0 ), 'pickup' => sanitize_text_field( $r['kpb_pickup'] ?? '' ), 'option' => (int) ( $r['kpb_option'] ?? 0 ) );
+	$sel = array( 'date' => sanitize_text_field( $r['kpb_date'] ?? '' ), 'adults' => (int) ( $r['kpb_adults'] ?? 0 ), 'children' => max( 0, (int) ( $r['kpb_children'] ?? 0 ) ), 'infants' => max( 0, (int) ( $r['kpb_infants'] ?? 0 ) ), 'pickup' => sanitize_text_field( $r['kpb_pickup'] ?? '' ), 'option' => (int) ( $r['kpb_option'] ?? 0 ) );
+	if ( isset( $r['kpb_guests'] ) ) { // private boats: one group size; children are "of these"
+		$g = max( 1, (int) $r['kpb_guests'] ); $sel['children'] = min( $sel['children'], $g ); $sel['infants'] = min( $sel['infants'], $g - $sel['children'] ); $sel['adults'] = $g - $sel['children'] - $sel['infants'];
+	}
+	return $sel;
 }
 
 /** Each booking is unique in the cart (date/pax differ). */
@@ -52,6 +56,7 @@ add_action( 'woocommerce_checkout_create_order_line_item', function ( $item, $ca
 	if ( empty( $values['kpb']['date'] ) ) return;
 	$b = $values['kpb'];
 	$item->add_meta_data( 'Date', $b['date'] );
+	if ( get_post_meta( $values['product_id'] ?? $item->get_product_id(), 'kp_per', true ) === 'boat' ) $item->add_meta_data( 'Guests', (int) $b['adults'] + (int) $b['children'] + (int) $b['infants'] );
 	$item->add_meta_data( 'Adults', (int) $b['adults'] );
 	if ( (int) $b['children'] ) $item->add_meta_data( 'Children', (int) $b['children'] );
 	if ( (int) $b['infants'] ) $item->add_meta_data( 'Infants', (int) $b['infants'] );

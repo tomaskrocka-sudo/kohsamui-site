@@ -5,7 +5,7 @@
  * Page bodies can still be built in Elementor; templates below wrap them in the kp shell.
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
-define( 'KPT_VER', '0.3.6' );
+define( 'KPT_VER', '0.3.8' );
 require_once __DIR__ . '/inc/menu.php';
 require_once __DIR__ . '/inc/template-tags.php';
 

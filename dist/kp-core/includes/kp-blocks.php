@@ -175,7 +175,7 @@ add_shortcode( 'kp_glance', function ( $a ) {
 	$id = (int) ( $a['post'] ?? get_the_ID() ); $m = fn( $k ) => get_post_meta( $id, $k, true ); $rows = array();
 	if ( $m( 'kp_area' ) ) $rows['Area'] = $m( 'kp_area' );
 	if ( $m( 'kp_lat' ) ) $rows['GPS'] = '<span class="kp-gps">' . esc_html( $m( 'kp_lat' ) . ', ' . $m( 'kp_lng' ) ) . '</span> <span class="kp-pills"><a class="kp-pill kp-pill-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=' . esc_attr( $m( 'kp_lat' ) . ',' . $m( 'kp_lng' ) ) . '" target="_blank" rel="noopener">' . kp_pin_svg() . 'Get directions</a><a class="kp-pill" href="https://www.google.com/maps/search/?api=1&amp;query=' . esc_attr( $m( 'kp_lat' ) . ',' . $m( 'kp_lng' ) ) . '" target="_blank" rel="noopener">Open in Google Maps</a></span>';
-	if ( $m( 'kp_hours' ) ) $rows['Hours'] = $m( 'kp_hours' );
+	if ( $m( 'kp_hours' ) ) $rows['Hours'] = esc_html( $m( 'kp_hours' ) ) . ( $m( 'kp_hours_spec' ) && function_exists( 'kp_open_badge' ) ? ' ' . kp_open_badge( $m( 'kp_hours_spec' ) ) : '' );
 	$rows['Entry'] = $m( 'kp_fee' ) ?: ( $m( 'kp_free' ) === 'yes' ? 'Free' : 'See below' );
 	if ( $m( 'kp_best_for' ) ) $rows['Best for'] = $m( 'kp_best_for' );
 	if ( $m( 'kp_sun' ) ) $rows['Sun'] = $m( 'kp_sun' );
@@ -218,7 +218,7 @@ add_shortcode( 'kp_places_map', function ( $a ) {
 	$h = '<div class="kpg-split" data-tiles="' . esc_attr( get_option( 'kp_tiles_url', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' ) ) . '">';
 	$h .= '<div class="kpg-chips">'; foreach ( $types as $t ) $h .= '<button type="button" class="kpg-chip is-on" data-type="' . esc_attr( $t ) . '">' . esc_html( ucfirst( $t ) ) . '</button>'; $h .= '</div>';
 	$h .= '<div class="kpg-map" id="kpg-map-' . wp_unique_id() . '" aria-label="Map of ' . esc_attr( $a['title'] ?? 'places' ) . '"></div><ol class="kpg-list">';
-	foreach ( $places as $i => $p ) $h .= '<li class="kpg-row" data-i="' . $i . '" data-lat="' . esc_attr( $p['lat'] ) . '" data-lng="' . esc_attr( $p['lng'] ) . '" data-type="' . esc_attr( $p['type'] ) . '" data-name="' . esc_attr( $p['name'] ) . '" data-url="' . esc_url( $p['url'] ) . '" data-thumb="' . esc_url( $p['thumb'] ?: '' ) . '"><span class="kpg-dot kpg-dot-' . esc_attr( $p['type'] ) . '">' . ( $i + 1 ) . '</span><a href="' . esc_url( $p['url'] ) . '">' . esc_html( $p['name'] ) . '</a><span class="kpg-row-m">' . esc_html( $p['short'] ) . '</span> <a class="kpg-dir kp-pill" href="https://www.google.com/maps/dir/?api=1&amp;destination=' . esc_attr( $p['lat'] . ',' . $p['lng'] ) . '" target="_blank" rel="noopener">' . kp_pin_svg() . 'Directions</a></li>';
+	foreach ( $places as $i => $p ) $h .= '<li class="kpg-row" data-i="' . $i . '" data-lat="' . esc_attr( $p['lat'] ) . '" data-lng="' . esc_attr( $p['lng'] ) . '" data-type="' . esc_attr( $p['type'] ) . '" data-name="' . esc_attr( $p['name'] ) . '" data-url="' . esc_url( $p['url'] ) . '" data-thumb="' . esc_url( $p['thumb'] ?: '' ) . '"><span class="kpg-dot kpg-dot-' . esc_attr( $p['type'] ) . '">' . ( $i + 1 ) . '</span><a href="' . esc_url( $p['url'] ) . '">' . esc_html( $p['name'] ) . '</a><span class="kpg-row-m">' . ( ! empty( $p['hours_spec'] ) && function_exists( 'kp_open_badge' ) ? kp_open_badge( $p['hours_spec'] ) . ' ' : '' ) . esc_html( $p['short'] ) . '</span> <a class="kpg-dir kp-pill" href="https://www.google.com/maps/dir/?api=1&amp;destination=' . esc_attr( $p['lat'] . ',' . $p['lng'] ) . '" target="_blank" rel="noopener">' . kp_pin_svg() . 'Directions</a></li>';
 	return $h . '</ol></div>';
 } );
 

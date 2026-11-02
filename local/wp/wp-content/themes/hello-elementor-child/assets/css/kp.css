@@ -648,3 +648,4 @@ html.kpts-dark .kpw-calm{background:rgba(91,203,147,.18);color:#8BE8B4}html.kpts
 .kpw-chip{padding:6px 8px;font-size:13px}.kpw-chip b{font-size:14px}
 
 }
+.kpb .kpb-field>span{gap:10px;align-items:baseline}.kpb .kpb-field>span em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:500;text-align:right}

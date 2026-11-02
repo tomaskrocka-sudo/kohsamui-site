@@ -37,6 +37,8 @@ function kpb_config( $product_id ) {
 		'options'      => kpb_options( $product_id ),             // [{label, price, child?, max_guests?}] e.g. durations or boat sizes
 		'currency'     => 'THB',
 	);
+	$cfg['extra'] = $per === 'boat' ? kpb_extra_rules( $product_id, $cfg['options'], $cfg['max_guests'] ) : array(); // per option index: extra-guest fees or null
+	if ( array_filter( $cfg['extra'] ) && $cfg['notice'] ) $cfg['notice'] = kpb_extra_notice( $cfg['notice'] );
 	return apply_filters( 'kpb_config', $cfg, $product_id );
 }
 
@@ -48,6 +50,25 @@ function kpb_options( $product_id ) {
 		$out[] = array( 'label' => $f[0], 'price' => (float) str_replace( ',', '', $f[1] ), 'child' => isset( $f[2] ) && $f[2] !== '' && is_numeric( str_replace( ',', '', $f[2] ) ) ? (float) str_replace( ',', '', $f[2] ) : null, 'max_guests' => isset( $f[3] ) ? (int) $f[3] : 0 );
 	}
 	return $out;
+}
+/** Extra guests above the included group (meta kp_extra_guests from kp-core data/extra-guests.json), resolved per price option. */
+function kpb_extra_rules( $product_id, $opts, $max ) {
+	$r = json_decode( (string) get_post_meta( $product_id, 'kp_extra_guests', true ), true ); $out = array();
+	if ( ! is_array( $r ) || empty( $r['rules'] ) || empty( $r['cap'] ) ) return $out;
+	$labels = $opts ? array_column( $opts, 'label' ) : array( '' );
+	foreach ( $labels as $i => $label ) {
+		$incl = $opts ? (int) $opts[ $i ]['max_guests'] : 0; if ( ! $incl ) $incl = (int) $max;
+		$hit = null; foreach ( $r['rules'] as $ru ) { if ( empty( $ru['m'] ) || @preg_match( '~' . $ru['m'] . '~i', $label ) ) { $hit = $ru; break; } }
+		if ( ! $hit || ! empty( $hit['none'] ) || ! $incl || empty( $hit['adult'] ) || (int) $r['cap'] <= $incl ) { $out[ $i ] = null; continue; }
+		$out[ $i ] = array( 'incl' => $incl, 'cap' => (int) $r['cap'], 'adult' => (float) $hit['adult'], 'child' => isset( $hit['child'] ) ? (float) $hit['child'] : null, 'child_band' => (string) ( $hit['child_band'] ?? '' ), 'free_band' => (string) ( $hit['free_band'] ?? '' ) );
+	}
+	return $out;
+}
+/** Booking-card notice: extra guests are now bookable online, so drop the "message us" part. */
+function kpb_extra_notice( $n ) {
+	$n = preg_replace( array( '/\s*\((?:message us)\)/i', '/[;,]\s*(?:so )?message us(?: on WhatsApp)?(?: first)?(?: for (?:larger|bigger) groups| for groups| to book for more than \d+| to add them)?\.?/i', '/,\s*added via WhatsApp/i', '/\s*Message us (?:on WhatsApp )?for (?:larger|bigger) groups\.?/i', '/\s*Message us for groups over \d+\.?/i' ), array( '', '.', '', '', '' ), $n );
+	$n = preg_replace( '/\.\s*\./', '.', trim( $n ) );
+	return $n . ( substr( $n, -1 ) === '.' ? '' : '.' ) . ' Extra guests are added to the total when you choose your group size.';
 }
 /** Compute price breakdown. $sel = [date, adults, children, infants, pickup]. Returns [total, lines[], errors[]]. */
 function kpb_price( $product_id, $sel ) {
@@ -68,11 +89,19 @@ function kpb_price( $product_id, $sel ) {
 	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
 
 	if ( $cfg['per'] === 'boat' ) {
-		$guests = $adults + $children + $infants;
-		if ( $cfg['max_guests'] && $guests > $cfg['max_guests'] ) $errors[] = 'This boat takes up to ' . $cfg['max_guests'] . ' guests. For bigger groups, message us on WhatsApp.';
+		$guests = $adults + $children + $infants; $ex = $cfg['extra'][ $cfg['options'] ? (int) ( $sel['option'] ?? 0 ) : 0 ] ?? null;
+		$cap = $ex ? $ex['cap'] : $cfg['max_guests'];
+		if ( $cap && $guests > $cap ) $errors[] = 'This boat takes up to ' . $cap . ' guests' . ( $ex ? '' : ' on this trip' ) . '. For bigger groups, message us on WhatsApp.';
 		if ( $guests < 1 ) $errors[] = 'Please tell us how many guests.';
-		$lines[] = array( 'label' => ( $opt_label ?: 'Private boat' ) . ' (' . $guests . ' guests)', 'qty' => 1, 'unit' => $cfg['adult'], 'amount' => $cfg['adult'] );
+		$lines[] = array( 'label' => ( $opt_label ?: 'Private boat' ) . ' (' . min( $guests, $ex ? $ex['incl'] : $guests ) . ' guests)', 'qty' => 1, 'unit' => $cfg['adult'], 'amount' => $cfg['adult'] );
 		$total += $cfg['adult'];
+		if ( $ex && $guests > $ex['incl'] ) {
+			$extra = $guests - $ex['incl']; $free = $ex['free_band'] !== '' ? min( $infants, $extra ) : 0; $rest = $extra - $free;
+			$ch = $ex['child'] !== null ? min( $children, $rest ) : 0; $ad = $rest - $ch; $from = $ex['incl'] + 1;
+			if ( $ad ) { $lines[] = array( 'label' => 'Extra guests (' . $from . '–' . $guests . ')', 'qty' => $ad, 'unit' => $ex['adult'], 'amount' => $ad * $ex['adult'] ); $total += $ad * $ex['adult']; }
+			if ( $ch ) { $lines[] = array( 'label' => 'Extra children' . ( $ex['child_band'] ? ' ' . $ex['child_band'] : '' ), 'qty' => $ch, 'unit' => $ex['child'], 'amount' => $ch * $ex['child'] ); $total += $ch * $ex['child']; }
+			if ( $free ) $lines[] = array( 'label' => 'Extra children ' . $ex['free_band'], 'qty' => $free, 'unit' => 0, 'amount' => 0 );
+		}
 	} else {
 		if ( $adults < $cfg['min_adults'] ) $errors[] = 'At least ' . $cfg['min_adults'] . ' adult is required.';
 		if ( $adults + $children > $cfg['max_pax'] ) $errors[] = 'For groups over ' . $cfg['max_pax'] . ', please message us on WhatsApp for a group price.';

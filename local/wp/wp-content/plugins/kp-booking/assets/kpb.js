@@ -58,12 +58,20 @@
   /* Live total: instant local estimate, then authoritative server quote */
   function sel() {
     var g = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; };
-    return { date: g('kpb_date'), adults: parseInt(g('kpb_adults') || 0, 10), children: parseInt(g('kpb_children') || 0, 10), infants: parseInt(g('kpb_infants') || 0, 10), pickup: g('kpb_pickup'), option: parseInt(g('kpb_option') || 0, 10) };
+    var r = { date: g('kpb_date'), adults: parseInt(g('kpb_adults') || 0, 10), children: parseInt(g('kpb_children') || 0, 10), infants: parseInt(g('kpb_infants') || 0, 10), pickup: g('kpb_pickup'), option: parseInt(g('kpb_option') || 0, 10) };
+    var gs = form.querySelector('#kpb_guests');
+    if (gs) { var n = parseInt(gs.value || 1, 10), ex = exFor(r.option); if (!ex || n <= ex.incl) { r.children = 0; r.infants = 0; } r.children = Math.min(r.children, n); r.infants = Math.min(r.infants, n - r.children); r.adults = n - r.children - r.infants; var a = form.querySelector('#kpb_adults'); if (a) a.value = r.adults; }
+    return r;
   }
   function local(s) {
     var t = 0, lines = [], adult = (cfg.date_prices && cfg.date_prices[s.date]) || cfg.adult, child = cfg.child, o = cfg.options && cfg.options[s.option];
     if (o) { adult = o.price; if (o.child !== null) child = o.child; }
-    if (cfg.per === 'boat') { t = adult; lines.push([o ? o.label : 'Private boat', 1, adult]); }
+    if (cfg.per === 'boat') { t = adult; lines.push([o ? o.label : 'Private boat', 1, adult]);
+      var ex = exFor(s.option), n = s.adults + s.children + s.infants;
+      if (ex && n > ex.incl) { var extra = n - ex.incl, fr = ex.free_band ? Math.min(s.infants, extra) : 0, rest = extra - fr, ch = ex.child !== null ? Math.min(s.children, rest) : 0, ad = rest - ch;
+        if (ad) { t += ad * ex.adult; lines.push(['Extra guests (' + (ex.incl + 1) + '–' + n + ')', ad, ex.adult]); }
+        if (ch) { t += ch * ex.child; lines.push(['Extra children' + (ex.child_band ? ' ' + ex.child_band : ''), ch, ex.child]); }
+        if (fr) lines.push(['Extra children ' + ex.free_band, fr, 0]); } }
     else { t += s.adults * adult; lines.push([cfg.adult_label, s.adults, adult]); if (s.children && child !== null) { t += s.children * child; lines.push([cfg.child_label, s.children, child]); } if (s.infants) lines.push([cfg.infant_label, s.infants, 0]); }
     var fee = cfg.pickup && cfg.pickup.surcharge && cfg.pickup.surcharge[s.pickup];
     if (fee) { var n = cfg.per === 'boat' ? 1 : (s.adults + s.children); t += n * fee; lines.push(['Remote-area transfer: ' + s.pickup, n, fee]); }
@@ -85,7 +93,21 @@
         }).catch(function () {});
     }, 250);
   }
-  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', function () { touched = true; quote(); }); });
+  /* Private boats: group size up to the boat's capacity; extra guests above the included number pay the boat's fee */
+  function exFor(i) { var e = cfg.extra || []; return (cfg.options && cfg.options.length ? e[i || 0] : e[0]) || null; }
+  function fill(sel, from, to, keep) { if (!sel || sel.tagName !== 'SELECT') return; var v = Math.min(parseInt(keep != null ? keep : sel.value || from, 10), to); var h = ''; for (var i = from; i <= to; i++) h += '<option value="' + i + '"' + (i === v ? ' selected' : '') + '>' + i + '</option>'; sel.innerHTML = h; }
+  function boatUi() {
+    var gs = form.querySelector('#kpb_guests'); if (!gs) return;
+    var oi = parseInt((form.querySelector('#kpb_option') || {}).value || 0, 10), o = cfg.options && cfg.options[oi], ex = exFor(oi);
+    var cap = ex ? ex.cap : (o && o.max_guests) || cfg.max_guests || parseInt(gs.dataset.capmax, 10) || 12;
+    fill(gs, 1, cap); var n = parseInt(gs.value, 10), lab = root.querySelector('#kpb_glab');
+    if (lab) lab.textContent = ex ? 'price for ' + ex.incl + ', up to ' + ex.cap + ' (+' + Math.round(ex.adult).toLocaleString('en-GB') + ' THB per extra guest)' : 'up to ' + cap;
+    var showX = ex && n > ex.incl, chw = root.querySelector('.kpb-exch'), frw = root.querySelector('.kpb-exfree');
+    if (chw) { chw.hidden = !(showX && ex.child !== null); fill(chw.querySelector('select'), 0, n); root.querySelector('#kpb_chlab').textContent = ex && ex.child !== null ? ' ' + (ex.child_band ? ex.child_band + ' ' : '') + '(+' + Math.round(ex.child).toLocaleString('en-GB') + ' THB if extra)' : ''; }
+    if (frw) { frw.hidden = !(showX && ex.free_band); fill(frw.querySelector('select'), 0, n); root.querySelector('#kpb_frlab').textContent = ex && ex.free_band ? ' ' + ex.free_band + ' (free)' : ''; }
+  }
+  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', function () { touched = true; if (el.id === 'kpb_option' || el.id === 'kpb_guests') boatUi(); quote(); }); });
+  boatUi();
   document.addEventListener('kp:currency', quote);
   form.addEventListener('submit', function (e) {
     var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a departure date.</p>'; if (dateBtn) { dateBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); openCal(); } return; }

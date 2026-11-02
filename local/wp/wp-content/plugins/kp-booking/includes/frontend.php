@@ -57,9 +57,14 @@ function kpb_render_booking_card() {
 				<select name="kpb_option" id="kpb_option"><?php foreach ( $cfg['options'] as $i => $o ) echo '<option value="' . (int) $i . '" data-price="' . esc_attr( $o['price'] ) . '"' . ( $o['child'] !== null ? ' data-child="' . esc_attr( $o['child'] ) . '"' : '' ) . ( $o['max_guests'] ? ' data-max="' . (int) $o['max_guests'] . '"' : '' ) . '>' . esc_html( $o['label'] ) . ' · ' . esc_html( number_format( $o['price'] ) ) . ' THB</option>'; ?></select></label>
 			<?php endif; ?>
 			<?php if ( $cfg['per'] === 'boat' ) : ?>
-				<label class="kpb-field"><span>Guests<?php echo $cfg['max_guests'] ? ' (up to ' . (int) $cfg['max_guests'] . ')' : ''; ?></span>
-					<select name="kpb_adults" id="kpb_adults"><?php for ( $i = 1; $i <= max( 1, $cfg['max_guests'] ?: 12 ); $i++ ) echo '<option value="' . $i . '">' . $i . '</option>'; ?></select></label>
-				<input type="hidden" name="kpb_children" value="0"><input type="hidden" name="kpb_infants" value="0">
+				<?php $ex = array_filter( $cfg['extra'] ); $capmax = max( array_merge( array( (int) $cfg['max_guests'] ?: 12 ), array_map( fn( $o ) => (int) $o['max_guests'], $cfg['options'] ), array_column( $ex, 'cap' ) ) );
+				$ex0 = $cfg['extra'][0] ?? null; $cap0 = $ex0 ? $ex0['cap'] : ( $cfg['options'] ? ( (int) $cfg['options'][0]['max_guests'] ?: $capmax ) : ( (int) $cfg['max_guests'] ?: 12 ) ); ?>
+				<label class="kpb-field"><span>Guests <em id="kpb_glab"><?php echo $ex0 ? esc_html( 'price for ' . $ex0['incl'] . ', up to ' . $ex0['cap'] ) : ( $cap0 ? esc_html( 'up to ' . $cap0 ) : '' ); ?></em></span>
+					<select name="kpb_guests" id="kpb_guests" data-capmax="<?php echo (int) $capmax; ?>"><?php for ( $i = 1; $i <= $cap0; $i++ ) echo '<option value="' . $i . '">' . $i . '</option>'; ?></select></label>
+				<input type="hidden" name="kpb_adults" id="kpb_adults" value="1">
+				<?php $bands = array_values( array_unique( array_filter( array_map( fn( $e ) => $e['child'] !== null ? $e['child_band'] : null, $ex ), 'is_string' ) ) ); $hasch = (bool) array_filter( $ex, fn( $e ) => $e['child'] !== null ); $hasfree = (bool) array_filter( $ex, fn( $e ) => $e['free_band'] !== '' ); ?>
+				<?php if ( $hasch ) : ?><label class="kpb-field kpb-exch" hidden><span>Of these, children<em id="kpb_chlab"></em></span><select name="kpb_children" id="kpb_children"><option value="0">0</option></select><small class="kpb-hint">Extra children pay a reduced rate; children within the included group cost nothing extra.</small></label><?php else : ?><input type="hidden" name="kpb_children" id="kpb_children" value="0"><?php endif; ?>
+				<?php if ( $hasfree ) : ?><label class="kpb-field kpb-exfree" hidden><span>Of these, children<em id="kpb_frlab"></em></span><select name="kpb_infants" id="kpb_infants"><option value="0">0</option></select></label><?php else : ?><input type="hidden" name="kpb_infants" id="kpb_infants" value="0"><?php endif; ?>
 			<?php else : ?>
 				<label class="kpb-field kpb-pax"><span><?php echo esc_html( $cfg['adult_label'] ); ?> <em><?php echo esc_html( number_format( $cfg['adult'] ) ); ?> THB</em></span>
 					<select name="kpb_adults" id="kpb_adults"><?php for ( $i = $cfg['min_adults']; $i <= $cfg['max_pax']; $i++ ) echo '<option value="' . $i . '">' . $i . '</option>'; ?></select></label>

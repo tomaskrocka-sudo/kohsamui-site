@@ -39,6 +39,36 @@ add_filter( 'the_content', function ( $c ) {
 	$spec = get_post_meta( get_the_ID(), 'kp_hours_spec', true ); if ( ! $spec ) return $c;
 	return '<p class="kp-open-row"><strong>Opening hours:</strong> ' . esc_html( get_post_meta( get_the_ID(), 'kp_hours', true ) ?: $spec ) . ' ' . kp_open_badge( $spec ) . '</p>' . $c;
 }, 8 );
+/** Hours written in a table cell ("Daily 11:00–23:00", "Mon–Fri 08:30–16:30", "Nightly, about 21:00–04:00 (…)") → spec, or '' when unsure. */
+function kp_hours_from_text( $t ) {
+	$t = strtolower( html_entity_decode( wp_strip_all_tags( (string) $t ), ENT_QUOTES, 'UTF-8' ) );
+	$seg = trim( preg_split( '/[;(]/', $t )[0] );
+	$rx = '/(\d{1,2})[:.](\d{2})\s*(?:–|-|to)\s*(\d{1,2})[:.](\d{2})/u';
+	if ( preg_match_all( $rx, $seg, $m, PREG_SET_ORDER ) !== 1 ) return ''; // none, or several ranges (different days): leave it to the reader
+	if ( preg_match( '/24 ?h|daylight|closed|not published|varies|irregular|season|by appointment|on request/u', $seg ) ) return '';
+	$names = array( 'mo' => 'mon(?:day)?', 'tu' => 'tue(?:s|sday)?', 'we' => 'wed(?:nesday)?', 'th' => 'thu(?:rs|rsday)?', 'fr' => 'fri(?:day)?', 'sa' => 'sat(?:urday)?', 'su' => 'sun(?:day)?' );
+	$any = '(?:' . implode( '|', $names ) . ')';
+	$days = 'Mo-Su';
+	if ( preg_match( '/\b' . $any . '\b/u', $seg ) ) {
+		if ( ! preg_match( '/\b(' . $any . ')\s*(?:–|-|to)\s*(' . $any . ')\b/u', $seg, $d ) ) return '';
+		$code = function ( $w ) use ( $names ) { foreach ( $names as $c => $r ) if ( preg_match( '/^' . $r . '$/u', $w ) ) return ucfirst( $c ); return ''; };
+		$a = $code( $d[1] ); $b = $code( $d[2] ); if ( ! $a || ! $b ) return '';
+		$days = $a . '-' . $b;
+	}
+	$f = sprintf( '%02d:%02d', $m[0][1], $m[0][2] ); $to = sprintf( '%02d:%02d', $m[0][3], $m[0][4] );
+	if ( (int) $m[0][1] > 24 || (int) $m[0][3] > 24 ) return '';
+	return $days . ' ' . $f . '-' . $to;
+}
+/** Guide pages, venue pages and places: an "Opening hours" / "Hours" / "Open" row in a table gets a live badge when its hours are clear. */
+add_filter( 'the_content', function ( $c ) {
+	if ( is_admin() || ! is_singular( array( 'page', 'kp_place', 'product', 'kp_villa' ) ) || ! str_contains( $c, '<t' ) ) return $c;
+	if ( is_singular( 'kp_place' ) && get_post_meta( get_the_ID(), 'kp_hours_spec', true ) ) return $c; // the badge already sits above the content
+	return preg_replace_callback( '#(<t[hd][^>]*>\s*(?:Opening hours|Opening times|Hours|Open)\s*</t[hd]>\s*<td[^>]*>)(.*?)(</td>)#is', function ( $m ) {
+		if ( str_contains( $m[2], 'kp-open' ) ) return $m[0];
+		$spec = kp_hours_from_text( $m[2] ); $b = $spec ? kp_open_badge( $spec ) : '';
+		return $m[1] . $m[2] . ( $b ? ' ' . $b : '' ) . $m[3];
+	}, $c );
+}, 12 );
 /** Browser refresh (Thai time), so cached pages stay correct; re-checks every minute. */
 add_action( 'wp_footer', function () { ?>
 <script id="kp-hours">(function(){var D={mo:1,tu:2,we:3,th:4,fr:5,sa:6,su:7},N=['','Mon','Tue','Wed','Thu','Fri','Sat','Sun'];function parse(s){s=s.replace(/(\d),\s*(?=(Mo|Tu|We|Th|Fr|Sa|Su)\b)/gi,'$1; ');var o={1:[],2:[],3:[],4:[],5:[],6:[],7:[]};if(/^(24\/7|mo-su 00:00-24:00)$/i.test(s.trim())){for(var d=1;d<8;d++)o[d].push([0,1440]);return o}s.split(/\s*[;|]\s*/).forEach(function(p){var m=p.trim().match(/^([A-Za-z,\- ]+)\s+(.+)$/);if(!m)return;var ds=[];m[1].toLowerCase().replace(/ /g,'').split(',').forEach(function(c){var r=c.match(/^(\w\w)-(\w\w)$/);if(r&&D[r[1]]&&D[r[2]]){for(var i=D[r[1]];;i=i%7+1){ds.push(i);if(i===D[r[2]])break}}else if(D[c])ds.push(D[c])});m[2].split(',').forEach(function(g){var t=g.match(/(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})/);if(!t)return;var f=+t[1]*60+ +t[2],e=+t[3]*60+ +t[4];if(e<=f)e+=1440;ds.forEach(function(d){o[d].push([f,e])})})});return o}function pad(n){return(n<10?'0':'')+n}function fm(m){m%=1440;return pad(Math.floor(m/60))+':'+pad(m%60)}function st(s){var h=parse(s),n=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'})),dw=n.getDay()||7,mi=n.getHours()*60+n.getMinutes(),pv=dw===1?7:dw-1,i,j,r,all=0;for(i=1;i<8;i++)if(h[i].length)all++;for(j=0;j<h[pv].length;j++){r=h[pv][j];if(r[1]>1440&&mi<r[1]-1440)return[1,'Open now · closes '+fm(r[1])]}for(j=0;j<h[dw].length;j++){r=h[dw][j];if(mi>=r[0]&&mi<r[1])return[1,(r[0]===0&&r[1]>=1440&&all===7)?'Open 24 hours':'Open now · closes '+fm(r[1])]}for(i=0;i<8;i++){var d=(dw-1+i)%7+1;for(j=0;j<h[d].length;j++){r=h[d][j];if(i>0||r[0]>mi)return[0,'Closed · opens '+fm(r[0])+(i===0?'':(i===1?' tomorrow':' '+N[d]))]}}return[0,'Closed']}function run(){document.querySelectorAll('.kp-open[data-hours]').forEach(function(el){var s=st(el.getAttribute('data-hours'));el.classList.toggle('is-open',!!s[0]);el.classList.toggle('is-closed',!s[0]);el.querySelector('span').textContent=s[1]})}run();setInterval(run,60000)})();</script>
