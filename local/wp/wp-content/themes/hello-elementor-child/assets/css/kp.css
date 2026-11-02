@@ -89,7 +89,7 @@ html.kpts-dark .kph{background:rgba(10,20,34,.97);border-color:var(--kpd-line)}
 .kpg-hero{position:relative;background:var(--kp-night);color:#fff;overflow:hidden}
 .kpg-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
 .kpg-hero-g{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,10,28,.1) 0%,rgba(2,10,28,.75) 70%,var(--kp-night) 100%)}
-.kpg-hero-tx{position:relative;padding:clamp(56px,9vw,120px) 0 40px}
+.kpg-hero-tx{position:relative;padding-block:clamp(56px,9vw,120px) 40px}
 .kpg-hero h1{color:#fff;font-size:clamp(34px,5vw,58px);max-width:18ch}
 .kpg-hero p{color:#DCE6F0;font-size:18px;max-width:60ch}
 .kpg-hero .kpv-btn-o{border-color:rgba(255,255,255,.4);color:#fff!important}
@@ -530,3 +530,35 @@ html.kpts-dark .kp-h a{color:var(--kp-ink)}
 .kpg-sell-p b{color:#fff;font-size:16px}
 @media(max-width:900px){.kpg-sell{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(220px,70%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-right:calc(-1 * var(--kp-gutter,16px))}.kpg-sell-i{scroll-snap-align:start}}
 @media(max-width:600px){.kpg-sell-s{display:none}.kpg-hero-cta .kpv-btn{height:40px;font-size:14px;padding:0 14px}}
+/* SiteGround AI Studio chat bubble has no API key (does nothing) and covers the Book buttons: hidden. */
+#wp-ai-studio-container,.sg-ai-floating-chat{display:none!important}
+/* Phones: header fits on one line (logo can shrink; currency switch hidden below 440 px, prices stay in THB). */
+@media(max-width:1023px){.kph-logo{flex-shrink:1;min-width:0}.kph-w{gap:10px}.kph-act{gap:8px}}
+@media(max-width:440px){.kph-cur{display:none}.kph-logo strong{font-size:15.5px}.kph-logo small{font-size:8.5px;letter-spacing:.14em}}
+@media(max-width:600px){.kpg-hero-lead .kpg-lead-more{display:none}.kpg-hero h1{font-size:clamp(30px,8.4vw,40px)}}
+/* Phones: product/villa gallery = one big photo + 3-column thumbnails (7 shown, "+N photos" opens the lightbox with all). */
+@media(max-width:700px){
+.kpv-gallery{grid-template-columns:repeat(3,1fr);gap:6px}
+.kpv-gallery a{aspect-ratio:1;border-radius:10px;position:relative}
+.kpv-gallery a:first-child{grid-column:1/-1;aspect-ratio:16/10}
+.kpv-gallery a:nth-child(n+8){display:none}
+.kpv-gallery a[data-more]::after{content:attr(data-more);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(7,20,31,.55);color:#fff;font-weight:700;font-size:14px;text-align:center;padding:4px}
+.kpa-mbar strong{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:14.5px;line-height:1.3}
+}
+/* Phones: cart rows as label/value lines; secondary buttons readable. */
+@media(max-width:768px){
+.woocommerce table.shop_table_responsive tr td,.woocommerce-page table.shop_table_responsive tr td{display:flex!important;justify-content:space-between;align-items:center;gap:12px;text-align:right!important;min-height:44px}
+.woocommerce table.shop_table_responsive tr td::before,.woocommerce-page table.shop_table_responsive tr td::before{float:none!important;text-align:left;flex:none}
+.woocommerce table.shop_table_responsive tr td.product-remove::before,.woocommerce table.shop_table_responsive tr td.actions::before{display:none}
+.woocommerce-cart td.actions{flex-direction:column;align-items:stretch!important}
+.woocommerce-cart td.actions .coupon{display:flex;gap:8px;width:100%}.woocommerce-cart td.actions .coupon .input-text{flex:1;min-width:0}
+}
+.woocommerce button.button:not(.alt),.woocommerce a.button:not(.alt),.woocommerce input.button:not(.alt){background:var(--kp-bg)!important;color:var(--kp-ink)!important;border:1px solid var(--kp-border)!important;border-radius:var(--kp-radius-pill)!important;font-weight:600;padding:10px 18px!important;opacity:1!important}
+.woocommerce button.button:disabled:not(.alt){color:var(--kp-muted)!important}
+/* Phone menu: "More in …" as a clear expandable row. */
+.kph-panel details.kph-mega>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--kp-muted);font-size:14px;padding:6px 0}
+.kph-panel details.kph-mega>summary::-webkit-details-marker{display:none}
+.kph-panel details.kph-mega>summary::after{content:"+";font-size:20px;line-height:1;color:var(--kp-ink)}
+.kph-panel details.kph-mega[open]>summary::after{content:"–"}
+@media(max-width:768px){.woocommerce table.shop_table_responsive tr td.product-thumbnail{display:none!important}.woocommerce table.shop_table_responsive tr td.product-quantity:not(:has(input[type=number])){display:none!important}.woocommerce-cart td.actions .button{text-align:center;justify-content:center}}
+@media(max-width:600px){.kpg-hero .kpa-k{font-size:10.5px;letter-spacing:.07em;padding:6px 10px}}

@@ -21,6 +21,13 @@ while ( have_posts() ) : the_post();
 	if ( get_post_meta( get_the_ID(), 'kp_kind', true ) !== 'utility' ) kpt_side_card();
 	echo '</div></div>';
 	kpt_related();
-	if ( get_post_meta( get_the_ID(), 'kp_kind', true ) !== 'utility' ) kpt_mbar();
+	if ( get_post_meta( get_the_ID(), 'kp_kind', true ) !== 'utility' ) {
+		$slug = get_post_field( 'post_name', get_the_ID() );
+		// The sticky phone bar sells what the page is about.
+		if ( str_contains( $slug, 'villa' ) ) kpt_mbar( 'Pool villas with live prices', '100+ villas, pick your dates', home_url( '/koh-samui-villas/' ) . '#all-koh-samui-villas', 'See villas' );
+		elseif ( preg_match( '/yacht|boat-charter|catamaran|private-speedboat|sunset-cruise/', $slug ) ) kpt_mbar( 'Private yachts and boats', 'Your own boat and crew for the day', home_url( '/koh-samui-boat-charter/' ), 'See boats' );
+		elseif ( preg_match( '/full-moon|half-moon|parties|party|events/', $slug ) ) kpt_mbar( 'Full Moon Party speedboat', 'from 1,400 THB return, hotel pickup', home_url( '/product/full-moon-party-speedboat-koh-samui/' ) );
+		else kpt_mbar();
+	}
 endwhile;
 get_footer();

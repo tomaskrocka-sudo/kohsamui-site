@@ -13,7 +13,7 @@ const KP_BOAT_V = '2';
 function kp_boat_map() { static $m = null; if ( $m === null ) $m = json_decode( (string) @file_get_contents( KPC_DIR . 'data/boat-galleries.json' ), true ) ?: array(); return $m; }
 
 /** Photo URLs on a listing page: the cover, then the boat's own album (first album on the page), max $max. */
-function kp_boat_photo_urls( $path, $max = 12 ) {
+function kp_boat_photo_urls( $path, $max = 40 ) {
 	$res = wp_remote_get( KP_BOAT_SRC . $path, array( 'timeout' => 25, 'headers' => array( 'User-Agent' => 'Mozilla/5.0 (compatible; KohSamuiTrips/1.0)' ) ) );
 	if ( is_wp_error( $res ) || wp_remote_retrieve_response_code( $res ) !== 200 ) return array();
 	$h = wp_remote_retrieve_body( $res ); $by = array(); $order = array();
@@ -29,17 +29,18 @@ function kp_boat_photo_urls( $path, $max = 12 ) {
 /** Import one boat's photos. Returns number of photos attached (0 on failure). */
 function kp_boat_import( $slug, $path, $force = false ) {
 	$p = get_page_by_path( $slug, OBJECT, 'product' ); if ( ! $p ) return 0;
-	if ( ! $force && get_post_meta( $p->ID, 'kp_boat_gallery_done', true ) === $path . '|v' . KP_BOAT_V ) return -1;
+	if ( ! $force && get_post_meta( $p->ID, 'kp_boat_gallery_done', true ) === $path . '|v' . KP_BOAT_V && count( array_filter( explode( ',', (string) get_post_meta( $p->ID, '_product_image_gallery', true ) ) ) ) >= 5 ) return -1;
 	require_once ABSPATH . 'wp-admin/includes/media.php'; require_once ABSPATH . 'wp-admin/includes/file.php'; require_once ABSPATH . 'wp-admin/includes/image.php';
 	$name = function_exists( 'kp_short_product_name' ) ? kp_short_product_name( get_the_title( $p ) ) : get_the_title( $p );
 	$ids = array(); $i = 0;
 	foreach ( kp_boat_photo_urls( $path ) as $url ) {
-		$i++;
+		$i++; if ( count( $ids ) >= 12 ) break;
 		$prev = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_source_url', 'meta_value' => $url ) );
 		if ( $prev && get_post_meta( $prev[0], 'kp_boat_v', true ) === KP_BOAT_V ) { $ids[] = (int) $prev[0]; continue; }
+		if ( get_transient( 'kp_boat_small_' . md5( $url ) ) ) continue; // known too small
 		if ( $prev ) wp_delete_attachment( $prev[0], true ); // older uncropped copy
 		$tmp = download_url( $url, 60 ); if ( is_wp_error( $tmp ) || ! @filesize( $tmp ) ) { if ( ! is_wp_error( $tmp ) ) @unlink( $tmp ); continue; }
-		$size = @getimagesize( $tmp ); if ( ! $size || max( $size[0], $size[1] ) < 900 ) { @unlink( $tmp ); continue; } // too small for a hero or lightbox
+		$size = @getimagesize( $tmp ); if ( ! $size || max( $size[0], $size[1] ) < 750 ) { @unlink( $tmp ); set_transient( 'kp_boat_small_' . md5( $url ), 1, MONTH_IN_SECONDS ); continue; } // too small for a hero or lightbox
 		$file = $tmp; $ext = 'jpg'; $ed = wp_get_image_editor( $tmp );
 		if ( ! is_wp_error( $ed ) ) { $sz = $ed->get_size(); $ed->crop( 0, 0, $sz['width'], (int) round( $sz['height'] * ( 1 - kp_boat_crop( $path ) ) ) ); $ed->resize( 1600, 1600, false ); if ( $ed->supports_mime_type( 'image/webp' ) ) { $ed->set_quality( 82 ); $sv = $ed->save( $tmp . '.webp', 'image/webp' ); if ( ! is_wp_error( $sv ) ) { @unlink( $tmp ); $file = $sv['path']; $ext = 'webp'; } } }
 		$alt = $name . ', Koh Samui: photo ' . ( count( $ids ) + 1 );

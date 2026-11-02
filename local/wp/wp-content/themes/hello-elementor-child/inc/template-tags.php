@@ -54,8 +54,9 @@ function kpt_side_card() {
 	echo '<a class="kpv-btn kpv-btn-o" style="width:100%;margin-top:8px" href="' . esc_url( kpt_wa() ) . '" rel="noopener">Book on WhatsApp</a>';
 	echo '<ul class="kpa-sd-b"><li>Local team on Koh Samui since 2006</li><li>TAT licence ' . esc_html( KP_TAT_LICENCE ) . '</li><li>Secure card payment</li><li>Full refund 48 hours or more before departure</li></ul></div></aside>';
 }
-function kpt_mbar( $label = 'Tours from Koh Samui', $price = '', $url = '' ) {
-	echo '<div class="kpa-mbar"><div><strong>' . esc_html( $label ) . '</strong>' . ( $price ? '<br><span style="font-size:13px;color:var(--kp-muted)">' . esc_html( $price ) . '</span>' : '' ) . '</div><a class="kpv-btn" href="' . esc_url( $url ?: home_url( '/koh-samui-tours/' ) ) . '">Book now</a></div>';
+function kpt_mbar( $label = 'Tours from Koh Samui', $price = '', $url = '', $cta = 'Book now' ) {
+	if ( function_exists( 'kp_short_product_name' ) && strlen( $label ) > 34 ) $label = kp_short_product_name( $label );
+	echo '<div class="kpa-mbar"><div><strong>' . esc_html( $label ) . '</strong>' . ( $price ? '<br><span style="font-size:13px;color:var(--kp-muted)">' . esc_html( $price ) . '</span>' : '' ) . '</div><a class="kpv-btn" href="' . esc_url( $url ?: home_url( '/koh-samui-tours/' ) ) . '">' . esc_html( $cta ) . '</a></div>';
 }
 function kpt_related( $title = 'More guides from Koh Samui' ) {
 	$q = new WP_Query( array( 'post_type' => array( 'page', 'kp_place' ), 'posts_per_page' => 6, 'post__not_in' => array( get_the_ID() ), 'post_status' => 'publish', 'meta_key' => 'kp_kind', 'meta_value' => get_post_meta( get_the_ID(), 'kp_kind', true ) ?: 'guide', 'orderby' => 'rand', 'no_found_rows' => true ) );
@@ -77,6 +78,7 @@ function kpt_photo_strip( $ids, $all_anchor = '#photos' ) {
 function kpt_photo_grid( $ids, $title = '' ) {
 	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( ! $ids ) return '';
 	$h = '<div class="kpv-gallery" id="photos">';
-	foreach ( $ids as $i => $aid ) $h .= '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '">' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) . '</a>';
+	$n = count( $ids );
+	foreach ( $ids as $i => $aid ) $h .= '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '"' . ( $i === 6 && $n > 7 ? ' data-more="+' . ( $n - 7 ) . ' photos"' : '' ) . '>' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) . '</a>';
 	return $h . '</div>';
 }

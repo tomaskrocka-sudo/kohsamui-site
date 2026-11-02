@@ -17,7 +17,7 @@ $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-
 	<div class="kp-w kpg-hero-tx">
 		<p class="kpa-k"><span data-kp-today><?php echo esc_html( wp_date( 'D j M' ) ); ?></span> · what's on and what to book</p>
 		<h1>Koh Samui boat trips, island guide and parties</h1>
-		<p class="kpg-hero-lead"><?php echo esc_html( $lead ); ?></p>
+		<p class="kpg-hero-lead"><?php $lp = explode( 'Private yachts, ', $lead, 2 ); echo esc_html( $lp[0] ); if ( isset( $lp[1] ) ) echo '<span class="kpg-lead-more">' . esc_html( 'Private yachts, ' . $lp[1] ) . '</span>'; ?></p>
 		<p class="kpg-hero-cta"><a class="kpv-btn" href="<?php echo $u( '/koh-samui-tours/' ); ?>">All tours and prices</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-boat-charter/' ); ?>">Yachts and boats</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-villas/' ); ?>">Find a villa</a></p>
 		<?php if ( $offers ) : ?>
 		<div class="kpg-sell" data-kp-offers data-max="4" aria-label="Book now on Koh Samui">
