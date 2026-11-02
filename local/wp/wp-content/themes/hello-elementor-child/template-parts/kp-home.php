@@ -6,40 +6,34 @@ $ang_closed = $ang && function_exists( 'kp_product_is_closed_today' ) && kp_prod
 $hero_id = function_exists( 'kpt_hero_id' ) ? kpt_hero_id() : 0; $hero = $hero_id ? wp_get_attachment_image_url( $hero_id, 'kp-hero' ) : '';
 $u = fn( $p ) => esc_url( home_url( $p ) );
 
-// What the hero sells right now: a dated party in its promo window, else the next Full Moon Party boat, else Pig Island.
-$feat = null;
-if ( function_exists( 'kp_current_promo' ) && ( $e = kp_current_promo() ) && function_exists( 'wc_get_product' ) && ( $tp = wc_get_product( $e['ticket_product'] ) ) ) {
-	$feat = array( 'k' => ( $e['start']->format( 'Y-m-d' ) === wp_date( 'Y-m-d', strtotime( '+1 day' ) ) ? 'Tomorrow' : $e['start']->format( 'D j M' ) ), 'title' => $e['title'], 'sub' => $e['venue'], 'price' => (float) $e['price_from'] ?: (float) $tp->get_price(), 'unit' => 'per person', 'url' => $tp->get_permalink(), 'img' => function_exists( 'kp_event_image' ) ? kp_event_image( $e ) : '', 'cta' => 'Book tickets' );
-}
-if ( ! $feat && function_exists( 'kp_upcoming_events' ) ) {
-	foreach ( kp_upcoming_events( array( 'to' => '+45 days', 'limit' => 60 ) ) as $e ) {
-		if ( stripos( $e['title'], 'full moon' ) === false ) continue;
-		$fmp = get_page_by_path( 'full-moon-party-speedboat-koh-samui', OBJECT, 'product' ); if ( ! $fmp ) break;
-		$img = get_post_thumbnail_id( $fmp->ID ) ?: ( function_exists( 'kp_card_image_id' ) ? kp_card_image_id( $fmp->ID ) : 0 );
-		$feat = array( 'k' => 'Next Full Moon · ' . $e['start']->format( 'D j M' ), 'title' => 'Full Moon Party speedboat from Koh Samui', 'sub' => 'Hotel to Haad Rin and back, return the same night', 'price' => (float) get_post_meta( $fmp->ID, '_price', true ), 'unit' => 'per person return', 'url' => get_permalink( $fmp ), 'img' => $img ? wp_get_attachment_image_url( $img, 'medium_large' ) : '', 'cta' => 'Book your seat' );
-		break;
-	}
-}
-if ( ! $feat && ( $pig = get_page_by_path( 'pig-island-speedboat-tour', OBJECT, 'product' ) ) ) {
-	$img = function_exists( 'kp_card_image_id' ) ? kp_card_image_id( $pig->ID ) : 0;
-	$feat = array( 'k' => 'Runs every day', 'title' => get_the_title( $pig ), 'sub' => 'Half a day with the pigs of Koh Madsum and the reef at Koh Tan', 'price' => (float) get_post_meta( $pig->ID, '_price', true ), 'unit' => 'per adult', 'url' => get_permalink( $pig ), 'img' => $img ? wp_get_attachment_image_url( $img, 'medium_large' ) : '', 'cta' => 'Book now' );
-}
+// What the hero sells right now: nearest sellable events, the season's day trip and the yacht of the week (kp_hero_offers in kp-core).
+$offers = function_exists( 'kp_hero_offers' ) ? kp_hero_offers() : array();
+$lead = function_exists( 'kp_hero_lead' ) ? kp_hero_lead() : 'Pig Island and Koh Tao by speedboat, private boats and yachts, the Full Moon Party from your hotel, 100+ pool villas with live prices, and honest guides to every beach — from a team that has run tours here since 2006.';
 $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-moon-party-speedboat-koh-samui,pig-island-longtail-tour,pig-island-sunset-tour,pink-dolphins-pig-island-tour,half-moon-festival-package-koh-samui,jet-ski-safari-pig-island,ang-thong-marine-park-day-tour-koh-samui,ang-thong-vip-tour-koh-samui';
 ?>
 <section class="kpg-hero">
 	<?php if ( $hero ) : ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>" alt="<?php echo esc_attr( get_post_meta( $hero_id, '_wp_attachment_image_alt', true ) ?: 'Koh Samui from the water' ); ?>" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
 	<div class="kpg-hero-g"></div>
 	<div class="kp-w kpg-hero-tx">
-		<p class="kpa-k">Koh Samui tours, boats, villas &amp; events · local since 2006</p>
+		<p class="kpa-k"><span data-kp-today><?php echo esc_html( wp_date( 'D j M' ) ); ?></span> · what's on and what to book</p>
 		<h1>Koh Samui boat trips, island guide and parties</h1>
-		<p class="kpg-hero-lead">Pig Island and Koh Tao by speedboat, private boats and yachts, the Full Moon Party from your hotel, 100+ pool villas with live prices, and honest guides to every beach — from a team that has run tours here since 2006.</p>
-		<?php if ( $feat ) : ?>
-		<a class="kpg-feat" href="<?php echo esc_url( $feat['url'] ); ?>">
-			<?php if ( $feat['img'] ) : ?><img src="<?php echo esc_url( $feat['img'] ); ?>" alt="" width="320" height="240" loading="eager" decoding="async"><?php endif; ?>
-			<span class="kpg-feat-tx"><span class="kpg-feat-k"><?php echo esc_html( $feat['k'] ); ?></span><strong><?php echo esc_html( $feat['title'] ); ?></strong><?php if ( $feat['sub'] ) : ?><span class="kpg-feat-s"><?php echo esc_html( $feat['sub'] ); ?></span><?php endif; ?><?php if ( $feat['price'] ) : ?><span class="kpg-feat-p">From <b><?php echo esc_html( number_format( $feat['price'] ) ); ?> THB</b> <?php echo esc_html( $feat['unit'] ); ?></span><?php endif; ?><span class="kpv-btn"><?php echo esc_html( $feat['cta'] ); ?></span></span>
-		</a>
+		<p class="kpg-hero-lead"><?php echo esc_html( $lead ); ?></p>
+		<p class="kpg-hero-cta"><a class="kpv-btn" href="<?php echo $u( '/koh-samui-tours/' ); ?>">All tours and prices</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-boat-charter/' ); ?>">Yachts and boats</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-villas/' ); ?>">Find a villa</a></p>
+		<?php if ( $offers ) : ?>
+		<div class="kpg-sell" data-kp-offers data-max="4" aria-label="Book now on Koh Samui">
+			<?php foreach ( $offers as $i => $o ) : $dated = ! empty( $o['start'] ); ?>
+			<a class="kpg-sell-i<?php echo $i >= 4 ? ' is-spare' : ''; ?>" href="<?php echo esc_url( $o['url'] ); ?>"<?php if ( $dated ) : ?> data-kp-start="<?php echo (int) $o['start']; ?>" data-kp-end="<?php echo (int) $o['end']; ?>"<?php endif; ?>>
+				<span class="kpg-sell-img"><?php if ( $o['img'] ) : ?><img src="<?php echo esc_url( $o['img'] ); ?>" alt="" width="400" height="300" loading="<?php echo $i < 4 ? 'eager' : 'lazy'; ?>" decoding="async"><?php endif; ?></span>
+				<span class="kpg-sell-tx">
+					<span class="kpg-sell-k"><?php echo esc_html( $o['k'] ); ?><?php if ( $dated ) : ?> · <span data-kp-when="<?php echo $o['time'] ? 'time' : 'date'; ?>"><?php echo esc_html( $o['when'] ); ?></span><?php endif; ?></span>
+					<strong><?php echo esc_html( $o['title'] ); ?></strong>
+					<?php if ( $o['sub'] ) : ?><span class="kpg-sell-s"><?php echo esc_html( $o['sub'] ); ?></span><?php endif; ?>
+					<?php if ( $o['price'] ) : ?><span class="kpg-sell-p">From <b><?php echo esc_html( number_format( $o['price'] ) ); ?> THB</b> <?php echo esc_html( $o['unit'] ); ?></span><?php endif; ?>
+				</span>
+			</a>
+			<?php endforeach; ?>
+		</div>
 		<?php endif; ?>
-		<p class="kpg-hero-cta"><a class="kpv-btn" href="<?php echo $u( '/koh-samui-tours/' ); ?>">All tours and prices</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-villas/' ); ?>">Find a villa</a></p>
 	</div>
 </section>
 

@@ -515,3 +515,18 @@ html.kpts-dark .kp-h a{color:var(--kp-ink)}
 .kph-menu>li>a{white-space:nowrap}
 @media(min-width:1024px){.kph-menu{gap:0}.kph-menu>li>a{padding:0 9px;font-size:14px}.kph-w{gap:14px}}
 @media(min-width:1024px) and (max-width:1239px){.kph-menu>li>a{padding:0 7px;font-size:13.5px}.kph-cta span{display:none}.kph-cta{padding:0 14px}.kph-logo small{display:none}}
+/* Homepage hero: "book now" offers (nearest events, day trip of the season, yacht of the week). */
+.kpg-sell{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:26px 0 0}
+.kpg-sell-i{display:flex;flex-direction:column;min-width:0;background:rgba(7,20,31,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.16);border-radius:16px;overflow:hidden;text-decoration:none!important;color:#fff!important;transition:border-color .15s,transform .15s}
+.kpg-sell-i:hover{border-color:var(--kp-accent);transform:translateY(-2px)}
+.kpg-sell-i.is-spare,.kpg-sell-i.is-gone{display:none}
+.kpg-sell-img{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;background:rgba(255,255,255,.06)}
+.kpg-sell-img img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;object-fit:cover;display:block;margin:0}
+.kpg-sell-tx{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px;flex:1}
+.kpg-sell-k{font:700 11px/1.3 var(--kp-sans);letter-spacing:.09em;text-transform:uppercase;color:var(--kp-accent)}
+.kpg-sell-tx strong{font:600 17px/1.25 var(--kp-serif);color:#fff}
+.kpg-sell-s{font-size:13px;line-height:1.4;color:#C9D6E3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.kpg-sell-p{margin-top:auto;padding-top:6px;font-size:13px;color:#DCE6F0}
+.kpg-sell-p b{color:#fff;font-size:16px}
+@media(max-width:900px){.kpg-sell{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(220px,70%);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-right:calc(-1 * var(--kp-gutter,16px))}.kpg-sell-i{scroll-snap-align:start}}
+@media(max-width:600px){.kpg-sell-s{display:none}.kpg-hero-cta .kpv-btn{height:40px;font-size:14px;padding:0 14px}}

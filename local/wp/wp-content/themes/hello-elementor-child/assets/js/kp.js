@@ -96,3 +96,26 @@
     for (var c2 = 0; c2 < n; c2++) { var avg = len[c2] / Math.max(1, cnt[c2]); var w = avg > 70 ? '22em' : avg > 40 ? '16em' : avg > 22 ? '11em' : ''; if (!w) continue; for (var r2 = 0; r2 < rows.length; r2++) if (rows[r2].cells[c2]) rows[r2].cells[c2].style.minWidth = w; }
   });
 })();
+
+/* Live labels on cached pages: relabel Today / Tonight / Tomorrow in Samui time, drop events that are over, let spare offers fill in. */
+(function () {
+  var TZ = 'Asia/Bangkok', now = Date.now() / 1000;
+  function ymd(t) { return new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(t * 1000)); }
+  function hm(t) { return new Intl.DateTimeFormat('en-GB', { timeZone: TZ, hour: '2-digit', minute: '2-digit', hour12: false }).format(new Date(t * 1000)); }
+  function hour(t) { return +hm(t).slice(0, 2); }
+  function dmy(t, wd) { var p = new Intl.DateTimeFormat('en-GB', { timeZone: TZ, weekday: 'short', day: 'numeric', month: 'short' }).formatToParts(new Date(t * 1000)), o = {}; p.forEach(function (x) { o[x.type] = x.value; }); return (wd ? o.weekday + ' ' : '') + o.day + ' ' + o.month; }
+  var today = ymd(now), tom = ymd(now + 86400);
+  document.querySelectorAll('[data-kp-today]').forEach(function (el) { el.textContent = dmy(now, true); });
+  document.querySelectorAll('[data-kp-start]').forEach(function (el) {
+    var s = +el.getAttribute('data-kp-start'), e = +el.getAttribute('data-kp-end') || s;
+    if (now > e) { el.classList.add('is-gone'); el.setAttribute('hidden', ''); return; }
+    var w = el.querySelector('[data-kp-when]'); if (!w) return;
+    var mode = w.getAttribute('data-kp-when'), d = ymd(s), t = hm(s), live = s <= now && now <= e;
+    if (mode === 'ticker') w.textContent = live ? 'Live now' : (d === today ? (hour(s) >= 18 ? 'Tonight ' : 'Today ') + t : (d === tom ? 'Tomorrow ' : dmy(s, true).split(' ')[0] + ' ') + t);
+    else w.textContent = d === today ? (hour(s) >= 18 ? 'Tonight' : 'Today') : (d === tom ? 'Tomorrow' : dmy(s, true)) + (mode === 'time' && (d === today || d === tom) ? ' ' + t : '');
+  });
+  document.querySelectorAll('[data-kp-offers]').forEach(function (box) {
+    var max = +box.getAttribute('data-max') || 4, shown = 0;
+    Array.prototype.forEach.call(box.children, function (c) { if (c.classList.contains('is-gone')) return; c.classList.toggle('is-spare', shown >= max); shown++; });
+  });
+})();
