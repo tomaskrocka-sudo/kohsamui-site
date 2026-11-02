@@ -20,7 +20,7 @@ function kpc_manifest() {
 	static $m = null; if ( $m !== null ) return $m;
 	$m = json_decode( (string) @file_get_contents( KPC_DIR . 'data/media-manifest.json' ), true ) ?: array();
 	// Later manifests add photos and override a post's photo (v2: tours/pages/event fallbacks, places: Wikimedia photos of Samui sights).
-	foreach ( array( 'media-manifest-v2.json', 'media-manifest-places.json' ) as $f ) {
+	foreach ( array( 'media-manifest-v2.json', 'media-manifest-places.json', 'media-manifest-extra.json' ) as $f ) {
 		$x = json_decode( (string) @file_get_contents( KPC_DIR . 'data/' . $f ), true ); if ( ! $x ) continue;
 		$m['media'] = array_merge( $m['media'] ?? array(), $x['media'] ?? array() );
 		$idx = array(); foreach ( $m['posts'] ?? array() as $i => $p ) $idx[ $p['type'] . '/' . $p['slug'] ] = $i;

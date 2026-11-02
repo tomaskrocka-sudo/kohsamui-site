@@ -503,3 +503,10 @@ a.kp-pill svg{flex:none}
 .kp-h a{color:var(--kp-ink);text-decoration:underline;text-decoration-color:var(--kp-accent);text-decoration-thickness:2px;text-underline-offset:4px}
 .kp-h a:hover{color:var(--kp-accent-dark)}
 html.kpts-dark .kp-h a{color:var(--kp-ink)}
+/* Checkout: Place order and payment box in the site style (WooCommerce default purple overridden). */
+.woocommerce #payment #place_order,.woocommerce-page #payment #place_order,.woocommerce #respond input#submit.alt,.woocommerce a.button.alt,.woocommerce button.button.alt,.woocommerce input.button.alt{background:var(--kp-accent)!important;color:var(--kp-accent-ink)!important;border:0!important;border-radius:var(--kp-radius-pill)!important;font-weight:700;font-size:16px;min-height:52px;padding:0 28px!important;box-shadow:none}
+.woocommerce #payment #place_order:hover,.woocommerce button.button.alt:hover,.woocommerce a.button.alt:hover{background:var(--kp-accent-hover)!important;color:var(--kp-accent-ink)!important}
+.woocommerce-checkout #payment{background:var(--kp-card,var(--kp-bg))!important;border:1px solid var(--kp-border);border-radius:16px}
+.woocommerce-checkout #payment div.payment_box{background:var(--kp-surface)!important;color:var(--kp-ink)!important;border-radius:12px}
+.woocommerce-checkout #payment div.payment_box::before{display:none}
+.woocommerce-checkout #payment ul.payment_methods{border-bottom:1px solid var(--kp-border)}
