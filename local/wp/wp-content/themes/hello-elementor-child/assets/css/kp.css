@@ -295,3 +295,9 @@ html,body{overflow-x:clip}
 .kp-open.is-closed{color:#a3263d;background:rgba(163,38,61,.07);border-color:rgba(163,38,61,.2)}
 @keyframes kpPulse{50%{box-shadow:0 0 0 6px rgba(19,122,67,0)}}
 html.kpts-dark .kp-open.is-open{color:#6fdc9f}html.kpts-dark .kp-open.is-closed{color:#ff9aac}
+.kpv-cal{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));margin:0 0 8px}
+.kpv-cal-m strong{display:block;margin:0 0 6px}.kpv-cal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;font-size:12.5px}
+.kpv-cal-g span{font-size:11px;color:var(--kp-muted);font-weight:600}.kpv-cal-g b{padding:6px 0;border-radius:6px;font-weight:500}
+.kpv-cal-g b.is-free,.kpv-cal-key b.is-free{background:rgba(19,122,67,.16);color:#0f6a3a}.kpv-cal-g b.is-busy,.kpv-cal-key b.is-busy{background:rgba(163,38,61,.13);color:#9f1239;text-decoration:line-through}
+.kpv-cal-g b.is-na,.kpv-cal-key b.is-na{background:var(--kp-surface);color:var(--kp-muted)}.kpv-cal-g b.is-past{color:#C3C8CF}
+.kpv-cal-key{font-size:13px;color:var(--kp-muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.kpv-cal-key b{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:middle;margin-right:2px}

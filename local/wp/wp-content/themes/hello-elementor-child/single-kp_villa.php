@@ -26,8 +26,24 @@ while ( have_posts() ) : the_post();
 		echo '</tbody></table></div><p class="kp-note"><strong>Good to know:</strong> rates are per night for the whole villa, converted to THB and updated every hour. Your dates are priced live in the booking box.</p>';
 	}
 	if ( $disc = $j( 'kpv_discounts' ) ) { echo '<h3>Offers</h3><ul>'; foreach ( $disc as $d ) echo '<li>' . esc_html( $d ) . '</li>'; echo '</ul>'; }
-	// Availability next weeks
-	if ( $av = $j( 'kpv_avail' ) ) { echo '<h2>Availability: Saturday to Saturday, next ' . count( $av ) . ' weeks</h2><div class="kpv-avail">'; foreach ( $av as $wk => $x ) echo '<span class="' . ( $x[0] ? 'is-free' : 'is-busy' ) . '"><b>' . esc_html( wp_date( 'j M', strtotime( $wk ) ) ) . '</b>' . ( $x[0] ? ( $x[1] ? number_format( $x[1] ) . ' THB' : 'free' ) : 'booked' ) . '</span>'; echo '</div><p><small>Checked ' . esc_html( human_time_diff( (int) $m( 'kpv_avail_time' ) ) ) . ' ago for 7-night stays. Other dates: use the booking box.</small></p>'; }
+	// Availability calendar: 3 months, each day coloured by its Saturday-to-Saturday week (checked hourly)
+	if ( $av = $j( 'kpv_avail' ) ) {
+		$tz = new DateTimeZone( 'Asia/Bangkok' ); $today = new DateTimeImmutable( 'today', $tz ); $m0 = $today->modify( 'first day of this month' );
+		echo '<h2 id="availability">Availability</h2><p>Green weeks are free for a Saturday-to-Saturday stay (price shown for 7 nights); red weeks are booked. Checked ' . esc_html( human_time_diff( (int) $m( 'kpv_avail_time' ) ) ) . ' ago. For other dates or shorter stays, pick dates in the booking box for a live answer.</p><div class="kpv-cal">';
+		for ( $mi = 0; $mi < 3; $mi++ ) {
+			$mo = $m0->modify( "+$mi month" ); $days = (int) $mo->format( 't' ); $off = (int) $mo->format( 'N' ) - 1;
+			echo '<div class="kpv-cal-m"><strong>' . esc_html( $mo->format( 'F Y' ) ) . '</strong><div class="kpv-cal-g"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>' . str_repeat( '<i></i>', $off );
+			for ( $d = 1; $d <= $days; $d++ ) {
+				$dt = $mo->setDate( (int) $mo->format( 'Y' ), (int) $mo->format( 'n' ), $d ); $sat = $dt->modify( '-' . ( ( (int) $dt->format( 'N' ) + 1 ) % 7 ) . ' days' )->format( 'Y-m-d' );
+				$st = $dt < $today ? 'past' : ( isset( $av[ $sat ] ) ? ( $av[ $sat ][0] ? 'free' : 'busy' ) : 'na' );
+				$tip = $st === 'free' ? 'Week from ' . wp_date( 'j M', strtotime( $sat ) ) . ' free' . ( $av[ $sat ][1] ? ': ' . number_format( $av[ $sat ][1] ) . ' THB for 7 nights' : '' ) : ( $st === 'busy' ? 'Booked' : ( $st === 'na' ? 'Ask for these dates' : '' ) );
+				echo '<b class="is-' . $st . '" title="' . esc_attr( $tip ) . '">' . $d . '</b>';
+			}
+			echo '</div></div>';
+		}
+		echo '</div><p class="kpv-cal-key"><b class="is-free"></b> free week <b class="is-busy"></b> booked <b class="is-na"></b> ask us</p>';
+		$free = array_filter( $av, fn( $x ) => $x[0] ); if ( $free ) { echo '<h3>Next free weeks (7 nights)</h3><div class="kpv-avail">'; foreach ( array_slice( $free, 0, 6, true ) as $wk => $x ) echo '<span class="is-free"><b>' . esc_html( wp_date( 'j M', strtotime( $wk ) ) . ' – ' . wp_date( 'j M', strtotime( $wk . ' +7 days' ) ) ) . '</b>' . ( $x[1] ? number_format( $x[1] ) . ' THB' : 'free' ) . '</span>'; echo '</div>'; }
+	}
 	// Conditions
 	if ( $pol = $j( 'kpv_policies' ) ) { echo '<h2>House rules, inclusions and payment</h2><ul>'; foreach ( $pol as $p ) echo '<li>' . esc_html( $p ) . '</li>'; echo '</ul>'; }
 	if ( $cx = $j( 'kpv_cancellation' ) ) { echo '<h2>Cancellation terms</h2><ul>'; foreach ( $cx as $c ) echo '<li>' . esc_html( $c ) . '</li>'; echo '</ul>'; }
