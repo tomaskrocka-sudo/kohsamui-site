@@ -6,7 +6,9 @@ while ( have_posts() ) : the_post();
 	if ( is_front_page() ) { get_template_part( 'template-parts/kp-home' ); continue; }
 	// Cart, checkout and account: no byline, side card, FAQ or related tours, so nothing competes with paying.
 	if ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() || is_account_page() ) ) {
-		echo '<div class="kpa-w kp-shop-w"><h1 class="kp-shop-h">' . esc_html( get_the_title() ) . '</h1>';
+		$received = function_exists( 'is_order_received_page' ) && is_order_received_page();
+		$h1 = is_checkout() && ! $received ? 'Book and pay' : get_the_title();
+		echo '<div class="kpa-w kp-shop-w' . ( is_checkout() ? ' kpc-page' : '' ) . '">' . ( $received ? '' : '<h1 class="kp-shop-h">' . esc_html( $h1 ) . '</h1>' ); // the thank-you template prints its own heading
 		the_content();
 		echo '</div>';
 		continue;

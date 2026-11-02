@@ -171,3 +171,21 @@
   });
   window.addEventListener('resize', function () { go(cur, false); });
 })();
+
+/* Checkout progress: step 2 (details) → step 3 (payment) once the guest reaches the payment card. */
+(function () {
+  var prog = document.querySelector('.kpc-prog'), pay = document.querySelector('.kpc-pay');
+  if (!prog || !pay) return;
+  var li = function (n) { return prog.querySelector('li[data-step="' + n + '"]'); };
+  function set(step) {
+    [1, 2, 3, 4].forEach(function (n) {
+      var el = li(n); if (!el) return; var dot = el.querySelector('.kpc-dot');
+      el.classList.toggle('done', n < step); el.classList.toggle('on', n === step);
+      if (n === step) el.setAttribute('aria-current', 'step'); else el.removeAttribute('aria-current');
+      if (dot) dot.textContent = n < step ? '✓' : n;
+    });
+  }
+  pay.addEventListener('focusin', function () { set(3); });
+  pay.addEventListener('pointerdown', function () { set(3); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio > 0.6) set(3); }); }, { threshold: [0.6] }).observe(pay);
+})();
