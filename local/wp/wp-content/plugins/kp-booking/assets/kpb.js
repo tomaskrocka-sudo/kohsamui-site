@@ -34,9 +34,18 @@
   cal.addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
     if (b.dataset.nav) { view.setMonth(view.getMonth() + parseInt(b.dataset.nav, 10)); render(); return; }
-    if (b.dataset.d && !b.disabled) { dateIn.value = b.dataset.d; render(); quote(); }
+    if (b.dataset.d && !b.disabled) { dateIn.value = b.dataset.d; touched = true; render(); label(); closeCal(true); quote(); }
   });
-  dateIn.addEventListener('change', function () { render(); quote(); });
+  /* One calendar, opened from the date field */
+  var dateBtn = root.querySelector('#kpb_datebtn'), touched = false;
+  function label() { if (!dateBtn) return; var v = dateBtn.querySelector('.kpb-datev'); if (dateIn.value) { v.textContent = new Date(dateIn.value + 'T00:00:00').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }); dateBtn.classList.add('has-v'); } else { v.textContent = 'Choose a date'; dateBtn.classList.remove('has-v'); } }
+  function openCal() { if (dateIn.value) { view = new Date(dateIn.value + 'T00:00:00'); view.setDate(1); } render(); cal.hidden = false; dateBtn.setAttribute('aria-expanded', 'true'); var f = cal.querySelector('.is-sel') || cal.querySelector('.kpb-day:not([disabled])'); if (f) f.focus({ preventScroll: true }); }
+  function closeCal(focusBtn) { if (cal.hidden) return; cal.hidden = true; dateBtn.setAttribute('aria-expanded', 'false'); if (focusBtn) dateBtn.focus({ preventScroll: true }); }
+  if (dateBtn) {
+    dateBtn.addEventListener('click', function () { cal.hidden ? openCal() : closeCal(); });
+    document.addEventListener('click', function (e) { if (!cal.hidden && !cal.contains(e.target) && !dateBtn.contains(e.target)) closeCal(); });
+    cal.addEventListener('keydown', function (e) { if (e.key === 'Escape') { e.preventDefault(); closeCal(true); } });
+  }
 
   /* Currency display (kpcur) */
   function fmt(thb) {
@@ -70,17 +79,18 @@
     timer = setTimeout(function () {
       fetch((KPB.rest || '/wp-json/') + 'kp/v1/quote', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ product: cfg.product_id }, s)) })
         .then(function (r) { return r.json(); }).then(function (j) {
-          if (j.errors && j.errors.length) { errEl.innerHTML = j.errors.map(function (e) { return '<p>' + e + '</p>'; }).join(''); }
+          var errs = (j.errors || []).filter(function (e) { return !/^Please choose/i.test(e); }); // missing-field prompts wait for the Book button
+          if (touched && errs.length) { errEl.innerHTML = errs.map(function (e) { return '<p>' + e + '</p>'; }).join(''); }
           if (typeof j.total_thb === 'number') show({ total: j.total_thb, lines: j.lines.map(function (l) { return [l.label, l.qty, l.unit]; }) });
         }).catch(function () {});
     }, 250);
   }
-  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', quote); });
+  form.querySelectorAll('select').forEach(function (el) { el.addEventListener('change', function () { touched = true; quote(); }); });
   document.addEventListener('kp:currency', quote);
   form.addEventListener('submit', function (e) {
-    var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a departure date.</p>'; cal.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a departure date.</p>'; if (dateBtn) { dateBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); openCal(); } return; }
     if (cfg.pickup && cfg.pickup.enabled && !s.pickup) { e.preventDefault(); errEl.innerHTML = '<p>Please choose your pickup area.</p>'; return; }
     var btn = root.querySelector('#kpb_submit'); btn.disabled = true; btn.textContent = KPB.i18n.adding;
   });
-  render(); quote();
+  render(); label(); quote();
 })();

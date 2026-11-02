@@ -301,3 +301,18 @@ html.kpts-dark .kp-open.is-open{color:#6fdc9f}html.kpts-dark .kp-open.is-closed{
 .kpv-cal-g b.is-free,.kpv-cal-key b.is-free{background:rgba(19,122,67,.16);color:#0f6a3a}.kpv-cal-g b.is-busy,.kpv-cal-key b.is-busy{background:rgba(163,38,61,.13);color:#9f1239;text-decoration:line-through}
 .kpv-cal-g b.is-na,.kpv-cal-key b.is-na{background:var(--kp-surface);color:var(--kp-muted)}.kpv-cal-g b.is-past{color:#C3C8CF}
 .kpv-cal-key{font-size:13px;color:var(--kp-muted);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.kpv-cal-key b{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:middle;margin-right:2px}
+/* Logged-in editors: keep the fixed header below the WordPress admin bar */
+:root{--kp-fixed-h:calc(var(--kp-header-h) + 34px)}
+.admin-bar{--kp-fixed-h:calc(var(--kp-header-h) + 66px)}.admin-bar .kph{top:32px}
+@media (max-width:782px){.admin-bar{--kp-fixed-h:calc(var(--kp-header-h) + 80px)}.admin-bar .kph{top:46px}}
+@media (max-width:600px){.admin-bar{--kp-fixed-h:calc(var(--kp-header-h) + 34px)}.admin-bar .kph{top:0}}
+.kpa-prog{top:var(--kp-fixed-h)!important}
+/* Sticky side cards clear the header + ticker, and scroll inside themselves when taller than the screen */
+.kpa-side,.kpv-book{top:calc(var(--kp-fixed-h) + 16px)}
+@media (min-width:1000px){.kpa-side,.kpv-book{max-height:calc(100vh - var(--kp-fixed-h) - 32px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-bottom:2px}}
+.kpa-body h2{scroll-margin-top:calc(var(--kp-fixed-h) + 16px)}
+/* WooCommerce lightbox buttons: undo the parent theme's button reset */
+.pswp .pswp__button{border:0;padding:0;border-radius:0;background-color:transparent}
+.pswp .pswp__button:hover,.pswp .pswp__button:focus{background-color:transparent;color:inherit}
+/* Cart / checkout / account: plain, focused layout */
+.kp-shop-w{padding-block:32px 64px}.kp-shop-h{font-family:var(--kp-serif);font-size:clamp(28px,4vw,40px);margin:0 0 20px}

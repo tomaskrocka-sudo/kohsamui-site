@@ -18,7 +18,7 @@ add_action( 'init', function () {
 
 add_action( 'wp_enqueue_scripts', function () {
 	if ( ! is_product() || ! kpb_is_bookable( get_the_ID() ) ) return;
-	wp_enqueue_style( 'kpb', KPB_URL . 'assets/kpb.css', array(), KPB_VER );
+	wp_enqueue_style( 'kpb', KPB_URL . 'assets/kpb.css', wp_style_is( 'hello-elementor', 'registered' ) ? array( 'hello-elementor' ) : array(), KPB_VER ); // after the parent theme's button reset
 	wp_enqueue_script( 'kpb', KPB_URL . 'assets/kpb.js', array(), KPB_VER, true );
 	$cfg = kpb_config( get_the_ID() );
 	wp_localize_script( 'kpb', 'KPB', array(
@@ -46,11 +46,12 @@ function kpb_render_booking_card() {
 		<form class="kpb-form" method="post" action="<?php echo esc_url( wc_get_cart_url() ); ?>" novalidate>
 			<?php wp_nonce_field( 'kpb_add', 'kpb_nonce' ); ?>
 			<input type="hidden" name="kpb_add" value="<?php echo (int) $pid; ?>">
-			<label class="kpb-field"><span>Departure date</span>
-				<input type="date" name="kpb_date" id="kpb_date" required min="<?php echo esc_attr( $cfg['first_date'] ); ?>" value="">
+			<div class="kpb-field"><span id="kpb_date_l">Departure date</span>
+				<input type="hidden" name="kpb_date" id="kpb_date" value="">
+				<button type="button" class="kpb-datebtn" id="kpb_datebtn" aria-labelledby="kpb_date_l kpb_datebtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="kpb_cal"><span class="kpb-datev">Choose a date</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></button>
+				<div class="kpb-cal" id="kpb_cal" role="dialog" aria-label="Choose a departure date" hidden></div>
 				<small class="kpb-hint">Next-day bookings close at midnight Thailand time. Same-day: <a href="<?php echo esc_url( 'https://wa.me/' . ( defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '66637040888' ) ); ?>">WhatsApp us</a>.</small>
-			</label>
-			<div class="kpb-cal" id="kpb_cal" aria-live="polite"></div>
+			</div>
 			<?php if ( $cfg['options'] ) : ?>
 			<label class="kpb-field"><span>Option</span>
 				<select name="kpb_option" id="kpb_option"><?php foreach ( $cfg['options'] as $i => $o ) echo '<option value="' . (int) $i . '" data-price="' . esc_attr( $o['price'] ) . '"' . ( $o['child'] !== null ? ' data-child="' . esc_attr( $o['child'] ) . '"' : '' ) . ( $o['max_guests'] ? ' data-max="' . (int) $o['max_guests'] . '"' : '' ) . '>' . esc_html( $o['label'] ) . ' · ' . esc_html( number_format( $o['price'] ) ) . ' THB</option>'; ?></select></label>

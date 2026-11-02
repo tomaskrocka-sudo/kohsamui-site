@@ -216,16 +216,13 @@ function kp_meta_description() {
 	return get_bloginfo( 'description' );
 }
 
-/* ---- Output: merge into Rank Math, or print our own ---- */
-add_filter( 'rank_math/json_ld', function ( $data, $jsonld ) {
-	if ( is_admin() ) return $data;
-	// Rank Math already has Organization/WebSite/WebPage/BreadcrumbList; replace them with ours for stable @ids and the merged org node.
-	foreach ( array_keys( $data ) as $k ) if ( preg_match( '/^(Organization|WebSite|WebPage|BreadcrumbList|publisher|place|ProfilePage)$/i', (string) $k ) ) unset( $data[ $k ] );
-	foreach ( array_merge( kp_schema_sitewide(), kp_schema_page_nodes() ) as $i => $node ) $data[ 'kp_' . $i ] = $node;
-	return $data;
-}, 99, 2 );
+/* ---- Output: one graph of our own. Rank Math keeps titles, meta, Open Graph and sitemaps; its JSON-LD is switched off so nodes are not duplicated or rewritten. ---- */
+add_filter( 'rank_math/json_ld', function ( $data ) { return is_admin() ? $data : array(); }, 99 );
+add_filter( 'woocommerce_structured_data_product', '__return_empty_array', 99 );
 add_action( 'wp_head', function () {
-	if ( class_exists( 'RankMath' ) || is_admin() ) return;
-	$graph = array( '@context' => 'https://schema.org', '@graph' => array_merge( kp_schema_sitewide(), kp_schema_page_nodes() ) );
+	if ( is_admin() ) return;
+	$graph = array( '@context' => 'https://schema.org', '@graph' => array_values( array_filter( array_merge( kp_schema_sitewide(), kp_schema_page_nodes() ) ) ) );
 	echo '<script type="application/ld+json" class="kp-schema">' . wp_json_encode( $graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . "</script>\n";
 }, 5 );
+// Hello Elementor prints its own description meta; Rank Math already does.
+add_action( 'after_setup_theme', function () { remove_action( 'wp_head', 'hello_elementor_add_description_meta_tag' ); }, 20 );

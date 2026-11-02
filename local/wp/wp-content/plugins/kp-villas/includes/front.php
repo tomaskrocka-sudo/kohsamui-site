@@ -67,7 +67,8 @@ add_shortcode( 'kp_villas', function ( $a ) {
 /** Small front assets for villa pages and grids. */
 add_action( 'wp_enqueue_scripts', function () {
 	if ( ! is_singular( 'kp_villa' ) && ! ( is_singular() && has_shortcode( (string) get_post_field( 'post_content', get_the_ID() ), 'kp_villas' ) ) ) return;
-	wp_enqueue_script( 'kp-villas', plugins_url( 'assets/kpv.js', KPV_DIR . '/kp-villas.php' ), array(), '0.1', true );
+	if ( is_singular( 'kp_villa' ) && defined( 'KPB_URL' ) ) wp_enqueue_style( 'kpb', KPB_URL . 'assets/kpb.css', wp_style_is( 'hello-elementor', 'registered' ) ? array( 'hello-elementor' ) : array(), defined( 'KPB_VER' ) ? KPB_VER : null ); // shared calendar styles
+	wp_enqueue_script( 'kp-villas', plugins_url( 'assets/kpv.js', KPV_DIR . '/kp-villas.php' ), array(), '0.1.1', true );
 	wp_localize_script( 'kp-villas', 'KPV', array( 'rest' => esc_url_raw( rest_url( 'kp/v1/' ) ), 'villa' => is_singular( 'kp_villa' ) ? get_the_ID() : 0, 'wa' => defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '66637040888' ) );
 } );
 
