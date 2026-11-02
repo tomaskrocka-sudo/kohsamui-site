@@ -51,11 +51,14 @@ function kp_phev_import( array $events ) {
 		// phangan.events (EventON) stores Thai wall-clock time as if it were UTC: read the digits, then attach Asia/Bangkok.
 		$start = new DateTimeImmutable( gmdate( 'Y-m-d H:i:s', $e['ts'] ), $tz ); $end = $e['end_ts'] ? new DateTimeImmutable( gmdate( 'Y-m-d H:i:s', $e['end_ts'] ), $tz ) : null;
 		$slug = sanitize_title( $e['title'] . '-' . $start->format( 'Y-m-d' ) );
-		$arr = array( 'ID' => $id, 'post_type' => 'kp_event', 'post_status' => 'publish', 'post_title' => $e['title'], 'post_name' => $slug, 'post_content' => wpautop( esc_html( $e['desc'] ) ), 'post_excerpt' => wp_trim_words( $e['desc'], 30, '…' ) );
+		// Our own short factual text (the source description is kept privately for price detection only).
+		$when = $start->format( 'l j F Y' ) . ', ' . $start->format( 'H:i' ) . ( $end ? '–' . $end->format( 'H:i' ) : '' );
+		$own = sprintf( '%s at %s, Koh Samui, on %s. %s', $e['title'], $e['venue'] ?: 'a venue on Koh Samui', $when, 'Times and line-ups can change; check on the night. Need a taxi or a table? Message us on WhatsApp.' );
+		$arr = array( 'ID' => $id, 'post_type' => 'kp_event', 'post_status' => 'publish', 'post_title' => $e['title'], 'post_name' => $slug, 'post_content' => '<p>' . esc_html( $own ) . '</p>', 'post_excerpt' => wp_trim_words( $own, 30, '…' ) );
 		$id = $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true );
 		if ( is_wp_error( $id ) ) continue;
 		$existing ? $u++ : $c++;
-		foreach ( array( 'kp_start' => $start->format( 'c' ), 'kp_end' => $end ? $end->format( 'c' ) : '', 'kp_venue' => $e['venue'], 'kp_status' => 'scheduled', 'kp_confidence' => 'listed', 'kp_last_verified' => wp_date( 'Y-m-d' ), 'kp_source_url' => $e['url'], 'kp_source' => 'phangan.events', 'kp_content_updated' => wp_date( 'Y-m-d' ) ) as $k => $v ) update_post_meta( $id, $k, $v );
+		foreach ( array( 'kp_start' => $start->format( 'c' ), 'kp_end' => $end ? $end->format( 'c' ) : '', 'kp_venue' => $e['venue'], 'kp_status' => 'scheduled', 'kp_confidence' => 'listed', 'kp_last_verified' => wp_date( 'Y-m-d' ), 'kp_source_url' => $e['url'], 'kp_source' => 'phangan.events', 'kp_source_desc' => $e['desc'], 'kp_content_updated' => wp_date( 'Y-m-d' ) ) as $k => $v ) update_post_meta( $id, $k, $v );
 		$cat = $cat_map[ strtolower( $e['cat'] ) ] ?? ucwords( strtolower( $e['cat'] ) );
 		if ( taxonomy_exists( 'kp_event_cat' ) ) wp_set_object_terms( $id, array( $cat ), 'kp_event_cat' );
 		// Image (photos only; videos are skipped), downloaded once.
