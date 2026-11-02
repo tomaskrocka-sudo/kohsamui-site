@@ -212,11 +212,13 @@ function kp_places( $type = '', $area = '' ) {
 	$meta = array();
 	if ( $type ) $meta[] = array( 'key' => 'kp_type', 'value' => $type );
 	if ( $area ) $meta[] = array( 'key' => 'kp_area', 'value' => $area );
-	$q = new WP_Query( array( 'post_type' => 'kp_place', 'posts_per_page' => -1, 'post_status' => 'publish', 'orderby' => 'title', 'order' => 'ASC', 'meta_query' => $meta, 'no_found_rows' => true ) );
+	// Drafts are data-only places (airport, hospitals): they appear on maps and link to Google Maps instead of a page.
+	$q = new WP_Query( array( 'post_type' => 'kp_place', 'posts_per_page' => -1, 'post_status' => array( 'publish', 'draft' ), 'orderby' => 'title', 'order' => 'ASC', 'meta_query' => $meta, 'no_found_rows' => true ) );
 	$out = array();
 	foreach ( $q->posts as $p ) {
 		$row = array( 'id' => $p->ID, 'name' => get_the_title( $p ), 'url' => get_permalink( $p ), 'slug' => $p->post_name, 'thumb' => get_the_post_thumbnail_url( $p, 'medium' ) );
 		foreach ( array_keys( kp_place_fields() ) as $k ) $row[ substr( $k, 3 ) ] = get_post_meta( $p->ID, $k, true );
+		if ( $p->post_status !== 'publish' ) { if ( ! $row['lat'] || ! $row['lng'] ) continue; $row['url'] = 'https://www.google.com/maps/search/?api=1&query=' . $row['lat'] . ',' . $row['lng']; }
 		$out[] = $row;
 	}
 	return $out;

@@ -178,10 +178,33 @@ add_shortcode( 'kp_glance', function ( $a ) {
 	$h = '<table class="kp-glance"><tbody>'; foreach ( $rows as $k => $v ) $h .= '<tr><th>' . esc_html( $k ) . '</th><td>' . wp_kses_post( $v ) . '</td></tr>'; return $h . '</tbody></table>';
 } );
 /** Leaflet map of places (data is server-rendered as a list too, map enhances it) */
+/** Place types worth showing on a page's map, from the page's own type or its topic (slug). */
+function kp_map_types_for( $id ) {
+	$sights = array( 'beach', 'area', 'attraction', 'temple', 'shrine', 'waterfall', 'viewpoint', 'island', 'park' );
+	$slug = (string) get_post_field( 'post_name', $id ); $ptype = get_post_type( $id ) === 'kp_place' ? (string) get_post_meta( $id, 'kp_type', true ) : '';
+	$rules = array(
+		'nightlife' => '/nightlife|part(y|ies)|beach-club|arkbar|nikki|seen-beach|chi-samui|coco-tams|green-mango|sound-club|beach-republic|events|full-moon|half-moon/',
+		'hospital' => '/hospital|pharmac|dentist|clinic|medical/', 'police' => '/police|scams|safety/', 'immigration' => '/immigration|visa/',
+		'temple' => '/temple|chinese-new-year|buddha|culture|tradition|wat-/', 'waterfall' => '/waterfall|hiking|jungle/',
+		'airport' => '/airport|getting-around|how-to-get|roads|bicycle|motorbike|car-rental|ferry|to-koh-/',
+	);
+	if ( $ptype === 'nightlife' || preg_match( $rules['nightlife'], $slug ) ) return array( 'nightlife', 'area' );
+	if ( in_array( $ptype, array( 'hospital', 'police', 'immigration' ), true ) ) return array( 'hospital', 'police', 'immigration' );
+	if ( preg_match( $rules['hospital'], $slug ) ) return array( 'hospital' );
+	if ( preg_match( $rules['police'], $slug ) ) return array( 'police', 'hospital' );
+	if ( preg_match( $rules['immigration'], $slug ) ) return array( 'immigration', 'police' );
+	if ( preg_match( $rules['temple'], $slug ) ) return array( 'temple', 'shrine', 'attraction' );
+	if ( preg_match( $rules['waterfall'], $slug ) ) return array( 'waterfall', 'viewpoint', 'park' );
+	if ( preg_match( $rules['airport'], $slug ) || in_array( $ptype, array( 'airport', 'pier' ), true ) ) return array( 'airport', 'pier', 'area' );
+	return $sights; // spas, food, markets, yoga, guides: the island's areas and sights, never bars or services
+}
 add_shortcode( 'kp_places_map', function ( $a ) {
 	$places = kp_places( $a['type'] ?? '', $a['area'] ?? '' );
+	// No filter given: show only places that fit the page's topic (a spa or hospital page must not map beach clubs).
+	if ( empty( $a['type'] ) && empty( $a['area'] ) && empty( $a['ids'] ) ) { $want = kp_map_types_for( get_queried_object_id() ); $self = get_queried_object_id(); $places = array_values( array_filter( $places, fn( $p ) => in_array( $p['type'], $want, true ) || $p['id'] === $self ) ); }
 	if ( ! empty( $a['ids'] ) ) { $ids = array_map( 'intval', explode( ',', $a['ids'] ) ); $places = array_filter( $places, fn( $p ) => in_array( $p['id'], $ids, true ) ); }
-	$places = array_values( array_filter( $places, fn( $p ) => $p['lat'] && $p['lng'] ) ); if ( ! $places ) return '';
+	$places = array_values( array_filter( $places, fn( $p ) => $p['lat'] && $p['lng'] ) );
+	if ( ! $places ) { $q = trim( preg_replace( '/\s*[:(].*$/', '', wp_strip_all_tags( get_the_title( get_queried_object_id() ) ) ) ); return $q ? '<p class="kp-note">Open <a href="https://www.google.com/maps/search/?api=1&amp;query=' . rawurlencode( $q ) . '" target="_blank" rel="noopener">' . esc_html( $q ) . ' in Google Maps</a> for exact locations and directions.</p>' : ''; }
 	$lv = get_stylesheet_directory_uri() . '/assets/vendor/leaflet/'; wp_enqueue_style( 'leaflet', $lv . 'leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', $lv . 'leaflet.js', array(), '1.9.4', true );
 	wp_enqueue_script( 'kp-map', get_stylesheet_directory_uri() . '/assets/js/kp-map.js', array( 'leaflet' ), '0.1', true );
 	$types = array_unique( array_column( $places, 'type' ) );

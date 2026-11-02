@@ -55,7 +55,8 @@ class KP_CLI {
 		$n = 0;
 		foreach ( $this->data( 'places.json' ) as $d ) {
 			$id = $this->by_slug( $d['slug'], 'kp_place' );
-			$id = wp_insert_post( array( 'ID' => $id, 'post_type' => 'kp_place', 'post_status' => 'draft', 'post_title' => $d['name'], 'post_name' => $d['slug'], 'post_excerpt' => $d['short'] ?? '', 'post_content' => $d['content'] ?? '' ), true );
+			// Existing places keep their status, title, text and excerpt (written pages and live edits); only new places are created, as drafts.
+			$id = $id ? $id : wp_insert_post( array( 'post_type' => 'kp_place', 'post_status' => 'draft', 'post_title' => $d['name'], 'post_name' => $d['slug'], 'post_excerpt' => $d['short'] ?? '', 'post_content' => $d['content'] ?? '' ), true );
 			if ( is_wp_error( $id ) ) { KP_Log::warning( $d['slug'] ); continue; }
 			foreach ( array( 'type', 'area', 'lat', 'lng', 'hours', 'hours_spec', 'fee', 'free', 'phone', 'short', 'best_for', 'sun', 'swim', 'status', 'confidence', 'last_verified' ) as $k ) update_post_meta( $id, 'kp_' . $k, $d[ $k ] ?? '' );
 			update_post_meta( $id, 'kp_kind', 'place' ); $n++;

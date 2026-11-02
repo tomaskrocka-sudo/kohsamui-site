@@ -562,3 +562,6 @@ html.kpts-dark .kp-h a{color:var(--kp-ink)}
 .kph-panel details.kph-mega[open]>summary::after{content:"–"}
 @media(max-width:768px){.woocommerce table.shop_table_responsive tr td.product-thumbnail{display:none!important}.woocommerce table.shop_table_responsive tr td.product-quantity:not(:has(input[type=number])){display:none!important}.woocommerce-cart td.actions .button{text-align:center;justify-content:center}}
 @media(max-width:600px){.kpg-hero .kpa-k{font-size:10.5px;letter-spacing:.07em;padding:6px 10px}}
+/* Mega menus fill their width: as many equal columns as the menu has (Events = 3, Tours/Yachts = 4). */
+.kph-mega.kph-mega-wide{grid-template-columns:repeat(var(--kph-cols,4),minmax(0,1fr))}
+.kph-mega-wide > div > .kph-cat:not(:first-child){margin-top:18px}

@@ -16,7 +16,7 @@ $brand = defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' );
 				<?php foreach ( $menu as $top ) : $wide = ! empty( $top['cols'] ) && count( $top['cols'] ) > 1; ?>
 				<li><a href="<?php echo esc_url( home_url( $top['url'] ) ); ?>"<?php echo ! empty( $top['cols'] ) ? ' aria-haspopup="true"' : ''; ?>><?php echo esc_html( $top['label'] ); ?></a>
 					<?php if ( ! empty( $top['cols'] ) ) : ?>
-					<div class="kph-mega<?php echo $wide ? ' kph-mega-wide' : ''; ?>">
+					<div class="kph-mega<?php echo $wide ? ' kph-mega-wide' : ''; ?>"<?php echo $wide ? ' style="--kph-cols:' . count( $top['cols'] ) . '"' : ''; ?>>
 						<?php foreach ( $top['cols'] as $col ) : ?>
 						<div>
 							<?php foreach ( $col as $grp ) : ?>

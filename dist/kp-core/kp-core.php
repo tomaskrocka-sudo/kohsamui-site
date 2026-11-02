@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KP Site Core (Koh Samui Trips)
  * Description: Core features of kohsamuitrips.com: tours and villas data model, events, places, schema, breadcrumbs, llms.txt, live weather/sea/tides, opening hours, phangan.events sync, shortcodes, plus the one-click site installer (Tools → Koh Samui Trips setup).
- * Version: 1.3.1
+ * Version: 1.3.4
  * Requires PHP: 8.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit;

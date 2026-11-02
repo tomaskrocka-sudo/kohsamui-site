@@ -136,8 +136,8 @@ function kpt_menu_raw() {
 			) ) ),
 			array( array( 'cat' => 'Beach clubs and venues', 'items' => array(
 				array( 'ARKbar Beach Club, Chaweng', '/arkbar-beach-club-koh-samui/' ), array( 'Nikki Beach, Lipa Noi', '/nikki-beach-koh-samui/' ), array( 'Beach Republic, Lamai', '/beach-republic-koh-samui/' ), array( 'SEEN Beach Club, Chaweng', '/seen-beach-club-koh-samui/' ), array( 'Chi Samui, Bang Rak', '/chi-samui-beach-club-koh-samui/' ), array( 'Coco Tam\'s, Fisherman\'s Village', '/coco-tams-koh-samui/' ), array( 'Green Mango Club, Chaweng', '/green-mango-club-koh-samui/' ), array( 'Sound Club, Chaweng', '/sound-club-koh-samui/' ),
-			) ),
-			array( 'cat' => 'Nightlife guides', 'items' => array( array( 'Beach clubs', '/koh-samui-beach-clubs/' ), array( 'Nightlife', '/koh-samui-nightlife/' ), array( 'Chaweng nightlife', '/chaweng-nightlife-koh-samui/' ), array( 'Lamai nightlife', '/lamai-nightlife-koh-samui/' ), array( 'Parties', '/koh-samui-parties/' ) ) ) ),
+			) ) ),
+			array( array( 'cat' => 'Nightlife guides', 'items' => array( array( 'Beach clubs', '/koh-samui-beach-clubs/' ), array( 'Nightlife', '/koh-samui-nightlife/' ), array( 'Chaweng nightlife', '/chaweng-nightlife-koh-samui/' ), array( 'Lamai nightlife', '/lamai-nightlife-koh-samui/' ), array( 'Parties', '/koh-samui-parties/' ) ) ) ),
 		) ),
 		array( 'label' => 'News', 'url' => '/koh-samui-news/' ),
 	);
