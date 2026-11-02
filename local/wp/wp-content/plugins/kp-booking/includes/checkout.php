@@ -40,6 +40,21 @@ add_filter( 'woocommerce_checkout_show_terms', '__return_false' );
 // No coupon box on checkout (there are no coupons); keeps the form short.
 add_action( 'init', function () { remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 ); } );
 add_filter( 'woocommerce_order_button_text', fn() => 'Pay and book' );
+// Every trip can be removed: a "Remove" link under each trip in the checkout summary (back to checkout with an Undo notice; an empty cart lands on the cart page),
+// and a labelled "Remove" button on the cart page instead of Woo's small red ×.
+add_filter( 'woocommerce_cart_item_name', function ( $name, $item, $key ) {
+	if ( ! did_action( 'woocommerce_review_order_before_cart_contents' ) || ! function_exists( 'wc_get_cart_remove_url' ) ) return $name;
+	$url = add_query_arg( '_wp_http_referer', rawurlencode( wc_get_checkout_url() ), wc_get_cart_remove_url( $key ) );
+	return $name . ' <a class="kpc-rm" href="' . esc_url( $url ) . '" aria-label="' . esc_attr( 'Remove ' . wp_strip_all_tags( $name ) . ' from your booking' ) . '">Remove</a>';
+}, 20, 3 );
+add_filter( 'woocommerce_cart_item_remove_link', function ( $link, $key ) {
+	$item = WC()->cart ? WC()->cart->get_cart_item( $key ) : array(); $p = $item['data'] ?? null;
+	return sprintf( '<a href="%s" class="kpc-rm kpc-rm-btn" aria-label="%s" data-product_id="%s" data-cart_item_key="%s"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>Remove</a>',
+		esc_url( wc_get_cart_remove_url( $key ) ), esc_attr( 'Remove ' . ( $p ? wp_strip_all_tags( $p->get_name() ) : 'this trip' ) . ' from your booking' ), esc_attr( $item['product_id'] ?? '' ), esc_attr( $key ) );
+}, 10, 2 );
+// Empty cart: point back to the tours, not a shop page.
+add_filter( 'woocommerce_return_to_shop_redirect', fn() => home_url( '/koh-samui-tours/' ) );
+add_filter( 'woocommerce_return_to_shop_text', fn() => 'Browse tours' );
 add_action( 'woocommerce_review_order_before_submit', function () {
 	echo '<p class="kpb-terms">By booking you agree to our <a href="' . esc_url( home_url( '/terms-and-conditions/' ) ) . '" target="_blank">terms and cancellation policy</a>. Payment is in Thai baht (THB) and handled securely by Stripe; we never see your card number.</p>';
 } );

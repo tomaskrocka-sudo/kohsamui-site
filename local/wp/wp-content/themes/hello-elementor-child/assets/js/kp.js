@@ -4,6 +4,9 @@
   /* Theme toggle: same storage key as kohphangan.com */
   var t = d.getElementById('kph-theme');
   if (t) t.addEventListener('click', function () { var dark = !html.classList.contains('kpts-dark'); html.classList.toggle('kpts-dark', dark); try { localStorage.setItem('kp-theme', dark ? 'dark' : 'light'); } catch (e) {} });
+  /* "Your booking" link in the header while the cart has something in it (Woo's cookie, so it also works on cached pages). */
+  var bag = d.getElementById('kph-bag');
+  if (bag && /(?:^|;\s*)woocommerce_items_in_cart=1/.test(d.cookie) && !d.body.classList.contains('woocommerce-checkout')) bag.hidden = false;
   /* Currency: display-only conversion of elements carrying data-thb */
   var sel = d.getElementById('kph-cur-s');
   function applyCur(cur) {

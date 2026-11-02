@@ -829,3 +829,15 @@ html.kpts-dark .kpe-web .kpe-ref{background:#0B1F33}
 .kpb-hl-found{font-size:13px;color:var(--kp-trust);margin:6px 0 0}
 .kpb-hl-found a{color:var(--kp-ink);font-weight:600;margin-left:6px}
 .kpc-form .kpb-room-row{max-width:240px}
+
+/* Remove a trip: checkout summary link, cart-page button, header "Your booking" link */
+.kpc-sum .kpc-rm{display:inline-block;margin-left:6px;font-size:13px;font-weight:600;color:var(--kp-muted)!important;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.kpc-sum .kpc-rm:hover,.kpc-sum .kpc-rm:focus-visible{color:#c0392b!important}
+.woocommerce a.kpc-rm-btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border:1px solid var(--kp-border);border-radius:var(--kp-radius-pill);background:none;color:var(--kp-ink)!important;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+.woocommerce a.kpc-rm-btn:hover,.woocommerce a.kpc-rm-btn:focus-visible{border-color:#c0392b;color:#c0392b!important;background:none}
+.woocommerce-cart table.cart td.product-remove{width:1%}
+.kph-bag{position:relative;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border:1px solid var(--kp-border);border-radius:var(--kp-radius-pill);color:var(--kp-ink)!important;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap}
+.kph-bag[hidden]{display:none!important}
+.kph-bag:hover{border-color:var(--kp-ink)}
+.kph-bag i{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--kp-accent);box-shadow:0 0 0 2px var(--kpd-card,#fff)}
+@media(max-width:1239px){.kph-bag span{display:none}.kph-bag{width:38px;padding:0;justify-content:center}}
