@@ -12,7 +12,7 @@ $lead = function_exists( 'kp_hero_lead' ) ? kp_hero_lead() : 'Pig Island and Koh
 $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-moon-party-speedboat-koh-samui,pig-island-longtail-tour,pig-island-sunset-tour,pink-dolphins-pig-island-tour,half-moon-festival-package-koh-samui,jet-ski-safari-pig-island,ang-thong-marine-park-day-tour-koh-samui,ang-thong-vip-tour-koh-samui';
 ?>
 <section class="kpg-hero">
-	<?php if ( $hero ) : ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>" alt="<?php echo esc_attr( get_post_meta( $hero_id, '_wp_attachment_image_alt', true ) ?: 'Koh Samui from the water' ); ?>" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
+	<?php if ( $hero ) : $hset = wp_get_attachment_image_srcset( $hero_id, 'kp-hero' ); ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>"<?php if ( $hset ) : ?> srcset="<?php echo esc_attr( $hset ); ?>" sizes="100vw"<?php endif; ?> alt="<?php echo esc_attr( get_post_meta( $hero_id, '_wp_attachment_image_alt', true ) ?: 'Koh Samui from the water' ); ?>" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
 	<div class="kpg-hero-g"></div>
 	<div class="kp-w kpg-hero-tx">
 		<p class="kpa-k"><span data-kp-today><?php echo esc_html( wp_date( 'D j M' ) ); ?></span> · what's on and what to book</p>
@@ -23,7 +23,7 @@ $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-
 		<div class="kpg-sell" data-kp-offers data-max="4" aria-label="Book now on Koh Samui">
 			<?php foreach ( $offers as $i => $o ) : $dated = ! empty( $o['start'] ); ?>
 			<a class="kpg-sell-i<?php echo $i >= 4 ? ' is-spare' : ''; ?>" href="<?php echo esc_url( $o['url'] ); ?>"<?php if ( $dated ) : ?> data-kp-start="<?php echo (int) $o['start']; ?>" data-kp-end="<?php echo (int) $o['end']; ?>"<?php endif; ?>>
-				<span class="kpg-sell-img"><?php if ( $o['img'] ) : ?><img src="<?php echo esc_url( $o['img'] ); ?>" alt="" width="400" height="300" loading="<?php echo $i < 4 ? 'eager' : 'lazy'; ?>" decoding="async"><?php endif; ?></span>
+				<span class="kpg-sell-img"><?php if ( $o['img'] ) : ?><img src="<?php echo esc_url( $o['img'] ); ?>" alt="<?php echo esc_attr( $o['title'] ); ?>" width="400" height="300" loading="<?php echo $i < 4 ? 'eager' : 'lazy'; ?>" decoding="async"><?php endif; ?></span>
 				<span class="kpg-sell-tx">
 					<span class="kpg-sell-k"><?php echo esc_html( $o['k'] ); ?><?php if ( $dated ) : ?> · <span data-kp-when="<?php echo $o['time'] ? 'time' : 'date'; ?>"><?php echo esc_html( $o['when'] ); ?></span><?php endif; ?></span>
 					<strong><?php echo esc_html( $o['title'] ); ?></strong>

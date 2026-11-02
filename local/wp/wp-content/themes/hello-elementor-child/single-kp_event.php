@@ -17,8 +17,10 @@ while ( have_posts() ) : the_post();
 	// Promo video from the organiser, when the listing has one.
 	$vid = (int) $m( 'kp_video_id' ); $vurl = $vid ? wp_get_attachment_url( $vid ) : '';
 	if ( $vurl ) echo '<figure class="kp-ev-video"><video src="' . esc_url( $vurl ) . '" controls muted playsinline loop preload="metadata"' . ( has_post_thumbnail() ? ' poster="' . esc_url( get_the_post_thumbnail_url( $id, 'large' ) ) . '"' : '' ) . '></video></figure>';
-	if ( has_excerpt() ) echo '<p class="kp-lead">' . esc_html( get_the_excerpt() ) . '</p>';
+	$exc = has_excerpt() ? get_the_excerpt() : ''; $body = trim( wp_strip_all_tags( get_the_content() ) );
+	if ( $exc && strncmp( rtrim( $exc, '…. ' ), $body, max( 20, strlen( rtrim( $exc, '…. ' ) ) - 2 ) ) !== 0 ) echo '<p class="kp-lead">' . esc_html( $exc ) . '</p>'; // not when the excerpt only repeats the text below
 	the_content();
+	if ( function_exists( 'kp_event_more_html' ) ) echo kp_event_more_html( $id ); // schedule, venue, getting there, entry, tips
 	$tp = (int) $m( 'kp_ticket_product' );
 	if ( $tp && ! $past && function_exists( 'wc_get_product' ) && ( $p = wc_get_product( $tp ) ) ) echo '<p><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">' . esc_html( get_post_meta( $tp, 'kp_is_ticket', true ) ? 'Book tickets' : 'Book the boat from Koh Samui' ) . ' · from ' . number_format( (float) $p->get_price() ) . ' THB</a></p>';
 	echo '<h2>More events on Koh Samui</h2>' . do_shortcode( '[kp_events limit="8" to="+21 days"]' );

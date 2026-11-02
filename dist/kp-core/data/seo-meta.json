@@ -1,0 +1,2074 @@
+[
+ {
+  "slug": "about-us",
+  "type": "page",
+  "keyword": "Koh Samui tour operator",
+  "title": "Licensed Koh Samui Tour Operator Since 2006: About Us",
+  "desc": "Meet the Australian-Thai team running Koh Samui boat trips since 2006, TAT licence 43/01467: Ang Thong, Pig Island, Koh Tao, parties and private boats."
+ },
+ {
+  "slug": "accessibility",
+  "type": "page",
+  "keyword": "Koh Samui boat trip accessibility",
+  "title": "Accessibility Statement & Koh Samui Boat-Trip Access",
+  "desc": "Our site aims for WCAG 2.2 AA. Honest boat-trip access facts too: no shared trip is step-free, the Ang Thong viewpoint takes 25–45 min, private boats help."
+ },
+ {
+  "slug": "activities",
+  "type": "page",
+  "keyword": "things to do in Koh Samui",
+  "title": "Things to Do in Koh Samui {year}: 45 Ideas by Type & Area",
+  "desc": "45 things to do on Koh Samui: Ang Thong and Pig Island boat days from 1,450 THB, Big Buddha, Na Muang Waterfall, the Friday walking street and Muay Thai."
+ },
+ {
+  "slug": "ang-thong-day-tour-vs-overnight",
+  "type": "page",
+  "keyword": "Ang Thong overnight trip",
+  "title": "Ang Thong Day Tour or Overnight Trip? Prices Compared {year}",
+  "desc": "Ang Thong day tours cost 1,500–1,800 THB; overnight stays 3,600 THB (tent) or 4,200 THB (bungalow), with sunset and sunrise from the Wua Talab viewpoint."
+ },
+ {
+  "slug": "ang-thong-marine-park",
+  "type": "kp_place",
+  "keyword": "Ang Thong Marine Park",
+  "title": "Ang Thong Marine Park {year}: Guide, Fees & Closure Dates",
+  "desc": "Ang Thong National Marine Park from Koh Samui: 42 islands, the Emerald Lake, a 360° viewpoint, a 300 THB cash fee and the 1 Nov–15 Dec yearly closure."
+ },
+ {
+  "slug": "ang-thong-speedboat-vs-big-boat",
+  "type": "page",
+  "keyword": "Ang Thong speedboat or big boat",
+  "title": "Ang Thong Speedboat or Big Boat? Honest Comparison {year}",
+  "desc": "Ang Thong by speedboat (1,800 THB, about 8 hours) or big boat (1,500 THB, about 10 hours)? Comfort, seasickness, kids, the 15-guest VIP and private boats."
+ },
+ {
+  "slug": "arkbar-beach-club-koh-samui",
+  "type": "kp_place",
+  "keyword": "ARKbar Koh Samui",
+  "title": "ARKbar Beach Club Chaweng {year}: Parties, Prices & Times",
+  "desc": "ARKbar on Chaweng Beach: free entry, pool party 14:00–19:00, free fire shows 20:00–24:00, beach party to 02:00, 300 THB sunbeds and beers from 120 THB."
+ },
+ {
+  "slug": "bang-kao-koh-samui",
+  "type": "kp_place",
+  "keyword": "Bang Kao Koh Samui",
+  "title": "Bang Kao & South Coast Koh Samui {year}: Quiet Area Guide",
+  "desc": "Bang Kao is Koh Samui's quietest coast, 15–20 minutes from Lamai: a high-tide-only beach, the gold Laem Sor Pagoda and the wellness resorts of Laem Set."
+ },
+ {
+  "slug": "bang-por-koh-samui",
+  "type": "kp_place",
+  "keyword": "Bang Por Beach Koh Samui",
+  "title": "Bang Por Beach, Koh Samui {year}: Seafood, Sunsets & Tides",
+  "desc": "Bang Por is a quiet 5 km bay on Koh Samui's north-west coast: seafood on the sand, sunsets, high-tide-only swimming and 30–40 minutes from the airport."
+ },
+ {
+  "slug": "bangkok-to-koh-samui",
+  "type": "page",
+  "keyword": "Bangkok to Koh Samui",
+  "title": "Bangkok to Koh Samui {year}: Flights, Train, Bus & Ferry",
+  "desc": "Bangkok to Koh Samui compared: direct flights (about 1h05, 2,800–6,800 THB), cheap flights via Surat Thani, the night train or bus-and-boat from 620 THB."
+ },
+ {
+  "slug": "beach-republic-koh-samui",
+  "type": "kp_place",
+  "keyword": "Beach Republic Koh Samui",
+  "title": "Beach Republic Koh Samui {year}: Is the Beach Club Open?",
+  "desc": "Beach Republic in north Lamai is no longer a beach club: no pool parties or Sunday brunch since 2024, though the hotel stays open. Where to go instead."
+ },
+ {
+  "slug": "big-buddha-beach-koh-samui",
+  "type": "kp_place",
+  "keyword": "Big Buddha Beach Bang Rak",
+  "title": "Big Buddha Beach (Bang Rak), Koh Samui {year}: Area Guide",
+  "desc": "Bang Rak, or Big Buddha Beach, sits beside Samui Airport: which of its four piers your Koh Phangan ferry uses, seafood on the sand and why not to swim."
+ },
+ {
+  "slug": "big-buddha-koh-samui",
+  "type": "kp_place",
+  "keyword": "Big Buddha Koh Samui",
+  "title": "Big Buddha Koh Samui {year}: Wat Phra Yai Visitor Guide",
+  "desc": "Big Buddha (Wat Phra Yai) on Koh Samui is free and open 07:00–18:30 daily: dress code, 45–60 minutes on site, Wat Plai Laem nearby and how to get there."
+ },
+ {
+  "slug": "bophut-beach-koh-samui",
+  "type": "kp_place",
+  "keyword": "Bophut Beach Koh Samui",
+  "title": "Bophut Beach, Koh Samui {year}: Swimming, Tides & Dining",
+  "desc": "Bophut Beach is a calm 3 km bay in front of Fisherman's Village: why we don't swim there, dinner on the sand facing Koh Phangan and where to swim instead."
+ },
+ {
+  "slug": "chaweng-koh-samui",
+  "type": "kp_place",
+  "keyword": "Chaweng Koh Samui",
+  "title": "Chaweng Beach, Koh Samui {year}: Area Guide & Where to Swim",
+  "desc": "Chaweng is Koh Samui's busiest beach town, 10–15 minutes from the airport: where to swim, red flags October–December, nightlife, shops and where to stay."
+ },
+ {
+  "slug": "chaweng-nightlife-koh-samui",
+  "type": "page",
+  "keyword": "Chaweng nightlife",
+  "title": "Chaweng Nightlife {year}: Bars, Clubs & Muay Thai Nights",
+  "desc": "Chaweng nightlife: Green Mango Club open to about 04:00, free ARKbar fire shows from 20:00, Muay Thai six nights a week, scams to avoid and getting home."
+ },
+ {
+  "slug": "chaweng-noi-koh-samui",
+  "type": "kp_place",
+  "keyword": "Chaweng Noi Beach",
+  "title": "Chaweng Noi Beach, Koh Samui {year}: Quiet Cove Guide",
+  "desc": "Chaweng Noi is the quiet cove 3–4 km south of central Chaweng: swimming January–September, snorkelling off the rocks, sea lice, access and where to stay."
+ },
+ {
+  "slug": "chaweng-vs-lamai",
+  "type": "page",
+  "keyword": "Chaweng or Lamai",
+  "title": "Chaweng or Lamai? Where to Stay on Koh Samui ({year})",
+  "desc": "Chaweng or Lamai? Compare beaches, nightlife, food, room prices (about 2,000–4,500 vs 1,500–3,500 THB a night) and airport times, with a verdict for each."
+ },
+ {
+  "slug": "chi-samui-beach-club-koh-samui",
+  "type": "kp_place",
+  "keyword": "Chi Samui beach club",
+  "title": "Chi Samui Beach Club {year}: Hours, Infinity Pool & DJs",
+  "desc": "Chi Samui on Bang Rak is open about 11:00–24:00 with a 25 m saltwater infinity pool, swim-up bar and kids' pool, 5 minutes from the airport, plus DJs."
+ },
+ {
+  "slug": "choeng-mon-koh-samui",
+  "type": "kp_place",
+  "keyword": "Choeng Mon Beach",
+  "title": "Choeng Mon Beach, Koh Samui {year}: Calm Family Beach",
+  "desc": "Choeng Mon is one of Koh Samui's calmest bays, 5–10 minutes from the airport: soft sand for small kids, a low-tide sandbar to Koh Fan Noi, food and stays."
+ },
+ {
+  "slug": "coco-tams-koh-samui",
+  "type": "kp_place",
+  "keyword": "Coco Tam's Koh Samui",
+  "title": "Coco Tam's Fisherman's Village {year}: Fire Show Times",
+  "desc": "Coco Tam's beach bar in Fisherman's Village, Bophut: open about 12:00–24:00, free fire shows at about 19:15 and 21:00, beanbags and cocktails 250–400 THB."
+ },
+ {
+  "slug": "contact",
+  "type": "page",
+  "keyword": "contact Koh Samui tours",
+  "title": "Contact Our Koh Samui Tour Team: WhatsApp & Email",
+  "desc": "Reach our Koh Samui team on WhatsApp +66 63 704 0888, daily 08:00–20:00 Thai time, or by email for bookings, private boats, groups of 10+ and villas."
+ },
+ {
+  "slug": "coral-cove-koh-samui",
+  "type": "kp_place",
+  "keyword": "Coral Cove Koh Samui",
+  "title": "Coral Cove, Koh Samui {year}: Snorkelling & Kayak Guide",
+  "desc": "Coral Cove is a free rocky cove between Chaweng Noi and Lamai: Samui's easiest shore snorkelling, kayaks about 300 THB an hour and an honest reef update."
+ },
+ {
+  "slug": "editorial-policy",
+  "type": "page",
+  "keyword": "Koh Samui guide editorial policy",
+  "title": "Editorial Policy: How We Check Our Koh Samui Guides",
+  "desc": "How our Koh Samui guides are researched and dated: prices checked monthly, event dates weekly, no paid placements or fake reviews, and fast corrections."
+ },
+ {
+  "slug": "faq",
+  "type": "page",
+  "keyword": "Koh Samui FAQ",
+  "title": "Koh Samui FAQ {year}: Tours, Refunds, Weather & Travel",
+  "desc": "Straight answers to the 30 Koh Samui questions guests ask most: paying in THB, 48-hour refunds on day trips, the Ang Thong closure, weather and visas."
+ },
+ {
+  "slug": "fishermans-village-koh-samui",
+  "type": "kp_place",
+  "keyword": "Fisherman's Village Koh Samui",
+  "title": "Fisherman's Village Koh Samui {year}: Bophut Area Guide",
+  "desc": "Fisherman's Village is Bophut's old shophouse strip, 10–15 minutes from the airport: Samui's best dining street, the beach, parking and the Friday market."
+ },
+ {
+  "slug": "fishermans-village-walking-street",
+  "type": "page",
+  "keyword": "Fisherman's Village Walking Street",
+  "title": "Fisherman's Village Walking Street {year}: Friday Market",
+  "desc": "Fisherman's Village Walking Street fills Bophut every Friday about 17:00–23:00, with Monday and Wednesday markets: street food from 40 THB, parking, tips."
+ },
+ {
+  "slug": "full-moon-party-dates",
+  "type": "page",
+  "keyword": "Full Moon Party dates",
+  "title": "Full Moon Party Dates {year}: Every Party, Checked Monthly",
+  "desc": "Every Full Moon Party date on Koh Phangan, including the 2027 dates moved for Buddhist holidays, plus the roughly 200 THB cash entry and boats from Samui."
+ },
+ {
+  "slug": "full-moon-party-from-koh-samui",
+  "type": "page",
+  "keyword": "Full Moon Party from Koh Samui",
+  "title": "Full Moon Party from Koh Samui {year}: Boats & Times",
+  "desc": "Getting to the Full Moon Party from Koh Samui: shared return speedboat 1,400 THB with hotel pickup from most areas, private boats, public ferry, safety."
+ },
+ {
+  "slug": "getting-around-koh-samui",
+  "type": "page",
+  "keyword": "getting around Koh Samui",
+  "title": "Getting Around Koh Samui {year}: Taxis, Grab & Songthaews",
+  "desc": "How to get around Koh Samui: unmetered taxis (airport to Chaweng about 400–600 THB), where Grab works, songthaews from 30 THB and scooter licence rules."
+ },
+ {
+  "slug": "green-mango-club-koh-samui",
+  "type": "kp_place",
+  "keyword": "Green Mango Club Koh Samui",
+  "title": "Green Mango Club Koh Samui {year}: Hours, Entry & Tips",
+  "desc": "Green Mango Club in Chaweng opens nightly about 21:00–04:00, entry usually free, age 20+ with ID, busiest 01:00–03:00. Drink prices, safety, getting home."
+ },
+ {
+  "slug": "guan-yu-shrine-koh-samui",
+  "type": "kp_place",
+  "keyword": "Guan Yu Shrine Koh Samui",
+  "title": "Guan Yu Shrine Koh Samui {year}: 16 m Bronze Statue",
+  "desc": "The Guan Yu Shrine above Hua Thanon has a 16 m bronze statue of the Chinese general: free entry, open about 08:00–17:00, 30-minute visits and etiquette."
+ },
+ {
+  "slug": "hin-lad-waterfall-koh-samui",
+  "type": "kp_place",
+  "keyword": "Hin Lad Waterfall",
+  "title": "Hin Lad Waterfall, Koh Samui {year}: Jungle Hike Guide",
+  "desc": "Hin Lad Waterfall is a jungle hike 2–3 km inland from Nathon, starting at a forest temple: small pools and tiers, about 2 hours in all, no published fee."
+ },
+ {
+  "slug": "hin-ta-hin-yai-koh-samui",
+  "type": "kp_place",
+  "keyword": "Hin Ta Hin Yai",
+  "title": "Hin Ta & Hin Yai, Koh Samui {year}: Grandfather Rocks Guide",
+  "desc": "Hin Ta and Hin Yai, the Grandfather and Grandmother Rocks at south Lamai: free entry, parking 20–40 THB, open about 08:30–18:30, the legend and safety."
+ },
+ {
+  "slug": "history-of-koh-samui",
+  "type": "page",
+  "keyword": "history of Koh Samui",
+  "title": "History of Koh Samui: From Coconut Island to Today",
+  "desc": "The history of Koh Samui: fishing villages and coconut farms, Hainanese traders in Nathon, no roads until the 1970s, the 1989 airport and the island today."
+ },
+ {
+  "slug": "how-to-get-to-koh-samui",
+  "type": "page",
+  "keyword": "how to get to Koh Samui",
+  "title": "How to Get to Koh Samui {year}: Every Route & Price",
+  "desc": "Every way to reach Koh Samui compared: direct flights from about 1h05, Surat Thani bus-and-ferry combos from 330 THB, the night train and Phangan boats."
+ },
+ {
+  "slug": "hua-thanon-koh-samui",
+  "type": "kp_place",
+  "keyword": "Hua Thanon Koh Samui",
+  "title": "Hua Thanon, Koh Samui {year}: Fishing Village & Market",
+  "desc": "Hua Thanon is Samui's Thai-Muslim fishing village 3.6 km south of Lamai: a fish market best 07:00–09:00, the 1984 mosque, the Guan Yu statue and etiquette."
+ },
+ {
+  "slug": "islands-near-koh-samui",
+  "type": "page",
+  "keyword": "islands near Koh Samui",
+  "title": "Islands Near Koh Samui {year}: Boat Trips Compared",
+  "desc": "Islands near Koh Samui compared: Ang Thong, Pig Island (Koh Madsum), Koh Tan, Koh Tao and Nang Yuan, Koh Phangan, with boat times, cash fees and seasons."
+ },
+ {
+  "slug": "koh-samui-airport",
+  "type": "page",
+  "keyword": "Koh Samui airport",
+  "title": "Koh Samui Airport (USM) {year}: Taxis, Flights & Tips",
+  "desc": "Samui Airport (USM) explained: who flies there, fixed taxi prices of about 400–700 THB to the beaches, Grab pickup rules, check-in and the expansion plan."
+ },
+ {
+  "slug": "koh-samui-atv-quad-bike",
+  "type": "page",
+  "keyword": "ATV tour Koh Samui",
+  "title": "ATV & Quad Bike Tours Koh Samui {year}: Prices & Routes",
+  "desc": "Guided ATV and quad bike tours on Koh Samui from 900 THB per passenger and 1,500 THB per driver: 30-minute to 4-hour jungle routes, waterfalls and safety."
+ },
+ {
+  "slug": "koh-samui-banks-money",
+  "type": "page",
+  "keyword": "Koh Samui ATM fees",
+  "title": "Koh Samui Banks & ATMs {year}: Fees, Limits & Exchange",
+  "desc": "Money on Koh Samui: ATM fees of 220–250 THB (AEON 150 THB), withdrawal limits, why to decline DCC, where cards work and when you need cash for boat fees."
+ },
+ {
+  "slug": "koh-samui-beach-clubs",
+  "type": "page",
+  "keyword": "Koh Samui beach clubs",
+  "title": "Koh Samui Beach Clubs {year}: Pool Parties & Sunset DJs",
+  "desc": "Koh Samui's beach clubs compared: Chaweng pool parties, sunbed minimums from about 300 THB, north-coast sunset DJs, Sunday parties and which have closed."
+ },
+ {
+  "slug": "koh-samui-beach-safety",
+  "type": "page",
+  "keyword": "Koh Samui beach safety",
+  "title": "Koh Samui Beach Safety {year}: Red Flags, Rips & Jellyfish",
+  "desc": "Swim safely on Koh Samui: red flags and rip currents on Chaweng and Lamai from October to December, vinegar for box jellyfish stings and tidal beaches."
+ },
+ {
+  "slug": "koh-samui-beaches",
+  "type": "page",
+  "keyword": "Koh Samui beaches",
+  "title": "Koh Samui Beaches {year}: 18 Best Bays by Coast",
+  "desc": "18 Koh Samui beaches compared by coast: the best for swimming, toddlers and sunsets, calm months January–September and red-flag beaches October–December."
+ },
+ {
+  "slug": "koh-samui-bicycle-rental",
+  "type": "page",
+  "keyword": "bicycle rental Koh Samui",
+  "title": "Bicycle & E-Bike Rental Koh Samui {year}: Routes & Tips",
+  "desc": "Cycling on Koh Samui, honestly: flat coastal lanes in Maenam and Bophut, steep hills to 635 m, a busy 51 km ring road and where to rent a bike or e-bike."
+ },
+ {
+  "slug": "koh-samui-boat-charter",
+  "type": "page",
+  "keyword": "Koh Samui boat charter",
+  "title": "Koh Samui Boat Charter {year}: Private Boats from 19,000 THB",
+  "desc": "Charter a private boat on Koh Samui: 16 speedboats, catamarans, a junk and yachts from 19,000 THB per boat, not per person. Quote first, then pay online."
+ },
+ {
+  "slug": "koh-samui-budget",
+  "type": "page",
+  "keyword": "is Koh Samui expensive",
+  "title": "Is Koh Samui Expensive? {year} Budget Guide & Real Prices",
+  "desc": "Koh Samui costs about 1,500–2,500 THB a day on a budget and 4,000–7,000 THB mid-range, excluding flights. Real prices for food, massage, scooters, boats."
+ },
+ {
+  "slug": "koh-samui-buffalo-fighting",
+  "type": "page",
+  "keyword": "buffalo fighting Koh Samui",
+  "title": "Buffalo Fighting on Koh Samui: Tradition, Law & Welfare",
+  "desc": "What buffalo fighting on Koh Samui is: a southern Thai contest held around New Year and Songkran, the law, welfare concerns and why we don't list it."
+ },
+ {
+  "slug": "koh-samui-cafes",
+  "type": "page",
+  "keyword": "Koh Samui cafés",
+  "title": "Koh Samui Cafés {year}: Coffee, Breakfast & Work Spots",
+  "desc": "Koh Samui cafés by area: specialty coffee in Bophut, Chaweng, Lamai and Maenam, Thai iced coffee from 40 THB, laptop-friendly spots and early breakfasts."
+ },
+ {
+  "slug": "koh-samui-car-rental",
+  "type": "page",
+  "keyword": "car rental Koh Samui",
+  "title": "Car Rental Koh Samui {year}: Prices, Licence & Insurance",
+  "desc": "Renting a car on Koh Samui: compacts about 800–1,200 THB a day, SUVs 1,500–2,500 THB, the International Driving Permit, insurance excess and car ferries."
+ },
+ {
+  "slug": "koh-samui-catamaran-charter",
+  "type": "page",
+  "keyword": "catamaran charter Koh Samui",
+  "title": "Catamaran Charter Koh Samui {year}: From 20,000 THB",
+  "desc": "Private catamarans on Koh Samui for 13 to 45 guests, from 20,000 THB per boat: Pig Island, Koh Phangan and Ang Thong days or a 2.5-hour sunset sail."
+ },
+ {
+  "slug": "koh-samui-chinese-new-year",
+  "type": "page",
+  "keyword": "Chinese New Year Koh Samui",
+  "title": "Chinese New Year Koh Samui: Dates, Lion Dances & Shrines",
+  "desc": "Chinese New Year on Koh Samui is Saturday 6 February 2027: lion dances in Maenam's old Chinatown, rites at Nathon's Hainan shrine and the Guan Yu shrine."
+ },
+ {
+  "slug": "koh-samui-christmas-new-year",
+  "type": "page",
+  "keyword": "New Year's Eve Koh Samui",
+  "title": "Christmas & New Year's Eve Koh Samui {year}: Where to Go",
+  "desc": "Christmas and NYE on Koh Samui: a free Central Samui countdown, Chaweng beach fireworks, resort galas from about 6,000 THB and Full Moon Party boats."
+ },
+ {
+  "slug": "koh-samui-cooking-class",
+  "type": "page",
+  "keyword": "Thai cooking class Koh Samui",
+  "title": "Thai Cooking Class Koh Samui {year}: Prices & Dishes",
+  "desc": "Thai cooking classes on Koh Samui: about 3 hours, 3–5 dishes. Our small-group garden class costs 2,000 THB with transfer from the main tourist areas."
+ },
+ {
+  "slug": "koh-samui-coworking",
+  "type": "page",
+  "keyword": "Koh Samui digital nomads",
+  "title": "Koh Samui for Digital Nomads {year}: DTV, Coworking & Costs",
+  "desc": "Remote work from Koh Samui: the DTV visa (5 years, 180 days per entry, 10,000 THB), Bophut, Maenam and Lamai as bases, studios from 12,000 THB and fibre."
+ },
+ {
+  "slug": "koh-samui-dentist",
+  "type": "page",
+  "keyword": "dentist Koh Samui",
+  "title": "Dentist Koh Samui {year}: Emergency Care & Clinics",
+  "desc": "Toothache or planned dental work on Koh Samui? Emergency care, licensed clinics in Chaweng, Bophut, Lamai and Maenam, written quotes and typical prices."
+ },
+ {
+  "slug": "koh-samui-diving",
+  "type": "page",
+  "keyword": "Koh Samui diving",
+  "title": "Koh Samui Diving {year}: Sail Rock, Koh Tao & Courses",
+  "desc": "Diving from Koh Samui: Sail Rock two-dive days from about 4,650 THB with gear, lunch and transfers, Koh Tao sites, Open Water courses, seasons, insurance."
+ },
+ {
+  "slug": "koh-samui-drugs-alcohol-law",
+  "type": "page",
+  "keyword": "Koh Samui drug and alcohol laws",
+  "title": "Drugs, Vapes & Alcohol Law on Koh Samui: {year} Rules",
+  "desc": "Laws visitors break by mistake on Koh Samui: cannabis on prescription only, vapes illegal, alcohol sold 11:00–24:00, holy-day bans, drinking age 20."
+ },
+ {
+  "slug": "koh-samui-elephant-sanctuary",
+  "type": "page",
+  "keyword": "ethical elephant sanctuary Koh Samui",
+  "title": "Ethical Elephant Sanctuary Koh Samui {year}: No Riding",
+  "desc": "How to choose an ethical elephant sanctuary on Koh Samui: no riding or bathing, a 7-point welfare check and half-day visits about 3,000 THB with transfer."
+ },
+ {
+  "slug": "koh-samui-events",
+  "type": "page",
+  "keyword": "Koh Samui events",
+  "title": "Koh Samui Events & Festivals {year}: What's On This Week",
+  "desc": "What's on in Koh Samui: Muay Thai six nights a week, the Friday walking street, beach fire shows, Full Moon boats from 1,400 THB and festival dates ahead."
+ },
+ {
+  "slug": "koh-samui-facts",
+  "type": "page",
+  "keyword": "Koh Samui facts",
+  "title": "Koh Samui Facts & Figures {year}: Size, Transport, Prices",
+  "desc": "Koh Samui in numbers: 228.7 km², a 51 km ring road, about 70,000 registered residents, Khao Pom at 635 m and a 28–30 °C sea, all checked and dated."
+ },
+ {
+  "slug": "koh-samui-fishing",
+  "type": "page",
+  "keyword": "fishing trips Koh Samui",
+  "title": "Fishing Trips Koh Samui {year}: Day, Night & Private Boats",
+  "desc": "Fishing from Koh Samui: shared day trips 1,500–1,800 THB with rods, bait, lunch and your catch cooked, night squid trips and private boats from 10,500 THB."
+ },
+ {
+  "slug": "koh-samui-freediving",
+  "type": "page",
+  "keyword": "freediving Koh Samui",
+  "title": "Freediving Koh Samui {year}: Courses, Sites & Seasons",
+  "desc": "Freediving from Koh Samui: try-outs from about 3,800 THB, 2–3 day beginner courses about 8,000–8,750 THB on Koh Tao or Koh Phangan, Sail Rock and safety."
+ },
+ {
+  "slug": "koh-samui-golf",
+  "type": "page",
+  "keyword": "Koh Samui golf",
+  "title": "Koh Samui Golf {year}: Courses, Green Fees, Tennis & Padel",
+  "desc": "Golf on Koh Samui: the 18-hole, par-72 Santiburi course at about 5,600 THB with caddie and cart, the 9-hole Royal Samui, tee-time tips, tennis and padel."
+ },
+ {
+  "slug": "koh-samui-gyms",
+  "type": "page",
+  "keyword": "Koh Samui gyms",
+  "title": "Koh Samui Gyms & Fitness {year}: Day Passes & Memberships",
+  "desc": "Training on Koh Samui: Muay Thai camps that double as gyms, drop-in classes from 500 THB, gym sessions from 400 THB, weekly and monthly prices and races."
+ },
+ {
+  "slug": "koh-samui-hiking",
+  "type": "page",
+  "keyword": "Koh Samui hiking",
+  "title": "Koh Samui Hiking & Viewpoints {year}: 12 Walks & Lookouts",
+  "desc": "Koh Samui's 12 best walks and viewpoints: Na Muang 2 in 20–40 minutes, Hin Lad in about 2 hours, Overlap Stone and free Lad Koh, with fees and heat tips."
+ },
+ {
+  "slug": "koh-samui-honeymoon",
+  "type": "page",
+  "keyword": "Koh Samui honeymoon",
+  "title": "Koh Samui Honeymoon {year}: Where to Stay & What to Book",
+  "desc": "Plan a Koh Samui honeymoon: February–April for calm seas, Choeng Mon or the west coast for privacy and sunsets, private boats from 19,000 THB and spas."
+ },
+ {
+  "slug": "koh-samui-hospital",
+  "type": "page",
+  "keyword": "Koh Samui hospital",
+  "title": "Koh Samui Hospitals & Clinics {year}: Emergency Guide",
+  "desc": "Koh Samui hospitals compared: Bangkok Hospital Samui and other private 24-hour emergency rooms, the government hospital near Nathon and 1669 ambulances."
+ },
+ {
+  "slug": "koh-samui-immigration-office",
+  "type": "kp_place",
+  "keyword": "Koh Samui immigration office",
+  "title": "Koh Samui Immigration Office {year}: Address & Hours",
+  "desc": "Koh Samui Immigration is in Maenam, not Nathon: address, phone, Monday–Friday hours, 1,900 THB visa extensions, 90-day reports, TM30 and re-entry permits."
+ },
+ {
+  "slug": "koh-samui-in-november",
+  "type": "page",
+  "keyword": "Koh Samui in November",
+  "title": "Koh Samui in November {year}: Weather, Sea & Events",
+  "desc": "November is Koh Samui's wettest month (about 445 mm) and Ang Thong is closed, but it's green and good value, Pig Island runs and Loy Krathong is on 24 Nov."
+ },
+ {
+  "slug": "koh-samui-itinerary",
+  "type": "page",
+  "keyword": "Koh Samui itinerary",
+  "title": "Koh Samui Itinerary {year}: 3, 5, 7 & 10-Day Plans",
+  "desc": "Koh Samui itineraries day by day: 3 days with Fisherman's Village, a boat day and the island loop, then 5, 7 and 10-day plans with Koh Tao and Koh Phangan."
+ },
+ {
+  "slug": "koh-samui-jet-ski",
+  "type": "page",
+  "keyword": "jet ski Koh Samui",
+  "title": "Jet Ski Koh Samui {year}: Prices, Rules & Scams to Avoid",
+  "desc": "Renting a jet ski on Koh Samui: how the damage-claim scam works, why never to leave your passport, filming the ski first and guided rides from 3,500 THB."
+ },
+ {
+  "slug": "koh-samui-jungle-safari",
+  "type": "page",
+  "keyword": "Koh Samui jungle safari",
+  "title": "Koh Samui Jungle Safari {year}: 4x4 Tours from 1,500 THB",
+  "desc": "Koh Samui 4x4 jungle safaris: 7–8.5 hours from 1,500 THB with lunch and transfer from main beach areas, Na Muang Waterfall and the Secret Buddha Garden."
+ },
+ {
+  "slug": "koh-samui-kayak-sup",
+  "type": "page",
+  "keyword": "kayaking Koh Samui",
+  "title": "Kayaking & SUP on Koh Samui {year}: Where to Paddle",
+  "desc": "Kayaking and paddleboarding on Koh Samui: Coral Cove kayaks about 300 THB an hour, calm north-east bays by season and kayaking on every Ang Thong tour."
+ },
+ {
+  "slug": "koh-samui-kitesurfing",
+  "type": "page",
+  "keyword": "kitesurfing Koh Samui",
+  "title": "Kitesurfing Koh Samui {year}: Season, Spots and Lessons",
+  "desc": "Kitesurfing on Koh Samui is best December to April on the shallow Ban Harn and Hua Thanon lagoon; from May lessons move to Nathon. Lessons from 3,500 THB."
+ },
+ {
+  "slug": "koh-samui-long-stay",
+  "type": "page",
+  "keyword": "long-term rental Koh Samui",
+  "title": "Long-Term Rentals Koh Samui {year}: Condos, Houses, Villas",
+  "desc": "Long-term rentals on Koh Samui: condos from about 12,000 THB a month in Maenam, pool villas from 40,000 THB, 6–12 month contracts, deposits and power."
+ },
+ {
+  "slug": "koh-samui-loy-krathong",
+  "type": "page",
+  "keyword": "Loy Krathong Koh Samui",
+  "title": "Loy Krathong on Koh Samui: Date, Where to Float, Rules",
+  "desc": "Loy Krathong falls on Tuesday 24 November, the same night as the Full Moon Party. Where to float a krathong on Koh Samui, eco krathongs and lantern rules."
+ },
+ {
+  "slug": "koh-samui-markets",
+  "type": "page",
+  "keyword": "Koh Samui night markets",
+  "title": "Koh Samui Night Markets {year}: What's Open Tonight",
+  "desc": "Koh Samui night markets by day: Fisherman's Village every Friday, Chaweng Thursday to Saturday, and nightly Lamai and Nathon food markets, with a map."
+ },
+ {
+  "slug": "koh-samui-meditation",
+  "type": "page",
+  "keyword": "meditation Koh Samui",
+  "title": "Meditation on Koh Samui {year}: Silent Retreats and Classes",
+  "desc": "Meditation on Koh Samui: donation-based silent courses at Dipabhavan above Lamai, a 7-night monk-led retreat in Bophut for about US$405, and classes."
+ },
+ {
+  "slug": "koh-samui-motorbike-rental",
+  "type": "page",
+  "keyword": "scooter rental Koh Samui",
+  "title": "Scooter Rental Koh Samui {year}: Prices, IDP and Helmet Law",
+  "desc": "Scooter rental on Koh Samui costs about 150–350 THB a day for a 125 cc automatic or 2,000–4,500 THB a month. IDP rules, helmet fines and deposits."
+ },
+ {
+  "slug": "koh-samui-muay-thai-fight-nights",
+  "type": "page",
+  "keyword": "Muay Thai stadium Koh Samui",
+  "title": "Muay Thai Stadiums Koh Samui: Fight Nights and Tickets",
+  "desc": "Muay Thai in Chaweng six nights a week from about 21:00 at two stadiums, none on Thursday. Tickets 1,500 THB stadium seat to 2,500 THB VIP, and tips."
+ },
+ {
+  "slug": "koh-samui-muay-thai",
+  "type": "page",
+  "keyword": "Muay Thai training Koh Samui",
+  "title": "Muay Thai Training Koh Samui {year}: Camps and Prices",
+  "desc": "Muay Thai training on Koh Samui: drop-in classes from about 500 THB, weekly packages around 2,500–3,000 THB, monthly camps and tips for beginners."
+ },
+ {
+  "slug": "koh-samui-nightlife",
+  "type": "page",
+  "keyword": "Koh Samui nightlife",
+  "title": "Koh Samui Nightlife {year}: Clubs, Bars and Fire Shows",
+  "desc": "Koh Samui nightlife centres on Chaweng: Soi Green Mango clubs until about 04:00, free ARKbar fire shows from 20:00, live bands and alcohol hours."
+ },
+ {
+  "slug": "koh-samui-parties",
+  "type": "page",
+  "keyword": "Koh Samui parties",
+  "title": "Koh Samui Parties {year}: Pool Parties, Boats and Full Moon",
+  "desc": "Where to party on Koh Samui: Chaweng clubs and beach fire shows nightly, weekend pool parties, and Full Moon Party boats to Koh Phangan from 1,400 THB."
+ },
+ {
+  "slug": "koh-samui-party-calendar-2026-2027",
+  "type": "page",
+  "keyword": "Koh Samui party calendar",
+  "title": "Koh Samui Party Calendar {year}: Festivals and Full Moons",
+  "desc": "Every party, festival, holiday and alcohol-ban day for Koh Samui and Koh Phangan: 16 Full Moon dates, Loy Krathong, Songkran and the Samui Regatta."
+ },
+ {
+  "slug": "koh-samui-pharmacies",
+  "type": "page",
+  "keyword": "pharmacy Koh Samui",
+  "title": "Pharmacies on Koh Samui: Late-Night Options and Rules",
+  "desc": "Pharmacies on Koh Samui: most open until about 21:00–22:00 in Chaweng, Lamai, Bophut and Nathon. What they can sell, late-night care and medicine rules."
+ },
+ {
+  "slug": "koh-samui-police-station",
+  "type": "page",
+  "keyword": "Koh Samui police station",
+  "title": "Koh Samui Police Stations: Locations, Numbers, Reports",
+  "desc": "Koh Samui police: call 191, or 1155 for the English-speaking Tourist Police. The Nathon and Bo Phut stations, which to use and what to bring to a report."
+ },
+ {
+  "slug": "koh-samui-private-speedboat",
+  "type": "page",
+  "keyword": "private speedboat charter Koh Samui",
+  "title": "Private Speedboat Charter Koh Samui: From 19,000 THB",
+  "desc": "Nine private speedboats from Koh Samui for 8 to 37 guests, from 19,000 THB per boat with captain, fuel and snorkel gear, to Ang Thong or Pig Island."
+ },
+ {
+  "slug": "koh-samui-real-estate",
+  "type": "page",
+  "keyword": "Koh Samui real estate",
+  "title": "Koh Samui Real Estate {year}: Buying and Leasing Guide",
+  "desc": "Buying property on Koh Samui as a foreigner: own a condo within the 49% quota, lease land for up to 30 years, check Chanote titles and hillside rules."
+ },
+ {
+  "slug": "koh-samui-restaurants",
+  "type": "page",
+  "keyword": "Koh Samui restaurants",
+  "title": "Koh Samui Restaurants {year}: Where to Eat and What to Order",
+  "desc": "Where to eat on Koh Samui: Fisherman's Village for dinner, Bang Por and Bang Rak for seafood, market dishes from 40 THB and two MICHELIN Bib Gourmands."
+ },
+ {
+  "slug": "koh-samui-retreats",
+  "type": "page",
+  "keyword": "Koh Samui retreats",
+  "title": "Koh Samui Retreats {year}: Yoga, Detox and Wellness Compared",
+  "desc": "Koh Samui retreats compared by length, price and area: donation-based silent meditation, yoga weeks from about US$650 for 3 nights and detox from US$2,000."
+ },
+ {
+  "slug": "koh-samui-roads",
+  "type": "page",
+  "keyword": "driving on Koh Samui",
+  "title": "Driving on Koh Samui: Ring Road, Hill Roads and Safety",
+  "desc": "Driving on Koh Samui: the 51 km Route 4169 ring road takes about 90 minutes, plus the steep 4170 and 4171 roads, checkpoints, fines and wet-season risks."
+ },
+ {
+  "slug": "koh-samui-scams",
+  "type": "page",
+  "keyword": "Koh Samui scams",
+  "title": "Koh Samui Scams {year}: Jet Skis, Taxis and How to Avoid Them",
+  "desc": "Common Koh Samui scams: jet-ski and scooter damage claims, taxi overcharging, paid look-alike TDAC sites and card currency tricks, and how to avoid them."
+ },
+ {
+  "slug": "koh-samui-sea-conditions",
+  "type": "page",
+  "keyword": "Koh Samui sea conditions",
+  "title": "Koh Samui Sea Conditions Today: Waves, Wind and Swell",
+  "desc": "Live Koh Samui sea conditions: wave height, swell, wind and a Calm, Choppy or Rough verdict. Calmest February to May; monsoon swell from October."
+ },
+ {
+  "slug": "koh-samui-seafood",
+  "type": "page",
+  "keyword": "Koh Samui seafood",
+  "title": "Koh Samui Seafood {year}: Best Areas and How to Order",
+  "desc": "Best seafood on Koh Samui: Bang Por, Maenam, Bang Rak, Taling Ngam and the Lamai Seafood Market. Expect 300–500 THB a head, and how to order by weight."
+ },
+ {
+  "slug": "koh-samui-shopping-malls",
+  "type": "page",
+  "keyword": "Koh Samui shopping",
+  "title": "Koh Samui Shopping {year}: Central Samui, Big C and Lotus's",
+  "desc": "Shopping on Koh Samui: Central Samui mall in Chaweng, open 10:00–22:00 with 200+ shops, Lotus's, Big C and Makro for groceries, ATM fees and VAT refunds."
+ },
+ {
+  "slug": "koh-samui-sim-card-wifi",
+  "type": "page",
+  "keyword": "Koh Samui SIM card",
+  "title": "Koh Samui SIM Card and eSIM {year}: Prices and Coverage",
+  "desc": "AIS or True on Koh Samui? Tourist SIMs cost about 449–499 THB for 8 days and 1,199 THB for 30, need a passport to register; eSIMs use the same networks."
+ },
+ {
+  "slug": "koh-samui-snorkeling",
+  "type": "page",
+  "keyword": "Koh Samui snorkelling",
+  "title": "Koh Samui Snorkelling {year}: Best Spots by Beach and Boat",
+  "desc": "Where to snorkel on Koh Samui: Coral Cove and Silver Beach from shore, or Koh Tan from 1,450 THB, Ang Thong and Koh Nang Yuan by boat, and the best months."
+ },
+ {
+  "slug": "koh-samui-songkran",
+  "type": "page",
+  "keyword": "Songkran Koh Samui",
+  "title": "Songkran Koh Samui: Dates, Where to Go and Water Fights",
+  "desc": "Songkran on Koh Samui: public holidays 13–15 April, water fights from 12 April on Chaweng Beach Road, Lamai and Nathon celebrations and safety tips."
+ },
+ {
+  "slug": "koh-samui-spa",
+  "type": "page",
+  "keyword": "Koh Samui massage prices",
+  "title": "Koh Samui Spa and Massage Prices {year}: Areas and Etiquette",
+  "desc": "A one-hour Thai massage on Koh Samui costs about 300–500 THB, 400–600 THB in Chaweng, and resort spas 1,800–3,500 THB. Prices by area and etiquette."
+ },
+ {
+  "slug": "koh-samui-sunset-cruise",
+  "type": "page",
+  "keyword": "Koh Samui sunset cruise",
+  "title": "Koh Samui Sunset Cruise: Shared Tour or Private Boat",
+  "desc": "Sunset boat trips from Koh Samui: the Pig Island Sunset Tour with snorkelling and dinner for 1,550 THB, or a private sailing catamaran from 20,000 THB."
+ },
+ {
+  "slug": "koh-samui-sunset-spots",
+  "type": "page",
+  "keyword": "best sunset spots Koh Samui",
+  "title": "Best Sunset Spots on Koh Samui: 12 Places to Watch",
+  "desc": "Koh Samui sunsets are on the west coast: Taling Ngam, Lipa Noi, Nathon pier and Bang Por. Sunset falls 17:56–18:45; Chaweng and Lamai face sunrise."
+ },
+ {
+  "slug": "koh-samui-temples",
+  "type": "page",
+  "keyword": "Koh Samui temples",
+  "title": "Koh Samui Temples {year}: Best Wats, Shrines and Dress Code",
+  "desc": "Koh Samui temples: Big Buddha, Wat Plai Laem, the mummified monk at Wat Khunaram, the Red Temple and Laem Sor, all free. Hours, dress code and routes."
+ },
+ {
+  "slug": "koh-samui-tides",
+  "type": "page",
+  "keyword": "Koh Samui tides",
+  "title": "Koh Samui Tides Today and Next 7 Days: Times and Heights",
+  "desc": "Live Koh Samui tide times for Chaweng, Nathon and Thong Krut: the tide now, next high and low, a 7-day chart and which beaches turn shallow at low tide."
+ },
+ {
+  "slug": "koh-samui-to-koh-phangan",
+  "type": "page",
+  "keyword": "Koh Samui to Koh Phangan ferry",
+  "title": "Koh Samui to Koh Phangan Ferry {year}: Piers, Times, Prices",
+  "desc": "About 40 boats a day cross from Koh Samui to Koh Phangan in 20–50 minutes for 200–500 THB. Which pier to use, Haad Rin boats and private transfers."
+ },
+ {
+  "slug": "koh-samui-to-koh-tao",
+  "type": "page",
+  "keyword": "Koh Samui to Koh Tao ferry",
+  "title": "Koh Samui to Koh Tao Ferry {year}: Times, Prices, Day Trip",
+  "desc": "Koh Samui to Koh Tao by fast boat in 1.5–2 hours for about 700 THB or slow ferry for 450–550 THB, or see Tao and Nang Yuan on a 2,200 THB day trip."
+ },
+ {
+  "slug": "koh-samui-tourist-police",
+  "type": "kp_place",
+  "keyword": "Koh Samui tourist police",
+  "title": "Koh Samui Tourist Police: Hotline 1155, Office and Reports",
+  "desc": "Call 1155 for the Koh Samui Tourist Police, 24 hours in English. Police reports for insurance, lost passports, and jet-ski, scooter or taxi disputes."
+ },
+ {
+  "slug": "koh-samui-tours",
+  "type": "page",
+  "keyword": "Koh Samui tours",
+  "title": "Koh Samui Tours and Day Trips {year}: Prices and Booking",
+  "desc": "Compare 132 Koh Samui tours and day trips: Ang Thong from 1,500 THB, Pig Island from 1,450 THB, Koh Tao 2,200 THB and private boats, booked in THB."
+ },
+ {
+  "slug": "koh-samui-travel-guide",
+  "type": "page",
+  "keyword": "Koh Samui travel guide",
+  "title": "Koh Samui Travel Guide {year}: The Essential Planner",
+  "desc": "Koh Samui travel guide from locals since 2006: flights from 2,800 THB, the best areas to stay, weather by month, the visa rules, money, safety and boats."
+ },
+ {
+  "slug": "koh-samui-travel-insurance",
+  "type": "page",
+  "keyword": "travel insurance Koh Samui",
+  "title": "Travel Insurance for Koh Samui {year}: What It Must Cover",
+  "desc": "What travel insurance for Koh Samui must cover: hospital payment guarantees, scooters and the IDP rule, diving depth, jet skis, evacuation and delays."
+ },
+ {
+  "slug": "koh-samui-villas",
+  "type": "page",
+  "keyword": "Koh Samui villas for rent",
+  "title": "Koh Samui Villas for Rent {year}: Live Prices and Availability",
+  "desc": "Over 250 private pool villas for rent on Koh Samui, 2 to 10 bedrooms, with nightly THB rates and 12 weeks of availability updated hourly. Pick your dates."
+ },
+ {
+  "slug": "koh-samui-visa-extension",
+  "type": "page",
+  "keyword": "Koh Samui visa extension",
+  "title": "Koh Samui Visa Extension {year}: Maenam Immigration Steps",
+  "desc": "Extend a 30-day visa exemption once by 30 days at Koh Samui Immigration in Maenam: form TM.7, 1,900 THB cash, a photo, TM.30 receipt and queue tips."
+ },
+ {
+  "slug": "koh-samui-vs-koh-phangan-vs-koh-tao",
+  "type": "page",
+  "keyword": "Koh Samui vs Koh Phangan vs Koh Tao",
+  "title": "Koh Samui vs Koh Phangan vs Koh Tao: Which Island?",
+  "desc": "Koh Samui for flights, hotels and families, Koh Phangan for the Full Moon Party and yoga, Koh Tao for diving. Phangan is 20–50 min away, Tao 1.5–2 h."
+ },
+ {
+  "slug": "koh-samui-walking-streets",
+  "type": "page",
+  "keyword": "Koh Samui walking street",
+  "title": "Koh Samui Walking Streets {year}: Which Still Run and When",
+  "desc": "Which Koh Samui walking streets still run: Fisherman's Village every Friday 17:00–23:00, Chaweng Thursday to Saturday, and the Maenam and Lamai status."
+ },
+ {
+  "slug": "koh-samui-water-sports",
+  "type": "page",
+  "keyword": "Koh Samui water sports",
+  "title": "Koh Samui Water Sports {year}: Jet Ski, Kayak, Dive and Kite",
+  "desc": "Water sports on Koh Samui: snorkelling at Koh Tan from 1,450 THB, diving at Sail Rock, parasailing at Lamai for 2,000 THB, jet skis, kayaks and SUP."
+ },
+ {
+  "slug": "koh-samui-waterfalls",
+  "type": "page",
+  "keyword": "Koh Samui waterfalls",
+  "title": "Koh Samui Waterfalls {year}: Na Muang, Hin Lad and More",
+  "desc": "Koh Samui's three waterfalls worth the drive: Na Muang 1 with a swimming pool, the 80 m Na Muang 2 rope climb and the Hin Lad walk. Fees and best months."
+ },
+ {
+  "slug": "koh-samui-weather",
+  "type": "page",
+  "keyword": "Koh Samui weather",
+  "title": "Koh Samui Weather {year}: Live Forecast and Month by Month",
+  "desc": "Koh Samui weather is 29–33 °C all year: driest February to April, wettest in November with about 445 mm. Live forecast, rain and sea month by month."
+ },
+ {
+  "slug": "koh-samui-wedding",
+  "type": "page",
+  "keyword": "Koh Samui wedding",
+  "title": "Koh Samui Wedding {year}: Beach, Villa and Boat Weddings",
+  "desc": "Plan a Koh Samui wedding: February to April for the calmest sea, beach, villa, resort or boat ceremonies, and the Thai legal marriage steps for foreigners."
+ },
+ {
+  "slug": "koh-samui-wellness-resorts",
+  "type": "page",
+  "keyword": "Koh Samui detox resort",
+  "title": "Koh Samui Detox and Wellness Resorts {year}: Prices",
+  "desc": "Koh Samui detox and wellness resorts compared: Kamalaya from about US$1,836 for 3 nights, Absolute Sanctuary from US$2,152 for 6, Samahita and day passes."
+ },
+ {
+  "slug": "koh-samui-wildlife",
+  "type": "page",
+  "keyword": "Koh Samui wildlife",
+  "title": "Koh Samui Wildlife: Pink Dolphins, Reefs and Jungle",
+  "desc": "Wildlife around Koh Samui: pink dolphins off the mainland coast, reef fish and turtles at Ang Thong and Koh Tan, whale sharks at Sail Rock, what to avoid."
+ },
+ {
+  "slug": "koh-samui-with-kids",
+  "type": "page",
+  "keyword": "Koh Samui with kids",
+  "title": "Koh Samui with Kids {year}: Family Beaches, Trips, Safety",
+  "desc": "Koh Samui with kids: calm seas January to September, paediatric hospitals, and boat trips with child rates for ages 3–11, under-3s free and life jackets."
+ },
+ {
+  "slug": "koh-samui-yacht-charter",
+  "type": "page",
+  "keyword": "yacht charter Koh Samui",
+  "title": "Yacht Charter Koh Samui: Motor Yachts and a 98 ft Junk",
+  "desc": "Private yacht charter on Koh Samui: the 98 ft Red Baron junk for up to 70 from 41,000 THB, and motor yachts for 12 from 50,000 THB per charter."
+ },
+ {
+  "slug": "koh-samui-yoga",
+  "type": "page",
+  "keyword": "Koh Samui yoga",
+  "title": "Koh Samui Yoga {year}: Studios, Retreats, Teacher Trainings",
+  "desc": "Yoga on Koh Samui is resort-led: cliffside classes at Vikasa, daily sessions at Kamalaya and Samahita, retreats from about US$650 for 3 nights."
+ },
+ {
+  "slug": "koh-samui-zipline",
+  "type": "page",
+  "keyword": "Koh Samui zipline",
+  "title": "Koh Samui Zipline {year}: Courses, Prices and Sessions",
+  "desc": "Koh Samui has four zipline courses from 800 to 2,700 THB. The Tan Rua treetop course is about 2 km of lines in 60 minutes, from 1,900 THB with transfer."
+ },
+ {
+  "slug": "koh-tan-koh-samui",
+  "type": "kp_place",
+  "keyword": "Koh Tan Koh Samui",
+  "title": "Koh Tan, Koh Samui: Snorkelling Next to Pig Island",
+  "desc": "Koh Tan (Koh Taen) sits beside Pig Island, 15–30 minutes by boat from Thong Krut, with a shallow reef for beginner snorkelling. Tours from 1,450 THB."
+ },
+ {
+  "slug": "lad-koh-viewpoint-koh-samui",
+  "type": "kp_place",
+  "keyword": "Lad Koh viewpoint",
+  "title": "Lad Koh Viewpoint, Koh Samui: Sunrise Stop and Safety",
+  "desc": "Lad Koh viewpoint, on the ring road between Chaweng Noi and Coral Cove, is free and open 24 hours: a 10–15 minute stop, best at sunrise. Mind the rocks."
+ },
+ {
+  "slug": "laem-sor-pagoda-koh-samui",
+  "type": "kp_place",
+  "keyword": "Laem Sor Pagoda",
+  "title": "Laem Sor Pagoda, Koh Samui: Seafront Chedi Visitor Guide",
+  "desc": "Laem Sor Pagoda is a gold-tiled chedi on the shore at the end of Bang Kao beach, south Koh Samui. Free, open 07:00–18:00, best in late-afternoon light."
+ },
+ {
+  "slug": "laem-yai-koh-samui",
+  "type": "kp_place",
+  "keyword": "Laem Yai Koh Samui",
+  "title": "Laem Yai, Koh Samui: Quiet North-West Beach and Sunsets",
+  "desc": "Laem Yai is Koh Samui's quiet north-west tip, 5 km north of Nathon: a pebbly shore, high-tide snorkelling, sunsets over the sea and The White Lotus coast."
+ },
+ {
+  "slug": "lamai-koh-samui",
+  "type": "kp_place",
+  "keyword": "Lamai beach Koh Samui",
+  "title": "Lamai Beach, Koh Samui {year}: Area and Night Market Guide",
+  "desc": "Lamai is 4 km of east-facing sand, 12 km south of Chaweng: where to swim, the nightly market, Hin Ta and Hin Yai, cheaper stays and Oct–Dec red flags."
+ },
+ {
+  "slug": "lamai-nightlife-koh-samui",
+  "type": "page",
+  "keyword": "Lamai nightlife",
+  "title": "Lamai Nightlife {year}: Bars, Live Bands and Beach Parties",
+  "desc": "Lamai nightlife is pubs and bands, not clubs: Shamrock's nightly show band to 01:30, reggae at Rock Bar, beach fire shows to 02:00 and what has closed."
+ },
+ {
+  "slug": "lipa-noi-koh-samui",
+  "type": "kp_place",
+  "keyword": "Lipa Noi beach",
+  "title": "Lipa Noi Beach, Koh Samui: Sunsets and Shallow Water",
+  "desc": "Lipa Noi is a quiet west-coast beach 6 km south of Nathon: very shallow, calm water for toddlers at high tide, sea sunsets and the Raja ferry pier."
+ },
+ {
+  "slug": "maenam-koh-samui",
+  "type": "kp_place",
+  "keyword": "Maenam beach Koh Samui",
+  "title": "Maenam, Koh Samui {year}: Quiet Beach and Area Guide",
+  "desc": "Maenam is Koh Samui's long, quiet north-coast beach, 20–30 minutes from the airport, with the cheapest beachfront stays, calm water and Chinatown."
+ },
+ {
+  "slug": "na-muang-2-waterfall-koh-samui",
+  "type": "kp_place",
+  "keyword": "Na Muang 2 waterfall",
+  "title": "Na Muang 2 Waterfall, Koh Samui: Rope Climb and Safety",
+  "desc": "Na Muang 2 is Koh Samui's tallest waterfall at about 80 m: free on the left path, open 09:00–18:00, a steep 20–40 minute rope climb. Route and safety."
+ },
+ {
+  "slug": "na-muang-waterfall-koh-samui",
+  "type": "kp_place",
+  "keyword": "Na Muang waterfall",
+  "title": "Na Muang Waterfall Koh Samui: Falls 1 and 2 Visitor Guide",
+  "desc": "Na Muang 1 and 2 on Koh Samui are free, with parking 20–60 THB: a swimmable pool 5–10 minutes from the car park and a rope climb to the tallest fall."
+ },
+ {
+  "slug": "nathon-koh-samui",
+  "type": "kp_place",
+  "keyword": "Nathon Koh Samui",
+  "title": "Nathon, Koh Samui: Town, Pier and Night Market Guide",
+  "desc": "Nathon is Koh Samui's west-coast port and old capital: Seatran car ferries to Donsak in about 1.5 hours, boats to Phangan and Tao, and a night market."
+ },
+ {
+  "slug": "nikki-beach-koh-samui",
+  "type": "kp_place",
+  "keyword": "Nikki Beach Koh Samui",
+  "title": "Nikki Beach Koh Samui {year}: Brunch, Day Beds and Prices",
+  "desc": "Nikki Beach Koh Samui on Lipa Noi: beach club 11:00–19:00, Amazing Sundays brunch 12:00–16:30, Friday BBQ and fire show, day-bed minimum spend, 16+ only."
+ },
+ {
+  "slug": "overlap-stone-koh-samui",
+  "type": "kp_place",
+  "keyword": "Overlap Stone Koh Samui",
+  "title": "Overlap Stone Koh Samui {year}: Entry Fee, Walk and Tips",
+  "desc": "Overlap Stone above Lamai costs about 300 THB with a soft drink, opens 08:00–18:00 and is a 500 m walk over a suspension bridge. Overlap Stone 2 is shut."
+ },
+ {
+  "slug": "photo-credits",
+  "type": "page",
+  "keyword": "photo credits",
+  "title": "Photo Credits: Our Team and Openly Licensed Images",
+  "desc": "Credits and licences for the photos on this Koh Samui guide: our own team's pictures since 2006 and openly licensed Wikimedia Commons images."
+ },
+ {
+  "slug": "phuket-to-koh-samui",
+  "type": "page",
+  "keyword": "Phuket to Koh Samui",
+  "title": "Phuket to Koh Samui {year}: Flights, Bus and Ferry, Krabi",
+  "desc": "Phuket to Koh Samui takes about an hour by air with 7–8 flights a day, or 6.5–10 hours by van and ferry. Krabi routes too; there is no direct ferry."
+ },
+ {
+  "slug": "pig-island-koh-samui",
+  "type": "kp_place",
+  "keyword": "Pig Island Koh Samui",
+  "title": "Pig Island Koh Samui {year}: Koh Madsum Guide and Tours",
+  "desc": "Pig Island (Koh Madsum) is 15–30 minutes by boat from Thong Krut: the 50 THB island fee, the pigs, Koh Tan snorkelling and daily tours from 1,450 THB."
+ },
+ {
+  "slug": "places",
+  "type": "page",
+  "keyword": "places to visit Koh Samui",
+  "title": "Places to Visit on Koh Samui: Interactive Map and Areas",
+  "desc": "Interactive map of Koh Samui's beaches, temples, waterfalls, viewpoints and piers with hours and fees; every sight is within 45 minutes of Chaweng."
+ },
+ {
+  "slug": "plai-laem-koh-samui",
+  "type": "page",
+  "keyword": "Plai Laem Koh Samui",
+  "title": "Plai Laem, Koh Samui: North-East Tip Area Guide",
+  "desc": "Plai Laem is Koh Samui's north-east tip: Wat Plai Laem's 18-armed Guanyin, the Big Buddha, beach clubs and stays 5 minutes from the airport."
+ },
+ {
+  "slug": "precautions-safety",
+  "type": "page",
+  "keyword": "is Koh Samui safe",
+  "title": "Is Koh Samui Safe? Precautions and Safety Tips {year}",
+  "desc": "Koh Samui is generally safe and violent crime against tourists is rare. The real risks are scooter crashes, rip currents and party nights. Key numbers."
+ },
+ {
+  "slug": "privacy-policy",
+  "type": "page",
+  "keyword": "privacy policy",
+  "title": "Privacy Policy and Cookies: PDPA and GDPR Notice",
+  "desc": "How we use your booking data, Stripe card payments, WhatsApp and analytics, the cookies we set, and your rights under Thailand's PDPA and the EU GDPR."
+ },
+ {
+  "slug": "private-speedboat-koh-samui-to-koh-phangan",
+  "type": "page",
+  "keyword": "private speedboat Koh Samui to Koh Phangan",
+  "title": "Private Speedboat Koh Samui to Koh Phangan: From 8,500 THB",
+  "desc": "A private speedboat from Koh Samui reaches Haad Rin or Ban Tai in 20–25 minutes, from 8,500 THB per boat for up to 4. Beach drop-offs and party nights."
+ },
+ {
+  "slug": "4x4-off-road-island-safari-culture-tour-koh-samui",
+  "type": "product",
+  "keyword": "4x4 off-road safari Koh Samui",
+  "title": "Koh Samui 4x4 Off-Road Safari Tour from 2,100 THB",
+  "desc": "Small-group 4x4 safari on Koh Samui, max 8, Tuesdays and Fridays: Big Buddha, Overlap Stone, Na Muang 2 and the Magic Garden, with lunch and transfer."
+ },
+ {
+  "slug": "aloha-sailing-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Aloha sailing catamaran Koh Samui",
+  "title": "Aloha Sailing Catamaran Charter Koh Samui from 15,000 THB",
+  "desc": "Private Aloha sailing catamaran for up to 8 from south-west Koh Samui: a 4-hour morning or sunset sail to Koh Tan and Pig Island, with snorkelling."
+ },
+ {
+  "slug": "amber-vip-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "Amber speedboat charter Koh Samui",
+  "title": "Amber VIP Speedboat Charter Koh Samui from 35,000 THB",
+  "desc": "Brand-new 13 m Amber speedboat with twin 300 hp engines and a toilet for up to 10: honeymoon trips to Koh Phangan or full days to Ang Thong or Koh Tao."
+ },
+ {
+  "slug": "ang-thong-big-boat-tour-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong big boat tour from Koh Samui",
+  "title": "Ang Thong big boat tour from Koh Samui: from 1,500 THB",
+  "desc": "Ang Thong Marine Park by big boat from Koh Samui: deck space, the Emerald Lake, Koh Wua Talab viewpoint, kayaking and snorkelling. 1,500 THB per person."
+ },
+ {
+  "slug": "ang-thong-marine-park-day-tour-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong speedboat tour from Koh Samui",
+  "title": "Ang Thong Marine Park speedboat tour: from 1,800 THB",
+  "desc": "Ang Thong Marine Park by speedboat: Emerald Lake on Koh Mae Ko, Koh Wua Talab viewpoint, kayaking, snorkelling and lunch. Hotel pickup from most areas."
+ },
+ {
+  "slug": "ang-thong-overnight-bungalow-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong overnight trip with bungalow",
+  "title": "Ang Thong overnight trip with park bungalow: from 4,200 THB",
+  "desc": "Ang Thong overnight trip with a park bungalow on Koh Wua Talab: the day-trip highlights, sunset from the viewpoint and the park after the day boats leave."
+ },
+ {
+  "slug": "ang-thong-overnight-camping-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong camping trip",
+  "title": "Ang Thong camping trip from Koh Samui: from 3,600 THB",
+  "desc": "Ang Thong camping trip from Koh Samui: a beach tent on Koh Wua Talab, sunset from the viewpoint and a quiet second morning before the day boats arrive."
+ },
+ {
+  "slug": "ang-thong-private-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong private speedboat tour",
+  "title": "Ang Thong private speedboat tour: from 33,000 THB per boat",
+  "desc": "Ang Thong Marine Park on your own speedboat from Koh Samui: snorkel, kayak and climb the viewpoints at your own pace. 33,000 THB per boat with crew."
+ },
+ {
+  "slug": "ang-thong-vip-tour-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong VIP tour",
+  "title": "Ang Thong VIP tour with only 15 guests: from 4,500 THB",
+  "desc": "Ang Thong VIP tour with only 15 guests on a big speedboat: Emerald Lake, Koh Wua Talab viewpoint, kayaking and snorkelling, no queue for gear. 4,500 THB."
+ },
+ {
+  "slug": "atv-buggy-jungle-tour-maenam-koh-samui",
+  "type": "product",
+  "keyword": "ATV tour Maenam Koh Samui",
+  "title": "ATV and buggy jungle tour in Maenam: from 1,600 THB",
+  "desc": "Guided ATV tour on jungle tracks behind Maenam to a waterfall; the 3-hour route adds viewpoints and a temple. 2,200 THB per ATV or 1,600 THB each sharing."
+ },
+ {
+  "slug": "atv-buggy-mountain-waterfall-maenam-koh-samui",
+  "type": "product",
+  "keyword": "ATV tour to Koh Samui highest point",
+  "title": "ATV tour to Koh Samui's highest point: from 1,900 THB",
+  "desc": "Guided 4-hour ATV or buggy tour from Maenam to Koh Samui's highest point, with a hidden-waterfall swim and Thai buffet lunch. Beginner rides available."
+ },
+ {
+  "slug": "atv-utv-jungle-ride-lipa-noi-koh-samui",
+  "type": "product",
+  "keyword": "ATV ride Lipa Noi Koh Samui",
+  "title": "ATV and UTV jungle ride at Lipa Noi: from 1,800 THB",
+  "desc": "ATV ride at Lipa Noi from 1,800 THB per vehicle for 30 minutes; 1-hour and 1.5-hour rides add Lat Wanon waterfall and Phu Lipa viewpoint. Drivers 16+."
+ },
+ {
+  "slug": "azur-sun-up-sailing-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Azur Sun Up sailing yacht charter Koh Samui",
+  "title": "Azur Sun Up sailing yacht charter: from 20,000 THB",
+  "desc": "Azur Sun Up, a 38 ft Bavaria sailing yacht for up to 6 with skipper and crew: sunset sail 20,000 THB, half day 25,000 THB, full day 40,000 THB."
+ },
+ {
+  "slug": "beat-boat-party-motor-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "party boat Koh Samui Beat Boat",
+  "title": "Beat Boat party catamaran Koh Samui: from 42,800 THB",
+  "desc": "The Beat Boat is a 72 ft party catamaran with a DJ booth, 16-speaker sound and room for 70: Koh Som sunset cruise from 42,800 THB, with an event manager."
+ },
+ {
+  "slug": "blue-coco-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Blue Coco Lagoon 400 catamaran charter",
+  "title": "Blue Coco Lagoon 400 catamaran charter: from 35,000 THB",
+  "desc": "Blue Coco, a private Lagoon 400 sailing catamaran for up to 10: Koh Som morning sail or sunset from 35,000 THB, Koh Phangan and Ang Thong full days."
+ },
+ {
+  "slug": "blue-dragon-teak-junk-charter-koh-samui",
+  "type": "product",
+  "keyword": "Blue Dragon teak junk charter Koh Samui",
+  "title": "Blue Dragon teak junk charter Koh Samui: from 25,900 THB",
+  "desc": "Blue Dragon, a 68 ft teak junk with red sails, for up to 6: Koh Tan and Pig Island from 25,900 THB with breakfast, buffet lunch, snorkelling and transfer."
+ },
+ {
+  "slug": "boutique-yachting-day-koh-samui",
+  "type": "product",
+  "keyword": "Ang Thong sailing day trip on a gulet",
+  "title": "Ang Thong day trip on the Naga gulet: from 4,500 THB",
+  "desc": "Sail to Ang Thong Marine Park on Naga, a 30 m wooden gulet, with breakfast and Thai lunch: Emerald Lake and Koh Wua Talab. Park fee and transfer included."
+ },
+ {
+  "slug": "c-este-la-vie-catamaran-full-day-around-koh-samui",
+  "type": "product",
+  "keyword": "C'este La Vie catamaran charter Koh Samui",
+  "title": "C'este La Vie catamaran day around Koh Samui: 50,000 THB",
+  "desc": "C'este La Vie, a 14 m sailing catamaran, for a private 09:00–19:00 day around Koh Samui for up to 10, with crew, guide, paddle boards and snorkel gear."
+ },
+ {
+  "slug": "canopy-zipline-sky-bridges-west-coast-koh-samui",
+  "type": "product",
+  "keyword": "canopy zipline west Koh Samui",
+  "title": "Canopy zipline and sky bridges, west Koh Samui: 1,500 THB",
+  "desc": "Canopy zipline on Koh Samui's west side: lines up to 300 m, sky bridges and a 15 m abseil. 1,500 THB for 5 lines, 1,800 THB for 8, free local transfer."
+ },
+ {
+  "slug": "capybara-cafe-lamai-private-van-trip",
+  "type": "product",
+  "keyword": "capybara café Koh Samui",
+  "title": "Capybara café Lamai: private family van trip, 3,000 THB",
+  "desc": "Private return van to the capybara café in Lamai for up to 5, with the driver waiting while you visit: 3,000 THB per van from your hotel. Entry paid there."
+ },
+ {
+  "slug": "chantara-junk-boat-phangan-sunset-cruise-koh-samui",
+  "type": "product",
+  "keyword": "Chantara junk boat cruise Koh Phangan",
+  "title": "Chantara junk cruise to Koh Phangan: from 3,500 THB",
+  "desc": "8-hour Chantara junk cruise: snorkelling at Koh Ma, Thai buffet lunch, Thong Nai Pan on Koh Phangan and a sunset sail home. 3,500 THB with hotel transfer."
+ },
+ {
+  "slug": "chantara-junk-boat-private-charter-koh-samui",
+  "type": "product",
+  "keyword": "Chantara junk private charter",
+  "title": "Chantara junk private charter: sunset from 39,000 THB",
+  "desc": "Private 3-hour sunset cruise on the 25 m Chantara teak junk for up to 10 with appetisers or Thai dinner, from 39,000 THB; Koh Phangan full day 54,000 THB."
+ },
+ {
+  "slug": "coco-paradise-lagoon-500-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Lagoon 500 catamaran charter Koh Samui",
+  "title": "Coco Paradise Lagoon 500 catamaran: from 48,000 THB",
+  "desc": "Coco Paradise, a 50 ft Lagoon 500 catamaran with captain, crew and butler: morning half day from 48,000 THB for up to 10, Ang Thong days, groups up to 45."
+ },
+ {
+  "slug": "dragon-king-catamaran-charter-thong-krut-koh-samui",
+  "type": "product",
+  "keyword": "Dragon King catamaran charter Thong Krut",
+  "title": "Dragon King catamaran charter, Thong Krut: from 17,000 THB",
+  "desc": "Dragon King sailing catamaran from Thong Krut for up to 10: Koh Tan and Pig Island half day 17,000 THB, full day 32,500 THB, or a night off Koh Phangan."
+ },
+ {
+  "slug": "elephant-feed-and-walk-visit-bophut-koh-samui",
+  "type": "product",
+  "keyword": "elephant feeding Bophut Koh Samui",
+  "title": "Elephant feed-and-walk visit, Bophut: from 1,000 THB",
+  "desc": "Feed and walk beside rescued elephants at a no-riding sanctuary above Bophut: 1-hour visit 1,000 THB, or 3 hours with lunch and hotel transfer 3,000 THB."
+ },
+ {
+  "slug": "elephant-feeding-waterfall-4x4-safari-koh-samui",
+  "type": "product",
+  "keyword": "elephant and waterfall safari Koh Samui",
+  "title": "Elephant and waterfall 4x4 safari, Koh Samui: 1,950 THB",
+  "desc": "7-hour shared 4x4 safari: Na Muang waterfall swim, feeding rescued elephants with no riding, Thai lunch, a temple viewpoint and the Secret Buddha Garden."
+ },
+ {
+  "slug": "elephant-sanctuary-lunch-chaweng-noi-koh-samui",
+  "type": "product",
+  "keyword": "elephant sanctuary Chaweng Noi",
+  "title": "Elephant sanctuary at Chaweng Noi with lunch: 3,500 THB",
+  "desc": "3-hour visit to a no-riding elephant sanctuary above Chaweng Noi: feeding, a jungle walk behind the herd, Thai set lunch and hotel transfer. 3,500 THB."
+ },
+ {
+  "slug": "elephant-sanctuary-museum-jungle-walk-koh-samui",
+  "type": "product",
+  "keyword": "elephant museum Koh Samui",
+  "title": "Elephant museum and sanctuary, Koh Samui: from 1,800 THB",
+  "desc": "No riding, no bathing: Koh Samui's first elephant museum plus a jungle walk to the herd for 1,800 THB, or a 3,000 THB half day. Island-wide hotel transfer."
+ },
+ {
+  "slug": "elephant-sanctuary-skywalk-visit-koh-samui",
+  "type": "product",
+  "keyword": "elephant sanctuary skywalk Koh Samui",
+  "title": "Elephant sanctuary skywalk visit, Koh Samui: 3,000 THB",
+  "desc": "Hands-off 3-hour elephant sanctuary visit: a 400 m skywalk above the herd, their mud bath seen from afar and a conservation talk. 3,000 THB with transfer."
+ },
+ {
+  "slug": "elephant-sanctuary-visit-bophut-hills-koh-samui",
+  "type": "product",
+  "keyword": "elephant sanctuary Bophut hills",
+  "title": "Elephant sanctuary in the Bophut hills: from 2,000 THB",
+  "desc": "Elephant sanctuary above Bophut, no riding, bathing or shows: 1.5 hours 2,000 THB or 3 hours with a vegetarian meal 3,000 THB, hotel transfer included."
+ },
+ {
+  "slug": "elizabeth-sailing-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Elizabeth sailing catamaran charter Koh Samui",
+  "title": "Elizabeth sailing catamaran charter: from 20,000 THB",
+  "desc": "Elizabeth, an 11 m catamaran with two air-conditioned cabins for up to 8: 4-hour morning or sunset sail 20,000 THB, Koh Phangan full day 36,000 THB."
+ },
+ {
+  "slug": "elle-motor-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Elle motor yacht charter Koh Samui",
+  "title": "Elle 50 ft motor yacht charter Koh Samui: from 50,000 THB",
+  "desc": "Elle, a private 50 ft motor yacht with two en-suite cabins and crew for up to 8: sunset cruises or days to Ang Thong or Koh Tao, with transfer and drinks."
+ },
+ {
+  "slug": "enduro-dirt-bike-tour-koh-samui-hills",
+  "type": "product",
+  "keyword": "dirt bike tour Koh Samui",
+  "title": "Enduro dirt bike tour in the Koh Samui hills: from 4,000 THB",
+  "desc": "Guided enduro dirt bike tour on Samui's hill trails to mountain viewpoints, protective kit included: 1–2 hours from 4,000 THB, 4–5 hours 7,000 THB."
+ },
+ {
+  "slug": "escape-the-island-quest-koh-tan-koh-samui",
+  "type": "product",
+  "keyword": "Koh Tan treasure hunt quest",
+  "title": "Koh Tan treasure hunt quest game: from 15,000 THB per group",
+  "desc": "Escape-room riddles across Koh Tan for up to 8: a longtail from Thong Krut, about 3 hours of clues, then open the safe back on Samui. From 15,000 THB."
+ },
+ {
+  "slug": "ex-army-jeep-safari-koh-samui",
+  "type": "product",
+  "keyword": "ex-army jeep safari Koh Samui",
+  "title": "Ex-army jeep safari around Koh Samui: from 1,500 THB",
+  "desc": "Full day by open ex-army jeep: Hin Ta Hin Yai, the mummified monk, Na Muang waterfall, 4x4 viewpoints, Thai lunch and the Big Buddha. 1,500 THB."
+ },
+ {
+  "slug": "five-islands-longtail-sunset-dinner-cruise-koh-samui",
+  "type": "product",
+  "keyword": "Five Islands sunset dinner cruise",
+  "title": "Five Islands longtail sunset dinner cruise: 7,500 THB",
+  "desc": "Private longtail around the Five Islands off Taling Ngam, then Thai seafood dinner on the beach at sunset: 7,500 THB for two, lobster menu 9,250 THB."
+ },
+ {
+  "slug": "full-moon-party-private-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Full Moon Party private speedboat",
+  "title": "Full Moon Party private speedboat: from 19,500 THB",
+  "desc": "Your own speedboat from Koh Samui to the Full Moon Party for up to 10, leaving at a time you choose between 18:00 and 23:00, hotel pickup and drop-off."
+ },
+ {
+  "slug": "full-moon-party-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Full Moon Party speedboat from Koh Samui",
+  "title": "Full Moon Party speedboat from Koh Samui: 1,400 THB return",
+  "desc": "Speedboat from Koh Samui to the Full Moon Party on Haad Rin and back with hotel pickup and drop-off: 1,400 THB return, booked and paid online."
+ },
+ {
+  "slug": "gavina-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Gavina sailing catamaran charter",
+  "title": "Gavina sailing catamaran charter Koh Samui: from 22,500 THB",
+  "desc": "Private catamaran with an air-conditioned saloon, paddleboards, dinghy and BBQ for up to 8: Koh Som half day 22,500 THB, Koh Phangan full day 42,000 THB."
+ },
+ {
+  "slug": "go-kart-racing-floodlit-track-koh-samui",
+  "type": "product",
+  "keyword": "go-kart Koh Samui",
+  "title": "Go-kart racing on Koh Samui: floodlit tracks from 600 THB",
+  "desc": "Go-karting on two floodlit tracks with computer timing: 8 minutes 600 THB, 16 minutes 1,300 THB, children's karts 500 THB, parent-and-child kart 800 THB."
+ },
+ {
+  "slug": "grand-voyage-42-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Grand Voyage 42 catamaran charter Koh Phangan",
+  "title": "Grand Voyage 42 catamaran, Koh Phangan: from 25,000 THB",
+  "desc": "Grand Voyage 42, a 16 m catamaran with crew from Ban Tai, Koh Phangan: 3-hour sunset sail for up to 10 from 25,000 THB, with SUPs and snorkel gear."
+ },
+ {
+  "slug": "guided-jet-ski-tour-koh-phangan-from-maenam",
+  "type": "product",
+  "keyword": "jet ski tour Koh Phangan from Koh Samui",
+  "title": "Jet ski tour to Koh Phangan from Maenam: from 3,500 THB",
+  "desc": "Guided jet ski tour from Maenam across to Koh Phangan's beaches: 3 hours from 6,500 THB per jet ski, 1 or 2 riders. Koh Som rides from 3,500 THB."
+ },
+ {
+  "slug": "gulf-nomad-private-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Gulf Nomad private speedboat charter",
+  "title": "Gulf Nomad private speedboat charter: from 17,500 THB",
+  "desc": "Gulf Nomad twin-engine speedboat with a toilet for up to 10: 2.5-hour sunset cruise 17,500 THB, half day to Koh Phangan 22,000 THB, full day 27,000 THB."
+ },
+ {
+  "slug": "half-day-island-highlights-minibus-tour-koh-samui",
+  "type": "product",
+  "keyword": "Koh Samui half-day tour",
+  "title": "Half-day Koh Samui highlights tour by minivan: 950 THB",
+  "desc": "5-hour shared minivan tour: Wat Plai Laem, Big Buddha, Lad Koh viewpoint, Hin Ta Hin Yai and Na Muang waterfall, hotel pickup at 09:00. 950 THB, child 750."
+ },
+ {
+  "slug": "half-moon-festival-package-koh-samui",
+  "type": "product",
+  "keyword": "Half Moon Festival from Koh Samui",
+  "title": "Half Moon Festival package from Koh Samui: from 2,700 THB",
+  "desc": "Speedboat from Koh Samui plus your Half Moon Festival ticket in one booking, for Magic Forest nights in the Ban Tai jungle on Koh Phangan. We buy tickets."
+ },
+ {
+  "slug": "horse-riding-beach-jungle-koh-samui",
+  "type": "product",
+  "keyword": "horse riding Koh Samui beach",
+  "title": "Horse riding on the beach, south Koh Samui: from 1,700 THB",
+  "desc": "1-hour guided horse ride on jungle trails and the sand of south Koh Samui, morning, afternoon or sunset, from 1,700 THB per rider. Private lessons too."
+ },
+ {
+  "slug": "horse-riding-trail-sunset-taling-ngam-koh-samui",
+  "type": "product",
+  "keyword": "horse riding Taling Ngam",
+  "title": "Horse riding at Taling Ngam, morning or sunset: 1,300 THB",
+  "desc": "Horse riding on the coastal trails and beaches of Taling Ngam with a guide: 30 minutes 1,300 THB, 60 minutes 1,700 THB. Private return van 3,000 THB."
+ },
+ {
+  "slug": "imagination-triple-engine-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "Imagination speedboat charter Koh Samui",
+  "title": "Imagination speedboat charter for big groups: 29,000 THB",
+  "desc": "Renovated triple-engine speedboat: half day from 29,000 THB for up to 10, up to 40 with extra-guest prices; full days to Koh Phangan, Ang Thong or Koh Tao."
+ },
+ {
+  "slug": "independence-sailing-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Independence sailing yacht charter Koh Samui",
+  "title": "Independence 52 ft sailing yacht charter: from 22,000 THB",
+  "desc": "Independence, a 52 ft sailing yacht with Italian skipper and Thai hostess: 3-hour sunset sail for two with wine, tapas and transfer from 22,000 THB."
+ },
+ {
+  "slug": "jeep-safari-elephant-feeding-koh-samui",
+  "type": "product",
+  "keyword": "jeep safari elephant feeding Koh Samui",
+  "title": "Koh Samui jeep safari with elephant feeding: 2,000 THB",
+  "desc": "Full-day 4x4 tour of Samui's sights and hills, ending with preparing food for elephants and hand-feeding them, no riding. 2,000 THB, lunch and transfer."
+ },
+ {
+  "slug": "jeep-safari-vegan-lunch-full-day-koh-samui",
+  "type": "product",
+  "keyword": "jeep safari vegan lunch Koh Samui",
+  "title": "Full-day jeep safari with vegan lunch, Koh Samui: 2,000 THB",
+  "desc": "Open-jeep safari of Samui's interior: jungle viewpoint, standing Buddha temple, mountain-pool swim, vegan buffet lunch and a Lipa Noi cultural centre."
+ },
+ {
+  "slug": "jeep-safari-waterfall-mangrove-kayak-koh-samui",
+  "type": "product",
+  "keyword": "jeep safari mangrove kayak Koh Samui",
+  "title": "Jeep safari and mangrove kayak, Koh Samui: from 1,950 THB",
+  "desc": "Jeep safari, max 12: Big Buddha, Wat Plai Laem, Hin Ta Hin Yai and Na Muang waterfall, then a guided mangrove kayak. Lunch, fees and transfer included."
+ },
+ {
+  "slug": "jet-ski-safari-pig-island",
+  "type": "product",
+  "keyword": "jet ski to Pig Island",
+  "title": "Jet ski safari to Pig Island from Koh Samui: from 9,950 THB",
+  "desc": "Guided jet ski safari from Samui's south coast to Pig Island (Koh Madsum) behind a lead guide, with stops to swim and see the pigs. 9,950 THB per jet ski."
+ },
+ {
+  "slug": "jungle-discovery-jeep-safari-no-animals-koh-samui",
+  "type": "product",
+  "keyword": "Koh Samui safari without animals",
+  "title": "Jungle discovery jeep safari, no animal shows: 1,500 THB",
+  "desc": "Shared open-4x4 safari with no animal shows: temples, Hin Ta Hin Yai, Na Muang waterfall and the Secret Buddha Garden. Guide, lunch and transfer included."
+ },
+ {
+  "slug": "jungle-zipline-park-silver-golden-courses-koh-samui",
+  "type": "product",
+  "keyword": "zipline park Koh Samui",
+  "title": "Jungle zipline park Koh Samui, Silver or Golden: 1,900 THB",
+  "desc": "Jungle zipline with Petzl harnesses, abseils and bridges: Silver course of 14 lines 1,900 THB, Golden of 21 lines 2,700 THB, hotel transfer included."
+ },
+ {
+  "slug": "kamonwan-private-speedboat-koh-phangan-day",
+  "type": "product",
+  "keyword": "private speedboat day trip Koh Phangan",
+  "title": "Kamonwan private speedboat day to Koh Phangan: 22,000 THB",
+  "desc": "Kamonwan private speedboat for a full 8-hour day on Koh Phangan's beaches and snorkel spots for up to 5, with guide, snorkel gear and drinks: 22,000 THB."
+ },
+ {
+  "slug": "khao-sok-2-day-trip-koh-samui",
+  "type": "product",
+  "keyword": "Khao Sok trip from Koh Samui",
+  "title": "Khao Sok 2-day trip from Koh Samui: from 7,900 THB",
+  "desc": "Overnight on Cheow Lan Lake in Khao Sok National Park: Samui hotel transfers, longtail lake tours, a cave walk, kayaking and all meals. From 7,900 THB."
+ },
+ {
+  "slug": "kia-ora-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Kia Ora catamaran charter Koh Samui",
+  "title": "Kia Ora 54 ft catamaran charter Koh Samui: from 45,000 THB",
+  "desc": "Kia Ora, a 54 ft sailing catamaran with a crew of 6 for up to 15: 2.5-hour sunset sail 45,000 THB, half day 55,000 THB, Koh Phangan day 85,000 THB."
+ },
+ {
+  "slug": "kindred-spirit-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Kindred Spirit catamaran charter",
+  "title": "Kindred Spirit Belize 43 catamaran: from 25,500 THB",
+  "desc": "Kindred Spirit, an air-conditioned Belize 43 catamaran for up to 15: sunset sails from 25,500 THB, days to Koh Phangan or Koh Madsum, Ang Thong overnights."
+ },
+ {
+  "slug": "king-5-sailing-catamaran-charter-south-koh-samui",
+  "type": "product",
+  "keyword": "King 5 catamaran charter south Koh Samui",
+  "title": "King 5 catamaran charter, south Koh Samui: from 12,500 THB",
+  "desc": "King 5 sailing catamaran from a south-coast marina for up to 10: Koh Tan and Pig Island sunset 12,500 THB, half day 16,000 THB, full day 24,500 THB."
+ },
+ {
+  "slug": "king-9-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "King 9 sailing catamaran Koh Samui",
+  "title": "King 9 sailing catamaran Koh Samui: from 7,500 THB",
+  "desc": "King 9, a small private sailing catamaran for up to 10: 2.5-hour morning sail 7,500 THB, sunset 8,000 THB, full day 20,000 THB, plus night squid fishing."
+ },
+ {
+  "slug": "koh-madsum-koh-tan-koh-rap-private-boat",
+  "type": "product",
+  "keyword": "Koh Madsum Koh Tan Koh Rap private boat",
+  "title": "Koh Madsum, Koh Tan and Koh Rap private boat: 8,450 THB",
+  "desc": "Private longtail for up to 8 to three islands: the pigs on Koh Madsum, the reef at Koh Tan and Koh Rap's quiet beach. 8,450 THB per boat for 5–6 hours."
+ },
+ {
+  "slug": "koh-phangan-private-speedboat-transfer-from-big-buddha-pier",
+  "type": "product",
+  "keyword": "speedboat transfer to Koh Phangan beach",
+  "title": "Speedboat transfer to any Koh Phangan beach: from 8,500 THB",
+  "desc": "Private speedboat from the Big Buddha area straight to your Koh Phangan beach, from 8,500 THB for up to 4 to Ban Tai or Haad Rin. We quote on WhatsApp."
+ },
+ {
+  "slug": "koh-rap-full-day-private-boat",
+  "type": "product",
+  "keyword": "Koh Rap boat trip",
+  "title": "Koh Rap private boat trip from Koh Samui: 9,950 THB",
+  "desc": "A private day around Koh Rap, the quiet island beyond Koh Tan: swimming, snorkelling and a long white beach, with an optional Pig Island stop. 9,950 THB."
+ },
+ {
+  "slug": "koh-samui-island-sightseeing-half-day-tour",
+  "type": "product",
+  "keyword": "Koh Samui sightseeing tour",
+  "title": "Koh Samui sightseeing tour with a licensed guide: 1,000 THB",
+  "desc": "Shared minibus tour with a licensed guide: Big Buddha, Wat Plai Laem, Lad Koh, Hin Ta Hin Yai, the mummified monk and Na Muang waterfall. 1,000 THB."
+ },
+ {
+  "slug": "koh-tao-koh-nang-yuan-day-trip-koh-samui",
+  "type": "product",
+  "keyword": "Koh Tao and Koh Nang Yuan day trip from Koh Samui",
+  "title": "Koh Tao and Koh Nang Yuan day trip: from 2,200 THB",
+  "desc": "Speedboat day from Koh Samui: snorkel Koh Tao's reefs, climb the Koh Nang Yuan viewpoint, lunch and pickup from most areas. Runs all year, from 2,200 THB."
+ },
+ {
+  "slug": "lamai-viewpoint-zipline-sky-bridge-koh-samui",
+  "type": "product",
+  "keyword": "Lamai Viewpoint zipline",
+  "title": "Lamai Viewpoint zipline and sky bridge: from 800 THB",
+  "desc": "Zip lines about 80 m above the jungle at Lamai Viewpoint, the longest around 440 m, from 800 THB; packages add the cable car and a drone video."
+ },
+ {
+  "slug": "lisa-fairline-motor-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Lisa Fairline motor yacht charter Koh Samui",
+  "title": "Lisa Fairline motor yacht charter: from 85,000 THB",
+  "desc": "Lisa, a private Fairline motor yacht for up to 10 with paddleboards, dinghy, drinks and transfer: Koh Tan and Pig Island half day 85,000 THB."
+ },
+ {
+  "slug": "little-voyager-private-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "small private speedboat Koh Samui",
+  "title": "Little Voyager small private speedboat: from 14,000 THB",
+  "desc": "Little Voyager, an 8 m speedboat for up to 5 from Bang Rak: 4-hour half day to Koh Phangan or Pig Island from 14,000 THB, full days to Ang Thong."
+ },
+ {
+  "slug": "madam-c-sailing-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Madam C catamaran charter Koh Samui",
+  "title": "Madam C catamaran charter Koh Samui: from 15,000 THB",
+  "desc": "Madam C, a 40 ft sailing catamaran for up to 15 with hotel transfer: sunset cruise 15,000 THB, half day or night fishing 23,000 THB, full day 34,000 THB."
+ },
+ {
+  "slug": "marine-apple-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "Marine Apple speedboat charter Koh Samui",
+  "title": "Marine Apple private speedboat charter: from 17,500 THB",
+  "desc": "2025 speedboat for up to 10: a 2-hour sunset cruise or half day to Koh Tan and Pig Island from 17,500 THB; full days to Ang Thong, Koh Tao or Sail Rock."
+ },
+ {
+  "slug": "minor-affair-sunseeker-60-yacht-koh-samui",
+  "type": "product",
+  "keyword": "Sunseeker yacht charter Koh Samui",
+  "title": "Minor Affair Sunseeker 60 yacht charter: from 205,000 THB",
+  "desc": "Minor Affair, a Sunseeker Manhattan 60 yacht: 2-hour sunset for up to 6 from 205,000 THB plus service and VAT, Koh Tao days and overnights. Enquiry only."
+ },
+ {
+  "slug": "muay-thai-fight-tickets-chaweng-koh-samui",
+  "type": "product",
+  "keyword": "Muay Thai tickets Koh Samui",
+  "title": "Muay Thai tickets Koh Samui: Chaweng fights from 1,500 THB",
+  "desc": "Live Muay Thai in Chaweng from 1,500 THB: Phetchbuncha Stadium Mon, Wed, Sat or Samui International Stadium Tue, Fri, Sun, fights from 21:00."
+ },
+ {
+  "slug": "naga-gulet-private-charter-koh-samui",
+  "type": "product",
+  "keyword": "Naga gulet charter Koh Samui",
+  "title": "Naga 30 m gulet private charter Koh Samui: from 39,000 THB",
+  "desc": "The whole 30 m wooden gulet Naga for up to 20 with crew, transfer and meals: sunset 39,000 THB, half day 49,000 THB, or a night aboard for up to 10."
+ },
+ {
+  "slug": "nina-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Nina sailing catamaran charter Koh Samui",
+  "title": "Nina 38 ft sailing catamaran charter: from 22,000 THB",
+  "desc": "Nina, a 38 ft catamaran with crew of 3 for up to 8: sunset sail to Koh Tan from 22,000 THB, half days from 29,000 THB, Pig Island and Koh Rap days."
+ },
+ {
+  "slug": "ocean-emerald-superyacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "superyacht charter Koh Samui",
+  "title": "Ocean Emerald superyacht charter Koh Samui: 620,000 THB",
+  "desc": "Ocean Emerald, a 41 m superyacht with a crew of 9, for up to 12 overnight or 40 by day: 24-hour cruise from 620,000 THB before fuel, food and drinks."
+ },
+ {
+  "slug": "odyssey-sailing-catamaran-charter-bang-rak-koh-samui",
+  "type": "product",
+  "keyword": "Odyssey catamaran charter Bang Rak",
+  "title": "Odyssey catamaran charter, Bang Rak: from 24,000 THB",
+  "desc": "Odyssey, a 44 ft sailing catamaran at Bang Rak for up to 18: 2-hour sunset 24,000 THB, half day 32,000 THB, Koh Phangan day 50,000 THB. BYO drinks."
+ },
+ {
+  "slug": "orana-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Orana 44 catamaran charter Koh Samui",
+  "title": "Orana 44 Catamaran Charter to Pig Island from 43,000 THB",
+  "desc": "Charter the Orana 44 sailing catamaran from Koh Samui to Pig Island and Koh Tan: captain, 2 crew, snorkel gear, snacks and hotel transfer for up to 10."
+ },
+ {
+  "slug": "orange-large-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "large speedboat charter Koh Samui for groups",
+  "title": "Large Group Speedboat Charter Koh Samui from 55,000 THB",
+  "desc": "Speedboat Orange takes up to 45 guests on one private boat: full days to Koh Phangan, Ang Thong or Koh Tao, priced for 10 with 500 THB per extra guest."
+ },
+ {
+  "slug": "oxa-jungle-party-koh-phangan-speedboat-from-koh-samui",
+  "type": "product",
+  "keyword": "OXA jungle party Koh Phangan from Koh Samui",
+  "title": "OXA Jungle Party from Koh Samui: Speedboat from 2,500 THB",
+  "desc": "Go to the OXA jungle party on Koh Phangan from Koh Samui: return speedboat, transfers and entry for 2,500 THB, hotel pickup from 22:00, back at 05:00."
+ },
+ {
+  "slug": "parasailing-lamai-beach-koh-samui",
+  "type": "product",
+  "keyword": "parasailing Lamai Beach Koh Samui",
+  "title": "Parasailing Lamai Beach, Koh Samui from 2,000 THB",
+  "desc": "Fly about 10 minutes above Lamai Bay on a boat-launched parasail: 2,000 THB solo or 3,000 THB tandem, with views of the reef and Hin Ta and Hin Yai rocks."
+ },
+ {
+  "slug": "phuchareen-triple-engine-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "Phuchareen speedboat charter Koh Samui",
+  "title": "Phuchareen 3-Engine Speedboat Charter from 37,000 THB",
+  "desc": "Charter the 40 ft triple-engine Phuchareen for up to 8: full days to Koh Phangan, Pig Island, Ang Thong or Koh Tao with guide, snorkel gear and drinks."
+ },
+ {
+  "slug": "pig-island-longtail-tour",
+  "type": "product",
+  "keyword": "Pig Island longtail boat tour",
+  "title": "Pig Island Longtail Boat Tour, Small Group from 1,750 THB",
+  "desc": "See Pig Island the local way on a traditional longtail from Thong Krut: max 12 guests, lunch on Koh Tan, snorkelling and longer stops than by speedboat."
+ },
+ {
+  "slug": "pig-island-private-longtail",
+  "type": "product",
+  "keyword": "private longtail boat Pig Island",
+  "title": "Private Longtail to Pig Island & Koh Tan from 5,950 THB",
+  "desc": "Hire a longtail and captain for 5–6 hours from Thong Krut to Pig Island (Koh Madsum) and Koh Tan: 5,950 THB per boat for up to 8, at your own pace."
+ },
+ {
+  "slug": "pig-island-private-sailing-catamaran",
+  "type": "product",
+  "keyword": "private catamaran Pig Island and Koh Rap",
+  "title": "Private Catamaran to Pig Island & Koh Rap from 27,000 THB",
+  "desc": "A full 8.5-hour private sail to Koh Rap, Koh Tan and Pig Island for up to 10, with guide, snorkel gear, paddleboards, fishing gear, drinks and fruit."
+ },
+ {
+  "slug": "pig-island-private-speedboat",
+  "type": "product",
+  "keyword": "private speedboat to Pig Island",
+  "title": "Private Speedboat to Pig Island from 11,950 THB per Boat",
+  "desc": "Take a private speedboat from Thong Krut to Pig Island and Koh Tan for 5–6 hours: 11,950 THB per boat for up to 10 guests, about 1,195 THB each for ten."
+ },
+ {
+  "slug": "pig-island-speedboat-tour",
+  "type": "product",
+  "keyword": "Pig Island tour from Koh Samui",
+  "title": "Pig Island Tour from Koh Samui by Speedboat, 1,450 THB",
+  "desc": "Meet the pigs of Koh Madsum and snorkel the reef at Koh Tan on a half-day speedboat tour from Thong Krut, with snorkel gear and a meal included, every day."
+ },
+ {
+  "slug": "pig-island-sunset-tour",
+  "type": "product",
+  "keyword": "Pig Island sunset tour",
+  "title": "Pig Island Sunset Tour from Koh Samui from 1,550 THB",
+  "desc": "Snorkel Koh Tan in the afternoon, see Pig Island in warm light, then have dinner and watch the sunset over the Five Islands from the water off Thong Krut."
+ },
+ {
+  "slug": "pink-dolphins-pig-island-tour",
+  "type": "product",
+  "keyword": "pink dolphins tour Koh Samui",
+  "title": "Pink Dolphins & Pig Island Tour from Koh Samui, 2,250 THB",
+  "desc": "Look for the pink Indo-Pacific humpback dolphins off Samui's south-west coast, then visit Pig Island and snorkel Koh Tan. Sightings are not guaranteed."
+ },
+ {
+  "slug": "polaris-atv-mountain-safari-magic-garden-koh-samui",
+  "type": "product",
+  "keyword": "ATV safari Magic Garden Koh Samui",
+  "title": "Polaris ATV Safari to the Magic Garden from 900 THB",
+  "desc": "Drive a Polaris 4WD ATV on jungle trails in Samui's hills from 1,500 THB per driver; longer rides add the Magic Garden, Tan Nim waterfall and transfer."
+ },
+ {
+  "slug": "prestige-motor-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Prestige 500 motor yacht charter Koh Samui",
+  "title": "Prestige 500 Motor Yacht Charter from 60,000 THB",
+  "desc": "Charter the 50 ft Prestige 500 from Bangrak pier: air-conditioned lounge, teak sun deck, 2-hour sunsets for up to 10 and routes to Pig Island or Koh Tao."
+ },
+ {
+  "slug": "princess-64-luxury-motor-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Princess 64 yacht charter Koh Samui",
+  "title": "Princess 64 Yacht Charter Koh Samui from 45,000 THB",
+  "desc": "A 64 ft Princess yacht with 4 cabins and crew: sunset for two at 45,000 THB, Pig Island half days, full days with lunch and champagne, or 24 hours aboard."
+ },
+ {
+  "slug": "private-dive-speedboat-charter-sail-rock-koh-samui",
+  "type": "product",
+  "keyword": "private dive charter Sail Rock",
+  "title": "Private Dive Boat to Sail Rock from Koh Samui, 36,000 THB",
+  "desc": "Your own 39 ft speedboat and dive guide for two dives at Sail Rock, for up to 4 certified divers, with gear, lunch and Samui hotel transfer included."
+ },
+ {
+  "slug": "private-fishing-snorkelling-boat-south-koh-samui",
+  "type": "product",
+  "keyword": "private fishing boat trip south Koh Samui",
+  "title": "Private Fishing & Snorkelling Boat from 10,500 THB",
+  "desc": "A private 6-hour day on a Thai fishing boat for 1–3 guests: trolling and line fishing, snorkelling at Koh Tan and a Thai lunch or BBQ, with transfers."
+ },
+ {
+  "slug": "private-island-tour-minibus-or-4x4-koh-samui",
+  "type": "product",
+  "keyword": "private Koh Samui island tour with driver",
+  "title": "Private Koh Samui Island Tour with Driver from 5,000 THB",
+  "desc": "Tour Koh Samui in your own air-conditioned vehicle with driver: 4-hour minibus for up to 5 at 5,000 THB, or 8 hours by 4x4 up to the Secret Buddha Garden."
+ },
+ {
+  "slug": "private-scuba-dive-charter-sail-rock-koh-tao-koh-samui",
+  "type": "product",
+  "keyword": "private scuba diving charter Koh Samui",
+  "title": "Private Scuba Dive Charter Koh Samui from 27,000 THB",
+  "desc": "A private dive boat for up to 4: 2 dives at Sail Rock, Koh Tao, Koh Ma or Ang Thong, with instructor, gear, lunch and hotel transfer. Beginners welcome."
+ },
+ {
+  "slug": "private-shopping-tour-koh-samui-minibus-guide",
+  "type": "product",
+  "keyword": "private shopping tour Koh Samui",
+  "title": "Private Shopping Tour Koh Samui with an English Guide",
+  "desc": "A 4-hour private shopping trip by air-conditioned minibus for up to 12, with a guide who translates and compares prices at tailors, markets and showrooms."
+ },
+ {
+  "slug": "private-snorkelling-speedboat-phangan-koh-tao-koh-samui",
+  "type": "product",
+  "keyword": "private snorkelling trip Koh Samui",
+  "title": "Private Snorkelling Speedboat Koh Samui from 22,000 THB",
+  "desc": "A private twin-engine speedboat for up to 4 snorkellers to Koh Phangan, Pig Island and Koh Rap, Ang Thong or Koh Tao, with guide, gear and hotel transfer."
+ },
+ {
+  "slug": "private-van-hire-driver-koh-samui",
+  "type": "product",
+  "keyword": "private van with driver Koh Samui",
+  "title": "Private Van with Driver on Koh Samui from 2,500 THB",
+  "desc": "Hire an air-conditioned van and driver for 4 to 10 hours on Koh Samui for up to 10 people, or a one-way van to Phuket or Bangkok airports. Fixed prices."
+ },
+ {
+  "slug": "quad-bike-jungle-trail-1-2-hours-koh-samui",
+  "type": "product",
+  "keyword": "quad bike tour Koh Samui",
+  "title": "Quad Bike Jungle Ride Koh Samui, 1 or 2 Hours from 900 THB",
+  "desc": "Ride an automatic quad through jungle, streams and viewpoints: 1,800 THB per driver for 1 hour or 2,800 THB for 2 with a waterfall, free hotel transfer."
+ },
+ {
+  "slug": "red-baron-junk-boat-cruises-koh-samui",
+  "type": "product",
+  "keyword": "Red Baron junk cruise Koh Samui",
+  "title": "Red Baron Junk Boat Cruise Koh Samui from 2,200 THB",
+  "desc": "Sail a 30 m wooden junk from Bang Rak: 3-hour sunset dinner cruise at 2,200 THB, a Koh Phangan day at 2,800 THB or Ang Thong with park fee at 3,900 THB."
+ },
+ {
+  "slug": "red-baron-junk-private-charter-koh-samui",
+  "type": "product",
+  "keyword": "private junk boat charter Koh Samui",
+  "title": "Red Baron Junk Private Charter for 20 from 42,000 THB",
+  "desc": "Hire the whole 30 m Red Baron junk for up to 20 with crew, transfers and a Thai buffet: sunset dinner 42,000 THB, half or full day, or a wedding cruise."
+ },
+ {
+  "slug": "red-dragon-teak-junk-private-charter-koh-samui",
+  "type": "product",
+  "keyword": "Red Dragon teak junk charter Koh Samui",
+  "title": "Red Dragon Teak Junk Charter Koh Samui from 29,000 THB",
+  "desc": "Charter the 78 ft teak junk Red Dragon with sun decks and a jacuzzi: 2.5-hour cruises, a Pig Island day or Ang Thong, for up to 10 with hotel transfer."
+ },
+ {
+  "slug": "rubi-grace-sports-cruiser-speedboat-charter-koh-samui",
+  "type": "product",
+  "keyword": "Rubi Grace speedboat charter Koh Samui",
+  "title": "Rubi Grace Sports Cruiser Charter from 40,000 THB",
+  "desc": "Rubi Grace is a 38 ft sports cruiser with toilet, shower and sun pad for up to 6: full days to Koh Phangan, Ang Thong or Koh Tao and Koh Nang Yuan."
+ },
+ {
+  "slug": "rum-distillery-tour-tasting-koh-samui",
+  "type": "product",
+  "keyword": "Koh Samui rum distillery tour",
+  "title": "Koh Samui Rum Distillery Tour & Tasting from 800 THB",
+  "desc": "Tour Samui's only rum distillery near Ban Thale and taste 2 rums and 2 syrups for 800 THB, or join the afternoon workshop with a cocktail. Minimum 4."
+ },
+ {
+  "slug": "sail-rock-koh-tao-dive-snorkel-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Sail Rock Koh Tao day trip from Koh Samui",
+  "title": "Sail Rock & Koh Tao Day Trip by Catamaran from 2,900 THB",
+  "desc": "Dive or snorkel Sail Rock or Koh Tao in a day by fast catamaran: 2 stops, lunch and gear, snorkelling 2,900 THB, transfers from Bophut and Chaweng."
+ },
+ {
+  "slug": "samui-buddy-motor-catamaran-charter",
+  "type": "product",
+  "keyword": "Samui Buddy motor catamaran charter",
+  "title": "Samui Buddy Motor Catamaran Charter from 39,000 THB",
+  "desc": "Samui Buddy, a 16 m motor catamaran with flybridge and crew of 5, for up to 10: 2-hour sunset 39,000 THB or full days to Ang Thong or Koh Phangan."
+ },
+ {
+  "slug": "sao-triple-engine-speedboat-charter-bang-rak-pier",
+  "type": "product",
+  "keyword": "Sao speedboat charter Bang Rak",
+  "title": "Sao Triple-Engine Speedboat, Bang Rak from 25,000 THB",
+  "desc": "Book the triple-engine Sao from Bang Rak pier for a day: Koh Phangan, Pig Island and Koh Rap, Ang Thong or Koh Tao, up to 10 with guide and snorkel gear."
+ },
+ {
+  "slug": "sapphire-600hp-private-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Sapphire private speedboat Koh Samui",
+  "title": "Sapphire 39 ft Speedboat Charter from 23,000 THB",
+  "desc": "Sapphire is a 2025-built 39 ft speedboat with twin 600 hp engines, toilet and shower: Koh Phangan mornings for 10, Koh Tao days for 20, honeymoon sunsets."
+ },
+ {
+  "slug": "scarlet-privilege-43-catamaran-charter-bang-rak",
+  "type": "product",
+  "keyword": "Scarlet catamaran charter Bang Rak",
+  "title": "Scarlet Catamaran Charter Bang Rak from 25,900 THB",
+  "desc": "Sail the Privilege 43 Scarlet with a water slide, paddle boards and snorkel gear for up to 8: sunset, half day or 8 hours, with hotel transfer included."
+ },
+ {
+  "slug": "scooter-rental-yamaha-honda-koh-samui",
+  "type": "product",
+  "keyword": "Yamaha Aerox scooter rental Koh Samui",
+  "title": "Scooter Rental Koh Samui: Yamaha or Honda from 500 THB",
+  "desc": "Rent a Yamaha Aerox 155 from 500 THB a day, 3,500 a week or 6,500 a month, or a Honda ADV 160 at 800 THB, with two helmets. Licence and deposit needed."
+ },
+ {
+  "slug": "serenity-catamaran-phangan-day-sunset-cruise-koh-samui",
+  "type": "product",
+  "keyword": "Serenity catamaran cruise Koh Samui",
+  "title": "Serenity Catamaran Cruise Koh Samui from 2,500 THB",
+  "desc": "Serenity, a 22 m catamaran: Saturday sunset BBQ cruise 2,500 THB or a Wednesday or Friday Koh Phangan day 3,250 THB, with meals and hotel transfer."
+ },
+ {
+  "slug": "serenity-catamaran-private-charter-koh-samui",
+  "type": "product",
+  "keyword": "Serenity catamaran private charter",
+  "title": "Serenity Catamaran Private Charter for 25 from 35,000 THB",
+  "desc": "Charter the 22 m Serenity catamaran for up to 25 guests: 2-hour sunset at 35,000 THB, half day 60,000, full day 100,000, or an overnight for up to 10."
+ },
+ {
+  "slug": "serenity-max-power-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Serenity Max catamaran charter",
+  "title": "Serenity Max Party Catamaran Charter from 46,000 THB",
+  "desc": "Serenity Max, a 71 ft power catamaran for up to 60 with a water slide: 2-hour sunset from 46,000 THB for 20 guests, with hotel transfer, drinks and snacks."
+ },
+ {
+  "slug": "shared-dive-snorkel-speedboat-koh-tao-sail-rock-koh-samui",
+  "type": "product",
+  "keyword": "Koh Tao dive day trip from Koh Samui",
+  "title": "Koh Tao & Sail Rock Dive Speedboat Day from 2,950 THB",
+  "desc": "A 47 ft speedboat day with 2 dives or snorkel stops at Koh Tao, Sail Rock or Chumphon Pinnacle: snorkelling 2,950 THB, diving 5,540 THB, meals included."
+ },
+ {
+  "slug": "siam-seas-explorer-motor-yacht-charter-koh-samui",
+  "type": "product",
+  "keyword": "Siam Seas Explorer yacht charter",
+  "title": "Siam Seas Explorer Yacht Charter from 47,080 THB",
+  "desc": "Siam Seas Explorer, a 14 m sport cruiser for two to six: sunset to Koh Madsum from 47,080 THB with lunch, wine, alcohol and park fees, plus Ang Thong days."
+ },
+ {
+  "slug": "siriwan-private-twin-engine-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Siriwan twin-engine speedboat charter",
+  "title": "Siriwan Twin-Engine Speedboat Charter from 27,000 THB",
+  "desc": "Siriwan is a private twin-engine speedboat for up to 8 on 8.5-hour days, from Koh Tan and Pig Island at 27,000 THB to Koh Tao and Koh Nang Yuan."
+ },
+ {
+  "slug": "sting-private-speedboat-koh-phangan-fishing-bang-rak",
+  "type": "product",
+  "keyword": "Sting speedboat fishing charter Bang Rak",
+  "title": "Sting Speedboat: Koh Phangan or Fishing Day, 32,400 THB",
+  "desc": "Sting, a 36 ft twin-engine Gulf Craft with toilet and sonar, for up to 10: a Koh Phangan day or bottom-fishing trip, transfer from Bophut and Chaweng."
+ },
+ {
+  "slug": "super-king-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Super King catamaran Pig Island",
+  "title": "Super King 50 ft Catamaran to Pig Island from 44,000 THB",
+  "desc": "Super King takes up to 50 guests from Thong Krut to Pig Island and Koh Tan for 4 hours, with hotel transfer, drinks, fruit, paddleboards and snorkel gear."
+ },
+ {
+  "slug": "super-king-motor-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Super King motor catamaran overnight charter",
+  "title": "Super King Motor Catamaran Charter from 28,500 THB",
+  "desc": "Super King motor catamaran: a 4.5-hour half day to Koh Tan and Pig Island for up to 10 from 28,500 THB, full days, and 3-cabin overnights to Ang Thong."
+ },
+ {
+  "slug": "surat-thani-private-speedboat-transfer-koh-samui",
+  "type": "product",
+  "keyword": "private speedboat Surat Thani to Koh Samui",
+  "title": "Private Speedboat Surat Thani to Koh Samui, 36,500 THB",
+  "desc": "Skip the ferry: a private speedboat from Donsak or Tha Pee pier to Koh Samui or Koh Phangan for up to 10, leaving when you want, about 1.5–2 hours across."
+ },
+ {
+  "slug": "thai-cooking-class-garden-kitchen-koh-samui",
+  "type": "product",
+  "keyword": "small-group Thai cooking class Koh Samui",
+  "title": "Small-Group Thai Cooking Class Koh Samui, 2,000 THB",
+  "desc": "A 3-hour Thai cooking class for up to 4 in a garden kitchen: pick herbs, cook classic dishes, eat them, take the recipes home. Transfer from main areas."
+ },
+ {
+  "slug": "thai-fishing-boat-day-trip-big-buddha-pier-koh-samui",
+  "type": "product",
+  "keyword": "fishing day trip Koh Samui",
+  "title": "Thai Fishing Boat Day Trip, Big Buddha Pier from 1,800 THB",
+  "desc": "Fish off Samui's north coast on a Thai boat with rods, bait and lunch, your catch cooked on board: 1,800 THB per adult, transfer from main areas."
+ },
+ {
+  "slug": "tree-bridge-zipline-tan-rua-koh-samui",
+  "type": "product",
+  "keyword": "zipline Tan Rua waterfall Koh Samui",
+  "title": "Treetop Zipline near Tan Rua Waterfall, Samui 1,900 THB",
+  "desc": "A 2,000 m treetop course of 10 ziplines and rope bridges in Samui's hills, with time at Tan Rua waterfall and return transfer from the main beach areas."
+ },
+ {
+  "slug": "utopia-jungle-party-thong-nai-pan-speedboat-from-koh-samui",
+  "type": "product",
+  "keyword": "Utopia jungle party Koh Phangan",
+  "title": "Utopia Jungle Party Thong Nai Pan from Samui, 3,900 THB",
+  "desc": "Reach the Utopia jungle party at Thong Nai Pan on Koh Phangan from Koh Samui: return speedboat, transfers and entry, pickup from 22:00, back at 05:00."
+ },
+ {
+  "slug": "victoria-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Victoria sailing catamaran charter Koh Samui",
+  "title": "Victoria Catamaran Charter to Pig Island from 21,000 THB",
+  "desc": "Victoria is a private sailing catamaran from Samui's south coast with kayaks, paddleboards and a dinghy for up to 10: sunset sails, Koh Tan and Pig Island."
+ },
+ {
+  "slug": "vivienne-sailing-catamaran-charter-koh-samui",
+  "type": "product",
+  "keyword": "Vivienne luxury catamaran charter Koh Samui",
+  "title": "Vivienne 52 ft Luxury Catamaran Charter from 28,000 THB",
+  "desc": "Vivienne, a 52 ft catamaran with four air-conditioned cabins, for up to 8: a morning to Koh Som for 28,000 THB, a sunset sail or a full day to Koh Phangan."
+ },
+ {
+  "slug": "voyager-private-speedboat-bang-rak-koh-samui",
+  "type": "product",
+  "keyword": "Voyager private speedboat Bang Rak",
+  "title": "Voyager Private Speedboat, Bang Rak from 20,000 THB",
+  "desc": "Voyager is a twin-engine speedboat from Bang Rak for up to 10: 4 hours for 20,000 THB or 8 hours for 28,000 THB to Koh Phangan, with guide and snorkel kit."
+ },
+ {
+  "slug": "wally-private-twin-engine-speedboat-koh-samui",
+  "type": "product",
+  "keyword": "Wally private speedboat charter Koh Samui",
+  "title": "Wally Twin-Engine Speedboat Day Charter from 25,000 THB",
+  "desc": "Wally offers a private day for 1–4 guests to Koh Phangan, Pig Island and Koh Rap, Ang Thong or Koh Tao, with park fees and north-coast transfer included."
+ },
+ {
+  "slug": "water-sports-lamai-beach-jet-ski-flyboard-koh-samui",
+  "type": "product",
+  "keyword": "water sports Lamai Beach",
+  "title": "Lamai Beach Water Sports: Jet Ski, Flyboard & Parasailing",
+  "desc": "Lamai beach water sports: jet ski, flyboard, banana boat, wakeboard or parasailing, singly or as packages, with instructor, life jackets and insurance."
+ },
+ {
+  "slug": "white-lotus-filming-locations-private-tour-koh-samui",
+  "type": "product",
+  "keyword": "White Lotus tour Koh Samui",
+  "title": "White Lotus Filming Locations Tour from 7,500 THB",
+  "desc": "A private 6-hour van tour of The White Lotus season 3 sites: temples, Choeng Mon, Fisherman's Village and a west-coast sunset, from 7,500 THB for up to 5."
+ },
+ {
+  "slug": "winner-sailing-catamaran-koh-samui",
+  "type": "product",
+  "keyword": "Winner sailing catamaran north Koh Samui",
+  "title": "Winner Sailing Catamaran, North Koh Samui from 18,000 THB",
+  "desc": "Winner is a private sailing catamaran on Samui's north coast for up to 8: 4 hours with snorkelling at Koh Som for 18,000 THB, or a Koh Phangan day."
+ },
+ {
+  "slug": "secret-buddha-garden-koh-samui",
+  "type": "kp_place",
+  "keyword": "Secret Buddha Garden Koh Samui",
+  "title": "Secret Buddha Garden Koh Samui {year}: Entry Fee & Road",
+  "desc": "The Secret Buddha Garden (Tarnim Magic Garden), a hillside sculpture garden: about 100 THB entry, open 09:00–18:00, up a steep road best done by 4x4."
+ },
+ {
+  "slug": "seen-beach-club-koh-samui",
+  "type": "kp_place",
+  "keyword": "SEEN Beach Club Samui",
+  "title": "SEEN Beach Club Samui {year}: Hours, Events & Age Rules",
+  "desc": "CLUB SEEN on Chaweng Beach is open 11:00–23:00, with UNSEEN after-parties from 23:00 on event nights and 18+ entry from 19 December. Dates and tips."
+ },
+ {
+  "slug": "silver-beach-koh-samui",
+  "type": "kp_place",
+  "keyword": "Silver Beach Koh Samui",
+  "title": "Silver Beach Koh Samui (Crystal Bay) {year}: Guide & Tips",
+  "desc": "Silver Beach, or Crystal Bay, is a boulder-framed cove 4.6 km north of Lamai with soft sand and easy snorkelling. Free, but full by 10:00, so arrive early."
+ },
+ {
+  "slug": "sound-club-koh-samui",
+  "type": "kp_place",
+  "keyword": "Sound Club Samui",
+  "title": "Sound Club Samui {year}: Hours, Entry Price & Tips",
+  "desc": "Sound Club Samui on Soi Green Mango opens from 22:00 and fills after 02:00; event nights are usually free for women, 300–500 THB for men with a drink."
+ },
+ {
+  "slug": "surat-thani-to-koh-samui",
+  "type": "page",
+  "keyword": "Surat Thani to Koh Samui",
+  "title": "Surat Thani to Koh Samui {year}: Ferry, Combo Tickets, Times",
+  "desc": "Get from Surat Thani airport or Donsak pier to Koh Samui: combo tickets 330–850 THB, Raja Ferry 220 THB and Seatran 250 THB, crossings about 1.5 hours."
+ },
+ {
+  "slug": "taling-ngam-koh-samui",
+  "type": "kp_place",
+  "keyword": "Taling Ngam Koh Samui",
+  "title": "Taling Ngam Koh Samui {year}: Sunset Beach & Area Guide",
+  "desc": "Taling Ngam is Samui's quiet south-west village beach, 11 km south of Nathon, with fishing boats, a shallow tidal shore and sunsets over the Five Islands."
+ },
+ {
+  "slug": "terms-and-conditions",
+  "type": "page",
+  "keyword": "Koh Samui tour cancellation policy",
+  "title": "Booking Terms, Cancellation and Refund Policy for Tours",
+  "desc": "Tour cancellation and refund terms: pay by card in THB, full refund 48+ hours before day tours, 50% at 24–48 hours, refund or new date if weather cancels."
+ },
+ {
+  "slug": "thai-culture-and-traditions",
+  "type": "page",
+  "keyword": "Thai culture and etiquette Koh Samui",
+  "title": "Thai Culture & Etiquette on Koh Samui: Guide for {year}",
+  "desc": "Thai etiquette on Koh Samui: return a wai, cover up at temples, never touch heads or point feet, respect the monarchy, and local Chinese and Muslim ways."
+ },
+ {
+  "slug": "thailand-visa-guide",
+  "type": "page",
+  "keyword": "Thailand visa rules",
+  "title": "Thailand Visa Guide {year}: 30-Day Rule, TDAC & Extensions",
+  "desc": "Since 15 Sep 2026, visa-exempt visitors get 30 days, not 60. File the free TDAC, extend once at Koh Samui Immigration for 1,900 THB. Rules by nationality."
+ },
+ {
+  "slug": "thong-krut-koh-samui",
+  "type": "kp_place",
+  "keyword": "Thong Krut pier Koh Samui",
+  "title": "Thong Krut Pier Koh Samui {year}: Boats to Pig Island",
+  "desc": "Thong Krut is the south-west fishing village where boats leave for Pig Island, Koh Tan and Koh Rap, 15–30 minutes offshore. Tours from 1,450 THB, all year."
+ },
+ {
+  "slug": "tongson-bay-koh-samui",
+  "type": "kp_place",
+  "keyword": "Tongson Bay Koh Samui",
+  "title": "Tongson Bay Koh Samui {year}: Quiet Beach Near the Airport",
+  "desc": "Tongson (Thongson) Bay is a quiet white-sand cove between Choeng Mon and Plai Laem, 10–15 minutes from the airport, clear and shallow December to April."
+ },
+ {
+  "slug": "wat-khunaram-koh-samui",
+  "type": "kp_place",
+  "keyword": "Wat Khunaram mummified monk",
+  "title": "Wat Khunaram Koh Samui: Mummified Monk Guide {year}",
+  "desc": "See Luang Pho Daeng, the monk who died in meditation in 1973, in a glass case at Wat Khunaram on Route 4169. Free entry, allow 20–30 minutes, cover up."
+ },
+ {
+  "slug": "wat-plai-laem-koh-samui",
+  "type": "kp_place",
+  "keyword": "Wat Plai Laem Koh Samui",
+  "title": "Wat Plai Laem Koh Samui {year}: 18-Arm Guanyin Temple",
+  "desc": "Wat Plai Laem is a lakeside Thai-Chinese temple 1 km east of Big Buddha, with a white 18-armed Guanyin and a laughing Buddha. Free, open about 06:00–18:00."
+ },
+ {
+  "slug": "wat-sila-ngu-koh-samui",
+  "type": "kp_place",
+  "keyword": "Red Temple Koh Samui",
+  "title": "Red Temple Koh Samui (Wat Sila Ngu) {year}: Visitor Guide",
+  "desc": "Wat Sila Ngu, the Red Temple between Lamai and Hua Thanon, is covered in terracotta-red reliefs. Free, open 07:00–17:00; go in the morning for the light."
+ },
+ {
+  "slug": "where-to-stay-koh-samui-with-kids",
+  "type": "page",
+  "keyword": "where to stay in Koh Samui with kids",
+  "title": "Where to Stay in Koh Samui with Kids {year}: Calm Beaches",
+  "desc": "The best family bases on Koh Samui: Choeng Mon's calm bay and sandbar for under-5s, Lipa Noi's shallows for toddlers, and North Chaweng for restaurants."
+ },
+ {
+  "slug": "where-to-stay-koh-samui",
+  "type": "page",
+  "keyword": "where to stay in Koh Samui",
+  "title": "Where to Stay in Koh Samui {year}: Best Areas Compared",
+  "desc": "Chaweng for a first visit, Bophut for food, Lamai for value at about 1,500–3,500 THB a night, and the west coast for sunsets: where to stay in Koh Samui."
+ },
+ {
+  "slug": "white-lotus-koh-samui",
+  "type": "page",
+  "keyword": "White Lotus Koh Samui filming locations",
+  "title": "White Lotus Filming Locations on Koh Samui: How to Visit",
+  "desc": "The White Lotus season 3 was filmed mainly at the Four Seasons Koh Samui. See which filming locations you can visit, from Fisherman's Village to the beach."
+ },
+ {
+  "slug": "working-on-koh-samui",
+  "type": "page",
+  "keyword": "working on Koh Samui",
+  "title": "Working on Koh Samui {year}: Work Permits & Legal Jobs",
+  "desc": "Working on Koh Samui needs a non-immigrant visa and a work permit from a Thai employer. See which jobs are reserved for Thais, DTV rules and the penalties."
+ },
+ {
+  "slug": "home",
+  "type": "page",
+  "keyword": "Koh Samui boat trips",
+  "title": "Koh Samui Tours, Boat Trips & Island Guide {year}",
+  "desc": "Book Koh Samui boat trips to Pig Island, Ang Thong and Koh Tao, private yachts, Full Moon Party boats and pool villas, from a licensed local team since 2006."
+ }
+]

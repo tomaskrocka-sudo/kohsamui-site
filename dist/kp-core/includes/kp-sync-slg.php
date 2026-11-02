@@ -97,7 +97,8 @@ function kp_slg_import( array $occ ) {
 			if ( $id && get_post_meta( $id, 'kp_source_locked', true ) ) { update_post_meta( $id, 'kp_last_seen', time() ); continue; }
 			$when = $rec ? 'every ' . implode( ', ', array_map( fn( $d ) => wp_date( 'l', strtotime( 'next ' . $d ) ), explode( ',', substr( $rec, 7 ) ) ) ) . ', ' . $start->format( 'H:i' ) . ( $end ? '–' . $end->format( 'H:i' ) : '' ) : $start->format( 'l j F Y, H:i' ) . ( $end ? '–' . $end->format( 'H:i' ) : '' );
 			$price = $o['price'];
-			$own = sprintf( '%s at %s, Koh Samui: %s.%s %s', $o['title'], $o['venue'] ?: 'a venue on Koh Samui', $when, $price ? ' Entry: ' . $price . '.' : '', 'Times and line-ups can change, so check on the day. Need a taxi there and back or a table? Message us on WhatsApp.' );
+			$vn = trim( explode( ',', (string) $o['venue'] )[0] );
+			$own = sprintf( '%s%s, Koh Samui: %s.%s %s', $o['title'], $vn !== '' && stripos( $o['title'], $vn ) !== false ? '' : ' at ' . ( $o['venue'] ?: 'a venue on Koh Samui' ), $when, $price ? ' Entry: ' . $price . '.' : '', 'Times and line-ups can change, so check on the day. Need a taxi there and back or a table? Message us on WhatsApp.' );
 			$arr = array( 'ID' => $id, 'post_type' => 'kp_event', 'post_status' => 'publish', 'post_title' => $o['title'], 'post_name' => sanitize_title( $o['title'] . ( $rec ? '-' . $o['venue'] : '-' . $start->format( 'Y-m-d' ) ) ), 'post_content' => '<p>' . esc_html( $own ) . '</p>', 'post_excerpt' => wp_trim_words( $own, 30, '…' ) );
 			$id = $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true ); if ( is_wp_error( $id ) ) continue;
 			$ex ? $u++ : $c++;

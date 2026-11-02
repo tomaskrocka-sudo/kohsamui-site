@@ -649,3 +649,22 @@ html.kpts-dark .kpw-calm{background:rgba(91,203,147,.18);color:#8BE8B4}html.kpts
 
 }
 .kpb .kpb-field>span{gap:10px;align-items:baseline}.kpb .kpb-field>span em{font-style:normal;text-transform:none;letter-spacing:0;font-weight:500;text-align:right}
+/* Cookie choice bar */
+.kpc{position:fixed;z-index:9990;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;justify-content:center;pointer-events:none}
+.kpc[hidden]{display:none}
+.kpc-in{pointer-events:auto;width:100%;max-width:760px;background:var(--kpd-card,#fff);color:var(--kpd-text,#0B1F33);border:1px solid var(--kpd-line,#E7E9EC);border-radius:16px;box-shadow:0 16px 48px rgba(11,31,51,.18);padding:16px 18px;font-size:14px;line-height:1.5}
+.kpc-t{margin:0 0 12px}.kpc-t strong{display:block;font-size:15px;margin-bottom:2px}.kpc-t a{color:inherit;text-decoration:underline}
+.kpc-set{display:grid;gap:8px;margin:0 0 12px;padding:10px 0;border-top:1px solid var(--kpd-line,#E7E9EC);border-bottom:1px solid var(--kpd-line,#E7E9EC)}
+.kpc-set[hidden]{display:none}
+.kpc-row{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;cursor:pointer}.kpc-row input{margin-top:3px;width:18px;height:18px;accent-color:#5E6E00;flex:none}.kpc-row b{display:block}
+.kpc-b{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+.kpc-btn{appearance:none;border-radius:999px;padding:10px 18px;font:700 14px/1 var(--kp-sans);cursor:pointer;border:1px solid var(--kpd-line,#E7E9EC);background:transparent;color:var(--kpd-text,#0B1F33)}
+.kpc-btn[hidden]{display:none}
+.kpc-p{background:var(--kp-accent);border-color:var(--kp-accent);color:var(--kp-accent-ink)}
+.kpc-btn:hover{filter:brightness(.97)}
+html.kpts-dark .kpc-in{box-shadow:0 16px 48px rgba(0,0,0,.5)}
+html.kpts-dark .kpc-row input{accent-color:#C1DF0F}
+@media (max-width:560px){.kpc-in{padding:14px}.kpc-b{justify-content:stretch}.kpc-btn{flex:1 1 auto}.kpc-p{flex-basis:100%;order:-1}}
+html.kpc-on .kp-mbar{bottom:calc(var(--kpc-h,0px))}
+.kpf2-cookie{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.kp-evx ul{padding-left:1.2em}.kp-evx h2{margin-top:1.6em}

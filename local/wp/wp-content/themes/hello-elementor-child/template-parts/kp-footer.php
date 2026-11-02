@@ -34,6 +34,7 @@ $live = function_exists( 'kpt_url_live' ) ? 'kpt_url_live' : fn() => true;
 		<div class="kpf2-bot">
 			<span>© <?php echo esc_html( wp_date( 'Y' ) . ' ' . $brand ); ?></span>
 			<?php foreach ( array( array( 'Privacy', '/privacy-policy/' ), array( 'Terms', '/terms-and-conditions/' ), array( 'Accessibility', '/accessibility/' ), array( 'Disclaimer', '/official-disclaimer/' ), array( 'Sitemap', '/sitemap/' ) ) as $l ) : if ( ! $live( $l[1] ) ) continue; ?><a href="<?php echo esc_url( home_url( $l[1] ) ); ?>"><?php echo esc_html( $l[0] ); ?></a><?php endforeach; ?>
+			<button type="button" class="kpf2-cookie" data-kpc-open>Cookie settings</button>
 			<span>Prices charged in THB; EUR and USD shown for reference.</span>
 		</div>
 	</div>

@@ -119,3 +119,34 @@
     Array.prototype.forEach.call(box.children, function (c) { if (c.classList.contains('is-gone')) return; c.classList.toggle('is-spare', shown >= max); shown++; });
   });
 })();
+
+/* Cookie choice bar: necessary always on; analytics (order attribution, GA if added) only after "Accept". Choice kept 12 months in cookie kp_consent. */
+(function () {
+  var bar = document.getElementById('kpc'); if (!bar) return;
+  var set = document.getElementById('kpc-set'), box = document.getElementById('kpc-a');
+  function read() { var m = document.cookie.match(/(?:^|; )kp_consent=([^;]*)/); return m ? m[1] : ''; }
+  function loadAttr() {
+    var el = document.getElementById('kp-deferred-attr'); if (!el || el.dataset.done) return; el.dataset.done = 1;
+    try { var cfg = JSON.parse(el.textContent); var s0 = document.createElement('script'); s0.text = cfg.data || ''; document.body.appendChild(s0);
+      (function next(i) { if (i >= cfg.srcs.length) return; var s = document.createElement('script'); s.src = cfg.srcs[i]; s.onload = function () { next(i + 1); }; document.body.appendChild(s); })(0);
+    } catch (e) {}
+  }
+  function apply(a, save) {
+    if (save) { document.cookie = 'kp_consent=v1' + (a ? 'a1' : 'a0') + ';path=/;max-age=' + (365 * 864e2) + ';SameSite=Lax' + (location.protocol === 'https:' ? ';Secure' : ''); }
+    window.kpConsent = { set: true, analytics: !!a };
+    if (window.gtag) gtag('consent', 'update', { analytics_storage: a ? 'granted' : 'denied' });
+    try { document.dispatchEvent(new CustomEvent('wp_listen_for_consent_change', { detail: { statistics: a ? 'allow' : 'deny', marketing: a ? 'allow' : 'deny' } })); document.dispatchEvent(new CustomEvent('kp:consent', { detail: { analytics: !!a } })); } catch (e) {}
+    if (a) loadAttr();
+  }
+  function open(withSettings) { bar.hidden = false; document.documentElement.classList.add('kpc-on'); if (withSettings) showSet(); }
+  function close() { bar.hidden = true; document.documentElement.classList.remove('kpc-on'); }
+  function showSet() { set.hidden = false; box.checked = !!(window.kpConsent && window.kpConsent.analytics); bar.querySelector('[data-kpc="settings"]').hidden = true; bar.querySelector('[data-kpc="save"]').hidden = false; }
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-kpc]'); if (!b) return; var k = b.getAttribute('data-kpc');
+    if (k === 'settings') { showSet(); return; }
+    apply(k === 'accept' ? 1 : k === 'reject' ? 0 : (box.checked ? 1 : 0), true); close();
+  });
+  document.addEventListener('click', function (e) { var t = e.target.closest('[data-kpc-open]'); if (t) { e.preventDefault(); open(true); } });
+  var c = read();
+  if (c) { if (c.indexOf('a1') > -1) apply(1, false); } else { open(false); }
+})();

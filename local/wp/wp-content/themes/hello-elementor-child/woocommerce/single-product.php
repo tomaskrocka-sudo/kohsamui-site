@@ -45,6 +45,9 @@ while ( have_posts() ) : the_post();
 	echo do_shortcode( '[kp_faq title="' . esc_attr( get_the_title() ) . ': FAQ"]' );
 	// Reviews (real Woo reviews only)
 	echo '<section id="reviews">'; comments_template(); echo '</section>';
+	// Our H1, lead and booking/enquiry card replace WooCommerce's summary parts on every product (one H1 per page).
+	foreach ( array( 'woocommerce_template_single_title' => 5, 'woocommerce_template_single_rating' => 10, 'woocommerce_template_single_price' => 10, 'woocommerce_template_single_excerpt' => 20, 'woocommerce_template_single_meta' => 40, 'woocommerce_template_single_sharing' => 50 ) as $fn => $pr ) remove_action( 'woocommerce_single_product_summary', $fn, $pr );
+	if ( ! ( function_exists( 'kpb_is_bookable' ) && kpb_is_bookable( $id ) ) ) remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
 	echo '</div><div class="kpv-book">'; do_action( 'woocommerce_single_product_summary' ); echo '</div></div>';
 	echo '<h2>More trips from Koh Samui</h2>' . do_shortcode( '[kp_tours limit="4"]' );
 	echo '</div>';
