@@ -1,0 +1,506 @@
+[
+ {
+  "slug": "grand-voyage-42-yacht-charter-koh-samui",
+  "name": "Grand Voyage 42 Private Sailing Catamaran around Koh Phangan",
+  "price": 25000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset sail, 3 h (16:00–19:00), Koh Phangan west or east coast",
+    "price": 25000,
+    "max_guests": 10
+   },
+   {
+    "label": "Half day, 5 h (09:00–14:00 or 14:00–19:00), west or east coast",
+    "price": 35000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day, 10 h (09:00–19:00), around Koh Phangan",
+    "price": 55000,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 15,
+  "cat": [
+   "Private charter",
+   "Yachts"
+  ],
+  "duration": "3, 5 or 10 hours",
+  "boat": "16 m sailing catamaran \"Grand Voyage 42\" (built 2020, 3 cabins)",
+  "pier": "Ban Tai, Koh Phangan",
+  "pickup_window": "Meeting point and time confirmed on WhatsApp",
+  "return": "19:00 (sunset, afternoon and full day) or 14:00 (morning half day)",
+  "season": "All year, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "No transfer is included: the boat sails from Ban Tai on Koh Phangan, so guests staying on Koh Samui need a private speedboat crossing, which we quote separately on WhatsApp.",
+  "cxl": "day",
+  "notice": "Departs Ban Tai, Koh Phangan. Prices cover up to 10 guests; up to 15 can sail at 1,000 THB per extra guest, added via WhatsApp.",
+  "bookable": true,
+  "sku_ref": "speedboatsamui.com/catamarans/grand-voyage-42-sailing-catamaran/",
+  "short": "Your own 16 m sailing catamaran with skipper and crew on Koh Phangan's coast, from 25,000 THB per boat for a 3-hour sunset sail (up to 10 guests). Fuel, soft drinks, fruit, SUP boards and snorkel gear are included; it departs Ban Tai, Koh Phangan.",
+  "included": [
+   "Private sailing catamaran with skipper and crew",
+   "Fuel",
+   "Dinghy with 25 hp engine for beach landings (up to 8 people per run)",
+   "Soft drinks, seasonal fruit and ice",
+   "SUP boards and snorkel gear",
+   "Life jackets",
+   "On-board fridge"
+  ],
+  "not_included": [
+   "Transfer from Koh Samui to Ban Tai (private speedboat, quoted on request)",
+   "Meals or a private chef (on request at extra cost)",
+   "Alcohol and drinks delivery (on request)",
+   "DJ, florist or event decorations (on request)",
+   "Minivan transfer on Koh Phangan (on request)",
+   "Extra guests above 10: 1,000 THB each, maximum 15",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Start | Board at Ban Tai, Koh Phangan, at the time confirmed on WhatsApp",
+   "West coast route | Thong Sala, Koh Tae Nai and Koh Tae Nok, Zen Beach, Koh Raham, Haad Salad, Mae Haad and Koh Ma, Malibu Beach",
+   "East coast route | Haad Rin, Haad Yuan, Haad Yao East, Haad Nam Tok, Haad Than Sadet, Thong Nai Pan, Bottle Beach",
+   "Full day | A loop around Koh Phangan combining stops from both coasts",
+   "Finish | Back at Ban Tai; stops and timings depend on sea conditions and the captain"
+  ],
+  "what_to_bring": [
+   "Swimwear and towel",
+   "Reef-safe sunscreen, hat and sunglasses",
+   "Light jacket for the sunset sail",
+   "Dry bag for phones",
+   "Cash for drinks or beach bars ashore"
+  ],
+  "faq": [
+   "How much does the Grand Voyage 42 catamaran cost? | 25,000 THB for a 3-hour sunset sail, 35,000 THB for a 5-hour half day and 55,000 THB for a 10-hour full day, each for the whole boat with up to 10 guests.",
+   "How many guests can sail on the Grand Voyage 42? | Up to 15. The price covers 10 guests; guests 11 to 15 cost 1,000 THB each, which we add on WhatsApp after you book.",
+   "Does the Grand Voyage 42 leave from Koh Samui? | No. It sails from Ban Tai on Koh Phangan's south coast. From Koh Samui you need a ferry or a private speedboat; we can quote the speedboat crossing.",
+   "Which beaches can the Grand Voyage 42 visit? | The west coast route covers Koh Tae Nai, Zen Beach, Haad Salad, Mae Haad and Koh Ma; the east coast route covers Haad Rin, Haad Yuan, Than Sadet, Thong Nai Pan and Bottle Beach. The captain picks the side with calmer water on the day.",
+   "Is food included on the Grand Voyage 42 charter? | Soft drinks, ice and seasonal fruit are included. Meals, a private chef and alcohol can be arranged at extra cost if you ask when booking.",
+   "Can children sail on the Grand Voyage 42? | Yes. Life jackets are on board and the catamaran sails flat and steady. Count children and infants in your guest total when you book.",
+   "What happens if the Grand Voyage 42 sail is cancelled for weather? | If the captain cancels for sea safety you choose a full refund or a new date. If you cancel, you get a full refund 48 hours or more before departure, 50 % at 24–48 hours and nothing under 24 hours.",
+   "Can we stay overnight on the Grand Voyage 42? | The boat has 3 cabins and overnight charters are possible, but they are priced on request. Message us on WhatsApp with your dates and group size."
+  ]
+ },
+ {
+  "slug": "orana-sailing-catamaran-charter-koh-samui",
+  "name": "Orana 44 Private Sailing Catamaran to Pig Island from Koh Samui",
+  "price": 43000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Half day morning, 4 h (09:00–13:00), Pig Island and Koh Tan",
+    "price": 43000,
+    "max_guests": 10
+   },
+   {
+    "label": "Half day afternoon, 4 h (14:30–18:30), Pig Island and Koh Tan",
+    "price": 46000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day, 6 h (12:30–18:30), Pig Island and Koh Tan, with lunch",
+    "price": 57500,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day, 8 h (10:00–18:00), Pig Island, Koh Tan and Koh Rap, with lunch",
+    "price": 64000,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 20,
+  "cat": [
+   "Private charter",
+   "Yachts"
+  ],
+  "duration": "4, 6 or 8 hours",
+  "boat": "44 ft Fountaine Pajot Orana 44 sailing catamaran \"Orana\"",
+  "pier": "Koh Samui pier confirmed at booking",
+  "pickup_window": "Pickup time confirmed on WhatsApp",
+  "return": "13:00, 18:00 or 18:30 depending on the option",
+  "season": "All year, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer on Koh Samui is included; the pier and your pickup time are confirmed on WhatsApp after booking.",
+  "cxl": "day",
+  "park_fee": "Island landing fees if charged ashore (Koh Madsum about 50 THB per person, cash)",
+  "notice": "Prices cover up to 10 guests; up to 20 can sail at 500 THB (half day) or 1,000 THB (full day) per extra guest, added via WhatsApp.",
+  "bookable": true,
+  "sku_ref": "speedboatsamui.com/catamarans/orana-sailing-catamaran/",
+  "short": "A private 44 ft sailing catamaran with captain and 2 crew to Pig Island and Koh Tan, from 43,000 THB per boat for a 4-hour morning sail (up to 10 guests). Return hotel transfer, soft drinks, snacks and snorkel gear are included; full days add lunch.",
+  "included": [
+   "Return hotel transfer on Koh Samui",
+   "Private sailing catamaran with captain and 2 crew",
+   "Soft drinks, light snacks and seasonal fruit",
+   "Lunch on the 6-hour and 8-hour charters (for up to 10 guests)",
+   "Snorkel gear and life jackets",
+   "Freshwater shower and air-conditioned saloon"
+  ],
+  "not_included": [
+   "Lunch on the 4-hour half-day charters",
+   "Extra guests above 10: 500 THB each (half day) or 1,000 THB each (full day), maximum 20",
+   "Lunch for extra guests (quoted on request)",
+   "Alcohol",
+   "Island landing fees if charged ashore",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Pickup | Hotel transfer to the pier",
+   "Morning or afternoon | Sail to Koh Madsum (Pig Island) to swim and visit the beach",
+   "Next stop | Snorkel the reef at Koh Tan",
+   "8-hour option | Add Koh Rap for beach time",
+   "Return | Back at the pier and transfer to your hotel; stops depend on sea conditions and the captain"
+  ],
+  "what_to_bring": [
+   "Swimwear and towel",
+   "Reef-safe sunscreen and hat",
+   "Dry bag for phones",
+   "Cash for island fees",
+   "Seasickness tablets if you are prone (the catamaran is steady)"
+  ],
+  "faq": [
+   "What does the Orana catamaran charter cost? | 43,000 THB for the 4-hour morning sail, 46,000 THB for the 4-hour afternoon sail, 57,500 THB for 6 hours and 64,000 THB for 8 hours, per boat for up to 10 guests.",
+   "How many people fit on the Orana? | Up to 20. Prices cover 10 guests; each extra guest is 500 THB on a half day or 1,000 THB on a full day.",
+   "Is hotel pickup included on the Orana charter? | Yes, a return hotel transfer on Koh Samui is included. We confirm the pier and pickup time on WhatsApp after booking.",
+   "Is lunch served on the Orana? | Lunch is included on the 6-hour and 8-hour charters for up to 10 guests. The 4-hour sails include soft drinks, light snacks and fruit only.",
+   "Which islands does the Orana visit? | Every option visits Koh Madsum (Pig Island) and Koh Tan. The 8-hour full day adds Koh Rap.",
+   "Does the Orana actually sail or use engines? | Both. It sails when the wind suits and uses its twin diesels otherwise, cruising at 8–10 knots.",
+   "Can I cancel an Orana booking? | Yes: full refund 48 hours or more before departure, 50 % at 24–48 hours, none under 24 hours. If the captain cancels for weather you choose a full refund or a new date.",
+   "Is the Orana suitable for families with small children? | Yes. A catamaran is wide and stable, there is shade, an air-conditioned saloon and a freshwater shower, and life jackets are provided. Include infants in your guest count."
+  ]
+ },
+ {
+  "slug": "serenity-max-power-catamaran-charter-koh-samui",
+  "name": "Serenity Max 71 ft Power Catamaran Charter from Koh Samui",
+  "price": 46000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset cruise, 2 h (16:30–18:30), private island",
+    "price": 46000,
+    "max_guests": 20
+   },
+   {
+    "label": "Half day, 4 h (09:30–13:30 or 14:30–18:30), Koh Phangan",
+    "price": 70000,
+    "max_guests": 20
+   },
+   {
+    "label": "Full day, 7 h (09:00–16:00), Koh Phangan",
+    "price": 106000,
+    "max_guests": 20
+   },
+   {
+    "label": "Full day, 9 h (09:30–18:30), Ang Thong Marine Park (from 16 December)",
+    "price": 125000,
+    "max_guests": 20
+   }
+  ],
+  "max_guests": 60,
+  "cat": [
+   "Private charter",
+   "Yachts"
+  ],
+  "duration": "2, 4, 7 or 9 hours",
+  "boat": "71 ft power catamaran \"Serenity Max\" with water slide",
+  "pier": "Koh Samui pier confirmed at booking",
+  "pickup_window": "Pickup time confirmed on WhatsApp",
+  "return": "16:00–18:30 depending on the option",
+  "season": "All year, weather permitting; Ang Thong option 16 December–31 October",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer on Koh Samui is included; the pier, meeting time and pickup time are confirmed on WhatsApp after booking.",
+  "cxl": "day",
+  "park_fee": "Ang Thong park fee 300 THB adult / 150 THB child, cash at the park (Ang Thong route only)",
+  "notice": "Prices cover up to 20 guests; up to 60 can join at 800 THB (half day) or 1,400 THB (full day) per extra guest, added via WhatsApp. Ang Thong Marine Park is closed 1 November–15 December; the Ang Thong option runs from 16 December.",
+  "bookable": true,
+  "sku_ref": "speedboatsamui.com/catamarans/serenity-max-power-catamaran/",
+  "short": "A 71 ft power catamaran for groups and parties of up to 60, with a water slide from the upper deck, from 46,000 THB per boat for a 2-hour sunset cruise (up to 20 guests). Return hotel transfer, soft drinks, snacks, towels and snorkel gear are included.",
+  "included": [
+   "Return hotel transfer on Koh Samui",
+   "Private power catamaran with captain and 5–10 crew",
+   "Soft drinks, light snacks and seasonal fruit",
+   "Water slide from the upper deck",
+   "Snorkel gear with fins, life jackets and towels",
+   "Freshwater showers"
+  ],
+  "not_included": [
+   "Extra guests above 20: 800 THB each (half day) or 1,400 THB each (full day), maximum 60; sunset extra-guest rate confirmed on WhatsApp",
+   "Ang Thong park fee: 300 THB adult / 150 THB child, cash (Ang Thong route only)",
+   "Meals beyond light snacks (quoted on request)",
+   "Alcohol",
+   "DJ and decorations (quoted on request)",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Pickup | Hotel transfer to the pier",
+   "Sunset cruise | 2 hours to a small island off Samui and back as the sun goes down",
+   "Koh Phangan options | Cross to Koh Phangan for swimming, snorkelling and the water slide at anchor",
+   "Ang Thong option | A 9-hour day in the marine park (from 16 December)",
+   "Return | Back at the pier and transfer to your hotel; stops depend on sea conditions and the captain"
+  ],
+  "what_to_bring": [
+   "Swimwear",
+   "Reef-safe sunscreen, hat and sunglasses",
+   "Dry bag for phones",
+   "Cash for the Ang Thong park fee if you take that route",
+   "Your playlist or DJ brief for events"
+  ],
+  "faq": [
+   "How much is the Serenity Max catamaran? | 46,000 THB for a 2-hour sunset cruise, 70,000 THB for 4 hours to Koh Phangan, 106,000 THB for 7 hours and 125,000 THB for 9 hours in Ang Thong, per boat for up to 20 guests.",
+   "What is the biggest group the Serenity Max can take? | 60 guests. Prices cover 20; each extra guest is 800 THB on a half day or 1,400 THB on a full day.",
+   "Does the Serenity Max really have a water slide? | Yes. The slide runs from the upper deck into the sea and is used when the boat is anchored in calm water.",
+   "Can we take the Serenity Max to Ang Thong in November? | No. Ang Thong Marine Park is closed 1 November–15 December every year. Choose the Koh Phangan or sunset options until it reopens on 16 December.",
+   "Is the Ang Thong park fee included on the Serenity Max? | No. It is 300 THB per adult and 150 THB per child, paid in cash at the park.",
+   "Can we hold a party or corporate event on the Serenity Max? | Yes; it is built for groups, with a lounge bar, sun deck and shaded dining area. Catering, a DJ and decorations are quoted on request.",
+   "Is hotel transfer included with the Serenity Max? | Yes, a return hotel transfer on Koh Samui is included. We confirm the pier and pickup time on WhatsApp.",
+   "What is the cancellation policy for the Serenity Max? | Full refund 48 hours or more before departure, 50 % at 24–48 hours, none under 24 hours. If the captain cancels for weather you choose a full refund or a new date."
+  ]
+ },
+ {
+  "slug": "super-king-catamaran-charter-koh-samui",
+  "name": "Super King 50 ft Catamaran Charter to Pig Island and Koh Tan",
+  "price": 44000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset cruise, 4 h (14:30–18:30), Pig Island and Koh Tan",
+    "price": 44000,
+    "max_guests": 50
+   },
+   {
+    "label": "Afternoon, 6 h (12:30–18:30), Pig Island and Koh Tan",
+    "price": 48000,
+    "max_guests": 50
+   },
+   {
+    "label": "Full day, 8 h (10:30–18:30), Pig Island and Koh Tan",
+    "price": 72000,
+    "max_guests": 50
+   },
+   {
+    "label": "Full day, 9 h (09:30–18:30), Ang Thong Marine Park (from 16 December)",
+    "price": 78000,
+    "max_guests": 50
+   }
+  ],
+  "max_guests": 50,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "4, 6, 8 or 9 hours",
+  "boat": "50 ft catamaran \"Super King\"",
+  "pier": "Thong Krut pier (south coast)",
+  "pickup_window": "Pickup time confirmed on WhatsApp",
+  "return": "About 18:30, then hotel transfer",
+  "season": "All year, weather permitting; Ang Thong option 16 December–31 October",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer on Koh Samui to Thong Krut pier is included; your pickup time is confirmed on WhatsApp after booking.",
+  "cxl": "day",
+  "park_fee": "Ang Thong park fee 300 THB adult / 150 THB child, cash at the park (Ang Thong route only); Koh Madsum about 50 THB per person if you go ashore",
+  "notice": "One price per boat for up to 50 guests. Ang Thong Marine Park is closed 1 November–15 December; the Ang Thong option runs from 16 December.",
+  "bookable": true,
+  "sku_ref": "speedboatsamui.com/catamarans/super-king-catamaran/",
+  "short": "A 50 ft catamaran for up to 50 guests from Thong Krut to Pig Island and Koh Tan, from 44,000 THB per boat for 4 hours. Return hotel transfer, soft drinks, fruit, snacks, paddleboards, snorkel gear and a BBQ grill are included.",
+  "included": [
+   "Return hotel transfer on Koh Samui",
+   "Private catamaran with captain and crew",
+   "Drinking water, soft drinks and ice",
+   "Seasonal fruit and light snacks",
+   "Paddleboards, snorkel gear and a fishing rod",
+   "BBQ grill and Bluetooth sound system",
+   "Freshwater shower"
+  ],
+  "not_included": [
+   "BBQ food and lunch (quoted on request)",
+   "Alcohol",
+   "Ang Thong park fee: 300 THB adult / 150 THB child, cash (Ang Thong route only)",
+   "Koh Madsum island fee, about 50 THB per person, if you go ashore",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Pickup | Hotel transfer to Thong Krut pier",
+   "First stop | Koh Madsum (Pig Island): swim and walk the sandbar",
+   "Second stop | Snorkel and paddleboard at Koh Tan",
+   "Ang Thong option | A 9-hour day in the marine park instead (from 16 December)",
+   "18:30 | Back at Thong Krut and transfer to your hotel; stops depend on sea conditions and the captain"
+  ],
+  "what_to_bring": [
+   "Swimwear and towel",
+   "Reef-safe sunscreen and hat",
+   "Dry bag for phones",
+   "Cash for island or park fees",
+   "Food for the BBQ if you are not ordering catering"
+  ],
+  "faq": [
+   "How much is the Super King catamaran charter? | 44,000 THB for 4 hours, 48,000 THB for 6 hours, 72,000 THB for 8 hours to Pig Island and Koh Tan, and 78,000 THB for 9 hours to Ang Thong, per boat.",
+   "Is the Super King price per person or per boat? | Per boat. One price covers up to 50 guests; with a full boat the 4-hour trip works out at under 900 THB per person.",
+   "Where does the Super King depart from? | Thong Krut pier on Samui's south coast, the closest pier to Pig Island and Koh Tan. A return hotel transfer is included.",
+   "Can we barbecue on the Super King? | Yes, there is a BBQ grill on board. The food is not included; we can quote catering or you can bring your own.",
+   "Does the Super King go to Ang Thong in November? | No. The park is closed 1 November–15 December; the Ang Thong option runs from 16 December. The park fee of 300 THB adult / 150 THB child is extra.",
+   "What activities are on the Super King? | Swimming, snorkelling, paddleboarding and fishing with the rod on board, plus music on the Bluetooth sound system.",
+   "Can large families with kids book the Super King? | Yes. Count every child and infant in the total so we can confirm the boat and life jackets.",
+   "What if we need to cancel the Super King? | Full refund 48 hours or more before departure, 50 % at 24–48 hours, none under 24 hours. If the captain cancels for weather you choose a full refund or a new date."
+  ]
+ },
+ {
+  "slug": "prestige-motor-yacht-charter-koh-samui",
+  "name": "Prestige 500 Luxury Motor Yacht Charter from Koh Samui",
+  "price": 60000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset cruise, 2 h, private island",
+    "price": 60000,
+    "max_guests": 10
+   },
+   {
+    "label": "Pig Island and Koh Tan, 4 h (10:00–14:00 or 14:30–18:30)",
+    "price": 100000,
+    "max_guests": 10
+   },
+   {
+    "label": "Koh Phangan, 4 h (10:00–14:00 or 14:30–18:30)",
+    "price": 100000,
+    "max_guests": 10
+   },
+   {
+    "label": "Koh Tao and Koh Nang Yuan, 8 h (10:30–18:30)",
+    "price": 198000,
+    "max_guests": 10
+   },
+   {
+    "label": "Ang Thong Marine Park, 8 h (10:30–18:30) (from 16 December)",
+    "price": 198000,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 13,
+  "cat": [
+   "Private charter",
+   "Yachts"
+  ],
+  "duration": "2, 4 or 8 hours",
+  "boat": "50 ft Prestige 500 motor yacht \"Prestige\" (2 en-suite cabins)",
+  "pier": "Bangrak pier (Big Buddha Beach)",
+  "pickup_window": "Departure time confirmed on WhatsApp",
+  "return": "14:00 or 18:30 depending on the option",
+  "season": "All year, weather permitting; Ang Thong option 16 December–31 October",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfers are not included; Bangrak pier is a short drive from Bophut, Choeng Mon and Chaweng, and we can quote a transfer on WhatsApp.",
+  "cxl": "day",
+  "park_fee": "Ang Thong park fee 300 THB adult / 150 THB child (Ang Thong route); Koh Nang Yuan landing fee 250 THB per person (Koh Tao route); cash",
+  "notice": "Prices cover up to 10 guests; up to 13 can join at 3,500 THB per extra guest, added via WhatsApp. Ang Thong Marine Park is closed 1 November–15 December; the Ang Thong option runs from 16 December.",
+  "bookable": true,
+  "sku_ref": "speedboatsamui.com/yachts/prestige-motor-yacht/",
+  "short": "A 50 ft Prestige 500 motor yacht with air-conditioned lounge and teak sun deck, from 60,000 THB per boat for a 2-hour sunset cruise (up to 10 guests), with routes to Pig Island, Koh Phangan, Koh Tao and Ang Thong.",
+  "included": [
+   "Private motor yacht with captain",
+   "Air-conditioned lounge and dining area",
+   "Teak sun deck and entertainment system",
+   "Snorkel gear and life jackets",
+   "Freshwater shower and towels"
+  ],
+  "not_included": [
+   "Hotel transfers (quoted on request)",
+   "Food and drinks (quoted on request)",
+   "Extra guests above 10: 3,500 THB each, maximum 13",
+   "Ang Thong park fee: 300 THB adult / 150 THB child, cash",
+   "Koh Nang Yuan landing fee: 250 THB per person, cash",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Departure | Board at Bangrak pier at the agreed time",
+   "Sunset cruise | 2 hours to a small island and back at sunset",
+   "4-hour routes | Pig Island and Koh Tan, or a Koh Phangan beach and swim stop",
+   "8-hour routes | Koh Tao and Koh Nang Yuan, or Ang Thong Marine Park (from 16 December)",
+   "Return | Back at Bangrak pier; stops depend on sea conditions and the captain"
+  ],
+  "what_to_bring": [
+   "Swimwear",
+   "Reef-safe sunscreen and sunglasses",
+   "Cash for park or landing fees",
+   "Light layer for the air-conditioned saloon"
+  ],
+  "faq": [
+   "What does the Prestige motor yacht cost per day? | 60,000 THB for a 2-hour sunset cruise, 100,000 THB for 4 hours to Pig Island or Koh Phangan and 198,000 THB for 8 hours to Koh Tao or Ang Thong, per boat for up to 10 guests.",
+   "How many guests can board the Prestige? | Up to 13. The price covers 10; guests 11 to 13 cost 3,500 THB each.",
+   "Where does the Prestige yacht leave from? | Bangrak pier on Samui's north coast, near Big Buddha Beach and close to the airport.",
+   "Are food and drinks included on the Prestige? | No. Food, drinks and hotel transfers are quoted separately when you book, so you can choose what you want on board.",
+   "Can the Prestige take us to Koh Tao? | Yes, on the 8-hour route to Koh Tao and Koh Nang Yuan. The Koh Nang Yuan landing fee of 250 THB per person is paid in cash on arrival.",
+   "Is the Prestige Ang Thong route available in December? | From 16 December. The park closes 1 November–15 December every year; the park fee of 300 THB adult / 150 THB child is extra.",
+   "Does the Prestige have cabins and air conditioning? | Yes: two double cabins with their own bathrooms and an air-conditioned lounge and dining area.",
+   "How do refunds work for the Prestige charter? | Full refund 48 hours or more before departure, 50 % at 24–48 hours, none under 24 hours. If the captain cancels for weather you choose a full refund or a new date."
+  ]
+ },
+ {
+  "slug": "pig-island-private-sailing-catamaran",
+  "name": "Private Sailing Catamaran to Pig Island, Koh Tan and Koh Rap",
+  "price": 27000,
+  "child": null,
+  "per": "boat",
+  "max_guests": 10,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "About 8.5 hours",
+  "boat": "Private sailing catamaran \"King 9\"",
+  "pier": "Koh Samui pier confirmed at booking",
+  "pickup_window": "Morning; time confirmed on WhatsApp",
+  "return": "Late afternoon, about 8.5 hours after departure",
+  "season": "Daily, all year, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfers are not included; we can arrange a private transfer for your group at extra cost if you ask on WhatsApp.",
+  "cxl": "day",
+  "park_fee": "Koh Madsum island fee about 50 THB per person, cash",
+  "notice": "",
+  "bookable": true,
+  "sku_ref": "pigislandkohsamui.com/product/private-catamaran/",
+  "short": "A private sailing catamaran for up to 10 guests to Koh Rap, Koh Tan and Pig Island for about 8.5 hours, at 27,000 THB per boat. Crew, English-speaking guide, snorkel gear, paddleboards, fishing gear, soft drinks and fruit are included.",
+  "included": [
+   "Private sailing catamaran and crew for about 8.5 hours",
+   "English-speaking guide",
+   "Snorkel gear, paddleboards and fishing equipment",
+   "Soft drinks, drinking water, watermelon and pineapple",
+   "Bluetooth speaker",
+   "Life jackets and insurance"
+  ],
+  "not_included": [
+   "Hotel transfers (private transfer on request)",
+   "Lunch (bring your own or eat at a beach restaurant)",
+   "Koh Madsum island fee, about 50 THB per person, cash",
+   "Crew tips (optional)"
+  ],
+  "itinerary": [
+   "Morning | Board the catamaran at the pier and set sail",
+   "Late morning | Koh Rap: swim, paddleboard and relax on the beach",
+   "Midday | Koh Tan: snorkel over the reef",
+   "Afternoon | Koh Madsum (Pig Island): meet the pigs and swim",
+   "Late afternoon | Sail back to the pier, about 8.5 hours after leaving"
+  ],
+  "what_to_bring": [
+   "Swimwear, towel and a change of clothes",
+   "Reef-safe sunscreen, hat and sunglasses",
+   "Cool bag with lunch",
+   "Cash for the island fee and beach drinks",
+   "Waterproof phone pouch or dry bag",
+   "Booking confirmation on your phone"
+  ],
+  "faq": [
+   "How much is the private catamaran to Pig Island? | 27,000 THB for the whole boat for about 8.5 hours, for up to 10 guests. Split between 8 people that is about 3,375 THB each.",
+   "How many people can join the private Pig Island catamaran? | Up to 10 guests, including children and infants.",
+   "Which islands does the Pig Island catamaran visit? | Koh Rap for the beach, Koh Tan for snorkelling and Koh Madsum (Pig Island) to see the pigs, in the order the captain judges best for the tide and wind.",
+   "Is lunch included on the private Pig Island catamaran? | No. Soft drinks, water and fruit are on board. Bring a cool bag with lunch, or eat at a beach restaurant on the islands.",
+   "Do you collect us from our hotel for the Pig Island catamaran? | Hotel transfers are not included. Tell us on WhatsApp and we arrange a private transfer for your group at extra cost.",
+   "Is a sailing catamaran good if I get seasick? | It is steadier than a speedboat or longtail, so it is a good choice if you are prone to seasickness. Take a tablet before you leave if you are unsure.",
+   "Can we finish the Pig Island catamaran trip at sunset? | A sunset return can be requested when you book, depending on the season and your start time.",
+   "What is the cancellation policy for the Pig Island private catamaran? | Full refund 48 hours or more before departure, 50 % at 24–48 hours, none under 24 hours or for no-shows. If the captain cancels for weather you choose a full refund or a new date."
+  ]
+ }
+]

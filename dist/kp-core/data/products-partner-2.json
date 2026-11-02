@@ -1,0 +1,2168 @@
+[
+ {
+  "slug": "polaris-atv-mountain-safari-magic-garden-koh-samui",
+  "name": "Polaris ATV Mountain Safari to the Magic Garden, Koh Samui",
+  "price": 900,
+  "child": null,
+  "per": "person",
+  "options": [
+   {
+    "label": "Quick Escape 30 min, driver",
+    "price": 1500
+   },
+   {
+    "label": "Quick Escape 30 min, passenger",
+    "price": 900
+   },
+   {
+    "label": "Mountain Rider 45 min, driver",
+    "price": 1950
+   },
+   {
+    "label": "Mountain Rider 45 min, passenger",
+    "price": 1200
+   },
+   {
+    "label": "Adventure Seeker 1.5 h with Magic Garden, driver",
+    "price": 3250
+   },
+   {
+    "label": "Adventure Seeker 1.5 h with Magic Garden, passenger",
+    "price": 2000
+   },
+   {
+    "label": "Ultimate Explorer 2.5 h with lunch, driver",
+    "price": 4250
+   },
+   {
+    "label": "Ultimate Explorer 2.5 h with lunch, passenger",
+    "price": 3000
+   }
+  ],
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "30 minutes to 2.5 hours, depending on the option",
+  "boat": "Polaris 4WD ATV (driver plus one passenger)",
+  "pier": "ATV base in the central hills of Koh Samui, near the Magic Garden",
+  "pickup_window": "Rides start hourly 10:00–15:00; exact time confirmed after booking",
+  "return": "30 minutes to 2.5 hours after the start, plus transfer time",
+  "season": "Daily, all year (trails can be closed after heavy rain)",
+  "pickup_enabled": false,
+  "pickup_note": "Return hotel transfer is included on the 1.5 h and 2.5 h rides (we confirm it when only one ATV is booked); for the 30 and 45 min rides you make your own way to the base.",
+  "cxl": "partner",
+  "notice": "Passenger prices apply only to a second rider on an ATV with a booked driver. We confirm your start time by WhatsApp after booking.",
+  "bookable": true,
+  "partner": "1",
+  "short": "Drive a Polaris 4WD ATV on jungle trails in Koh Samui's central hills, from 1,500 THB per driver for 30 minutes (passengers from 900 THB). The 1.5 h and 2.5 h rides add the Magic Garden, Tan Nim waterfall and a 360-degree viewpoint, with hotel transfer.",
+  "included": [
+   "Polaris 4WD ATV with helmet (goggles on most options)",
+   "Safety briefing and practice circuit",
+   "Guide riding with the group",
+   "Water and soft drinks",
+   "Accident insurance",
+   "Magic Garden entry (1.5 h and 2.5 h)",
+   "Seasonal fruit (1.5 h and 2.5 h)",
+   "Thai lunch at a mountain restaurant (2.5 h only)",
+   "Return hotel transfer (1.5 h and 2.5 h)"
+  ],
+  "not_included": [
+   "Hotel transfer on the 30 and 45 min rides",
+   "Lunch on the 30 min, 45 min and 1.5 h rides",
+   "Personal expenses and tips"
+  ],
+  "itinerary": [
+   "09:30 | Safety training on the practice circuit (2.5 h Ultimate Explorer example)",
+   "09:45 | Jungle trail up to the 360-degree viewpoint",
+   "10:15 | Magic Garden and Tan Nim waterfall",
+   "10:45 | Thai lunch at a mountain restaurant",
+   "11:20 | Ride back to base and hotel transfer"
+  ],
+  "what_to_bring": [
+   "Closed shoes (no flip-flops on an ATV)",
+   "Long shorts or light trousers",
+   "Clothes you don't mind getting muddy",
+   "Sunscreen and insect repellent",
+   "Your driving licence",
+   "Cash for drinks or souvenirs at the garden"
+  ],
+  "faq": [
+   "How much does the Polaris ATV mountain safari cost? | Prices are per person: 30 min 1,500 THB to drive or 900 THB as a passenger; 45 min 1,950/1,200 THB; 1.5 h 3,250/2,000 THB; 2.5 h with lunch 4,250/3,000 THB. Passenger prices only apply when someone drives the same ATV.",
+   "Can children ride on the Polaris ATV safari in the Samui hills? | The operator does not publish a minimum age for drivers or passengers. Tell us every rider's age when you book and we confirm in writing, before you pay, who may drive and who may ride as a passenger.",
+   "Is hotel pickup included on the ATV mountain safari? | Only on the 1.5 h and 2.5 h rides, and the partner states the return transfer applies when two ATVs are booked; we confirm it for single bookings. The 30 and 45 min rides start at the base and you arrange your own taxi or scooter.",
+   "Which ATV ride goes to the Magic Garden and Tan Nim waterfall? | The 1.5 h Adventure Seeker and 2.5 h Ultimate Explorer. The 30 and 45 min rides stay on the trail loop and the viewpoint area near the base.",
+   "How long are you actually driving on the ATV safari? | The 30 min option is mostly riding after a short practice. On the 2.5 h option around 90 minutes is on the trails, with the rest at the garden, waterfall and lunch.",
+   "Do the ATV trails close when it rains on Koh Samui? | After heavy rain, steep clay sections can be closed or shortened for safety, most often in the wet months of October to December. You will get muddy at any time of year; if the ride is cancelled for weather you choose a new date or a full refund.",
+   "What is the cancellation policy for the Polaris ATV safari? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Do I need a driving licence and what should I wear for the ATV ride? | The operator does not publish a licence rule; bring yours, as travel insurers may ask for it after an accident. Wear closed shoes and clothes that can get muddy. Pregnant riders and anyone with heart, back or mobility problems should not drive."
+  ]
+ },
+ {
+  "slug": "jeep-safari-elephant-feeding-koh-samui",
+  "name": "4x4 Jungle Safari with Elephant Feeding, Koh Samui",
+  "price": 2000,
+  "child": 1500,
+  "per": "person",
+  "max_pax": 10,
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "About 8 hours including hotel transfers",
+  "boat": "Shared 4x4 off-road vehicle",
+  "pier": "Hotel pickup on Koh Samui",
+  "pickup_window": "From 08:30",
+  "return": "About 16:30–17:00 at your hotel",
+  "season": "Daily, all year",
+  "pickup_enabled": true,
+  "pickup_note": "Hotel transfer included from the main areas (Chaweng, Lamai, Bophut, Maenam, Choeng Mon, Bang Rak, Plai Laem); for hillside villas or remote areas we confirm a nearby meeting point when you book.",
+  "cxl": "partner",
+  "notice": "Child price applies to ages 4–10; guests 11 and over pay the adult price. Private 4x4 for your group from 10,500 THB for 2 on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A full-day 4x4 tour of Koh Samui's sights and hills that ends with preparing food for elephants and feeding them by hand; 2,000 THB per adult, 1,500 THB per child aged 4–10, lunch and hotel transfer included. No riding or bathing with elephants.",
+  "included": [
+   "Return hotel transfer from the main areas",
+   "Shared 4x4 off-road vehicle and driver",
+   "Lunch at a hilltop restaurant",
+   "Ingredients for preparing the elephants' food",
+   "Visits to Hin Ta Hin Yai, Wat Khunaram, Na Muang 1 waterfall, a coconut plantation and Wat Teepangkorn"
+  ],
+  "not_included": [
+   "Alcoholic drinks",
+   "Extra food and drinks beyond lunch",
+   "Tips and personal expenses"
+  ],
+  "itinerary": [
+   "08:30 | Hotel pickup",
+   "09:15 | Hin Ta and Hin Yai rocks",
+   "10:00 | Wat Khunaram and the mummified monk",
+   "10:45 | Na Muang 1 waterfall, swim if the water allows",
+   "11:30 | Coconut plantation",
+   "12:15 | Off-road drive to a high viewpoint",
+   "12:45 | Wat Teepangkorn",
+   "13:30 | Lunch at a panoramic restaurant",
+   "14:45 | Elephant camp: cook food for the elephants",
+   "15:30 | Feed the elephants by hand",
+   "16:30 | Return transfer to your hotel"
+  ],
+  "what_to_bring": [
+   "Clothes that cover shoulders and knees for the temples",
+   "Swimwear and a small towel for the waterfall",
+   "Sandals with grip or trainers",
+   "Sunscreen and insect repellent",
+   "Cash for drinks and donations"
+  ],
+  "faq": [
+   "What does the jungle safari with elephant feeding cost? | 2,000 THB per adult (11 and over) and 1,500 THB per child aged 4–10 on the shared 4x4. A private vehicle for your group starts at 10,500 THB for two people, plus 2,000 THB for each extra guest up to 10.",
+   "Is there elephant riding or bathing on this 4x4 safari? | No. The elephant part is cooking a meal of fruit, vegetables and sticky rice and feeding it to the elephants by hand. We do not sell tours with elephant riding, bathing or shows.",
+   "Where does the elephant feeding safari pick up? | From hotels in the main areas of Koh Samui from 08:30. If your villa is up a narrow hill road, the driver may meet you at the nearest main road; we send the meeting point the day before.",
+   "Is lunch included on the elephant and off-road day? | Yes, a Thai lunch at a panoramic restaurant in the hills is included. Alcohol and any extra food or drinks are paid on the spot.",
+   "How long is the 4x4 elephant safari day? | About eight hours: pickup from 08:30 and back at the hotel around 16:30–17:00, with eight stops including the elephant camp at the end of the day.",
+   "Does the elephant safari still run in the rainy season? | Yes, it runs daily all year. From October to December expect showers; the waterfall swim may be skipped when the water is high and fast, and the off-road section is slower.",
+   "What is the cancellation policy for the 4x4 safari with elephant feeding? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Is the elephant feeding safari suitable for young children? | Children from 4 pay the child price; the operator does not list a minimum age, so tell us if you have toddlers. The 4x4 is bumpy on the hill tracks, and children must be supervised around the elephants."
+  ]
+ },
+ {
+  "slug": "guided-jet-ski-tour-koh-phangan-from-maenam",
+  "name": "Guided Jet Ski Tour to Koh Phangan from Maenam, Koh Samui",
+  "price": 3500,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Discovery 1 h to Koh Som, no transfer",
+    "price": 3500,
+    "max_guests": 2
+   },
+   {
+    "label": "Discovery 1 h to Koh Som, with hotel transfer",
+    "price": 4500,
+    "max_guests": 2
+   },
+   {
+    "label": "Sunset 1.5 h, no transfer",
+    "price": 4500,
+    "max_guests": 2
+   },
+   {
+    "label": "Sunset 1.5 h, with hotel transfer",
+    "price": 5500,
+    "max_guests": 2
+   },
+   {
+    "label": "Koh Phangan 3 h, no transfer",
+    "price": 6500,
+    "max_guests": 2
+   },
+   {
+    "label": "Koh Phangan 3 h, with hotel transfer",
+    "price": 7500,
+    "max_guests": 2
+   },
+   {
+    "label": "Koh Phangan 4 h, no transfer",
+    "price": 8000,
+    "max_guests": 2
+   },
+   {
+    "label": "Koh Phangan 4 h, with hotel transfer",
+    "price": 9000,
+    "max_guests": 2
+   }
+  ],
+  "max_guests": 2,
+  "cat": [
+   "Water sports"
+  ],
+  "duration": "1 hour to 4 hours, depending on the option",
+  "boat": "Sea-Doo jet ski, 1,600 cc, 130 hp (driver plus one passenger)",
+  "pier": "Jet ski centre on Maenam beach",
+  "pickup_window": "Discovery 13:00 · Sunset 17:00 · Koh Phangan 10:00 or 14:00",
+  "return": "1–4 hours after departure",
+  "season": "Daily, weather permitting (the Koh Phangan crossing is often cancelled in rough seas, October–December)",
+  "pickup_enabled": false,
+  "pickup_note": "Choose a 'with hotel transfer' option for a return van from the main areas; Lipa Noi, Taling Ngam and Nathon add 500 THB.",
+  "cxl": "partner",
+  "notice": "Prices are per jet ski for one or two riders. The guide decides on the day whether the Koh Phangan crossing is safe.",
+  "bookable": true,
+  "partner": "1",
+  "short": "Ride your own jet ski behind a guide from Maenam across to Koh Phangan's beaches, from 6,500 THB per jet ski for 3 hours (one or two riders). Shorter 1 hour and sunset rides to Koh Som start at 3,500 THB.",
+  "included": [
+   "Jet ski (one or two riders)",
+   "Guide on his own jet ski",
+   "Life jackets",
+   "Snorkel gear (Koh Phangan rides)",
+   "Water and soft drinks",
+   "Accident insurance",
+   "Return hotel transfer on 'with transfer' options"
+  ],
+  "not_included": [
+   "Fuel or damage beyond the operator's terms (ask before riding)",
+   "Hotel transfer on 'no transfer' options",
+   "Lunch",
+   "Remote-area transfer surcharge 500 THB (Lipa Noi, Taling Ngam, Nathon)"
+  ],
+  "itinerary": [
+   "10:00 | Briefing at the Maenam jet ski centre (Koh Phangan ride, also 14:00)",
+   "Late morning | Guided crossing to Koh Phangan",
+   "Midday | 3–4 beach, snorkel and swim stops on Koh Phangan",
+   "13:00–14:00 | Ride back and finish at Maenam (3 h or 4 h option)"
+  ],
+  "what_to_bring": [
+   "Swimwear and a rash vest",
+   "Sunglasses with a strap",
+   "Reef-safe sunscreen",
+   "Dry bag for your phone",
+   "Passport details for the booking (never the passport as a deposit)"
+  ],
+  "faq": [
+   "Is the Koh Phangan jet ski price per person or per jet ski? | Per jet ski, carrying one or two riders. The 3 hour Koh Phangan ride is 6,500 THB per jet ski without transfer or 7,500 THB with a return hotel van; 4 hours is 8,000 or 9,000 THB.",
+   "How old do you need to be to ride on the Maenam jet ski tour? | The operator does not publish an age limit. Tell us every rider's age when you book and we confirm the driver and passenger rules in writing before you pay.",
+   "Can I get a hotel transfer to the Maenam jet ski centre? | Yes: pick a 'with hotel transfer' option for a return van from the main beach areas. Lipa Noi, Taling Ngam and Nathon pay 500 THB extra.",
+   "Which jet ski ride goes to Koh Phangan? | The 3 h and 4 h rides cross to Koh Phangan for 3–4 beach and snorkel stops. The 1 hour Discovery and the sunset ride stay closer to Samui, around Koh Som.",
+   "How far is the crossing from Maenam to Koh Phangan by jet ski? | The open water between Samui's north coast and Koh Phangan is roughly 15 km. How long it takes depends on the sea and the group's pace, and it is the bumpiest part of the ride.",
+   "Does the Koh Phangan jet ski tour run in November? | Only on calm days. The north-east monsoon brings wind and swell from October to December, and the guide will switch to a shorter local route or cancel; if cancelled you choose a new date or a full refund.",
+   "What is the cancellation policy for the Maenam jet ski tour? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Do I need a licence or experience for the guided jet ski ride to Koh Phangan? | No licence is needed for a guided ride, but you must follow the briefing and stay behind the guide. First-timers should start with the 1 hour ride; the 3–4 hour crossing is physically tiring."
+  ]
+ },
+ {
+  "slug": "jungle-discovery-jeep-safari-no-animals-koh-samui",
+  "name": "Jungle Discovery Jeep Safari: Temples and Waterfall, Koh Samui",
+  "price": 1500,
+  "child": 1100,
+  "per": "person",
+  "max_pax": 10,
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "About 7.5 hours including transfers",
+  "boat": "Open 4x4 safari truck (shared)",
+  "pier": "Hotel pickup on Koh Samui",
+  "pickup_window": "From 08:30",
+  "return": "About 16:00",
+  "season": "Daily, all year",
+  "pickup_enabled": true,
+  "pickup_note": "Hotel pickup and drop-off included from the main areas (Chaweng, Lamai, Bophut, Maenam, Choeng Mon, Bang Rak, Plai Laem); remote villas get a nearby meeting point, confirmed when you book.",
+  "cxl": "partner",
+  "notice": "Child price applies to ages 4–10; 11 and over pay the adult price. Private 4x4 from 7,500 THB (driver only) or 10,500 THB with guide and lunch for up to 5, on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A shared open-4x4 day around Koh Samui's temples, rocks, Na Muang waterfall and the Secret Buddha Garden, with no animal activities: 1,500 THB per adult, 1,100 THB per child aged 4–10, including guide, lunch and hotel transfer.",
+  "included": [
+   "Hotel pickup and drop-off from the main areas",
+   "Shared open 4x4 safari truck",
+   "English-speaking guide",
+   "Lunch at a hilltop restaurant",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcoholic drinks",
+   "Entry to the Secret Buddha Garden if charged on the day",
+   "Personal expenses and tips"
+  ],
+  "itinerary": [
+   "08:30 | Hotel pickup",
+   "09:15 | Big Buddha and Wat Plai Laem",
+   "10:15 | Hin Ta Hin Yai rocks and the Guan Yu shrine",
+   "11:15 | Na Muang 1 waterfall swim",
+   "12:00 | Rubber tapping and coconut processing demonstrations",
+   "12:45 | Lunch at a hilltop restaurant",
+   "13:45 | Secret Buddha Garden",
+   "14:30 | Wat Teepangkorn and the 360-degree viewpoint",
+   "16:00 | Return transfer"
+  ],
+  "what_to_bring": [
+   "Clothes covering shoulders and knees, or a sarong",
+   "Swimwear and towel for the waterfall",
+   "Trainers or sandals with grip (steep paths)",
+   "Sunscreen, hat and insect repellent",
+   "Cash for drinks and temple donations"
+  ],
+  "faq": [
+   "How much is the jungle discovery jeep safari? | 1,500 THB per adult and 1,100 THB per child aged 4–10 on the shared 4x4, with guide, lunch and transfer. Private trucks start at 7,500 THB for up to 5 (driver only) or 10,500 THB with guide and lunch.",
+   "Does the jungle discovery safari include any animal shows? | No. This route has no monkey, snake or elephant activities, which is why we picked it. The plantation stop shows how rubber is tapped and coconuts are processed by hand.",
+   "Which hotels does the jungle discovery jeep collect from? | Hotels in the main beach areas from 08:30, with drop-off around 16:00. Villas on steep or narrow roads are met at the nearest main road.",
+   "Is the Secret Buddha Garden part of the jungle discovery jeep day? | Yes, after lunch. The garden sits high in the hills and the road up is steep, which is why the tour uses a 4x4.",
+   "How many hours is the jungle discovery safari? | About seven and a half hours door to door, from 08:30 pickup to around 16:00 back at the hotel.",
+   "Can I swim at Na Muang on the jungle discovery tour in the wet season? | Usually yes, but after heavy rain (most often October to December) the pool can be fast and brown and the guide may keep everyone out of the water.",
+   "What is the cancellation policy for the jungle discovery jeep safari? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Are there steep paths or dress rules on the jungle discovery safari? | Yes to both. Temples need shoulders and knees covered, and the waterfall and garden paths are uneven. It suits children from about 4 and adults of average fitness."
+  ]
+ },
+ {
+  "slug": "4x4-off-road-island-safari-culture-tour-koh-samui",
+  "name": "4x4 Off-Road Island Safari and Culture Tour, Koh Samui",
+  "price": 2100,
+  "child": 1500,
+  "per": "person",
+  "max_pax": 8,
+  "min_age": "5+",
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "About 7.5 hours including transfers",
+  "boat": "4x4 off-road vehicle, small group (max 8)",
+  "pier": "Hotel pickup on Koh Samui",
+  "pickup_window": "From 09:00",
+  "return": "About 16:30",
+  "season": "Join-in tour on Tuesdays and Fridays, all year",
+  "weekdays": "Tue,Fri",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer included from the main areas (Chaweng, Lamai, Bophut, Maenam, Choeng Mon, Bang Rak, Plai Laem); remote areas on request.",
+  "cxl": "partner",
+  "notice": "Child price applies to ages 5–10; 11 and over pay the adult price. Private 4x4 on any day from 8,500 THB for 1–2 guests, on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A small-group 4x4 day (max 8) on Tuesdays and Fridays covering the Big Buddha, Wat Plai Laem, Overlap Stone, the 80 m Na Muang 2 waterfall and the Magic Garden: 2,100 THB per adult, 1,500 THB per child aged 5–10, lunch and transfer included.",
+  "included": [
+   "Return hotel transfer from the main areas",
+   "4x4 off-road vehicle and driver",
+   "Bilingual guide (English and German)",
+   "Thai lunch at a restaurant with a pool view",
+   "Snacks, water and soft drinks",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcoholic drinks",
+   "Tips",
+   "Purchases at cafés and shops"
+  ],
+  "itinerary": [
+   "09:00 | Hotel pickup",
+   "09:30 | Big Buddha (Wat Phra Yai)",
+   "10:15 | Wat Plai Laem",
+   "11:30 | Overlap Stone viewpoint above Lamai",
+   "12:45 | Thai lunch with a pool view",
+   "14:00 | Na Muang 2 waterfall (short hike)",
+   "15:00 | Magic Garden",
+   "15:45 | Wat Teepangkorn viewpoint",
+   "16:30 | Return transfer"
+  ],
+  "what_to_bring": [
+   "Walking shoes with grip for Overlap Stone and the waterfall path",
+   "Clothes covering shoulders and knees",
+   "Swimwear and towel",
+   "Sunscreen and insect repellent",
+   "Water bottle"
+  ],
+  "faq": [
+   "What does the 4x4 island safari and culture tour cost? | 2,100 THB per adult and 1,500 THB per child aged 5–10, including lunch, drinks, snacks, guide and transfer. Private trips run 8,500 THB (1–2), 10,000 THB (3–4), 12,000 THB (5–6) and 14,000 THB (7–8).",
+   "Can children under 5 join the 4x4 culture safari? | The join-in tour has no price for children under 5 and the climbs are steep, so we sell it from age 5. Families with toddlers should ask about the private option.",
+   "Is hotel pickup included on the off-road island safari? | Yes, a return transfer from the main beach areas, with pickup from 09:00. Remote areas are on request.",
+   "Which days does the 4x4 culture tour run? | The shared tour runs on Tuesdays and Fridays. A private 4x4 can be booked on any day.",
+   "How hard is the Overlap Stone climb on the island safari? | It is a short but steep climb up rock and steps above Lamai, with a narrow ledge at the top. Wear proper shoes; you can wait at the bottom if you prefer.",
+   "What happens on the 4x4 culture tour if it rains? | The tour runs in light rain; the guide may skip the Overlap Stone climb or the waterfall hike if paths are slippery. If it is cancelled for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for the 4x4 island safari and culture tour? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Who should not book the off-road culture safari? | People with serious back problems or limited mobility, and anyone pregnant: the tracks are bumpy and two stops involve hiking. Temple visits need covered shoulders and knees."
+  ]
+ },
+ {
+  "slug": "elephant-sanctuary-visit-bophut-hills-koh-samui",
+  "name": "Elephant Sanctuary Visit in the Bophut Hills, Koh Samui",
+  "price": 2000,
+  "child": 1000,
+  "per": "person",
+  "options": [
+   {
+    "label": "1.5 h morning visit 10:00–11:30",
+    "price": 2000,
+    "child": 1000
+   },
+   {
+    "label": "1.5 h afternoon visit 13:00–14:30",
+    "price": 2000,
+    "child": 1000
+   },
+   {
+    "label": "3 h morning visit with vegetarian lunch 09:00–12:00",
+    "price": 3000,
+    "child": 1500
+   },
+   {
+    "label": "3 h afternoon visit with vegetarian meal 14:00–17:00",
+    "price": 3000,
+    "child": 1500
+   }
+  ],
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "1.5 or 3 hours at the sanctuary, plus transfers",
+  "pier": "Sanctuary in the hills above Bophut",
+  "pickup_window": "About 30–45 minutes before your visit starts",
+  "return": "Hotel drop-off about 30–45 minutes after the visit",
+  "season": "Daily, all year",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer included from hotels on or near the ring road; hillside and mountain addresses pay a small surcharge, quoted when you book.",
+  "cxl": "partner",
+  "notice": "No riding, no bathing, no shows. Children under 4 visit free; child price for ages 4–11 (we confirm the age band for the 1.5 h visits).",
+  "bookable": true,
+  "partner": "1",
+  "short": "Feed and walk with elephants at a sanctuary in the Bophut hills, with no riding, bathing or shows: 1.5 hours for 2,000 THB per adult (1,000 THB child) or 3 hours with a vegetarian meal for 3,000 THB (1,500 THB child), hotel transfer included.",
+  "included": [
+   "Return hotel transfer from the ring road",
+   "Sanctuary entry and guide",
+   "Educational introduction",
+   "Food for the elephants and feeding time",
+   "Water, soft drinks, coffee or tea",
+   "Vegetarian lunch and snacks (3 h visits)",
+   "Accident insurance (1.5 h morning visit)"
+  ],
+  "not_included": [
+   "Mountain-area pickup surcharge",
+   "Alcoholic drinks",
+   "Tips and personal expenses"
+  ],
+  "itinerary": [
+   "09:00 | Hotel pickup (3 h morning example)",
+   "09:30 | Welcome and educational video",
+   "10:00 | Prepare food and feed the elephants",
+   "10:30 | Walk with the elephants and watch them in their area",
+   "11:30 | Vegetarian meal",
+   "12:00 | Return transfer"
+  ],
+  "what_to_bring": [
+   "Closed shoes (the ground is muddy)",
+   "Modest clothing: no bikinis or very short shorts",
+   "Insect repellent and sunscreen",
+   "Clothes you don't mind getting dirty",
+   "Small notes for tips or donations"
+  ],
+  "faq": [
+   "How much does the Bophut hills elephant sanctuary visit cost? | 1.5 hours is 2,000 THB per adult and 1,000 THB per child; 3 hours with a vegetarian meal is 3,000 THB per adult and 1,500 THB per child. Children under 4 are free. Hotel transfer is included.",
+   "Is there riding or bathing at this elephant sanctuary? | No. There is no riding, no bathing and no performances. You prepare food, feed the elephants and walk with them.",
+   "Where does the elephant sanctuary pick up from? | Hotels on or near the ring road in all the main areas, about 30–45 minutes before the visit. Hillside and mountain addresses pay a small surcharge that we quote when you book.",
+   "What is the difference between the 1.5 and 3 hour elephant visits? | The 3 hour visit adds a longer walk with the elephants and a vegetarian lunch or meal. The 1.5 hour visit covers the introduction and feeding and suits younger children.",
+   "Can you touch the elephants at the Bophut sanctuary? | Yes, the sanctuary is not strictly hands-off: you can feed and touch the elephants if you wish, under the keepers' guidance. One elephant likes to reach for visitors with its trunk, so listen to the keepers.",
+   "Does the elephant sanctuary visit run in heavy rain? | Yes, it runs daily all year; the morning visit is usually drier in the rainy season. Expect mud from October to December.",
+   "What is the cancellation policy for the Bophut hills elephant sanctuary visit? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What should I wear to the elephant sanctuary in the Bophut hills? | Modest, comfortable clothes and closed shoes. Avoid bikinis, low-cut tops and very short shorts. Pregnant guests and anyone with heart or mobility issues should check with a doctor first."
+  ]
+ },
+ {
+  "slug": "jeep-safari-waterfall-mangrove-kayak-koh-samui",
+  "name": "Jeep Safari with Waterfall Swim and Mangrove Kayak, Koh Samui",
+  "price": 1950,
+  "child": 1650,
+  "per": "person",
+  "max_pax": 12,
+  "min_age": "5+",
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "About 8.5 hours door to door",
+  "boat": "4x4 safari jeep, max 12 guests",
+  "pier": "Hotel pickup on Koh Samui",
+  "pickup_window": "From 08:45",
+  "return": "About 17:15 at your hotel",
+  "season": "Daily, all year",
+  "pickup_enabled": true,
+  "pickup_note": "Hotel transfer included from hotels across the main areas of Koh Samui; for hillside villas we confirm a nearby meeting point when you book.",
+  "cxl": "partner",
+  "notice": "Minimum age 5. Child price applies from 5 years; we confirm the age at which the adult price starts when you book.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A full-day jeep safari (max 12) to the Big Buddha, Wat Plai Laem, Hin Ta Hin Yai and Na Muang waterfall, finishing with a guided kayak through mangroves: 1,950 THB per adult, 1,650 THB per child from age 5, lunch, entry fees and transfer included.",
+  "included": [
+   "Hotel pickup and drop-off",
+   "4x4 safari jeep (max 12 guests)",
+   "Guide (English and Chinese)",
+   "Lunch with a view",
+   "Entrance fees on the route",
+   "Guided mangrove kayaking",
+   "Water and soft drinks",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcoholic drinks",
+   "Tips and personal expenses"
+  ],
+  "itinerary": [
+   "08:45 | Hotel pickup",
+   "10:00 | Big Buddha",
+   "11:00 | Wat Plai Laem",
+   "12:15 | Lunch with island views",
+   "13:30 | Hin Ta and Hin Yai rocks",
+   "14:30 | Swim at Na Muang waterfall",
+   "15:30 | Rubber tapping demonstration",
+   "16:15 | Guided kayaking through the mangroves",
+   "17:15 | Return transfer"
+  ],
+  "what_to_bring": [
+   "Swimwear under your clothes",
+   "Quick-dry shorts for kayaking",
+   "Sarong or cover-up for the temples",
+   "Sandals with straps",
+   "Sunscreen, hat and insect repellent",
+   "Dry bag for your phone"
+  ],
+  "faq": [
+   "How much is the jeep safari with mangrove kayaking? | 1,950 THB per adult and 1,650 THB per child from age 5, including lunch, entrance fees, kayaking, guide and hotel transfer.",
+   "Is the mangrove kayak jeep safari suitable for children under 5? | No. The minimum age is 5, mainly because of the kayaking. Younger children can join the jungle discovery jeep safari instead.",
+   "Is hotel pickup included on the mangrove kayak safari? | Yes, from hotels across the main areas from about 08:45, with drop-off around 17:15.",
+   "Do I need kayaking experience for the mangrove section of the jeep safari? | No. The mangrove channels are sheltered and the guide leads the group. Children paddle with a parent.",
+   "How long is the jeep safari with mangrove kayaking? | A long day: about eight and a half hours from pickup to drop-off, with around six hours of touring.",
+   "Does the mangrove kayak safari run when it rains? | Yes, daily all year. Heavy rain can make the waterfall swim unsafe and the guide will skip it; the kayak usually goes ahead unless there is thunder.",
+   "What is the cancellation policy for the jeep safari with mangrove kayaking? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What should I bring for the jeep safari with mangrove kayaking? | Swimwear, quick-dry clothes, a cover-up for the temples, strapped sandals and a dry bag. Insect repellent matters in the mangroves late in the day."
+  ]
+ },
+ {
+  "slug": "white-lotus-filming-locations-private-tour-koh-samui",
+  "name": "White Lotus Filming Locations Private Day Tour, Koh Samui",
+  "price": 7500,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "6 h private van and driver, up to 5 guests",
+    "price": 7500,
+    "max_guests": 5
+   },
+   {
+    "label": "6 h private van, driver and licensed guide, up to 5 guests",
+    "price": 9500,
+    "max_guests": 5
+   }
+  ],
+  "max_guests": 5,
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "6 hours (extra hours available)",
+  "boat": "Private air-conditioned van with driver",
+  "pier": "Hotel or villa pickup on Koh Samui",
+  "pickup_window": "10:00 (other start times on request)",
+  "return": "About 16:00, or after sunset if you extend",
+  "season": "Daily, all year",
+  "pickup_enabled": true,
+  "pickup_note": "Pickup and drop-off at your hotel or villa anywhere on Koh Samui are included.",
+  "cxl": "partner",
+  "notice": "Price per van for up to 5. Guests 6–9 add 500 THB each and extra hours are 1,000 THB; message us to add them. We leave out the snake farm stop.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A private 6-hour van tour of the places seen in season 3 of The White Lotus: temple grounds, Choeng Mon, Fisherman's Village in Bophut, a resort lotus pond and a west-coast sunset. 7,500 THB per van for up to 5, or 9,500 THB with a licensed guide.",
+  "included": [
+   "Private air-conditioned van and driver for 6 hours",
+   "Hotel or villa pickup and drop-off",
+   "Licensed English-speaking guide (9,500 THB option)",
+   "Taxes"
+  ],
+  "not_included": [
+   "Meals and drinks, including water",
+   "Entrance fees",
+   "Optional afternoon tea at the resort (about 2,000 THB++ per person, booked ahead)",
+   "Extra guests 6–9 (500 THB each) and extra hours (1,000 THB)"
+  ],
+  "itinerary": [
+   "10:00 | Temple and cultural grounds",
+   "11:30 | Choeng Mon beach",
+   "13:00 | Fisherman's Village, Bophut",
+   "14:15 | Resort grounds: lotus pond and meditation salas",
+   "15:45 | Free stop of your choice (we skip the snake farm)",
+   "16:45 | Taling Ngam on the west coast",
+   "17:30 | Sunset finale (with an extra hour)"
+  ],
+  "what_to_bring": [
+   "Clothes covering shoulders and knees for temple grounds",
+   "Smart-casual outfit if you book afternoon tea or a sunset bar",
+   "Cash for drinks, entry fees and snacks",
+   "Swimwear if you want a dip at Choeng Mon",
+   "Phone charger for photos"
+  ],
+  "faq": [
+   "How much is the private White Lotus locations tour? | 7,500 THB per van for 6 hours and up to 5 guests with a driver, or 9,500 THB with a licensed guide. Guests 6–9 add 500 THB each; extra hours are 1,000 THB.",
+   "Is the White Lotus location tour suitable for children? | Yes, it is a private van tour with short walks, so you set the pace. Child seats are not listed; tell us if you need one and we ask the driver.",
+   "Where does the White Lotus private van pick us up? | At your hotel or villa anywhere on Koh Samui, at 10:00 or another time you choose, and it drops you back at the end.",
+   "Can we go inside the resort used in The White Lotus? | Resorts control access to their grounds. The tour visits the public areas and lotus pond; for a seat inside, book the optional afternoon tea in advance (about 2,000 THB++ per person, minimum two).",
+   "How long is the White Lotus filming locations tour? | Six hours, normally 10:00–16:00. Add an hour or two (1,000 THB each) to stay for sunset on the west coast.",
+   "Is the White Lotus tour worth doing on a rainy day? | Yes, more than most tours, as you are in an air-conditioned van and most stops are short. The sunset finale only works if the sky is clear, so decide on the extension on the day.",
+   "What is the cancellation policy for the White Lotus filming locations tour? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Are entrance fees and meals included on the White Lotus private tour? | No. Meals, drinks and any entry fees are paid as you go; budget a few hundred baht per person plus lunch in Fisherman's Village."
+  ]
+ },
+ {
+  "slug": "thai-fishing-boat-day-trip-big-buddha-pier-koh-samui",
+  "name": "Thai Fishing Boat Day Trip from Big Buddha Pier, Koh Samui",
+  "price": 1800,
+  "child": 1300,
+  "per": "person",
+  "max_pax": 20,
+  "cat": [
+   "Fishing",
+   "Boat trips"
+  ],
+  "duration": "About 8 hours including transfers (about 6–7 hours on the boat)",
+  "boat": "Traditional Thai fishing boat, max 20 guests",
+  "pier": "Big Buddha (Bang Rak) pier",
+  "pickup_window": "From 09:00",
+  "return": "Back at the pier 16:00–17:00, then hotel drop-off",
+  "season": "Daily, all year, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer included from the main areas; Bang Po, Nathon, Lipa Noi, Lipa Yai, Taling Ngam and Phang Ka add 500 THB per person.",
+  "cxl": "partner",
+  "notice": "Child price for ages 6–11 (we confirm whether it starts at 4). Private day boats from 12,500 THB, night squid fishing and Saturday deep-sea trips on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A shared day of fishing on a traditional Thai boat from Big Buddha pier, with rods, bait, lunch and your catch cooked on board: 1,800 THB per adult, 1,300 THB per child, hotel transfer from the main areas included. Catch not guaranteed.",
+  "included": [
+   "Return hotel transfer from the main areas",
+   "Rods, bait and lures",
+   "English-speaking guide and Thai crew",
+   "Lunch on board, with fish from the catch cooked",
+   "Soft drinks and water",
+   "Life jackets and towels",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcoholic drinks",
+   "Outer-area transfer 500 THB per person",
+   "Trolling (private trips only)"
+  ],
+  "itinerary": [
+   "09:00 | Hotel pickup",
+   "10:00 | Depart Big Buddha pier for the first fishing spot",
+   "12:00 | Lunch on board, with the morning's catch cooked",
+   "13:00 | Second fishing session at a new spot",
+   "16:00 | Back at the pier (up to 17:00) and hotel drop-off"
+  ],
+  "what_to_bring": [
+   "Hat, sunglasses and sunscreen",
+   "Light long-sleeve shirt",
+   "Motion-sickness tablets if you get seasick",
+   "Cool bag if you want to take fish home",
+   "Cash for drinks and tips"
+  ],
+  "faq": [
+   "How much is the shared fishing boat trip from Big Buddha pier? | 1,800 THB per adult and 1,300 THB per child, with transfer from the main areas, gear, lunch and drinks. The whole boat privately is 12,500 THB for up to 6, 14,500 THB up to 10 and 19,000 THB up to 17.",
+   "From what age can children join the Thai fishing boat trip? | The child price applies from 6 to 11 years (the partner also mentions 4–11; we confirm when you book). Younger children can come but must be watched closely near hooks and the open deck.",
+   "Which areas get free pickup for the Big Buddha fishing trip? | The main areas including Chaweng, Bophut, Maenam, Choeng Mon, Lamai and Bang Rak. Bang Po, Nathon, Lipa Noi, Lipa Yai, Taling Ngam and Phang Ka pay 500 THB per person.",
+   "What fish might we catch on the Samui fishing boat? | Snapper, grouper, barracuda, mackerel, trevally and cobia are the usual targets near Samui. There are no deep-sea grounds close to the island, so big game fish are unlikely, and no catch is guaranteed.",
+   "How long is the fishing day from Big Buddha pier? | About six to seven hours on the boat, departing at 10:00 and back at 16:00–17:00, plus hotel transfers.",
+   "Is the Thai fishing boat trip rough in the monsoon? | From October to December the sea off the north coast can be choppy and some days are cancelled. If the trip is called off for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for the Big Buddha pier fishing trip? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What should I bring on the Samui fishing boat trip? | Sun protection, a light long-sleeve shirt, seasickness tablets if you need them and cash for drinks. Rods, bait, life jackets and towels are provided."
+  ]
+ },
+ {
+  "slug": "sail-rock-koh-tao-dive-snorkel-catamaran-koh-samui",
+  "name": "Sail Rock and Koh Tao Dive or Snorkel Day by Fast Catamaran",
+  "price": 2900,
+  "child": null,
+  "per": "person",
+  "options": [
+   {
+    "label": "Snorkelling day (Sail Rock or Koh Tao, by weekday)",
+    "price": 2900
+   },
+   {
+    "label": "Sail Rock, 2 dives (Tue, Thu, Sat, Sun)",
+    "price": 4950
+   },
+   {
+    "label": "Koh Tao, 2 dives (Mon, Wed, Fri)",
+    "price": 5150
+   },
+   {
+    "label": "Chumphon Pinnacle and Koh Tao, 2 dives (Mon, Wed, Fri)",
+    "price": 5650
+   }
+  ],
+  "min_age": "Diving from 8; certified divers bring their card",
+  "cat": [
+   "Boat trips",
+   "Water sports"
+  ],
+  "duration": "About 8 hours including transfers",
+  "boat": "17–18 m high-speed motor catamaran with dive platform and 2 toilets",
+  "pier": "Koh Samui pier (confirmed with your booking)",
+  "pickup_window": "07:00–07:30",
+  "return": "Back on Samui 14:00–15:00 (Sail Rock) or 15:00–16:00 (Koh Tao)",
+  "season": "Daily: Sail Rock on Tue, Thu, Sat, Sun; Koh Tao and Chumphon Pinnacle on Mon, Wed, Fri",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer included from Bophut, Chaweng, Bang Rak and Choeng Mon; other areas on request.",
+  "cxl": "partner",
+  "notice": "Pick the option for your weekday: Sail Rock runs Tue, Thu, Sat, Sun; Koh Tao and Chumphon run Mon, Wed, Fri. Fun dives are for certified divers; ask us about trial dives.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A day trip by fast catamaran to Sail Rock or Koh Tao with two dives or two snorkel stops, lunch and gear: snorkelling 2,900 THB, two dives 4,950–5,650 THB per person, transfer from Bophut, Chaweng, Bang Rak and Choeng Mon included.",
+  "included": [
+   "Return hotel transfer from Bophut, Chaweng, Bang Rak and Choeng Mon",
+   "Two dives or two snorkel sessions",
+   "Dive equipment (excluding computer) and dive guide",
+   "Snorkel gear and life jackets",
+   "Lunch on board",
+   "Water and soft drinks",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Dive computer rental 300 THB per day",
+   "Underwater camera rental 1,500 THB per day",
+   "Alcoholic drinks",
+   "Dive insurance (recommended)"
+  ],
+  "itinerary": [
+   "07:00 | Hotel pickup (07:00–07:30)",
+   "08:00 | Depart Koh Samui",
+   "09:00 | First dive or snorkel (09:30 at Koh Tao)",
+   "11:00 | Lunch on board (11:30 at Koh Tao)",
+   "12:00 | Second dive or snorkel (12:30 at Koh Tao)",
+   "13:30 | Return to Samui (14:00 from Koh Tao)",
+   "14:00 | Back on Samui and hotel drop-off (15:00–16:00 from Koh Tao)"
+  ],
+  "what_to_bring": [
+   "Certification card and logbook (divers)",
+   "Swimwear and towel",
+   "Reef-safe sunscreen",
+   "Light jacket for the ride back",
+   "Seasickness tablets if needed",
+   "Cash for drinks and tips"
+  ],
+  "faq": [
+   "How much is the Sail Rock and Koh Tao catamaran day? | Snorkelling is 2,900 THB per person at either site. Two dives cost 4,950 THB at Sail Rock, 5,150 THB at Koh Tao or 5,650 THB at Chumphon Pinnacle and Koh Tao, including gear, lunch and transfer.",
+   "Can children dive or snorkel on the Sail Rock catamaran? | Youth dive programmes start at age 8. Children can snorkel with an adult; the partner does not list a separate child price, so children pay the snorkelling price.",
+   "Which hotels does the dive catamaran collect from? | Hotels in Bophut, Chaweng, Bang Rak and Choeng Mon are included between 07:00 and 07:30. Lamai, Maenam and other areas are on request.",
+   "Which days does the catamaran go to Sail Rock and which to Koh Tao? | Sail Rock on Tuesday, Thursday, Saturday and Sunday; Koh Tao and Chumphon Pinnacle on Monday, Wednesday and Friday.",
+   "How long is the boat ride to Sail Rock and Koh Tao? | About an hour to Sail Rock and about 1.5 hours to Koh Tao and Chumphon Pinnacle each way. Sail Rock days finish earlier.",
+   "What is diving like from Samui in November? | The north-east monsoon brings more swell and lower visibility from November to December; some days are moved to more sheltered sites or cancelled. The best conditions are usually March to September.",
+   "What is the cancellation policy for the Sail Rock and Koh Tao catamaran day? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What do certified divers need for the Sail Rock catamaran trip? | Your certification card or logbook, and ideally dive insurance. Don't fly within 18–24 hours after diving. If you are not certified, ask us about a trial dive before booking."
+  ]
+ },
+ {
+  "slug": "private-dive-speedboat-charter-sail-rock-koh-samui",
+  "name": "Private Dive Speedboat Charter to Sail Rock from Koh Samui",
+  "price": 36000,
+  "child": null,
+  "per": "boat",
+  "max_guests": 4,
+  "min_age": "Certified divers (card or logbook required)",
+  "cat": [
+   "Private charter",
+   "Water sports"
+  ],
+  "duration": "About 8 hours",
+  "boat": "39 ft twin-engine speedboat with toilet",
+  "pier": "Koh Samui pier (confirmed with your booking)",
+  "pickup_window": "08:00",
+  "return": "About 16:00",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Return hotel transfer on Koh Samui included; pickup from Koh Phangan costs 5,000 THB extra.",
+  "cxl": "partner",
+  "notice": "Price covers up to 4 certified divers and 2 dives at Sail Rock. Snorkellers, beginners, other sites and larger groups (boat up to 10) on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "Your own 39 ft speedboat, dive guide and two dives at Sail Rock for up to 4 certified divers: 36,000 THB for the boat, with gear, lunch and Samui hotel transfer included.",
+  "included": [
+   "Private 39 ft speedboat and crew",
+   "Dive instructor or guide",
+   "Two dives at Sail Rock",
+   "Dive and snorkel equipment",
+   "Lunch, fruit, water and soft drinks",
+   "Life jackets",
+   "Samui hotel transfer",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Koh Phangan pickup 5,000 THB",
+   "Alcoholic drinks",
+   "Tips",
+   "Dive insurance (recommended)"
+  ],
+  "itinerary": [
+   "08:00 | Hotel pickup and briefing",
+   "08:30 | Depart for Sail Rock",
+   "09:45 | First dive",
+   "11:30 | Surface interval and lunch on board",
+   "12:45 | Second dive",
+   "14:30 | Return; at the pier about 16:00"
+  ],
+  "what_to_bring": [
+   "Certification card and logbook",
+   "Your own computer and mask if you prefer",
+   "Swimwear, towel and a warm layer",
+   "Reef-safe sunscreen",
+   "Cash for tips"
+  ],
+  "faq": [
+   "How much does the private Sail Rock dive speedboat cost? | 36,000 THB for the boat, covering up to 4 certified divers, two dives, equipment, guide, lunch and Samui hotel transfer. Prices for snorkellers, beginners or more guests are on request.",
+   "Can non-divers or children come on the private Sail Rock speedboat? | Yes, the boat takes up to 10, but the published price covers four certified divers only. Tell us who is coming and we quote snorkellers and children before you pay.",
+   "Is hotel transfer included on the private dive charter? | Yes, on Koh Samui. Guests on Koh Phangan can be collected from there for 5,000 THB extra.",
+   "Which dive sites does the private Sail Rock speedboat visit? | Two dives at Sail Rock, including the Chimney swim-through if conditions allow. Other sites such as Koh Tao can be priced on request.",
+   "How long is the private dive charter day? | About eight hours, from 08:00 pickup to around 16:00 back at the pier, with about 75 minutes each way to Sail Rock.",
+   "Can the private dive boat go out in monsoon weather? | It goes on calmer days; from November to December swell and visibility can force a change of site or cancellation. If it is cancelled for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for the private Sail Rock dive speedboat? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What paperwork do divers need for the private Sail Rock trip? | A certification card or logbook for every diver, and dive insurance is strongly recommended. Don't fly for 18–24 hours after your last dive."
+  ]
+ },
+ {
+  "slug": "phuchareen-triple-engine-speedboat-charter-koh-samui",
+  "name": "Phuchareen Private 3-Engine Speedboat Charter, Koh Samui",
+  "price": 37000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Koh Phangan full day, up to 8",
+    "price": 37000,
+    "max_guests": 8
+   },
+   {
+    "label": "Koh Tan and Pig Island full day, up to 8",
+    "price": 37000,
+    "max_guests": 8
+   },
+   {
+    "label": "Koh Tan, Pig Island and Koh Rap full day, up to 8",
+    "price": 39000,
+    "max_guests": 8
+   },
+   {
+    "label": "Ang Thong Marine Park full day, up to 8 (from 16 Dec)",
+    "price": 41000,
+    "max_guests": 8
+   },
+   {
+    "label": "Koh Tao and Koh Nang Yuan full day, up to 8",
+    "price": 44000,
+    "max_guests": 8
+   }
+  ],
+  "max_guests": 8,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "About 8.5 hours",
+  "boat": "40 ft (13 m) triple-outboard speedboat \"Phuchareen\", crew of 3",
+  "pier": "Koh Samui pier (confirmed with your booking)",
+  "pickup_window": "Boarding 08:30, departure 09:00",
+  "return": "About 17:00",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a two-way van for up to 10 costs 2,000 THB and pickup from Koh Phangan 4,000 THB.",
+  "cxl": "partner",
+  "park_fee": "Island and park fees in cash, depending on route: Ang Thong 300 THB adult / 150 THB child; Koh Nang Yuan 250 THB adult; Koh Madsum about 50 THB",
+  "notice": "Price for up to 8 guests; guests 9–35 add 500 THB per adult and 300 THB per child (message us). Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "The 40 ft triple-engine speedboat Phuchareen for your group for a full day: Koh Phangan or Koh Tan and Pig Island from 37,000 THB, Ang Thong 41,000 THB, Koh Tao and Koh Nang Yuan 44,000 THB, for up to 8 with guide, snorkel gear and drinks.",
+  "included": [
+   "Private speedboat with captain and crew of 3",
+   "English/Thai-speaking guide",
+   "Snorkel gear and life jackets",
+   "Fruit, water and soft drinks",
+   "Fuel",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch (eaten at a beach restaurant, own cost)",
+   "Island and national park fees, cash",
+   "Hotel transfer (two-way van 2,000 THB)",
+   "Towels",
+   "Extra guests over 8"
+  ],
+  "itinerary": [
+   "08:30 | Board at the pier (Koh Tao route example)",
+   "09:30 | Koh Nang Yuan: snorkel and viewpoint",
+   "12:00 | Lunch on Koh Tao (own cost)",
+   "13:30 | Snorkel at Mango Bay or Hin Wong",
+   "15:30 | Depart Koh Tao",
+   "17:00 | Back on Koh Samui"
+  ],
+  "what_to_bring": [
+   "Towels (not supplied)",
+   "Cash for lunch and island fees",
+   "Reef-safe sunscreen and a hat",
+   "Dry bag for phones",
+   "Light jacket for the ride home"
+  ],
+  "faq": [
+   "How much does the Phuchareen speedboat cost for a day? | For up to 8 guests: Koh Phangan or Koh Tan and Pig Island 37,000 THB, adding Koh Rap 39,000 THB, Ang Thong 41,000 THB, Koh Tao and Koh Nang Yuan 44,000 THB. Extra guests up to 35 are 500 THB per adult and 300 THB per child.",
+   "Can babies and small children travel on the Phuchareen speedboat? | Children are welcome, but the boat is not suitable for infants under 1. Children's life jackets are carried; tell us ages so the crew brings the right sizes.",
+   "Is hotel pickup included with the Phuchareen charter? | No. Add a two-way van for up to 10 for 2,000 THB, or pickup from Koh Phangan for 4,000 THB.",
+   "Is lunch included on the Phuchareen private speedboat? | No. Lunch is at a beach restaurant on the route at your own cost; fruit, water and soft drinks are on board.",
+   "How long is a Phuchareen speedboat day? | About eight and a half hours: boarding at 08:30, departure 09:00 and back around 17:00.",
+   "Can the Phuchareen go to Ang Thong or Koh Tao in November? | Ang Thong is closed from 1 November to 15 December. Koh Tao is often rough in November and December; the captain may suggest Koh Phangan or the south-coast islands instead.",
+   "What is the cancellation policy for the Phuchareen speedboat charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Who should not ride on the Phuchareen triple-engine speedboat? | Pregnant guests and anyone with back or neck problems: fast speedboats slam over waves. Bring towels, cash for fees and lunch, and sun protection."
+  ]
+ },
+ {
+  "slug": "sao-triple-engine-speedboat-charter-bang-rak-pier",
+  "name": "Sao Private Triple-Engine Speedboat from Bang Rak Pier",
+  "price": 25000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Koh Phangan full day, up to 10",
+    "price": 25000,
+    "max_guests": 10
+   },
+   {
+    "label": "Koh Tan, Pig Island and Koh Rap full day, up to 10",
+    "price": 28000,
+    "max_guests": 10
+   },
+   {
+    "label": "Ang Thong Marine Park full day, up to 10 (from 16 Dec)",
+    "price": 35000,
+    "max_guests": 10
+   },
+   {
+    "label": "Koh Tao and Koh Nang Yuan full day, up to 10",
+    "price": 38000,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 10,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "About 8.5 hours",
+  "boat": "Triple-engine speedboat \"Sao\", licensed for up to 40",
+  "pier": "Bang Rak pier (Big Buddha)",
+  "pickup_window": "Departure 08:30 (be at the pier by 08:15)",
+  "return": "About 17:00",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a two-way van on Koh Samui costs 2,000 THB and pickup from Koh Phangan 4,000 THB.",
+  "cxl": "partner",
+  "park_fee": "Island and park fees in cash, depending on route: Ang Thong 300 THB adult / 150 THB child; Koh Nang Yuan 250 THB adult; Koh Madsum about 50 THB",
+  "notice": "Price for up to 10 guests; guests 11–40 add 500 THB per adult (10+) and 250 THB per child 4–9 (message us). Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "The triple-engine speedboat Sao from Bang Rak pier for a full private day: Koh Phangan 25,000 THB, Koh Tan, Pig Island and Koh Rap 28,000 THB, Ang Thong 35,000 THB, Koh Tao and Koh Nang Yuan 38,000 THB, for up to 10 with guide, snacks and snorkel gear.",
+  "included": [
+   "Private speedboat with captain and crew",
+   "English/Thai-speaking guide",
+   "Snorkel gear and life jackets",
+   "Fruit, snacks, ice, water and soft drinks",
+   "Fuel",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch (beach restaurant, own cost)",
+   "Island and national park fees, cash",
+   "Hotel transfer (two-way van 2,000 THB)",
+   "Towels",
+   "Extra guests over 10"
+  ],
+  "itinerary": [
+   "08:30 | Depart Bang Rak pier (Koh Tao route example)",
+   "10:00 | Koh Nang Yuan: sandbar, viewpoint and snorkelling",
+   "12:30 | Lunch on Koh Tao (own cost)",
+   "14:00 | Snorkel at Mango Bay or Hin Wong",
+   "15:30 | Depart for Samui",
+   "17:00 | Back at Bang Rak pier"
+  ],
+  "what_to_bring": [
+   "Towels",
+   "Cash for lunch and island fees",
+   "Sunscreen, hat and sunglasses",
+   "Water shoes for rocky landings",
+   "Dry bag"
+  ],
+  "faq": [
+   "How much is the Sao speedboat from Bang Rak pier? | For up to 10 guests: Koh Phangan 25,000 THB, Koh Tan, Pig Island and Koh Rap 28,000 THB, Ang Thong 35,000 THB, Koh Tao and Koh Nang Yuan 38,000 THB. Guests 11–40 add 500 THB per adult and 250 THB per child aged 4–9.",
+   "Are children charged on the Sao private speedboat? | Children count towards the 10 guests in the base price. Above 10, children aged 4–9 pay 250 THB; tell us about babies and toddlers so the crew carries small life jackets.",
+   "Does the Sao charter include hotel pickup? | No. A two-way private van on Koh Samui costs 2,000 THB, or 4,000 THB for pickup and drop-off on Koh Phangan.",
+   "What food and drink is on the Sao speedboat? | Fruit, snacks, ice, water and soft drinks. Lunch is at a beach restaurant at your own cost, and you can bring your own drinks.",
+   "How long is a day on the Sao speedboat? | About eight and a half hours, leaving Bang Rak pier at 08:30 and returning around 17:00.",
+   "Will the Sao speedboat go out in rough weather? | The captain decides on safety. From October to December the north-east monsoon can close the Koh Tao and Koh Phangan routes; the south-coast islands are often the sheltered alternative.",
+   "What is the cancellation policy for the Sao speedboat charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Which Sao route suits families with young children? | Koh Tan, Pig Island and Koh Rap: the rides are short and the water is usually calm. Bring towels, cash for fees and lunch, and water shoes."
+  ]
+ },
+ {
+  "slug": "orange-large-speedboat-charter-koh-samui",
+  "name": "Speedboat Orange: Large Private Charter for Groups, Koh Samui",
+  "price": 55000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Koh Phangan full day, up to 10",
+    "price": 55000,
+    "max_guests": 10
+   },
+   {
+    "label": "Ang Thong Marine Park full day, up to 10 (from 16 Dec)",
+    "price": 60000,
+    "max_guests": 10
+   },
+   {
+    "label": "Koh Tao and Koh Nang Yuan full day, up to 10",
+    "price": 65000,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 10,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "Full day (times agreed when you book)",
+  "boat": "Large new speedboat \"Orange\", licensed for up to 45, with booth seating and a swim deck",
+  "pier": "Koh Samui pier (confirmed with your booking); Koh Phangan departures possible",
+  "pickup_window": "Agreed when you book",
+  "return": "Agreed when you book",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Hotel transfer is listed as included; we confirm the pickup point and time for your address after booking.",
+  "cxl": "partner",
+  "park_fee": "Island and park fees in cash, depending on route: Ang Thong 300 THB adult / 150 THB child; Koh Nang Yuan 250 THB adult",
+  "notice": "Price for up to 10 guests; extra guests 500 THB each, up to 45 (message us). Lunch 500 THB per person if pre-ordered. Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "Orange is a new, large speedboat with booth seating for big groups, chartered privately for a full day: Koh Phangan 55,000 THB, Ang Thong 60,000 THB or Koh Tao and Koh Nang Yuan 65,000 THB for up to 10, then 500 THB per extra guest up to 45.",
+  "included": [
+   "Private speedboat with captain and crew",
+   "Guide",
+   "Life jackets",
+   "Seasonal fruit, water and soft drinks",
+   "Hotel transfer",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch (500 THB per person if pre-ordered)",
+   "Island and national park fees, cash",
+   "Kayaks",
+   "Towels",
+   "Extra guests over 10 (500 THB each)"
+  ],
+  "what_to_bring": [
+   "Towels",
+   "Cash for park fees and extras",
+   "Sunscreen and hat",
+   "Speaker-friendly playlist if you want music",
+   "Dry bag"
+  ],
+  "faq": [
+   "How much does the Orange speedboat charter cost? | For up to 10 guests: Koh Phangan 55,000 THB, Ang Thong 60,000 THB, Koh Tao and Koh Nang Yuan 65,000 THB. Each extra guest is 500 THB, up to 45 on board.",
+   "Is the Orange speedboat suitable for families with children? | Yes; the booth seating and swim deck make it easier with children than a narrow speedboat. Children count as guests; tell us ages so the right life jackets are on board.",
+   "Is hotel transfer included on the Orange charter? | Transfer is listed as included. We confirm the pickup point and time for your address after booking; remote villas may be asked to meet at a main road.",
+   "Can we get lunch on the Orange speedboat? | Lunch can be pre-ordered for 500 THB per person, or you stop at a beach restaurant on the route and pay there.",
+   "How long is the Orange speedboat day? | A full day; the start and return times are agreed with the captain when you book, usually a morning start and an afternoon return.",
+   "When is the best season for an Orange charter to Koh Tao? | February to September usually has the calmest crossings. From October to December swell can close the Koh Tao route, and Ang Thong is shut from 1 November to 15 December.",
+   "What is the cancellation policy for the Orange speedboat charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What is the maximum group size on the Orange speedboat? | Up to 45 guests. The price covers 10; each additional guest adds 500 THB. Pregnant guests and people with back problems should sit at the back."
+  ]
+ },
+ {
+  "slug": "rubi-grace-sports-cruiser-speedboat-charter-koh-samui",
+  "name": "Rubi Grace Private Sports Cruiser Speedboat, Koh Samui",
+  "price": 40000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Koh Phangan full day, up to 6",
+    "price": 40000,
+    "max_guests": 6
+   },
+   {
+    "label": "Around Samui: Koh Tan, Pig Island and Five Islands, up to 6",
+    "price": 40000,
+    "max_guests": 6
+   },
+   {
+    "label": "Ang Thong Marine Park full day, up to 6 (from 16 Dec)",
+    "price": 47000,
+    "max_guests": 6
+   },
+   {
+    "label": "Koh Tao and Koh Nang Yuan full day, up to 6",
+    "price": 49500,
+    "max_guests": 6
+   }
+  ],
+  "max_guests": 6,
+  "cat": [
+   "Private charter",
+   "Boat trips"
+  ],
+  "duration": "About 8 hours",
+  "boat": "38 ft sports cruiser speedboat \"Rubi Grace\", twin 300 hp, toilet and deck shower, max 12",
+  "pier": "Bang Rak pier (Big Buddha); Koh Phangan piers on request",
+  "pickup_window": "Departure 08:30–09:00",
+  "return": "16:30–17:30, depending on route",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a two-way private van for up to 10 costs 2,500 THB.",
+  "cxl": "partner",
+  "park_fee": "Island and park fees in cash, depending on route: Ang Thong 300 THB adult / 150 THB child; Koh Nang Yuan 250 THB adult; Koh Madsum about 50 THB",
+  "notice": "Price for up to 6 guests; guests 7–12 add 2,000 THB each (message us). Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "Rubi Grace is a 38 ft sports cruiser with a toilet, deck shower and sun pad, chartered for a full day for up to 6: Koh Phangan or the islands around Samui 40,000 THB, Ang Thong 47,000 THB, Koh Tao and Koh Nang Yuan 49,500 THB.",
+  "included": [
+   "Private sports cruiser with captain and crew",
+   "Guide",
+   "Fuel for the route",
+   "Snorkel gear and life jackets",
+   "Fruit, snacks, ice, water and soft drinks",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch (beach restaurant, own cost)",
+   "Alcoholic drinks",
+   "Island and national park fees, cash",
+   "Kayaks (Ang Thong)",
+   "Hotel transfer (two-way van 2,500 THB)",
+   "Crew tips"
+  ],
+  "itinerary": [
+   "08:30 | Depart Bang Rak (Ang Thong route example)",
+   "09:30 | Snorkel at Koh Wao or Koh Tai Plao",
+   "11:00 | Emerald Lake viewpoint on Koh Mae Ko",
+   "12:30 | Lunch on Koh Phaluay (own cost)",
+   "14:00 | Koh Wua Talab: viewpoint hike or beach",
+   "15:45 | Return to Koh Samui"
+  ],
+  "what_to_bring": [
+   "Towels",
+   "Cash for lunch and park fees",
+   "Reef-safe sunscreen",
+   "Shoes with grip for viewpoint hikes",
+   "Swimwear and a change of clothes"
+  ],
+  "faq": [
+   "What does a day on the Rubi Grace sports cruiser cost? | For up to 6 guests: Koh Phangan or the islands around Samui 40,000 THB, Ang Thong 47,000 THB, Koh Tao and Koh Nang Yuan 49,500 THB. Guests 7 to 12 add 2,000 THB each.",
+   "Is Rubi Grace a good speedboat for families with small children? | It has an enclosed toilet, a shaded cockpit and a freshwater shower, which helps with children. The partner lists no age rules; tell us ages so the right life jackets are on board.",
+   "Does Rubi Grace include hotel pickup? | No. A two-way private van for up to 10 costs 2,500 THB, or meet the boat at Bang Rak pier.",
+   "What is on board the Rubi Grace sports cruiser? | Shaded seating, a bow sun pad, a marine toilet, a deck shower, a changing area and a sound system, plus snorkel gear, fruit, snacks and soft drinks.",
+   "How long is a Rubi Grace charter day? | About eight hours, usually 08:30 or 09:00 to 16:30–17:30 depending on the route.",
+   "Which Rubi Grace route is best in the rainy season? | From October to December the north-east monsoon makes the Koh Tao and Koh Phangan crossings rough; the around-Samui route to Koh Tan, Pig Island and the Five Islands is usually more sheltered. Ang Thong is closed 1 November to 15 December.",
+   "What is the cancellation policy for the Rubi Grace speedboat charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Who should avoid the Rubi Grace speedboat? | Pregnant guests and anyone with back or heart problems: at 30 knots the ride is fast and bumpy in swell. Bring towels, cash and shoes with grip."
+  ]
+ },
+ {
+  "slug": "oxa-jungle-party-koh-phangan-speedboat-from-koh-samui",
+  "name": "OXA Jungle Party Koh Phangan: Speedboat and Entry from Koh Samui",
+  "price": 2500,
+  "child": null,
+  "per": "person",
+  "min_age": "Adults only (18+, some nights 20+); photo ID required",
+  "cat": [
+   "Parties",
+   "Transfers"
+  ],
+  "duration": "About 7 hours (22:00–05:00)",
+  "boat": "Shared speedboat and minivans",
+  "pier": "Koh Samui pier to Ban Tai, Koh Phangan",
+  "pickup_window": "From 22:00",
+  "return": "Boat back at 05:00, then hotel drop-off",
+  "season": "Party nights only. Nov 2026: 6, 13, 20, 27 · Dec 2026: 4, 11, 18, 25, 29 · Jan 2027: 8, 15, 19, 29 · Feb 2027: 5, 12, 19",
+  "pickup_enabled": true,
+  "pickup_note": "Pickup and drop-off at your hotel or villa on Koh Samui included.",
+  "cxl": "partner",
+  "notice": "Book only for the party dates listed. Adults only: bring photo ID. Private speedboat for up to 10 from 34,000 THB return on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "Return speedboat, transfers and entry to the OXA jungle party near Ban Tai on Koh Phangan for 2,500 THB per person, with hotel pickup on Koh Samui from 22:00 and the boat back at 05:00. Party nights are mostly Fridays.",
+  "included": [
+   "Hotel or villa pickup and drop-off on Koh Samui",
+   "Shared speedboat both ways",
+   "Minivan between the pier and the venue on Koh Phangan",
+   "Entry to all stages",
+   "Life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Drinks and food at the party",
+   "Later or earlier return boats"
+  ],
+  "itinerary": [
+   "22:00 | Hotel pickup on Koh Samui",
+   "23:00 | Speedboat to Koh Phangan",
+   "23:30 | Minivan to the jungle venue near Ban Tai",
+   "00:00 | Party on three stages",
+   "05:00 | Return boat and hotel drop-off"
+  ],
+  "what_to_bring": [
+   "Photo ID (passport or a clear copy)",
+   "Insect repellent",
+   "Closed shoes or sturdy sandals for the jungle ground",
+   "Cash in small notes (no bags you can't keep an eye on)",
+   "Light rain jacket"
+  ],
+  "faq": [
+   "How much is the OXA jungle party package from Koh Samui? | 2,500 THB per person including hotel pickup on Koh Samui, the return speedboat, minivans on Koh Phangan and entry. A private speedboat for up to 10 costs 34,000 THB return or 18,000 THB one way.",
+   "Is the OXA jungle party for adults only? | Yes. The venue admits adults only (18+, and 20+ on some nights) and checks photo ID at the door; without ID you can be refused entry with no refund.",
+   "Where is pickup for the OXA party boat? | At your hotel or villa on Koh Samui from about 22:00. You are dropped back at the same place after the 05:00 boat.",
+   "When are the OXA jungle party dates from Koh Samui? | Mostly Fridays: 6, 13, 20, 27 November; 4, 11, 18, 25, 29 December 2026; 8, 15, 19, 29 January; 5, 12, 19 February 2027. Dates can change; we confirm before payment.",
+   "Can I come back from OXA before 05:00? | Not on the shared package; the boat returns at 05:00. If you want to leave earlier, book a private speedboat with your own return time.",
+   "Does the OXA party go ahead in the rainy season? | The venue is partly open-air and parties usually run in rain. If the sea is too rough for the boat, the transfer is cancelled and you choose another party night or a full refund.",
+   "What is the cancellation policy for the OXA jungle party package? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Is it safe to go to the OXA jungle party from Samui? | Stay with your group, watch your drink and don't buy drugs: Thai drug laws are strict and police checks happen around Koh Phangan party nights. Wear closed shoes and life jackets on the boat."
+  ]
+ },
+ {
+  "slug": "red-dragon-teak-junk-private-charter-koh-samui",
+  "name": "Red Dragon Teak Junk Private Charter from Koh Samui",
+  "price": 29000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "2.5 h cruise, up to 10",
+    "price": 29000,
+    "max_guests": 10
+   },
+   {
+    "label": "Southern islands: Koh Tan and Pig Island with lunch, up to 10",
+    "price": 43000,
+    "max_guests": 10
+   },
+   {
+    "label": "Ang Thong Marine Park full day with lunch, up to 10 (from 16 Dec)",
+    "price": 71500,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 10,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2.5 hours, about 5–8 hours (southern islands) or about 9 hours (Ang Thong)",
+  "boat": "78 ft teak Thai junk \"Red Dragon\" with sails, sun decks and jacuzzi, licensed for up to 74",
+  "pier": "River jetty on Koh Samui (confirmed with your booking)",
+  "pickup_window": "Hotel pickup 08:30–09:20 for day charters; 2.5 h cruise times agreed when you book",
+  "return": "About 17:30 (southern islands) or 18:15 (Ang Thong) at the jetty",
+  "season": "Daily on request, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Hotel pickup and air-conditioned transfer from Koh Samui hotels included; hotels on steep hills are given a nearby meeting point.",
+  "cxl": "partner",
+  "park_fee": "Ang Thong park fee 300 THB adult / 150 THB child, cash (Ang Thong option only); Koh Madsum fee about 50 THB",
+  "notice": "Price for up to 10 guests. Extra guests up to 74: 750 THB (2.5 h), 1,200 THB adult / 800 THB child (southern islands), 1,500 / 1,200 THB (Ang Thong); message us. Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "Charter the 78 ft teak junk Red Dragon for your group: a 2.5 hour cruise from 29,000 THB, a day to Koh Tan and Pig Island with lunch for 43,000 THB, or Ang Thong with lunch for 71,500 THB, for up to 10 with hotel transfer.",
+  "included": [
+   "Private junk with captain and crew",
+   "Hotel pickup and drop-off on Koh Samui",
+   "Guide",
+   "Lunch on day charters (buffet), appetisers on Ang Thong",
+   "Seasonal fruit, water and soft drinks",
+   "Snorkel gear, life jackets and towels",
+   "Kayaks on the southern islands route",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcoholic drinks (cash bar on board; own drinks 200 THB corkage per adult)",
+   "Ang Thong park fee, cash",
+   "Kayaks on the Ang Thong route (250 THB per person)",
+   "Extra guests over 10"
+  ],
+  "itinerary": [
+   "08:30 | Hotel pickup (southern islands example)",
+   "09:30 | Depart the river jetty",
+   "Morning | Pass the Five Islands",
+   "Late morning | Koh Tan: snorkelling, kayaks and the catamaran net",
+   "Midday | Thai buffet lunch on board",
+   "Afternoon | Beach visit at Koh Madsum (Pig Island)",
+   "17:30 | Cruise back with the jacuzzi and sunset"
+  ],
+  "what_to_bring": [
+   "Swimwear and a change of clothes",
+   "Reef-safe sunscreen and a hat",
+   "Cash for the bar and park fees",
+   "Shoes with grip for Ang Thong viewpoints",
+   "Light jacket for the evening return"
+  ],
+  "faq": [
+   "How much is a private charter on the Red Dragon junk? | For up to 10 guests: 29,000 THB for a 2.5 hour cruise, 43,000 THB for Koh Tan and Pig Island with lunch, 71,500 THB for Ang Thong with lunch. Extra guests cost 750–1,500 THB each depending on the trip.",
+   "Is the Red Dragon junk good for families with children? | Yes; it is a large, stable boat with shade, a jacuzzi and a catamaran net. Children aged 3–9 pay a reduced extra-guest rate once the group is over 10.",
+   "Is hotel pickup included on the Red Dragon charter? | Yes, air-conditioned transfer from Koh Samui hotels is included. If your hotel is on a steep hill, the driver meets you at a nearby point.",
+   "Can we bring our own drinks on the Red Dragon? | Yes, on private charters, with 200 THB corkage per adult; ice and cups are supplied. There is also a cash bar on board.",
+   "How long is the Red Dragon Ang Thong charter? | About nine hours: hotel pickup from 08:30, departure 09:30 and back at the jetty around 18:15.",
+   "Does the Red Dragon junk sail in November? | The southern islands and short cruises run when the sea allows; the south coast is usually sheltered. Ang Thong is closed from 1 November to 15 December.",
+   "What is the cancellation policy for the Red Dragon junk charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "How many people can the Red Dragon junk take? | Up to 74 on a private charter. The price covers 10; larger groups pay per extra guest. It is one of the few boats on Samui for parties of 40 or more."
+  ]
+ },
+ {
+  "slug": "odyssey-sailing-catamaran-charter-bang-rak-koh-samui",
+  "name": "Odyssey Sailing Catamaran Private Charter, Bang Rak, Koh Samui",
+  "price": 24000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset cruise 2 h 16:30–18:30, up to 18",
+    "price": 24000,
+    "max_guests": 18
+   },
+   {
+    "label": "Half day morning 09:00–13:00, up to 18",
+    "price": 32000,
+    "max_guests": 18
+   },
+   {
+    "label": "Half day afternoon 14:00–18:00, up to 18",
+    "price": 32000,
+    "max_guests": 18
+   },
+   {
+    "label": "Koh Phangan full day 10:30–18:30, up to 18",
+    "price": 50000,
+    "max_guests": 18
+   },
+   {
+    "label": "Ang Thong full day, up to 18 (from 16 Dec)",
+    "price": 56000,
+    "max_guests": 18
+   },
+   {
+    "label": "Overnight Koh Phangan, 2 days 1 night, up to 6",
+    "price": 130000,
+    "max_guests": 6
+   },
+   {
+    "label": "Overnight Ang Thong, 2 days 1 night, up to 6 (from 16 Dec)",
+    "price": 136000,
+    "max_guests": 6
+   }
+  ],
+  "max_guests": 18,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2 hours to 2 days, depending on the option",
+  "boat": "Shuttleworth Advantage 44 sailing catamaran \"Odyssey\", 44 ft, 3 cabins, crew of 3–4",
+  "pier": "Bang Rak (Big Buddha) Bay; in rough weather boarding by dinghy from Bophut",
+  "pickup_window": "Boarding 09:00, 10:30, 14:00 or 16:30 depending on the option",
+  "return": "13:00, 18:00 or 18:30; overnight back on day 2 at 17:00",
+  "season": "Daily, all year; routes adapt to the monsoon",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a two-way private van for up to 10 costs 2,500 THB and pickup from Koh Phangan 10,000 THB.",
+  "cxl": "partner",
+  "park_fee": "Ang Thong park fee 300 THB adult / 150 THB child, cash (Ang Thong options only)",
+  "notice": "Sunset cruises must be booked at least 3 days ahead. On-board hostess 1,500 THB (half day/sunset) or 3,000 THB per day on request. Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "The 44 ft sailing catamaran Odyssey for your group from Bang Rak: 2 hour sunset 24,000 THB, half day 32,000 THB, Koh Phangan full day 50,000 THB for up to 18, or an overnight for up to 6 from 130,000 THB. Bring your own drinks with no corkage.",
+  "included": [
+   "Private catamaran with skipper, deckhand and engineer",
+   "Licensed guide (half day, sunset, overnight)",
+   "Paddle boards, snorkel gear and 2 fishing rods (not on sunset)",
+   "Dinghy",
+   "Seasonal fruit, ice, water and soft drinks",
+   "Bring your own alcohol, no corkage",
+   "VAT and pier fees",
+   "Cabin, towels and breakfast (overnight)",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch and dinner (beach restaurant or picnic order)",
+   "Alcoholic drinks",
+   "Hotel transfer (two-way van 2,500 THB)",
+   "Ang Thong park fee, cash",
+   "Crew tips"
+  ],
+  "itinerary": [
+   "10:30 | Board at Bang Rak (Koh Phangan full day example)",
+   "11:30 | Sail to Koh Phangan",
+   "12:30 | Lunch at a beach restaurant or on board (own cost)",
+   "14:30 | Snorkelling, paddle boarding and fishing",
+   "17:00 | Sail back towards Samui",
+   "18:30 | Back at Bang Rak"
+  ],
+  "what_to_bring": [
+   "Your own drinks (no corkage)",
+   "Cash for lunch at a beach restaurant",
+   "Reef-safe sunscreen and a hat",
+   "Swimwear and a change of clothes",
+   "Light jacket for the evening sail"
+  ],
+  "faq": [
+   "What does the Odyssey catamaran cost? | 24,000 THB for a 2 hour sunset, 32,000 THB for a half day, 50,000 THB for a Koh Phangan full day and 56,000 THB for Ang Thong, for up to 18 guests. Overnights for up to 6 cost 130,000 THB (Koh Phangan) or 136,000 THB (Ang Thong).",
+   "Is the Odyssey catamaran safe for young children? | Yes; catamarans are stable and the boat carries 6 children's life jackets alongside 22 adult ones. Supervise children on the trampoline nets and the dinghy.",
+   "Is there hotel pickup with the Odyssey charter? | No. Book a two-way van for up to 10 for 2,500 THB, or make your own way to Bang Rak. Koh Phangan pickup is 10,000 THB.",
+   "Can we bring our own drinks and food on Odyssey? | Yes, there is no corkage on your own alcohol. Lunch is not included; eat at a beach restaurant or order a picnic basket from a Samui restaurant to be served on board.",
+   "How long are the Odyssey catamaran trips? | Sunset 2 hours, half days 4 hours, the Koh Phangan full day 8 hours (10:30–18:30) and overnights 2 days with 1 night, returning at 17:00 on day 2.",
+   "Where does Odyssey board when the sea is rough? | Normally at Bang Rak Bay. In strong wind the crew moves boarding to Bophut and takes guests out by dinghy; we confirm the meeting point the day before.",
+   "What is the cancellation policy for the Odyssey catamaran charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What should we bring on the Odyssey overnight trip? | Your own drinks, food or a catering order for lunch and dinner, cash for restaurants and park fees, and warm clothes for the evening. Bedding, towels and breakfast are supplied."
+  ]
+ },
+ {
+  "slug": "beat-boat-party-motor-catamaran-charter-koh-samui",
+  "name": "The Beat Boat: Party Motor Catamaran Charter, Koh Samui",
+  "price": 42800,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Koh Som sunset cruise 2.5 h, up to 30",
+    "price": 42800,
+    "max_guests": 30
+   },
+   {
+    "label": "Koh Phangan east coast 4 h, up to 30",
+    "price": 69550,
+    "max_guests": 30
+   },
+   {
+    "label": "Koh Phangan west coast 5 h, up to 30",
+    "price": 82925,
+    "max_guests": 30
+   },
+   {
+    "label": "Koh Phangan and Five Islands 8 h, up to 30",
+    "price": 107000,
+    "max_guests": 30
+   },
+   {
+    "label": "Ang Thong Marine Park 9 h, up to 70 (from 16 Dec)",
+    "price": 117700,
+    "max_guests": 70
+   },
+   {
+    "label": "Koh Tao 10 h, up to 30",
+    "price": 128400,
+    "max_guests": 30
+   },
+   {
+    "label": "Overnight 24 h, up to 10",
+    "price": 267500,
+    "max_guests": 10
+   }
+  ],
+  "max_guests": 30,
+  "cat": [
+   "Yachts",
+   "Parties"
+  ],
+  "duration": "2.5 to 10 hours, or 24 hours overnight",
+  "boat": "72 ft party motor catamaran \"The Beat Boat\", up to 70 guests, DJ booth, 16 speakers, 4 toilets",
+  "pier": "Koh Samui marina (confirmed with your booking)",
+  "pickup_window": "Usually 09:00 or 14:00; sunset times agreed when you book",
+  "return": "Depends on the option (sample half day back at 18:00)",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; we can arrange group transport at a reduced rate when you book.",
+  "cxl": "partner",
+  "park_fee": "Entrance fees not included (Ang Thong park fee 300 THB adult / 150 THB child, cash)",
+  "notice": "Price for up to 30 guests; guests 31–70 add 1,605 THB (full day), 1,338 THB (half day) or 1,070 THB (sunset) each (message us). Catering from 696 THB per person and DJ from 12,000 THB on request. Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "A 72 ft party catamaran with a DJ booth, 16-speaker sound system and room for 70: Koh Som sunset cruise from 42,800 THB, Koh Phangan half days from 69,550 THB and full days from 107,000 THB, each for up to 30 guests with an event manager.",
+  "included": [
+   "Private motor catamaran with crew of 4",
+   "Event manager",
+   "Sound system and LED lighting",
+   "Paddle boards and snorkel gear",
+   "Seasonal fruit, snacks, water and soft drinks",
+   "Towels and life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Alcohol (bar on board, beer 250 THB a can)",
+   "Lunch and catering (menus from 696 THB per person)",
+   "Bring-your-own alcohol fees (bartender fee plus a per-bottle charge)",
+   "DJ, photographer and water toys",
+   "Hotel transfers",
+   "Entrance and park fees"
+  ],
+  "itinerary": [
+   "12:00 | Board at the marina (half-day example)",
+   "12:30 | Cruise along the coast with music",
+   "14:00 | Snorkelling and paddle boarding at anchor",
+   "16:00 | Drinks in the lounge",
+   "17:30 | Sunset on deck",
+   "18:00 | Back at the marina"
+  ],
+  "what_to_bring": [
+   "Swimwear and a change of clothes",
+   "Reef-safe sunscreen",
+   "Your playlist or DJ requests",
+   "ID for the bar",
+   "Cash or card for drinks and tips"
+  ],
+  "faq": [
+   "How much does The Beat Boat cost to charter? | For up to 30 guests: Koh Som sunset 42,800 THB, Koh Phangan east 4 h 69,550 THB, west 5 h 82,925 THB, Koh Phangan and Five Islands 8 h 107,000 THB, Koh Tao 128,400 THB; Ang Thong is 117,700 THB for up to 70. The overnight for 10 is 267,500 THB.",
+   "Can children come on The Beat Boat? | It is a private charter, so a family event is possible, but the boat is built for parties with a loud sound system. Tell us if children are coming and we ask the crew to set the music and safety briefing accordingly.",
+   "Does The Beat Boat include hotel transfers? | No. Group transport can be arranged at a reduced rate when you book; tell us the number of guests and hotels.",
+   "Can we bring our own drinks on The Beat Boat? | Yes, but there is a bartender fee plus a charge per bottle or case, and catering brought on board pays a per-person fee. We send the current fees in writing before payment.",
+   "How many guests fit on The Beat Boat? | Up to 70. Prices cover 30 guests on most trips (70 on Ang Thong); each extra guest adds 1,070–1,605 THB depending on the trip length.",
+   "What happens to a Beat Boat party if the weather turns? | The crew picks a sheltered route or anchorage; from October to December the open-water trips to Koh Tao and Koh Phangan may be swapped or postponed. If cancelled for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for The Beat Boat charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "What extras can be added to a Beat Boat event? | A DJ (from 12,000 THB for a half day), a photographer with drone, catering menus from 696 THB per person, and water toys such as jet ski and banana boat. All are booked in advance."
+  ]
+ },
+ {
+  "slug": "princess-64-luxury-motor-yacht-charter-koh-samui",
+  "name": "Princess 64 Luxury Motor Yacht Charter, Koh Samui",
+  "price": 45000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset cruise 17:00–19:00, 2 guests",
+    "price": 45000,
+    "max_guests": 2
+   },
+   {
+    "label": "Half day Koh Tan and Pig Island, morning or afternoon, up to 10",
+    "price": 130000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day around Koh Samui with lunch, up to 10",
+    "price": 220000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day Koh Phangan with lunch, up to 10",
+    "price": 220000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day Ang Thong with lunch, up to 10 (from 16 Dec)",
+    "price": 290000,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day Koh Tao and Koh Nang Yuan with lunch, up to 10",
+    "price": 320000,
+    "max_guests": 10
+   },
+   {
+    "label": "Overnight 24 h, all meals, up to 4",
+    "price": 660000,
+    "max_guests": 4
+   }
+  ],
+  "max_guests": 10,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2 hours to 24 hours, depending on the option",
+  "boat": "64 ft Princess motor yacht, twin 1,200 hp, 18 knots, 4 air-conditioned cabins",
+  "pier": "Koh Samui marina (confirmed with your booking)",
+  "pickup_window": "Full day 09:00–09:30 · half day 08:00 or 13:00 · sunset 17:00 · overnight 12:00",
+  "return": "Full day 17:00–17:30 · half day 12:00 or 17:00 · sunset 19:00 · overnight 12:00 next day",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a private van costs 2,500 THB and pickup from Koh Phangan 12,000 THB.",
+  "cxl": "partner",
+  "park_fee": "Island and park fees not included, cash: Ang Thong 300 THB adult / 150 THB child; Koh Nang Yuan 250 THB adult; Koh Madsum about 50 THB",
+  "notice": "Day trips are priced for up to 10; guests 11–16 add 6,500 THB each (message us). Sunset price is for 2 guests. Ang Thong options run 16 December–31 October only (the marine park closes 1 November–15 December).",
+  "bookable": true,
+  "partner": "1",
+  "short": "A 64 ft Princess motor yacht with four cabins and crew: sunset for two 45,000 THB, half day to Koh Tan and Pig Island 130,000 THB, full days from 220,000 THB with lunch and champagne for up to 10, or 24 hours on board for four at 660,000 THB.",
+  "included": [
+   "Captain, crew and fuel",
+   "Champagne and beer allowance (1 bottle and 6 beers sunset; 2 and 12 half day; 4 and 24 full day)",
+   "Lunch set on full days; all meals and drinks on the overnight",
+   "Seasonal fruit, water and soft drinks",
+   "Snorkel gear, towels and life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Other alcoholic drinks",
+   "Island and national park fees, cash",
+   "Hotel transfer (private van 2,500 THB)",
+   "Crew tips",
+   "Extra guests 11–16 (6,500 THB each)"
+  ],
+  "itinerary": [
+   "09:00 | Depart the marina (Koh Tao example)",
+   "10:30 | Snorkel at Koh Nang Yuan",
+   "12:30 | Lunch on board",
+   "14:00 | Snorkel at a Koh Tao bay",
+   "15:30 | Cruise back",
+   "17:00 | Back at the marina"
+  ],
+  "what_to_bring": [
+   "Swimwear and resort wear",
+   "Soft-soled shoes or bare feet on deck",
+   "Reef-safe sunscreen",
+   "Cash for park fees and crew tips",
+   "Passport copy for the marina"
+  ],
+  "faq": [
+   "How much is the Princess 64 yacht charter? | Sunset for 2 is 45,000 THB; a half day to Koh Tan and Pig Island 130,000 THB; full days around Samui or to Koh Phangan 220,000 THB, Ang Thong 290,000 THB and Koh Tao 320,000 THB, for up to 10. The 24 hour overnight for 4 is 660,000 THB.",
+   "Is the Princess 64 suitable for children? | Yes, with supervision; the yacht has shaded decks and cabins for naps. Children count towards the guest numbers; tell us ages so the crew has the right life jackets.",
+   "Is hotel transfer included with the Princess 64? | No. A private van costs 2,500 THB, or the yacht can collect from Koh Phangan for 12,000 THB.",
+   "What food and drinks come with the Princess 64 charter? | Full days include a lunch set plus 4 bottles of champagne and 24 beers; half days 2 bottles and 12 beers; the sunset 1 bottle and 6 beers. The overnight includes all meals and drinks.",
+   "How long are the Princess 64 charters? | The sunset is 2 hours, half days 4 hours, full days about 8 hours and the overnight 24 hours from noon to noon.",
+   "Where does the Princess 64 go when the monsoon is blowing? | From October to December the crew favours sheltered anchorages on Samui's south and west coasts; the Koh Tao crossing may not be possible. Ang Thong is closed from 1 November to 15 December.",
+   "What is the cancellation policy for the Princess 64 yacht charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "How many guests can sleep on the Princess 64? | The overnight price covers up to 4 guests in the air-conditioned cabins. Day trips are priced for 10 and take up to 16 with the extra-guest charge."
+  ]
+ },
+ {
+  "slug": "c-este-la-vie-catamaran-full-day-around-koh-samui",
+  "name": "C'este La Vie Catamaran: Private Full Day Around Koh Samui",
+  "price": 50000,
+  "child": null,
+  "per": "boat",
+  "max_guests": 10,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "About 10 hours (09:00–19:00)",
+  "boat": "Grand Voyage 42 sailing catamaran \"C'este La Vie 1\", 14 m, built 2020, 3 cabins, dinghy",
+  "pier": "Koh Samui pier (confirmed with your booking)",
+  "pickup_window": "Boarding 09:00",
+  "return": "About 19:00",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; we can quote a van to the pier when you book.",
+  "cxl": "partner",
+  "notice": "Price for up to 10 guests; guests 11–17 add 2,500 THB each (message us). The boat is based on Koh Phangan: half days, sunsets and Koh Tao or Ang Thong trips from Koh Phangan on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A full day around Koh Samui on the 14 m sailing catamaran C'este La Vie, with crew, guide, paddle boards, snorkel gear, snacks and coffee: 50,000 THB for up to 10 guests, 09:00–19:00, departing from Koh Samui.",
+  "included": [
+   "Private catamaran with crew and guide",
+   "Safety briefing",
+   "Paddle boards and snorkel gear",
+   "Seasonal fruit, snacks and coffee",
+   "Water and soft drinks",
+   "Life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Lunch",
+   "Alcoholic drinks",
+   "Towels",
+   "Hotel transfer",
+   "Island or park fees where charged",
+   "Crew tips"
+  ],
+  "what_to_bring": [
+   "Towels",
+   "Lunch plans or cash for a beach restaurant",
+   "Your own drinks",
+   "Reef-safe sunscreen and hat",
+   "Change of clothes for the evening"
+  ],
+  "faq": [
+   "How much is the C'este La Vie catamaran day around Koh Samui? | 50,000 THB for the boat and up to 10 guests, 09:00–19:00. Guests 11 to 17 add 2,500 THB each.",
+   "Is the C'este La Vie catamaran good for children? | Yes; a catamaran is stable and the trampoline nets and paddle boards keep children busy. Tell us ages so the crew carries the right life jackets, and supervise children at the stern and dinghy.",
+   "Does the C'este La Vie charter include hotel pickup? | No. The boat collects you at a Koh Samui pier that we confirm with your booking; we can quote a van from your hotel.",
+   "Is lunch included on the C'este La Vie day around Samui? | No. Fruit, snacks, coffee and soft drinks are on board; for lunch stop at a beach restaurant or bring a picnic.",
+   "How long is the C'este La Vie full day? | About ten hours, boarding at 09:00 and back around 19:00, with time for a sunset on the way home.",
+   "Where does the C'este La Vie sail around Samui in monsoon season? | From October to December the crew stays on the sheltered south and west coasts. If the trip is cancelled for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for the C'este La Vie catamaran day? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Can I book C'este La Vie for a half day or Koh Tao? | Yes, but those trips start from Koh Phangan. Message us on WhatsApp for half days, sunsets, Ang Thong, Koh Tao or an overnight for up to 6."
+  ]
+ },
+ {
+  "slug": "king-5-sailing-catamaran-charter-south-koh-samui",
+  "name": "King 5 Sailing Catamaran Charter from South Koh Samui",
+  "price": 12500,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset to Koh Tan and Pig Island 16:00–18:30, up to 10",
+    "price": 12500,
+    "max_guests": 10
+   },
+   {
+    "label": "Half day Koh Tan and Pig Island, morning or afternoon, up to 10",
+    "price": 16000,
+    "max_guests": 10
+   },
+   {
+    "label": "Night squid fishing, 2 guests",
+    "price": 18500,
+    "max_guests": 2
+   },
+   {
+    "label": "Full day Koh Tan and Pig Island, up to 10",
+    "price": 24500,
+    "max_guests": 10
+   },
+   {
+    "label": "Day fishing with trolling, up to 10",
+    "price": 29500,
+    "max_guests": 10
+   },
+   {
+    "label": "Full day Koh Phangan, up to 18",
+    "price": 30000,
+    "max_guests": 18
+   },
+   {
+    "label": "Overnight on board, up to 4",
+    "price": 35000,
+    "max_guests": 4
+   }
+  ],
+  "max_guests": 10,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2.5 hours to an overnight, depending on the option",
+  "boat": "Sailing catamaran \"King 5\", 2 cabins, crew of 2, up to 18 guests",
+  "pier": "Marina in the south of Koh Samui (confirmed with your booking); Koh Phangan piers on request",
+  "pickup_window": "Half day 09:00 or afternoon · sunset 16:00 · full day 09:00 · overnight 15:00",
+  "return": "Half day 13:00 · sunset 18:30 · full day about 17:00 · overnight 10:00 next day",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; a private van for up to 10 costs 2,500 THB return or 1,200 THB one way.",
+  "cxl": "partner",
+  "park_fee": "Koh Madsum island fee about 50 THB per person, cash",
+  "notice": "Extra guests over 10 cost 800–1,200 THB per adult and 300–600 THB per child depending on the trip; extra hours 3,000 THB. BBQ lunch 500–700 THB per person on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "The sailing catamaran King 5 from a marina on Samui's south coast: sunset to Koh Tan and Pig Island 12,500 THB, half day 16,000 THB, full day 24,500 THB for up to 10, plus Koh Phangan days, fishing trips and overnights.",
+  "included": [
+   "Private catamaran with captain and crew",
+   "Guide",
+   "Paddle boards, snorkel gear and fishing gear",
+   "Seasonal fruit, snacks, ice, water and soft drinks",
+   "Life jackets and floats",
+   "Accident insurance",
+   "Cabin accommodation (overnight)"
+  ],
+  "not_included": [
+   "Koh Madsum island fee, cash",
+   "Lunch, dinner or BBQ (500–700 THB per person)",
+   "Alcoholic drinks",
+   "Towels",
+   "Hotel transfer (van 2,500 THB return)",
+   "Crew tips"
+  ],
+  "itinerary": [
+   "09:00 | Depart the marina (half-day example)",
+   "09:40 | Snorkel at Koh Tan",
+   "10:45 | Paddle boarding, floating and fishing",
+   "11:30 | Koh Madsum (Pig Island)",
+   "12:15 | Cruise back with refreshments",
+   "13:00 | Back at the marina"
+  ],
+  "what_to_bring": [
+   "Towels (not supplied)",
+   "Cash for the Koh Madsum fee",
+   "Reef-safe sunscreen",
+   "Water shoes for the Pig Island beach",
+   "Your own drinks or food"
+  ],
+  "faq": [
+   "How much does the King 5 catamaran cost? | For up to 10: sunset 12,500 THB, half day 16,000 THB, full day to Koh Tan and Pig Island 24,500 THB, trolling fishing 29,500 THB. The Koh Phangan full day is 30,000 THB for up to 18, night squid fishing 18,500 THB for 2 and an overnight for 4 is 35,000 THB.",
+   "Are children charged extra on the King 5 catamaran? | Children count towards the guest total. Above 10 guests, children pay 300–600 THB depending on the trip, adults 800–1,200 THB. The calm south coast suits young children.",
+   "Is hotel transfer included with King 5? | No. A private van for up to 10 costs 2,500 THB return or 1,200 THB one way. The marina is on the south coast, a 30–50 minute drive from Chaweng.",
+   "Is food included on the King 5 charter? | Fruit, snacks and soft drinks are included. Lunch is a BBQ on request (500–700 THB per person), or bring your own food and drinks.",
+   "How long is the King 5 half-day trip? | Four hours, 09:00–13:00 in the morning or an afternoon slot, with Koh Tan snorkelling and Pig Island.",
+   "Is King 5 a good choice in the rainy season? | Yes, it is one of the better options: it sails from the south coast, which is sheltered from the north-east monsoon that blows from October to December.",
+   "What is the cancellation policy for the King 5 catamaran charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Does the King 5 night squid fishing include dinner? | Dinner is listed as an extra, so plan to eat before or after, or order food when you book. The trip is priced for 2; each extra person adds 1,000 THB."
+  ]
+ },
+ {
+  "slug": "scarlet-privilege-43-catamaran-charter-bang-rak",
+  "name": "Scarlet Sailing Catamaran Private Charter from Bang Rak, Samui",
+  "price": 25900,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset 2.5 h 16:00–18:30, up to 8",
+    "price": 25900,
+    "max_guests": 8
+   },
+   {
+    "label": "Half day morning 09:00–13:00, up to 8",
+    "price": 31000,
+    "max_guests": 8
+   },
+   {
+    "label": "Half day afternoon 14:30–18:30, up to 8",
+    "price": 33000,
+    "max_guests": 8
+   },
+   {
+    "label": "6 h with sunset, up to 8",
+    "price": 45000,
+    "max_guests": 8
+   },
+   {
+    "label": "8 h with sunset 10:30–18:30, up to 8",
+    "price": 49900,
+    "max_guests": 8
+   }
+  ],
+  "max_guests": 8,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2.5 to 8 hours, depending on the option",
+  "boat": "Privilege 43 sailing catamaran \"Scarlet\", 14 m, 3 cabins, water slide, up to 20 guests",
+  "pier": "Bang Rak (Big Buddha), Koh Samui; Thong Sala, Ban Tai or Haad Rin on Koh Phangan on request",
+  "pickup_window": "09:00, 10:30, 12:30, 14:30 or 16:00 depending on the option",
+  "return": "13:00, 15:00 or 18:30",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": true,
+  "pickup_note": "Return transfer between your Koh Samui hotel and the boat is included; we confirm the pickup time the day before.",
+  "cxl": "partner",
+  "notice": "Price for up to 8 guests; guests 9–20 add 1,500 THB per adult (10+) and 750 THB per child 5–9 (message us). Seafood BBQ 2,000 THB per person (min 4) and Koh Phangan pickup 5,000 THB on request.",
+  "bookable": true,
+  "partner": "1",
+  "short": "The Privilege 43 sailing catamaran Scarlet, with a water slide, paddle boards and snorkel gear, from Bang Rak for up to 8: sunset 25,900 THB, half day from 31,000 THB, 8 hours with sunset 49,900 THB, hotel transfer included.",
+  "included": [
+   "Private catamaran with crew and guide",
+   "Return hotel transfer on Koh Samui",
+   "Water slide (4 h trips and longer)",
+   "Paddle boards, snorkel gear and fishing gear",
+   "Welcome drinks, soft drinks, fruit and snacks",
+   "Towels and life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Meals (seafood BBQ 2,000 THB per person, minimum 4)",
+   "Alcoholic drinks",
+   "Crew tips",
+   "Extra guests over 8"
+  ],
+  "itinerary": [
+   "09:00 | Board at Bang Rak with welcome drinks (morning example)",
+   "09:30 | Sail to Koh Som or to Koh Mat Lang and Thong Son Bay",
+   "10:15 | Anchor: snorkel, swim, slide, paddle board and fish",
+   "11:45 | Relax on deck",
+   "12:15 | Sail back",
+   "13:00 | Disembark"
+  ],
+  "what_to_bring": [
+   "Swimwear and a change of clothes",
+   "Reef-safe sunscreen",
+   "Your own drinks if you like",
+   "Waterproof phone case",
+   "Light layer for the sunset sail"
+  ],
+  "faq": [
+   "How much is a charter on the Scarlet catamaran? | For up to 8 guests: sunset 25,900 THB, morning half day 31,000 THB, afternoon half day 33,000 THB, 6 hours with sunset 45,000 THB and 8 hours with sunset 49,900 THB, including hotel transfer on Samui.",
+   "Do children pay on the Scarlet catamaran? | Children count towards the 8 guests in the base price. Above 8, children aged 5–9 add 750 THB and guests from 10 add 1,500 THB. The water slide is a favourite with children; supervise them on it.",
+   "Is hotel transfer included on Scarlet? | Yes, a return transfer between your Koh Samui hotel and the boat. Pickup from Koh Phangan costs 5,000 THB.",
+   "Is food served on the Scarlet catamaran? | Fruit, snacks, welcome drinks and soft drinks are included. A seafood BBQ can be added for 2,000 THB per person with a minimum of 4.",
+   "Which Scarlet trip is best value? | The 8 hour trip with sunset gives the most time on the water per baht and includes the water slide; the 2.5 hour sunset is the cheapest way on board.",
+   "Where does Scarlet sail when it's windy? | The morning route goes to Koh Som off the north coast or to Koh Mat Lang and Thong Son Bay; the crew picks the most sheltered anchorage. From October to December some days are cancelled; you then choose a new date or a full refund.",
+   "What is the cancellation policy for the Scarlet catamaran charter? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "How many people fit on the Scarlet catamaran? | Up to 20 guests. The price covers 8; additional adults pay 1,500 THB and children aged 5–9 pay 750 THB each."
+  ]
+ },
+ {
+  "slug": "azur-sun-up-sailing-yacht-charter-koh-samui",
+  "name": "Azur Sun Up Private Sailing Yacht Charter, Koh Samui",
+  "price": 20000,
+  "child": null,
+  "per": "boat",
+  "options": [
+   {
+    "label": "Sunset sail 16:00–18:30, up to 6",
+    "price": 20000,
+    "max_guests": 6
+   },
+   {
+    "label": "Half day morning 10:00–14:00, up to 6",
+    "price": 25000,
+    "max_guests": 6
+   },
+   {
+    "label": "Half day afternoon with sunset 14:30–18:30, up to 6",
+    "price": 25000,
+    "max_guests": 6
+   },
+   {
+    "label": "Full day Samui coast with sunset, up to 6",
+    "price": 40000,
+    "max_guests": 6
+   },
+   {
+    "label": "Full day Koh Phangan with sunset, up to 6",
+    "price": 40000,
+    "max_guests": 6
+   },
+   {
+    "label": "Overnight 2 days 1 night, up to 4",
+    "price": 65000,
+    "max_guests": 4
+   },
+   {
+    "label": "Overnight 3 days 2 nights, up to 4",
+    "price": 85000,
+    "max_guests": 4
+   }
+  ],
+  "max_guests": 6,
+  "cat": [
+   "Yachts",
+   "Private charter"
+  ],
+  "duration": "2.5 hours to 3 days, depending on the option",
+  "boat": "38 ft Bavaria Cruiser sailing yacht \"Azur Sun Up\" (monohull, 2010), 2 cabins, skipper and crew",
+  "pier": "Koh Samui pier (confirmed with your booking)",
+  "pickup_window": "10:00, 14:30 or 16:00 depending on the option",
+  "return": "14:00 or 18:30; overnights back at 14:00 (1 night) or 15:00 (2 nights)",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Hotel transfer is not included; we can quote a taxi or van to the pier when you book.",
+  "cxl": "partner",
+  "park_fee": "Entrance and park fees not included (Ang Thong 300 THB adult / 150 THB child on the 2-night trip)",
+  "notice": "Day trips include the yacht, crew, fuel and life jackets only: bring your own drinks, snacks and snorkel gear. Overnight meals are extra.",
+  "bookable": true,
+  "partner": "1",
+  "short": "A real sailing yacht for up to 6: the 38 ft Bavaria Azur Sun Up with skipper and crew, from 20,000 THB for a sunset sail, 25,000 THB for a half day and 40,000 THB for a full day; overnights for up to 4 from 65,000 THB.",
+  "included": [
+   "Private sailing yacht with skipper and crew",
+   "Guide",
+   "Fuel",
+   "Life jackets",
+   "Cabin accommodation (overnights)",
+   "Snorkel gear, water and soft drinks (overnights)"
+  ],
+  "not_included": [
+   "Food and drinks on day trips (bring your own)",
+   "Snorkel and diving gear on day trips",
+   "Meals on overnights",
+   "Towels",
+   "Entrance and park fees",
+   "Hotel transfer",
+   "Crew tips"
+  ],
+  "itinerary": [
+   "10:00 | Depart (morning half-day example)",
+   "10:45 | Sail along the coast",
+   "11:45 | Anchor in a sheltered bay to swim",
+   "13:00 | Sail back",
+   "14:00 | Return to the pier"
+  ],
+  "what_to_bring": [
+   "Drinks, snacks and ice in a cool bag",
+   "Your own snorkel mask",
+   "Towels",
+   "Soft-soled shoes or bare feet on deck",
+   "Seasickness tablets (monohulls heel under sail)"
+  ],
+  "faq": [
+   "How much is the Azur Sun Up sailing yacht? | For up to 6: sunset 20,000 THB, half day 25,000 THB, full day on the Samui coast or to Koh Phangan 40,000 THB. Overnights for up to 4 cost 65,000 THB (1 night) or 85,000 THB (2 nights).",
+   "Can children sail on the Azur Sun Up? | Yes, with life jackets on at all times on deck. A monohull heels when sailing, so it suits older children who are happy with some movement better than toddlers.",
+   "Is hotel transfer included with the Azur Sun Up? | No. We confirm the pier when you book and can quote a taxi or van.",
+   "What do I need to bring on an Azur Sun Up day sail? | Food, drinks and snorkel gear: day trips include the yacht, crew, fuel and life jackets only. Bring towels too.",
+   "How long are the Azur Sun Up trips? | The sunset is 2.5 hours, half days 4 hours and full days about 7–8 hours. Overnights return at 14:00 on day 2 or 15:00 on day 3.",
+   "Is sailing on the Azur Sun Up comfortable in the monsoon? | From October to December the wind is stronger and the yacht heels more; the skipper stays on the sheltered side of the island. If it is cancelled for weather, you choose a new date or a full refund.",
+   "What is the cancellation policy for the Azur Sun Up sailing yacht? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Where does the Azur Sun Up go overnight? | The 1-night trip anchors off Koh Phangan; the 2-night trip goes to Koh Phangan or Ang Thong Marine Park (Ang Thong is closed 1 November to 15 December). Meals are not included."
+  ]
+ },
+ {
+  "slug": "private-shopping-tour-koh-samui-minibus-guide",
+  "name": "Private Shopping Tour of Koh Samui by Minibus with a Guide",
+  "price": 1500,
+  "child": null,
+  "per": "boat",
+  "max_guests": 12,
+  "cat": [
+   "Island tours"
+  ],
+  "duration": "4 hours (extra hours available)",
+  "boat": "Air-conditioned minibus with driver, up to 12 guests",
+  "pier": "Hotel or villa pickup on Koh Samui",
+  "pickup_window": "Time of your choice, agreed when you book",
+  "return": "4 hours after pickup",
+  "season": "Daily on request",
+  "pickup_enabled": true,
+  "pickup_note": "Pickup and drop-off at your hotel or villa on Koh Samui are included.",
+  "cxl": "partner",
+  "notice": "Price on request — message us on WhatsApp",
+  "bookable": false,
+  "partner": "1",
+  "short": "A private 4-hour shopping trip by air-conditioned minibus with an English-speaking guide who helps you choose shops, translate and compare prices; for groups up to 12. Price on request on WhatsApp.",
+  "included": [
+   "Air-conditioned minibus and driver",
+   "English-speaking guide",
+   "Help with translation and prices",
+   "Hotel or villa pickup and drop-off"
+  ],
+  "not_included": [
+   "Your purchases",
+   "Meals and drinks",
+   "Extra hours"
+  ],
+  "what_to_bring": [
+   "A list of what you want to buy",
+   "Cash and a card (small shops prefer cash)",
+   "Passport for VAT refund forms on big purchases",
+   "Comfortable shoes",
+   "Reusable shopping bag"
+  ],
+  "faq": [
+   "How much is the private shopping tour of Koh Samui? | The price for your group is confirmed on WhatsApp before you pay. It covers a 4 hour minibus with driver and guide for up to 12; extra hours are charged by the hour.",
+   "Is the Koh Samui shopping tour suitable for families? | Yes; the air-conditioned minibus takes up to 12 and you set the stops, so you can add a café or mall break for children.",
+   "Where does the shopping minibus pick us up? | At your hotel or villa anywhere on Koh Samui, at the time you choose.",
+   "What kind of shops does the Samui shopping guide take you to? | You choose: clothes, latex bedding, jewellery, beauty products, furniture or local markets. The guide helps with translation and comparing prices.",
+   "How long is the private shopping tour? | Four hours by default, with extra hours available if you need more time.",
+   "Is the shopping tour a good rainy-day plan on Samui? | Yes; the minibus is air-conditioned and the malls in Chaweng are indoors, which makes it a good option on wet days from October to December.",
+   "What is the cancellation policy for the private shopping tour? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "Will the shopping guide take us to commission shops? | Tell the guide exactly where you want to go and you will be taken there. Be wary of any gem or jewellery 'bargain' pushed on you; you are never obliged to buy."
+  ]
+ },
+ {
+  "slug": "water-sports-lamai-beach-jet-ski-flyboard-koh-samui",
+  "name": "Water Sports on Lamai Beach: Jet Ski, Flyboard and Parasail",
+  "price": 500,
+  "child": null,
+  "per": "person",
+  "cat": [
+   "Water sports"
+  ],
+  "duration": "10 minutes to 2 hours, depending on the activity",
+  "boat": "Jet skis, flyboard, banana boat, wakeboard and parasail",
+  "pier": "Lamai beach (jet skis also on Maenam beach)",
+  "pickup_window": "Any time during the day",
+  "return": "Depends on the activity",
+  "season": "Daily, weather permitting",
+  "pickup_enabled": false,
+  "pickup_note": "Transfer is not included; a van costs about 500 THB each way, confirmed with your quote.",
+  "cxl": "partner",
+  "notice": "Price on request — message us on WhatsApp",
+  "bookable": false,
+  "partner": "1",
+  "short": "Jet ski rides, flyboard flights, banana boat, wakeboard and parasailing on Lamai beach, singly or as packages, with an instructor, life jackets and insurance. Prices vary by activity and time; we quote on WhatsApp.",
+  "included": [
+   "Instructor and safety briefing",
+   "Life jackets",
+   "Water",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Transfer (about 500 THB each way per van)",
+   "Personal expenses"
+  ],
+  "what_to_bring": [
+   "Swimwear and a rash vest",
+   "Waterproof phone case",
+   "Towel and sunscreen",
+   "Cash for extras",
+   "Passport details for the booking (never the passport itself as a deposit)"
+  ],
+  "faq": [
+   "How much do water sports on Lamai beach cost? | Short rides start at about 500 THB and prices rise with time and activity, up to multi-activity packages. Because the partner's price tables conflict, we quote the exact price for your choice on WhatsApp before you pay.",
+   "Can children do the water sports at Lamai? | Children can ride as passengers on a jet ski or banana boat with an adult; flyboard and parasail have age and weight limits. Tell us ages and we confirm before booking.",
+   "Is there a transfer to the Lamai water sports centre? | Not included; a van costs about 500 THB each way. Most guests in Lamai walk.",
+   "What is a flyboard session at Lamai like? | About 5 minutes of training, then 10–30 minutes in the air, standing on a board lifted by water jets from a jet ski, with an instructor controlling the power.",
+   "Which activities are in the Lamai water sports packages? | Packages combine jet ski, banana boat and wakeboard, with flyboard and parasail on the larger ones. We send the current package list with your quote.",
+   "Do the Lamai water sports run in the monsoon? | Lamai is on the east coast, which gets the north-east monsoon swell from about October to December. Activities stop on rough days and when red flags are up.",
+   "What is the cancellation policy for Lamai beach water sports? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "How do I avoid jet ski damage disputes at Lamai? | Photograph the machine with the staff before you ride, ask for the damage terms in writing, and never leave your passport as a deposit. Book through us and we follow up any dispute."
+  ]
+ },
+ {
+  "slug": "utopia-jungle-party-thong-nai-pan-speedboat-from-koh-samui",
+  "name": "Utopia Jungle Party Thong Nai Pan: Speedboat from Koh Samui",
+  "price": 3900,
+  "child": null,
+  "per": "person",
+  "min_age": "Adults only; bring photo ID",
+  "cat": [
+   "Parties",
+   "Transfers"
+  ],
+  "duration": "About 7 hours (22:00–05:00)",
+  "boat": "Shared speedboat and minibus",
+  "pier": "Koh Samui pier to Thong Nai Pan, Koh Phangan",
+  "pickup_window": "From 22:00",
+  "return": "Boat back at 05:00, then hotel drop-off",
+  "season": "Scheduled party nights only (dates on request)",
+  "pickup_enabled": true,
+  "pickup_note": "Pickup at your Koh Samui hotel lobby or villa gate and drop-off after the party are included.",
+  "cxl": "partner",
+  "notice": "Party dates on request — message us on WhatsApp",
+  "bookable": false,
+  "partner": "1",
+  "short": "Return speedboat, door-to-door transfers and entry to the Utopia jungle party at Thong Nai Pan on Koh Phangan for 3,900 THB per person, pickup from 22:00 and back at 05:00. Party dates are confirmed on WhatsApp.",
+  "included": [
+   "Hotel or villa pickup and drop-off on Koh Samui",
+   "Shared speedboat both ways",
+   "Minibus on Koh Phangan",
+   "Entry ticket",
+   "Life jackets",
+   "Accident insurance"
+  ],
+  "not_included": [
+   "Drinks and food",
+   "Earlier return"
+  ],
+  "itinerary": [
+   "22:00 | Hotel pickup on Koh Samui",
+   "23:00 | Speedboat to Koh Phangan",
+   "23:45 | Arrive at the venue, Thong Nai Pan",
+   "05:00 | Return boat and hotel drop-off"
+  ],
+  "what_to_bring": [
+   "Photo ID",
+   "Insect repellent",
+   "Closed shoes",
+   "Cash in small notes",
+   "Light rain jacket"
+  ],
+  "faq": [
+   "How much is the Utopia party package from Koh Samui? | 3,900 THB per person with pickup, return speedboat, transfers on Koh Phangan and entry. A private speedboat for up to 10 costs 34,000 THB return or 18,000 THB one way, entry not included.",
+   "Can under-18s go to Utopia Koh Phangan? | No; it is an adult night event. Bring photo ID in case it is checked.",
+   "Where is pickup for the Utopia speedboat? | At your hotel lobby or villa gate on Koh Samui from about 22:00, with drop-off at the same place after the 05:00 boat.",
+   "What is Utopia on Koh Phangan? | An open-air electronic music night in the jungle at Thong Nai Pan, on the north-east of Koh Phangan, with deep house and melodic techno on a custom stage.",
+   "When does the Utopia party take place? | On scheduled nights in the island's party calendar. Message us on WhatsApp and we confirm upcoming dates before taking payment.",
+   "Is the Utopia boat transfer affected by the monsoon? | Thong Nai Pan faces the north-east, the direction of the monsoon swell from October to December, so crossings may be cancelled on rough nights; you then choose another date or a full refund.",
+   "What is the cancellation policy for the Utopia party package? | Cancel 4 or more days before the trip for a full refund minus the bank fee; 1–3 days before you get 50 % back; within 24 hours there is no refund. If the trip is called off for weather or safety, you choose a new date or a full refund.",
+   "How do I stay safe at the Utopia jungle party? | Stay with your group, keep drinks sealed and with you, and never buy drugs: Thai penalties are severe and police are active around Koh Phangan parties."
+  ]
+ }
+]
