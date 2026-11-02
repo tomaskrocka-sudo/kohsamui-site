@@ -510,3 +510,8 @@ html.kpts-dark .kp-h a{color:var(--kp-ink)}
 .woocommerce-checkout #payment div.payment_box{background:var(--kp-surface)!important;color:var(--kp-ink)!important;border-radius:12px}
 .woocommerce-checkout #payment div.payment_box::before{display:none}
 .woocommerce-checkout #payment ul.payment_methods{border-bottom:1px solid var(--kp-border)}
+/* Six top menu items: logo, menu and actions stay on one line. */
+.kph-logo,.kph-act{flex-shrink:0}.kph-logo strong,.kph-logo small{white-space:nowrap}
+.kph-menu>li>a{white-space:nowrap}
+@media(min-width:1024px){.kph-menu{gap:0}.kph-menu>li>a{padding:0 9px;font-size:14px}.kph-w{gap:14px}}
+@media(min-width:1024px) and (max-width:1239px){.kph-menu>li>a{padding:0 7px;font-size:13.5px}.kph-cta span{display:none}.kph-cta{padding:0 14px}.kph-logo small{display:none}}
