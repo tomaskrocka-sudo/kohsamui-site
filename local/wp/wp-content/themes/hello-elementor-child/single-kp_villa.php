@@ -4,7 +4,15 @@ get_header();
 while ( have_posts() ) : the_post();
 	$id = get_the_ID(); $m = fn( $k ) => get_post_meta( $id, $k, true ); $j = fn( $k ) => function_exists( 'kpv_json' ) ? kpv_json( $id, $k ) : array();
 	$area = $m( 'kp_area' ); $beds = (int) $m( 'kp_bedrooms' ); $bmin = (int) $m( 'kpv_bedrooms_min' ); $guests = (int) $m( 'kp_guests' ); $baths = (int) $m( 'kpv_bathrooms' );
-	kpt_hero( array( 'kicker' => $area ? $area . ' · Koh Samui villa' : 'Koh Samui villa', 'lead' => ( $bmin && $bmin < $beds ? "$bmin–$beds" : $beds ) . ' bedrooms · ' . $baths . ' bathrooms · up to ' . $guests . ' guests' . ( $m( 'kp_price_night' ) ? ' · from ' . number_format( (float) $m( 'kp_price_night' ) ) . ' THB a night' : '' ) ) );
+	$photos = function_exists( 'kpv_local_photos' ) ? kpv_local_photos( $id ) : array();
+	$strip = '';
+	if ( count( $photos ) > 1 ) {
+		$show = array_slice( $photos, 1, 7 ); $more = count( $photos ) - 1 - count( $show );
+		$strip = '<div class="kpv-strip" aria-label="Villa photos">';
+		foreach ( $show as $k => $aid ) { $last = $k === count( $show ) - 1 && $more > 0; $strip .= '<a class="kpv-strip-i' . ( $last ? ' has-more' : '' ) . '" href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . ( $k + 1 ) . '">' . wp_get_attachment_image( $aid, 'medium', false, array( 'loading' => 'eager', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ) ) ) . ( $last ? '<span>+' . (int) $more . ' photos</span>' : '' ) . '</a>'; }
+		$strip .= '<a class="kpv-strip-all" href="#photos">All ' . count( $photos ) . ' photos</a></div>';
+	}
+	kpt_hero( array( 'strip' => $strip, 'kicker' => $area ? $area . ' · Koh Samui villa' : 'Koh Samui villa', 'lead' => ( $bmin && $bmin < $beds ? "$bmin–$beds" : $beds ) . ' bedrooms · ' . $baths . ' bathrooms · up to ' . $guests . ' guests' . ( $m( 'kp_price_night' ) ? ' · from ' . number_format( (float) $m( 'kp_price_night' ) ) . ' THB a night' : '' ) ) );
 	echo '<div class="kpa-w"><div class="kpa-main kpv-main"><article class="kpa-body">';
 	kpt_byline();
 	// At a glance
@@ -16,8 +24,8 @@ while ( have_posts() ) : the_post();
 	// Highlights + description
 	if ( $hl = $j( 'kpv_highlights' ) ) { echo '<h2>Why stay here</h2><ul class="kp-inc">'; foreach ( $hl as $h ) echo '<li>' . esc_html( $h ) . '</li>'; echo '</ul>'; }
 	if ( get_the_content() ) { echo '<h2>About ' . esc_html( get_the_title() ) . '</h2>'; the_content(); }
-	// Gallery (partner CDN, lazy)
-	if ( $ph = $j( 'kpv_photos' ) ) { echo '<h2>Photos</h2><div class="kpv-gallery">'; foreach ( array_slice( $ph, 0, 24 ) as $i => $u ) echo '<a href="' . esc_url( $u ) . '" target="_blank" rel="noopener"><img src="' . esc_url( $u ) . '" alt="' . esc_attr( get_the_title() . ', ' . $area . ', photo ' . ( $i + 1 ) ) . '" loading="lazy" decoding="async" width="768" height="432"></a>'; echo '</div>'; }
+	// Gallery: photos stored on this site (downloaded from the source once, served locally)
+	if ( $photos ) { echo '<h2 id="photos">Photos</h2><div class="kpv-gallery">'; foreach ( $photos as $i => $aid ) echo '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '">' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: get_the_title() . ', photo ' . ( $i + 1 ) ) ) ) . '</a>'; echo '</div>'; }
 	// Rates
 	if ( $rates = $j( 'kpv_rates' ) ) {
 		$cols = array(); foreach ( $rates as $r ) foreach ( array_keys( $r['prices'] ) as $c ) $cols[ $c ] = 1; ksort( $cols );
@@ -27,7 +35,9 @@ while ( have_posts() ) : the_post();
 	}
 	if ( $disc = $j( 'kpv_discounts' ) ) { echo '<h3>Offers</h3><ul>'; foreach ( $disc as $d ) echo '<li>' . esc_html( $d ) . '</li>'; echo '</ul>'; }
 	// Availability calendar: 3 months, each day coloured by its Saturday-to-Saturday week (checked hourly)
-	if ( $av = $j( 'kpv_avail' ) ) {
+	$listed = function_exists( 'kpv_is_listed_live' ) && kpv_is_listed_live( $id ); $av = $j( 'kpv_avail' );
+	if ( ! $listed ) { echo '<h2 id="availability">Availability</h2><p class="kp-note"><strong>Availability on request.</strong> This villa does not publish live availability online. Pick your dates in the booking box and send a request: we check with the villa and reply with availability and the final price, usually within the day.</p>'; $av = array(); }
+	if ( $av ) {
 		$tz = new DateTimeZone( 'Asia/Bangkok' ); $today = new DateTimeImmutable( 'today', $tz ); $m0 = $today->modify( 'first day of this month' );
 		echo '<h2 id="availability">Availability</h2><p>Green weeks are free for a Saturday-to-Saturday stay (price shown for 7 nights); red weeks are booked. Checked ' . esc_html( human_time_diff( (int) $m( 'kpv_avail_time' ) ) ) . ' ago. For other dates or shorter stays, pick dates in the booking box for a live answer.</p><div class="kpv-cal">';
 		for ( $mi = 0; $mi < 3; $mi++ ) {
@@ -35,7 +45,7 @@ while ( have_posts() ) : the_post();
 			echo '<div class="kpv-cal-m"><strong>' . esc_html( $mo->format( 'F Y' ) ) . '</strong><div class="kpv-cal-g"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>' . str_repeat( '<i></i>', $off );
 			for ( $d = 1; $d <= $days; $d++ ) {
 				$dt = $mo->setDate( (int) $mo->format( 'Y' ), (int) $mo->format( 'n' ), $d ); $sat = $dt->modify( '-' . ( ( (int) $dt->format( 'N' ) + 1 ) % 7 ) . ' days' )->format( 'Y-m-d' );
-				$st = $dt < $today ? 'past' : ( isset( $av[ $sat ] ) ? ( $av[ $sat ][0] ? 'free' : 'busy' ) : 'na' );
+				$st = $dt < $today ? 'past' : ( isset( $av[ $sat ] ) ? ( $av[ $sat ][0] ? 'free' : ( $listed ? 'busy' : 'na' ) ) : 'na' );
 				$tip = $st === 'free' ? 'Week from ' . wp_date( 'j M', strtotime( $sat ) ) . ' free' . ( $av[ $sat ][1] ? ': ' . number_format( $av[ $sat ][1] ) . ' THB for 7 nights' : '' ) : ( $st === 'busy' ? 'Booked' : ( $st === 'na' ? 'Ask for these dates' : '' ) );
 				echo '<b class="is-' . $st . '" title="' . esc_attr( $tip ) . '">' . $d . '</b>';
 			}

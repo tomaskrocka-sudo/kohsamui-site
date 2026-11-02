@@ -6,17 +6,14 @@ while ( have_posts() ) : the_post();
 	global $product; $product = wc_get_product( get_the_ID() ); $id = $product->get_id(); $m = fn( $k ) => get_post_meta( $id, $k, true );
 	$lines = fn( $k ) => kp_public_lines( array_filter( array_map( 'trim', preg_split( '/\r?\n/', (string) $m( $k ) ) ) ) );
 	$per = $m( 'kp_per' ) === 'boat' ? 'per boat' : 'per adult';
-	kpt_hero();
+	$photo_ids = array_values( array_filter( array_merge( array( $product->get_image_id() ?: ( function_exists( 'kpt_hero_id' ) ? kpt_hero_id() : 0 ) ), $product->get_gallery_image_ids() ) ) );
+	kpt_hero( array( 'strip' => kpt_photo_strip( $photo_ids ) ) );
 	echo '<div class="kpa-w" style="padding-top:22px">';
 	woocommerce_output_all_notices();
 	echo '<p class="kp-lead">' . esc_html( wp_strip_all_tags( $product->get_short_description() ) ) . '</p>';
 	echo '<div class="kpv-product"><div>';
-	// Gallery
-	$ids = array_filter( array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() ) );
-	echo '<div class="kpv-gallery">';
-	if ( count( $ids ) > 1 ) { $ids = array_slice( $ids, 1 ); foreach ( array_slice( $ids, 0, 5 ) as $i => $iid ) echo wp_get_attachment_image( $iid, $i ? 'kp-card' : 'kp-hero', false, array( 'loading' => $i ? 'lazy' : 'eager', 'fetchpriority' => $i ? 'auto' : 'high' ) ); }
-
-	echo '</div>';
+	// Gallery (lightbox; the hero strip shows the same photos)
+	if ( count( $photo_ids ) > 1 ) echo kpt_photo_grid( $photo_ids, get_the_title() );
 	// At a glance
 	echo '<h2>' . esc_html( get_the_title() ) . ' at a glance</h2><table class="kp-glance"><tbody>';
 	foreach ( array( 'kp_duration' => 'Duration', 'kp_boat' => 'Boat', 'kp_pier' => 'Departure pier', 'kp_pickup_window' => 'Pickup', 'kp_return' => 'Return', 'kp_season' => 'Season', 'kp_park_fee' => 'Fees not included' ) as $k => $l ) { $v = $m( $k ); if ( $v && ! kp_is_unverified( $v ) ) echo '<tr><th>' . esc_html( $l ) . '</th><td>' . esc_html( $v ) . '</td></tr>'; }

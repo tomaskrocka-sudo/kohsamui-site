@@ -25,7 +25,8 @@ add_action( 'rest_api_init', function () {
 		$live = get_transient( $key );
 		if ( $live === false ) { $res = $slug ? kpv_live_prices( array( $slug ), $from, $to, $guests ) : null; $live = $res[ $slug ] ?? array( 'ok' => null ); set_transient( $key, $live, HOUR_IN_SECONDS ); }
 		if ( ! empty( $live['ok'] ) ) { $total = kpv_to_thb( $live['total'], $live['currency'] ); return array( 'ok' => true, 'live' => true, 'nights' => $nights, 'total_thb' => $total, 'per_night_thb' => round( $total / max( 1, $nights ) ), 'discount' => $live['discount'] ?? 0, 'message' => 'Available for your dates (checked live).' ); }
-		if ( $live['ok'] === false ) return array( 'ok' => false, 'live' => true, 'message' => 'Not available for these dates. Try other dates or ask us for similar villas on WhatsApp.' );
+		if ( $live['ok'] === false && kpv_is_listed_live( $id ) ) return array( 'ok' => false, 'live' => true, 'message' => 'Not available for these dates. Try other dates or ask us for similar villas on WhatsApp.' );
+		// Villa not bookable online at the source (priced on request): never say "unavailable" — take the request and confirm by hand.
 		// No live answer (villa not connected to live availability): estimate from the seasonal table and confirm on request.
 		$sum = 0; for ( $i = 0; $i < $nights; $i++ ) { $d = wp_date( 'Y-m-d', strtotime( "$from +$i day" ) ); $rt = kpv_rate_for( $id, $d ); if ( ! $rt ) { $sum = 0; break; } $sum += $rt['night']; }
 		return array( 'ok' => null, 'live' => false, 'nights' => $nights, 'total_thb' => $sum ?: null, 'message' => $sum ? 'Estimated from the seasonal rates; we confirm availability and the exact price within the day.' : 'Send a request and we confirm availability and price.' );
@@ -48,7 +49,15 @@ add_action( 'rest_api_init', function () {
 
 /** Villa grid with filters: [kp_villas area="" limit="300"] */
 add_shortcode( 'kp_villas', function ( $a ) {
-	$a = shortcode_atts( array( 'area' => '', 'limit' => 300, 'bedrooms' => '' ), $a );
+	$a = shortcode_atts( array( 'area' => '', 'limit' => 300, 'bedrooms' => '', 'rail' => '' ), $a );
+	if ( $a['rail'] ) { // homepage carousel: best-rated villas with a published price and photo
+		$q = new WP_Query( array( 'post_type' => 'kp_villa', 'post_status' => 'publish', 'posts_per_page' => (int) $a['limit'], 'no_found_rows' => true, 'meta_query' => array( array( 'key' => 'kp_price_night', 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ), array( 'key' => '_thumbnail_id', 'compare' => 'EXISTS' ) ), 'meta_key' => 'kpv_rating', 'orderby' => 'meta_value_num', 'order' => 'DESC' ) );
+		if ( ! $q->posts ) return '';
+		$h = '<div class="kp-rail kpv-rail" data-rail>';
+		foreach ( $q->posts as $p ) { $id = $p->ID; $m = fn( $k ) => get_post_meta( $id, $k, true );
+			$h .= '<a class="kpg-card kp-g" href="' . esc_url( get_permalink( $id ) ) . '"><span class="kp-g-im">' . get_the_post_thumbnail( $id, 'medium_large', array( 'loading' => 'lazy', 'alt' => esc_attr( get_the_title( $id ) . ', ' . $m( 'kp_bedrooms' ) . '-bedroom villa in ' . $m( 'kp_area' ) ) ) ) . ( $m( 'kp_sea_view' ) === 'yes' ? '<span class="kp-g-bd">Sea view</span>' : '' ) . '</span><span class="kp-g-tx"><span class="kp-g-ty">' . esc_html( $m( 'kp_area' ) ) . '</span><span class="kp-g-h">' . esc_html( get_the_title( $id ) ) . '</span><span class="kp-g-mt">' . (int) $m( 'kp_bedrooms' ) . ' bedrooms · up to ' . (int) $m( 'kp_guests' ) . ' guests' . ( $m( 'kpv_rating' ) ? ' · ★ ' . esc_html( $m( 'kpv_rating' ) ) . '/10' : '' ) . '</span><span class="kp-g-ok">✓ Live prices and availability</span><span class="kp-g-pr">From <strong>' . number_format( (float) $m( 'kp_price_night' ) ) . ' THB</strong> per night</span></span></a>'; }
+		return $h . '</div>';
+	}
 	$q = new WP_Query( array( 'post_type' => 'kp_villa', 'post_status' => 'publish', 'posts_per_page' => (int) $a['limit'], 'no_found_rows' => true, 'meta_key' => 'kp_price_night', 'orderby' => 'meta_value_num', 'order' => 'ASC' ) );
 	if ( ! $q->posts ) return '<p class="kp-empty">Villa listings are loading. Message us on WhatsApp for availability now.</p>';
 	$areas = array(); foreach ( $q->posts as $p ) { $ar = get_post_meta( $p->ID, 'kp_area', true ); if ( $ar ) $areas[ sanitize_title( $ar ) ] = $ar; } ksort( $areas );

@@ -20,13 +20,15 @@ function kpt_hero( $args = array() ) {
 	$hid = kpt_hero_id();
 	$img = $hid ? wp_get_attachment_image( $hid, 'full', false, array( 'class' => 'kpa-hero-img', 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'sync', 'sizes' => '100vw', 'alt' => esc_attr( get_post_meta( $hid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) : '';
 	$credit = $hid ? get_post_meta( $hid, 'kp_credit', true ) : '';
-	echo '<section class="kpa-hero' . ( $img ? ' has-img' : '' ) . '">' . $img . '<div class="kpa-hero-g"></div><div class="kpa-w kpa-hero-tx">';
+	$strip = $args['strip'] ?? '';
+	echo '<section class="kpa-hero' . ( $img ? ' has-img' : '' ) . ( $strip ? ' has-strip' : '' ) . '">' . $img . '<div class="kpa-hero-g"></div><div class="kpa-w kpa-hero-tx">';
 	echo function_exists( 'kp_breadcrumbs_html' ) ? kp_breadcrumbs_html() : '';
 	if ( $kicker ) echo '<p class="kpa-k">' . esc_html( $kicker ) . '</p>';
 	echo '<h1>' . esc_html( $title ) . '</h1>';
 	if ( $lead ) echo '<p class="kpa-hero-lead">' . esc_html( wp_trim_words( $lead, 30, '…' ) ) . '</p>';
 	echo '</div>';
-	if ( $img ) echo '<a class="kpa-hero-cue" href="#kp-main-content" aria-label="Scroll to content"><span></span></a>';
+	if ( $strip ) echo $strip; // phpcs:ignore -- built from attachment markup
+	elseif ( $img ) echo '<a class="kpa-hero-cue" href="#kp-main-content" aria-label="Scroll to content"><span></span></a>';
 	if ( $credit ) echo '<span class="kpa-hero-credit">Photo: ' . esc_html( $credit ) . ( ( $l = get_post_meta( $hid, 'kp_licence', true ) ) ? ', ' . esc_html( $l ) : '' ) . '</span>';
 	echo '</section><span id="kp-main-content"></span>';
 }
@@ -61,4 +63,20 @@ function kpt_related( $title = 'More guides from Koh Samui' ) {
 	echo '<section class="kpa-rel"><div class="kpa-w"><h2>' . esc_html( $title ) . '</h2><div class="kp-rail">';
 	foreach ( $q->posts as $p ) echo '<a class="kpg-card" href="' . esc_url( get_permalink( $p ) ) . '">' . ( has_post_thumbnail( $p ) ? get_the_post_thumbnail( $p, 'kp-card', array( 'loading' => 'lazy' ) ) : '' ) . '<span class="kpg-card-b"><span class="kpg-card-t">' . esc_html( get_the_title( $p ) ) . '</span><span class="kpg-card-m">' . esc_html( wp_trim_words( get_the_excerpt( $p ), 16 ) ) . '</span></span></a>';
 	echo '</div></div></section>';
+}
+
+/** Hero photo strip: thumbnails of a page's local photos (first = hero, so it is skipped). Clicks open the lightbox. */
+function kpt_photo_strip( $ids, $all_anchor = '#photos' ) {
+	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( count( $ids ) < 2 ) return '';
+	$show = array_slice( $ids, 1, 7 ); $more = count( $ids ) - 1 - count( $show );
+	$h = '<div class="kpv-strip" aria-label="Photos">';
+	foreach ( $show as $k => $aid ) { $last = $k === count( $show ) - 1 && $more > 0; $h .= '<a class="kpv-strip-i' . ( $last ? ' has-more' : '' ) . '" href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . ( $k + 1 ) . '">' . wp_get_attachment_image( $aid, 'medium', false, array( 'loading' => 'eager', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ) ) ) . ( $last ? '<span>+' . (int) $more . ' photos</span>' : '' ) . '</a>'; }
+	return $h . '<a class="kpv-strip-all" href="' . esc_attr( $all_anchor ) . '">All ' . count( $ids ) . ' photos</a></div>';
+}
+/** Photo grid for the same photos (lightbox links). */
+function kpt_photo_grid( $ids, $title = '' ) {
+	$ids = array_values( array_unique( array_filter( array_map( 'intval', (array) $ids ) ) ) ); if ( ! $ids ) return '';
+	$h = '<div class="kpv-gallery" id="photos">';
+	foreach ( $ids as $i => $aid ) $h .= '<a href="' . esc_url( wp_get_attachment_image_url( $aid, 'full' ) ) . '" data-kpv-lb="' . $i . '">' . wp_get_attachment_image( $aid, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => esc_attr( get_post_meta( $aid, '_wp_attachment_image_alt', true ) ?: $title ) ) ) . '</a>';
+	return $h . '</div>';
 }

@@ -155,3 +155,12 @@ add_action( 'template_redirect', function () {
 
 // WooCommerce shows the THB code (as everywhere else on the site) instead of the ฿ sign.
 add_filter( 'woocommerce_currency_symbol', function ( $sym, $cur ) { return $cur === 'THB' ? 'THB' : $sym; }, 10, 2 );
+
+// Every content table goes in a .kp-tbl scroller (readable on phones, wide tables scroll sideways instead of squashing words).
+add_filter( 'the_content', function ( $c ) {
+	if ( strpos( $c, '<table' ) === false ) return $c;
+	return preg_replace_callback( '~(<div class="kp-tbl[^"]*">\s*)?(<table\b.*?</table>)~s', function ( $m ) {
+		if ( ! empty( $m[1] ) ) return $m[0];
+		return '<div class="kp-tbl">' . $m[2] . '</div>';
+	}, $c ) ?? $c;
+}, 20 );

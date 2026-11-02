@@ -43,29 +43,76 @@ add_shortcode( 'kp_ticker', function () {
 	foreach ( $ev as $e ) { $d = $e['start']->format( 'Y-m-d' ); $when = $e['live'] ? 'Live now' : ( $d === $today ? ( (int) $e['start']->format( 'H' ) >= 18 ? 'Tonight' : 'Today' ) : $e['start']->format( 'D' ) ); $h .= '<a class="kpn-i" href="' . esc_url( $e['url'] ) . '"><span class="kpn-v">' . esc_html( $when ) . ' ' . esc_html( $e['start']->format( 'H:i' ) ) . '</span> <span class="kpn-n">' . esc_html( $e['title'] ) . '</span>' . ( $e['venue'] ? ' <span class="kpn-p">· ' . esc_html( $e['venue'] ) . '</span>' : '' ) . '</a>'; }
 	return $h . '</div></div></div>';
 } );
-/** Event cards grid with filter chips (kp-ev-card) */
+/** Picture for an event card: its flyer, else a photo for its category. */
+function kp_event_image( $e ) {
+	if ( ! empty( $e['thumb'] ) ) return $e['thumb'];
+	$fb = (array) get_option( 'kp_event_fallbacks', array() );
+	foreach ( (array) ( $e['cats'] ?? array() ) as $c ) { $k = sanitize_title( $c ); if ( ! empty( $fb[ $k ] ) ) return wp_get_attachment_image_url( (int) $fb[ $k ], 'medium_large' ); }
+	return ! empty( $fb['party'] ) ? wp_get_attachment_image_url( (int) $fb['party'], 'medium_large' ) : '';
+}
+/** Event cards: [kp_events limit="30" to="+30 days" category="" chips="1" layout="grid|rail"] */
 add_shortcode( 'kp_events', function ( $a ) {
+	$a = (array) $a;
 	$ev = kp_upcoming_events( array( 'to' => $a['to'] ?? '+30 days', 'limit' => (int) ( $a['limit'] ?? 30 ), 'category' => $a['category'] ?? '' ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
-	$chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
-	$h = '<div class="kp-ev-filters" role="tablist">'; foreach ( $chips as $k => $l ) $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . $k . '">' . $l . '</button>'; $h .= '</div><div class="kp-ev-grid">';
+	$rail = ( $a['layout'] ?? '' ) === 'rail'; $chips_on = ! $rail && ( $a['chips'] ?? '1' ) !== '0'; $h = '';
+	if ( $chips_on ) { $chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
+		$present = array(); foreach ( $ev as $e ) foreach ( $e['cats'] as $c ) $present[ sanitize_title( $c ) ] = 1;
+		$h .= '<div class="kp-ev-filters" role="tablist">'; foreach ( $chips as $k => $l ) { if ( ! in_array( $k, array( 'all', 'live', 'today', 'tomorrow', 'weekend' ), true ) && empty( $present[ $k ] ) ) continue; $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . $k . '">' . $l . '</button>'; } $h .= '</div>'; }
+	$h .= $rail ? '<div class="kp-rail kp-ev-grid" data-rail>' : '<div class="kp-ev-grid">';
 	$today = wp_date( 'Y-m-d' ); $tom = wp_date( 'Y-m-d', strtotime( '+1 day' ) );
 	foreach ( $ev as $e ) { $d = $e['start']->format( 'Y-m-d' ); $dow = (int) $e['start']->format( 'N' ); $tags = array_map( fn( $c ) => sanitize_title( $c ), $e['cats'] ); if ( $e['live'] ) $tags[] = 'live'; if ( $d === $today ) $tags[] = 'today'; if ( $d === $tom ) $tags[] = 'tomorrow'; if ( $dow >= 5 ) $tags[] = 'weekend';
-		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '">' . ( $e['thumb'] ? '<img src="' . esc_url( $e['thumb'] ) . '" alt="' . esc_attr( $e['title'] . ( $e['venue'] ? ' at ' . $e['venue'] : '' ) . ', Koh Samui' ) . '" loading="lazy" width="400" height="500">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $e['start']->format( 'D j M · g:i A' ) ) . ( $e['end'] ? ' – ' . esc_html( $e['end']->format( 'g:i A' ) ) : '' ) . '</span><span class="kp-ev-title">' . esc_html( $e['title'] ) . '</span>' . ( $e['venue'] ? '<span class="kp-ev-venue">' . esc_html( $e['venue'] ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">from ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
+		$img = kp_event_image( $e ); $when = $e['live'] ? 'Live now' : ( $d === $today ? 'Today' : ( $d === $tom ? 'Tomorrow' : $e['start']->format( 'D j M' ) ) );
+		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '">' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $e['title'] . ( $e['venue'] ? ' at ' . $e['venue'] : '' ) . ', Koh Samui' ) . '" loading="lazy" decoding="async" width="768" height="576">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $when . ' · ' . $e['start']->format( 'H:i' ) ) . ( $e['end'] ? '–' . esc_html( $e['end']->format( 'H:i' ) ) : '' ) . '</span><span class="kp-ev-title">' . esc_html( $e['title'] ) . '</span>' . ( $e['venue'] ? '<span class="kp-ev-venue">' . esc_html( $e['venue'] ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">From ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
 	return $h . '</div>';
 } );
-/** Product cards rail */
+/** One product card (kohphangan.com kp-g style): photo + badge, kicker, title, meta, real rating, cancellation, From price. */
+function kp_card_image_id( $id ) {
+	$img = (int) get_post_thumbnail_id( $id ); if ( $img ) return $img;
+	$g = array_filter( array_map( 'intval', explode( ',', (string) get_post_meta( $id, '_product_image_gallery', true ) ) ) ); if ( $g ) return reset( $g );
+	$fb = (array) get_option( 'kp_cat_fallbacks', array() );
+	foreach ( wp_get_post_terms( $id, 'product_cat', array( 'fields' => 'slugs' ) ) as $slug ) if ( ! empty( $fb[ $slug ] ) ) return (int) $fb[ $slug ];
+	$h = array_filter( array_map( 'intval', explode( ',', (string) get_option( 'kp_hero_fallbacks', '' ) ) ) ); return $h ? (int) reset( $h ) : 0;
+}
+function kp_tour_card( $p, $extra_class = '' ) {
+	if ( is_numeric( $p ) ) $p = wc_get_product( $p ); if ( ! $p ) return '';
+	$id = $p->get_id(); $m = fn( $k ) => get_post_meta( $id, $k, true );
+	$closed = function_exists( 'kp_product_is_closed_today' ) && kp_product_is_closed_today( $id );
+	$terms = wp_get_post_terms( $id, 'product_cat' ); $tags = implode( ' ', wp_list_pluck( $terms, 'slug' ) );
+	$kicker = implode( ' · ', array_slice( wp_list_pluck( $terms, 'name' ), 0, 2 ) ) ?: 'Tour';
+	$per_boat = $m( 'kp_per' ) === 'boat'; $ticket = (bool) $m( 'kp_is_ticket' );
+	$badge = $m( 'kp_badge' ) ?: ( $closed ? 'Reopens ' . get_option( 'kp_angthong_reopen', '16 Dec' ) : ( $per_boat ? 'Private' : ( $ticket ? 'Tickets' : '' ) ) );
+	$pickup = metadata_exists( 'post', $id, 'kp_pickup_enabled' ) ? (bool) $m( 'kp_pickup_enabled' ) : ! $per_boat;
+	$meta = array_filter( array( $m( 'kp_duration' ), $ticket ? '' : ( $pickup ? 'Hotel transfer (most areas)' : ( $m( 'kp_pier' ) ? 'From ' . $m( 'kp_pier' ) : '' ) ) ) );
+	$cx = $m( 'kp_cxl_policy' ) ?: 'day';
+	$ok = $ticket ? 'Official tickets, booked online' : ( $cx === 'partner' ? 'Free cancellation 4+ days before' : 'Free cancellation 48 h before' );
+	if ( ! $m( 'kp_bookable' ) && ! $ticket ) $ok = 'Price confirmed on request';
+	$price = (float) $p->get_price(); $unit = $per_boat ? 'per boat' : ( $m( 'kp_child_price' ) !== '' ? 'per adult' : 'per person' );
+	$img = kp_card_image_id( $id );
+	$h = '<a class="kpg-card kp-g' . ( $extra_class ? ' ' . esc_attr( $extra_class ) : '' ) . '" data-tags="' . esc_attr( $tags ) . '" href="' . esc_url( $p->get_permalink() ) . '">';
+	$h .= '<span class="kp-g-im">' . ( $img ? wp_get_attachment_image( $img, 'medium_large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '(max-width:600px) 92vw, 360px' ) ) : '' ) . ( $badge ? '<span class="kp-g-bd">' . esc_html( $badge ) . '</span>' : '' ) . '</span>';
+	$h .= '<span class="kp-g-tx"><span class="kp-g-ty">' . esc_html( $kicker ) . '</span><span class="kp-g-h">' . esc_html( $p->get_name() ) . '</span>';
+	if ( $meta ) $h .= '<span class="kp-g-mt">' . esc_html( implode( ' · ', $meta ) ) . '</span>';
+	if ( $p->get_review_count() ) $h .= '<span class="kp-g-rt"><b aria-hidden="true">★★★★★</b> ' . esc_html( number_format( (float) $p->get_average_rating(), 1 ) ) . ' (' . (int) $p->get_review_count() . ( $p->get_review_count() === 1 ? ' review' : ' reviews' ) . ')</span>';
+	$h .= '<span class="kp-g-ok">✓ ' . esc_html( $ok ) . '</span>';
+	$h .= '<span class="kp-g-pr">' . ( $closed ? 'Book now for dates from ' . esc_html( get_option( 'kp_angthong_reopen', '16 Dec' ) ) : ( $price ? 'From <strong data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</strong> ' . esc_html( $unit ) : 'Price on request' ) ) . '</span></span></a>';
+	return $h;
+}
+/** Product cards: [kp_tours limit="8" ids="1,2" slugs="a,b" cat="" chips="" layout="rail|grid"] */
 add_shortcode( 'kp_tours', function ( $a ) {
 	if ( ! function_exists( 'wc_get_products' ) ) return '';
-	$args = array( 'status' => 'publish', 'limit' => (int) ( $a['limit'] ?? 12 ), 'orderby' => 'menu_order', 'order' => 'ASC' );
-	if ( ! empty( $a['ids'] ) ) $args['include'] = array_map( 'intval', explode( ',', $a['ids'] ) ); if ( ! empty( $a['cat'] ) ) $args['category'] = array( $a['cat'] );
-	$grid = ! empty( $a['chips'] ); $products = wc_get_products( $args ); $h = '';
-	if ( $grid ) { $cats = array(); foreach ( $products as $p ) foreach ( wp_get_post_terms( $p->get_id(), 'product_cat' ) as $t ) $cats[ $t->slug ] = $t->name;
+	$a = (array) $a; $args = array( 'status' => 'publish', 'limit' => (int) ( $a['limit'] ?? 12 ), 'orderby' => 'menu_order', 'order' => 'ASC' );
+	if ( ! empty( $a['ids'] ) ) { $args['include'] = array_map( 'intval', explode( ',', $a['ids'] ) ); $args['orderby'] = 'include'; }
+	if ( ! empty( $a['slugs'] ) ) { $ids = array(); foreach ( array_map( 'trim', explode( ',', $a['slugs'] ) ) as $sl ) { $po = get_page_by_path( $sl, OBJECT, 'product' ); if ( $po ) $ids[] = $po->ID; } if ( ! $ids ) return ''; $args['include'] = $ids; $args['orderby'] = 'include'; }
+	if ( ! empty( $a['cat'] ) ) $args['category'] = array_map( 'trim', explode( ',', $a['cat'] ) );
+	if ( ! empty( $a['exclude_closed'] ) ) $args['limit'] = $args['limit'] + 10;
+	$grid = ! empty( $a['chips'] ) || ( $a['layout'] ?? '' ) === 'grid'; $products = wc_get_products( $args ); $h = '';
+	if ( ! empty( $a['exclude_closed'] ) && function_exists( 'kp_product_is_closed_today' ) ) $products = array_slice( array_values( array_filter( $products, fn( $p ) => ! kp_product_is_closed_today( $p->get_id() ) ) ), 0, (int) ( $a['limit'] ?? 12 ) );
+	if ( ! $products ) return '';
+	if ( ! empty( $a['chips'] ) ) { $cats = array(); foreach ( $products as $p ) foreach ( wp_get_post_terms( $p->get_id(), 'product_cat' ) as $t ) $cats[ $t->slug ] = $t->name;
 		$order = array_map( 'trim', explode( ',', $a['chips'] ) ); $chips = array( 'all' => 'All tours' ); foreach ( $order as $c ) { $k = sanitize_title( $c ); if ( isset( $cats[ $k ] ) ) $chips[ $k ] = $cats[ $k ]; }
 		$h .= '<div class="kp-ev-filters" role="tablist" aria-label="Filter tours">'; foreach ( $chips as $k => $l ) $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . esc_attr( $k ) . '">' . esc_html( $l ) . '</button>'; $h .= '</div>'; }
-	$h .= $grid ? '<div class="kp-tour-grid">' : '<div class="kp-rail kp-rail-tours">';
-	foreach ( $products as $p ) { $id = $p->get_id(); $closed = function_exists( 'kp_product_is_closed_today' ) && kp_product_is_closed_today( $id );
-		$tags = implode( ' ', wp_list_pluck( wp_get_post_terms( $id, 'product_cat' ), 'slug' ) );
-		$h .= '<a class="kpg-card" data-tags="' . esc_attr( $tags ) . '" href="' . esc_url( $p->get_permalink() ) . '">' . ( $p->get_image_id() ? wp_get_attachment_image( $p->get_image_id(), 'medium_large', false, array( 'loading' => 'lazy' ) ) : '' ) . '<span class="kpg-card-b"><span class="kpg-card-t">' . esc_html( $p->get_name() ) . '</span><span class="kpg-card-m">' . esc_html( get_post_meta( $id, 'kp_duration', true ) ) . ( $p->get_review_count() ? ' · ★ ' . esc_html( $p->get_average_rating() ) : '' ) . '</span><span class="kpg-card-p">' . ( $closed ? 'Season reopens ' . esc_html( get_option( 'kp_angthong_reopen', '16 December' ) ) : 'from ' . number_format( (float) $p->get_price() ) . ' THB' ) . '</span><span class="kc kpg-btn">See the trip</span></span></a>'; }
+	$h .= $grid ? '<div class="kp-tour-grid">' : '<div class="kp-rail kp-rail-tours" data-rail>';
+	foreach ( $products as $p ) $h .= kp_tour_card( $p );
 	return $h . '</div>';
 } );
 /** At-a-glance box for places */

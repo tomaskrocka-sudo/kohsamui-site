@@ -48,7 +48,7 @@ function kpv_sync_one( $slug, $info ) {
 		'kpv_slug' => $slug, 'kpv_path' => $info['path'], 'kpv_source_id' => $d['source_id'] ?? '', 'kpv_synced' => time(), 'kpv_data_hash' => md5( wp_json_encode( $d ) ),
 		'kp_villa_kind' => 'holiday', 'kp_area' => $area, 'kp_lat' => $d['lat'] ?? '', 'kp_lng' => $d['lng'] ?? '',
 		'kp_bedrooms' => $d['bedrooms'] ?? '', 'kpv_bedrooms_min' => $d['bedrooms_min'] ?? '', 'kp_guests' => $d['guests'] ?? '', 'kpv_bathrooms' => $d['bathrooms'] ?? '',
-		'kp_price_night' => $from_thb, 'kp_min_nights' => $d['rates'] ? min( array_column( $d['rates'], 'min_nights' ) ) : '',
+		'kp_price_night' => $from_thb ?: ( get_post_meta( (int) $id, 'kpv_price_live_pass', true ) ? get_post_meta( (int) $id, 'kp_price_night', true ) : '' ), 'kp_min_nights' => $d['rates'] ? min( array_column( $d['rates'], 'min_nights' ) ) : '',
 		'kp_pool' => preg_match( '/pool/i', implode( ' ', $amen ) . ' ' . implode( ' ', $d['highlights'] ) ) ? 'yes' : '', 'kp_sea_view' => preg_match( '/sea view|ocean view|sea-view/i', implode( ' ', $amen ) . ' ' . implode( ' ', $d['highlights'] ) . ' ' . $d['description'] ) ? 'yes' : '',
 		'kp_amenities' => implode( ', ', array_slice( $amen, 0, 60 ) ),
 		'kpv_rating' => $d['rating'] ?? '', 'kpv_reviews' => $d['reviews'] ?? '',
@@ -80,20 +80,42 @@ function kpv_retire_missing( $index ) {
 }
 
 /** Every hour: availability + live price for the next N Saturday-to-Saturday weeks, all villas in batches of 40. */
-function kpv_hourly() {
-	if ( ! kpv_opt( 'enabled' ) || ! kpv_lock( 'hourly', 50 * MINUTE_IN_SECONDS ) ) return;
-	$index = get_option( 'kpv_index', array() ); if ( ! $index ) { kpv_unlock( 'hourly' ); return; }
-	$slugs = array_keys( $index ); $tz = new DateTimeZone( 'Asia/Bangkok' ); $d = new DateTimeImmutable( 'tomorrow', $tz );
-	while ( $d->format( 'N' ) !== '6' ) $d = $d->modify( '+1 day' );
-	$avail = array(); $nights = (int) kpv_opt( 'nights' );
-	for ( $w = 0; $w < (int) kpv_opt( 'weeks' ); $w++ ) {
-		$from = $d->modify( "+$w week" )->format( 'Y-m-d' ); $to = $d->modify( "+$w week +$nights days" )->format( 'Y-m-d' );
-		foreach ( array_chunk( $slugs, 40 ) as $chunk ) { $res = kpv_live_prices( $chunk, $from, $to, 2 ); if ( ! $res ) continue; foreach ( $res as $s => $r ) $avail[ $s ][ $from ] = $r['ok'] ? array( 1, kpv_to_thb( $r['total'], $r['currency'] ) ) : array( 0, 0 ); }
-	}
-	foreach ( $avail as $s => $weeks ) { $id = kpv_post_id( $s ); if ( $id ) { update_post_meta( $id, 'kpv_avail', wp_json_encode( $weeks ) ); update_post_meta( $id, 'kpv_avail_time', time() ); } }
-	update_option( 'kpv_avail_status', array( 'time' => time(), 'villas' => count( $avail ), 'weeks' => (int) kpv_opt( 'weeks' ) ), false );
-	kpv_unlock( 'hourly' );
+/**
+ * Availability, in small steps (shared hosting stops long PHP runs): every 5-minute tick asks the source's price API for a few
+ * Saturday-to-Saturday weeks × villa chunks and saves each answer at once. A full pass (12 weeks × all villas) takes ~30 min.
+ * Villas the API never returns (priced on request at the source) are shown as "ask us", never as booked.
+ */
+function kpv_avail_weeks() {
+	$tz = new DateTimeZone( 'Asia/Bangkok' ); $d = new DateTimeImmutable( 'tomorrow', $tz ); while ( $d->format( 'N' ) !== '6' ) $d = $d->modify( '+1 day' );
+	$w = array(); for ( $i = 0; $i < (int) kpv_opt( 'weeks' ); $i++ ) $w[] = $d->modify( "+$i week" )->format( 'Y-m-d' ); return $w;
 }
+function kpv_avail_step( $calls = 12 ) {
+	$index = get_option( 'kpv_index', array() ); if ( ! $index ) return;
+	$slugs = array_keys( $index ); $chunks = array_chunk( $slugs, 20 ); $weeks = kpv_avail_weeks(); $nights = (int) kpv_opt( 'nights' );
+	$cur = get_option( 'kpv_avail_cursor', array( 'w' => 0, 'c' => 0, 'pass' => time() ) ); $made = 0;
+	while ( $made < $calls ) {
+		if ( $cur['w'] >= count( $weeks ) ) { update_option( 'kpv_avail_status', array( 'time' => time(), 'villas' => count( $slugs ), 'weeks' => count( $weeks ), 'pass_started' => $cur['pass'] ), false ); $cur = array( 'w' => 0, 'c' => 0, 'pass' => time() ); break; }
+		$from = $weeks[ $cur['w'] ]; $to = ( new DateTimeImmutable( $from ) )->modify( "+$nights days" )->format( 'Y-m-d' ); $chunk = $chunks[ $cur['c'] ] ?? array();
+		$res = $chunk ? kpv_live_prices( $chunk, $from, $to, 2 ) : array(); $made++;
+		if ( is_array( $res ) ) foreach ( $res as $slug => $r ) {
+			$id = kpv_post_id( $slug ); if ( ! $id ) continue;
+			$av = kpv_json( $id, 'kpv_avail' ); $av = array_filter( $av, fn( $k ) => $k >= $weeks[0], ARRAY_FILTER_USE_KEY ); // drop past weeks
+			$av[ $from ] = $r['ok'] ? array( 1, kpv_to_thb( $r['total'], $r['currency'] ) ) : array( 0, 0 ); ksort( $av );
+			update_post_meta( $id, 'kpv_avail', wp_json_encode( $av ) ); update_post_meta( $id, 'kpv_avail_time', time() );
+			if ( $r['ok'] ) { update_post_meta( $id, 'kpv_avail_seen', time() );
+				// No seasonal rate table at the source: show a "from" price = cheapest live week of the current pass.
+				$night = round( kpv_to_thb( $r['total'], $r['currency'] ) / max( 1, $nights ) );
+				if ( $night > 0 && ! kpv_json( $id, 'kpv_rates' ) && ( (int) get_post_meta( $id, 'kpv_price_live_pass', true ) !== (int) $cur['pass'] || $night < (float) get_post_meta( $id, 'kp_price_night', true ) ) ) { update_post_meta( $id, 'kp_price_night', $night ); update_post_meta( $id, 'kpv_price_live_pass', (int) $cur['pass'] ); }
+			}
+		}
+		$cur['c']++; if ( $cur['c'] >= count( $chunks ) ) { $cur['c'] = 0; $cur['w']++; }
+	}
+	update_option( 'kpv_avail_cursor', $cur, false );
+}
+/** True when the source has returned this villa at least once in the last two days (otherwise it is "on request"). */
+function kpv_is_listed_live( $id ) { $t = (int) get_post_meta( $id, 'kpv_avail_seen', true ); return $t && $t > time() - 2 * DAY_IN_SECONDS; }
+function kpv_hourly() {} // kept for the scheduled hook; availability now runs in steps on every tick
+add_action( 'kpv_tick', function () { if ( kpv_opt( 'enabled' ) && kpv_lock( 'avail', 280 ) ) { kpv_avail_step( 12 ); kpv_unlock( 'avail' ); } }, 15 );
 
 add_action( 'init', function () {
 	register_taxonomy( 'kp_villa_area', 'kp_villa', array( 'label' => 'Villa areas', 'public' => true, 'show_in_rest' => true, 'hierarchical' => false, 'rewrite' => array( 'slug' => 'koh-samui-villas/area', 'with_front' => false ) ) );

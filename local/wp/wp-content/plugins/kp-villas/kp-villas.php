@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KP Villas (samui-villa.com sync)
  * Description: Imports every Koh Samui villa from samui-villa.com (with the owner's permission) into kp_villa posts and keeps them current automatically: villa list and details (rates by season and bedrooms, minimum stay, discounts, house rules, payment and cancellation terms, features, photos, location) are refreshed every hour in small batches; availability and live prices for the coming weeks are refreshed every hour; any dates a guest picks are priced live (cached 1 hour). Guests send a booking request (email + WhatsApp); payment follows our confirmation.
- * Version: 0.1.1
+ * Version: 0.2.0
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -11,6 +11,7 @@ require_once KPV_DIR . '/includes/source.php';   // HTTP client, sitemap, page p
 require_once KPV_DIR . '/includes/sync.php';     // cron jobs, upsert, availability windows
 require_once KPV_DIR . '/includes/front.php';    // REST quote/enquiry, shortcodes, helpers
 require_once KPV_DIR . '/includes/admin.php';    // settings + status + Sync now
+require_once KPV_DIR . '/includes/photos.php';   // villa photos downloaded and served locally
 
 function kpv_opt( $k = null ) {
 	$o = wp_parse_args( get_option( 'kpv_settings', array() ), array(
@@ -24,6 +25,7 @@ function kpv_opt( $k = null ) {
 		'noindex'      => 1,         // villa pages noindex by default (source text is not unique); hub stays indexed
 		'markup'       => 0,         // % added to source prices (0 = same price)
 		'min_gap'      => 2,         // seconds between requests (be polite)
+		'photos'       => 16,        // gallery photos stored locally per villa
 	) );
 	return $k ? ( $o[ $k ] ?? null ) : $o;
 }

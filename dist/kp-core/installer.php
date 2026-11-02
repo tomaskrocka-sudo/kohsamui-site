@@ -16,7 +16,19 @@ function kpc_steps() {
 		array( 'finish', 'Permalinks, caches, first syncs', 1 ),
 	);
 }
-function kpc_manifest() { static $m = null; if ( $m === null ) $m = json_decode( (string) @file_get_contents( KPC_DIR . 'data/media-manifest.json' ), true ) ?: array(); return $m; }
+function kpc_manifest() {
+	static $m = null; if ( $m !== null ) return $m;
+	$m = json_decode( (string) @file_get_contents( KPC_DIR . 'data/media-manifest.json' ), true ) ?: array();
+	// Later manifests add photos and override a post's photo (v2: tours/pages/event fallbacks, places: Wikimedia photos of Samui sights).
+	foreach ( array( 'media-manifest-v2.json', 'media-manifest-places.json' ) as $f ) {
+		$x = json_decode( (string) @file_get_contents( KPC_DIR . 'data/' . $f ), true ); if ( ! $x ) continue;
+		$m['media'] = array_merge( $m['media'] ?? array(), $x['media'] ?? array() );
+		$idx = array(); foreach ( $m['posts'] ?? array() as $i => $p ) $idx[ $p['type'] . '/' . $p['slug'] ] = $i;
+		foreach ( $x['posts'] ?? array() as $p ) { $k = $p['type'] . '/' . $p['slug']; if ( isset( $idx[ $k ] ) ) $m['posts'][ $idx[ $k ] ] = $p; else { $m['posts'][] = $p; $idx[ $k ] = count( $m['posts'] ) - 1; } }
+		foreach ( array( 'event_fallbacks', 'cat_fallbacks' ) as $o ) if ( ! empty( $x[ $o ] ) ) $m[ $o ] = array_merge( $m[ $o ] ?? array(), $x[ $o ] );
+	}
+	return $m;
+}
 
 add_action( 'admin_menu', function () {
 	add_management_page( 'Koh Samui Trips setup', 'Koh Samui Trips setup', 'manage_options', 'kpc-setup', 'kpc_setup_page' );
@@ -29,14 +41,15 @@ function kpc_setup_page() {
 	echo '</ul>';
 	if ( in_array( false, $req, true ) ) { echo '<p><strong>Install and activate the missing items first.</strong></p></div>'; return; }
 	echo '<table class="widefat striped" style="max-width:820px"><thead><tr><th>Step</th><th>Status</th></tr></thead><tbody>';
-	foreach ( $steps as $s ) echo '<tr data-step="' . esc_attr( $s[0] ) . '" data-batches="' . (int) $s[2] . '"><td>' . esc_html( $s[1] ) . '</td><td class="st">' . ( isset( $done[ $s[0] ] ) ? 'done ' . esc_html( wp_date( 'j M H:i', $done[ $s[0] ] ) ) : '—' ) . '</td></tr>';
-	echo '</tbody></table><p><button class="button button-primary button-hero" id="kpc-run">Run setup</button></p><pre id="kpc-log" style="max-height:340px;overflow:auto;background:#fff;padding:10px;border:1px solid #ccd0d4"></pre>';
+	$upd = array( 'pages', 'media', 'assign', 'finish' );
+	foreach ( $steps as $s ) echo '<tr data-step="' . esc_attr( $s[0] ) . '" data-batches="' . (int) $s[2] . '"' . ( in_array( $s[0], $upd, true ) ? ' data-upd="1"' : '' ) . '><td>' . esc_html( $s[1] ) . '</td><td class="st">' . ( isset( $done[ $s[0] ] ) ? 'done ' . esc_html( wp_date( 'j M H:i', $done[ $s[0] ] ) ) : '—' ) . '</td></tr>';
+	echo '</tbody></table><p><button class="button button-primary button-hero" id="kpc-upd">Update content and photos</button> <button class="button button-hero" id="kpc-run">Run full setup</button></p><p class="description">Update: imports new and changed guide pages, downloads new photos and assigns them. Full setup also re-applies settings and re-imports tours, events and places.</p><pre id="kpc-log" style="max-height:340px;overflow:auto;background:#fff;padding:10px;border:1px solid #ccd0d4"></pre>';
 	?>
 <script>(function(){var b=document.getElementById('kpc-run'),log=document.getElementById('kpc-log'),rows=[].slice.call(document.querySelectorAll('tr[data-step]'));
 function line(t){log.textContent+=t+"\n";log.scrollTop=log.scrollHeight}
 function call(step,batch){var f=new FormData();f.append('action','kpc_step');f.append('step',step);f.append('batch',batch);f.append('_wpnonce','<?php echo esc_js( wp_create_nonce( 'kpc_step' ) ); ?>');return fetch(ajaxurl,{method:'POST',body:f,credentials:'same-origin'}).then(function(r){return r.json()})}
-async function run(){b.disabled=true;for(const tr of rows){var st=tr.querySelector('.st'),s=tr.dataset.step,n=+tr.dataset.batches;for(var i=0;i<n;i++){st.textContent='running '+(i+1)+'/'+n+'…';try{var j=await call(s,i);(j.data&&j.data.log||[]).slice(-6).forEach(line);if(!j.success){st.textContent='error';line('ERROR in '+s+': '+(j.data&&j.data.error));b.disabled=false;return}}catch(e){st.textContent='error';line('ERROR in '+s+': '+e);b.disabled=false;return}}st.textContent='done'}line('All steps finished.');b.disabled=false}
-b.addEventListener('click',run)})();</script></div>
+async function run(only){var bu=document.getElementById('kpc-upd');b.disabled=bu.disabled=true;for(const tr of rows){if(only&&!tr.dataset.upd)continue;var st=tr.querySelector('.st'),s=tr.dataset.step,n=+tr.dataset.batches;for(var i=0;i<n;i++){st.textContent='running '+(i+1)+'/'+n+'…';try{var j=await call(s,i);(j.data&&j.data.log||[]).slice(-6).forEach(line);if(!j.success){st.textContent='error';line('ERROR in '+s+': '+(j.data&&j.data.error));b.disabled=bu.disabled=false;return}}catch(e){st.textContent='error';line('ERROR in '+s+': '+e);b.disabled=bu.disabled=false;return}}st.textContent='done'}line('All steps finished.');b.disabled=bu.disabled=false}
+b.addEventListener('click',function(){run(false)});document.getElementById('kpc-upd').addEventListener('click',function(){run(true)})})();</script></div>
 	<?php
 }
 
@@ -127,6 +140,7 @@ function kpc_assign() {
 		$g = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $p['gallery'] ?? array() ) ) ); if ( $g && $p['type'] === 'product' ) update_post_meta( $post->ID, '_product_image_gallery', implode( ',', $g ) );
 	}
 	$fb = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $m['options']['kp_hero_fallbacks'] ?? array() ) ) ); if ( $fb ) update_option( 'kp_hero_fallbacks', implode( ',', $fb ) );
+	foreach ( array( 'event_fallbacks' => 'kp_event_fallbacks', 'cat_fallbacks' => 'kp_cat_fallbacks' ) as $mk => $opt ) { $o = array(); foreach ( $m[ $mk ] ?? array() as $slug => $key ) if ( ! empty( $map[ $key ] ) ) $o[ sanitize_title( $slug ) ] = (int) $map[ $key ]; if ( $o ) update_option( $opt, $o ); }
 	$home = get_post( get_option( 'page_on_front' ) ); $tg = get_page_by_path( 'koh-samui-travel-guide' );
 	if ( $home && $tg && ! has_post_thumbnail( $home ) && has_post_thumbnail( $tg ) ) set_post_thumbnail( $home->ID, get_post_thumbnail_id( $tg ) );
 	KP_Log::log( "Hero photos set on $n pages/tours; fallback heroes: " . count( $fb ) . '.' );

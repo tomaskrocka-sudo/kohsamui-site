@@ -9,6 +9,12 @@ body{margin:0;font-family:var(--kp-sans);font-size:16px;line-height:1.6;color:va
 .kpa-prog{top:calc(var(--kp-header-h) + 34px)!important}
 html.kpts-dark body{background:var(--kpd-bg);color:var(--kpd-text)}
 html.kpts-dark ::selection{background:#C1DF0F;color:#0B1F33}
+/* Neutralise the parent theme's reset (Hello Elementor reset.css loads first): pink links/buttons, 16px button padding that squeezed icon buttons to nothing. Components below restyle what they need. */
+[type=button],[type=reset],[type=submit],button{font:inherit;line-height:inherit;padding:0;border:0;border-radius:0;background:transparent;color:inherit;white-space:normal;text-align:inherit;transition:none}
+[type=button]:focus,[type=button]:hover,[type=reset]:focus,[type=reset]:hover,[type=submit]:focus,[type=submit]:hover,button:focus,button:hover{background-color:transparent;color:inherit;text-decoration:none}
+button:focus-visible,[type=button]:focus-visible,[type=submit]:focus-visible,a:focus-visible{outline:2px solid var(--kp-accent-dark);outline-offset:2px}
+table td,table th{border:0;padding:0;line-height:inherit}
+table tbody>tr:nth-child(odd)>td,table tbody>tr:nth-child(odd)>th,table tbody tr:hover>td,table tbody tr:hover>th{background-color:transparent}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--kp-ink);text-decoration-thickness:1px;text-underline-offset:2px}a:hover{color:var(--kp-accent-dark)}
 html.kpts-dark a{color:var(--kpd-link)}
@@ -316,3 +322,167 @@ html.kpts-dark .kp-open.is-open{color:#6fdc9f}html.kpts-dark .kp-open.is-closed{
 .pswp .pswp__button:hover,.pswp .pswp__button:focus{background-color:transparent;color:inherit}
 /* Cart / checkout / account: plain, focused layout */
 .kp-shop-w{padding-block:32px 64px}.kp-shop-h{font-family:var(--kp-serif);font-size:clamp(28px,4vw,40px);margin:0 0 20px}
+
+/* ==========================================================================
+   v3 polish (2 Nov 2026): readability, tables, mega menu, buttons, dark mode
+   ========================================================================== */
+/* Tables: every content table sits in a .kp-tbl scroller (added server-side). Readable at any width. */
+.kpa-body,.kpv-product{overflow-wrap:break-word}
+.kp-tbl{position:relative;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2em 0 1.8em;border:1px solid var(--kp-border);border-radius:14px;background:var(--kp-bg);
+  background-image:linear-gradient(to right,var(--kp-bg),var(--kp-bg)),linear-gradient(to right,var(--kp-bg),var(--kp-bg)),linear-gradient(to right,rgba(11,31,51,.12),rgba(11,31,51,0)),linear-gradient(to left,rgba(11,31,51,.12),rgba(11,31,51,0));
+  background-position:left center,right center,left center,right center;background-repeat:no-repeat;background-size:24px 100%,24px 100%,12px 100%,12px 100%;background-attachment:local,local,scroll,scroll}
+.kp-tbl table,.kpa-body .kp-tbl table,.kpa-body .kp-tbl table.kp-glance{display:table;width:100%;max-width:none;min-width:0;margin:0;border-collapse:separate;border-spacing:0;font-size:15px;line-height:1.5;overflow-wrap:normal;word-break:normal;hyphens:manual;background:transparent}
+.kp-tbl :is(th,td){padding:12px 14px;text-align:left;vertical-align:top;border:0;border-bottom:1px solid var(--kp-border);color:var(--kp-text)}
+.kp-tbl tr:last-child>:is(th,td){border-bottom:0}
+.kp-tbl thead th{background:var(--kp-surface);color:var(--kp-ink);font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;width:auto}
+.kp-tbl tbody th{color:var(--kp-ink);font-weight:600;width:auto}
+.kp-tbl tbody tr:nth-child(even)>:is(td,th){background:color-mix(in srgb,var(--kp-surface) 55%,transparent)}
+.kp-tbl tbody tr:hover>:is(td,th){background:var(--kp-surface)}
+/* Key / value fact boxes (no header row): label column */
+.kp-tbl table:not(:has(thead)) tbody th{width:34%;color:var(--kp-muted);font-weight:600}
+@media(min-width:700px){.kp-tbl table:not(:has(thead)) tbody th{width:28%}}
+/* Wide tables: give columns room and scroll sideways instead of squashing words */
+.kp-tbl table:has(tr>:nth-child(4)) :is(th,td){min-width:7.5em}
+.kp-tbl table:has(tr>:nth-child(5)){min-width:720px}
+.kp-tbl table:has(tr>:nth-child(7)){min-width:940px;font-size:14.5px}
+.kp-tbl table:has(tr>:nth-child(4)) :is(th,td):first-child{position:sticky;left:0;z-index:1;background:var(--kp-bg);font-weight:600;color:var(--kp-ink);box-shadow:1px 0 0 var(--kp-border)}
+.kp-tbl table:has(tr>:nth-child(4)) thead th:first-child{background:var(--kp-surface)}
+.kp-tbl table:has(tr>:nth-child(4)) tbody tr:nth-child(even)>:first-child{background:color-mix(in srgb,var(--kp-surface) 55%,var(--kp-bg))}
+@media(max-width:600px){.kp-tbl :is(th,td){padding:10px 12px;font-size:14.5px}.kp-tbl table:has(tr>:nth-child(4)) :is(th,td){min-width:8.5em}}
+.kp-tbl-hint{display:none;font-size:12.5px;color:var(--kp-muted);margin:-1.2em 0 1.6em}
+@media(max-width:900px){.kp-tbl.is-wide+.kp-tbl-hint{display:block}}
+
+/* Mega menu: anchor to the header container so it never runs off the screen */
+.kph-w{position:relative}
+.kph-menu>li:has(>.kph-mega-wide){position:static}
+.kph-mega.kph-mega-wide{left:var(--kp-gutter);right:var(--kp-gutter);transform:none;width:auto;max-width:calc(var(--kp-w) - 2 * var(--kp-gutter));margin:0 auto;padding:22px 26px 18px;gap:4px 32px}
+.kph-mega .kph-cat{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--kp-accent-dark);margin:0 0 4px}
+.kph-mega li a{color:var(--kp-text);font-size:14px}
+@media(min-width:1025px){.kph-mega-wide li a{font-size:14px;padding:4px 0}}
+
+/* Icon buttons (theme toggle, burger, close) */
+.kph-theme,.kph-burger,.kph-round,.kph-close{padding:0!important;line-height:0}
+.kph-theme svg,.kph-burger svg{flex:none}
+.kph-theme:hover,.kph-burger:hover{border-color:var(--kp-ink);background:var(--kp-surface)}
+
+/* WhatsApp buttons: brand green with dark text (white on #25D366 fails contrast) */
+.kpv-btn-wa,a.kpv-btn-wa{background:#25D366;color:#052E16!important}.kpv-btn-wa:hover{background:#1FC15C;color:#052E16!important}
+
+/* Map dots stay dark in dark mode */
+.kpg-dot{background:#0B1F33}
+
+/* Hero breadcrumbs readable over photos */
+.kpa-hero .kpa-bc a,.kpa-hero .kpa-bc span,.kpa-hero .kpa-bc li[aria-current] span{color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.kpa-hero .kpa-bc li+li::before{color:rgba(255,255,255,.7)}
+
+/* Body text sizes and colours: nothing smaller than 13px, muted text dark enough */
+.kpg-card-m,.kp-ev-venue,.kpv-card-m{color:var(--kp-muted);font-size:13.5px}
+
+/* Product cards: kohphangan.com kp-g style */
+a.kp-g{display:flex;flex-direction:column;background:var(--kpd-card);border:1px solid var(--kp-border);border-radius:16px;overflow:hidden;text-decoration:none!important;color:var(--kp-ink)!important;box-shadow:0 4px 18px rgba(11,34,51,.07);transition:transform .15s,box-shadow .15s;min-width:0}
+a.kp-g:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(11,34,51,.14)}
+.kp-g-im{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:linear-gradient(160deg,#0E3B52,#0B1F33)}
+.kp-g-im img{width:100%;height:100%;object-fit:cover;display:block;margin:0;border-radius:0;transition:transform .5s}
+a.kp-g:hover .kp-g-im img{transform:scale(1.04)}
+.kp-g-bd{position:absolute;top:12px;left:12px;background:#fff;color:#0B2233;font:700 12px/1 var(--kp-sans);padding:7px 10px;border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.kp-g-tx{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1;font-family:var(--kp-sans)}
+.kp-g-ty{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#0A6F84}
+html.kpts-dark .kp-g-ty{color:#7FD3E6}
+.kp-g-h{font:700 17px/1.3 var(--kp-sans);color:var(--kp-ink)}
+.kp-g-mt{font-size:13px;color:var(--kp-muted)}
+.kp-g-rt{font-size:13px;color:var(--kp-ink)}.kp-g-rt b{color:#E86A1F;letter-spacing:1px}
+.kp-g-ok{font-size:13px;color:#1A7F4B;font-weight:600}html.kpts-dark .kp-g-ok{color:#6FDC9F}
+.kp-g-pr{margin-top:auto;padding-top:8px;font-size:13px;color:var(--kp-muted)}.kp-g-pr strong{font-size:19px;color:var(--kp-ink)}
+.kp-tour-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+
+/* Carousels (rails): swipe on phones, arrows on desktop */
+.kp-rail-wrap{position:relative}
+.kp-rail[data-rail]{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:calc((100% - 3 * 20px) / 4);gap:20px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 18px;margin:0 -2px}
+.kp-rail[data-rail]::-webkit-scrollbar{display:none}
+.kp-rail[data-rail]>*{scroll-snap-align:start}
+@media(max-width:1024px){.kp-rail[data-rail]{grid-auto-columns:calc((100% - 2 * 16px) / 2.6);gap:16px}}
+@media(max-width:640px){.kp-rail[data-rail]{grid-auto-columns:84%;gap:14px}}
+.kp-rail-btn{position:absolute;top:38%;z-index:3;width:44px!important;height:44px;border-radius:50%!important;background:#fff!important;color:#0B1F33!important;border:1px solid var(--kp-border)!important;box-shadow:0 6px 20px rgba(11,31,51,.18);display:none;align-items:center;justify-content:center;cursor:pointer}
+.kp-rail-btn:hover{transform:scale(1.06)}
+.kp-rail-btn[disabled]{opacity:0;pointer-events:none}
+.kp-rail-prev{left:-18px}.kp-rail-next{right:-18px}
+@media(min-width:900px){.kp-rail-wrap.is-scrollable .kp-rail-btn{display:inline-flex}}
+.kp-rail-dots{display:flex;justify-content:center;gap:6px;margin-top:2px}
+.kp-rail-dots i{width:6px;height:6px;border-radius:3px;background:var(--kp-border);transition:width .2s,background .2s}
+.kp-rail-dots i.is-on{width:20px;background:var(--kp-ink)}
+
+/* Event cards: every card has a picture (flyer or category photo) */
+.kp-ev-card{padding:0 0 16px;gap:5px;box-shadow:0 4px 18px rgba(11,34,51,.06);transition:transform .15s,box-shadow .15s}
+.kp-ev-card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(11,34,51,.14)}
+.kp-ev-card img{aspect-ratio:4/3;width:100%;object-fit:cover;object-position:center 30%;margin:0 0 10px}
+.kp-ev-when{font-size:13.5px;font-weight:600;color:#0A6F84}html.kpts-dark .kp-ev-when{color:#7FD3E6}
+.kp-ev-title{font:700 17px/1.3 var(--kp-serif)}
+.kp-ev-cat{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--kp-accent-dark)}
+.kp-ev-price{font-size:13.5px;font-weight:700;color:var(--kp-ink);margin-top:auto}
+
+/* Photo tiles (Explore) */
+.kp-tiles{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+a.kp-tile{position:relative;display:flex;align-items:flex-end;min-height:260px;border-radius:18px;overflow:hidden;text-decoration:none!important;color:#fff!important;isolation:isolate;background:#0B1F33}
+a.kp-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s}
+a.kp-tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(2,10,28,0) 35%,rgba(2,10,28,.82) 100%)}
+a.kp-tile:hover img{transform:scale(1.05)}
+.kp-tile-tx{padding:18px 18px 16px}.kp-tile-tx strong{display:block;font:600 22px/1.15 var(--kp-serif);margin-bottom:4px;color:#fff}.kp-tile-tx span{font-size:14px;color:#E3EBF3;line-height:1.4;display:block}
+@media(min-width:900px){.kp-tiles-6{grid-template-columns:repeat(3,1fr)}.kp-tiles-6 a.kp-tile:first-child{grid-row:span 2;min-height:536px}}
+
+/* Trust bar (kohphangan kp-bar) */
+.kp-bar{background:var(--kp-night);color:#DCE6F0}
+.kp-bar .kp-w{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;padding-block:16px;font-size:14px;font-weight:600}
+.kp-bar span::before{content:"✓";color:var(--kp-accent);margin-right:8px}
+
+/* Homepage v3 */
+.kpg-hero-tx{display:grid;gap:0}
+.kpg-hero-lead{color:#EAF1F8!important;font-size:clamp(16px,1.5vw,19px)!important;line-height:1.55;max-width:60ch;margin:14px 0 22px;text-shadow:0 1px 14px rgba(0,0,0,.45)}
+.kpg-hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+a.kpg-feat{display:flex;align-items:stretch;max-width:560px;background:rgba(7,20,31,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);border-radius:18px;overflow:hidden;text-decoration:none!important;color:#fff!important;transition:border-color .15s,transform .15s}
+a.kpg-feat:hover{border-color:var(--kp-accent);transform:translateY(-2px)}
+a.kpg-feat img{width:clamp(120px,30%,190px);flex:none;object-fit:cover;margin:0}
+.kpg-feat-tx{display:flex;flex-direction:column;gap:4px;padding:16px 18px;min-width:0}
+.kpg-feat-k{font:700 11.5px/1.3 var(--kp-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--kp-accent)}
+.kpg-feat-tx strong{font:600 clamp(18px,1.8vw,22px)/1.2 var(--kp-serif);color:#fff}
+.kpg-feat-s{font-size:14px;color:#C9D6E3;line-height:1.4}
+.kpg-feat-p{font-size:14px;color:#DCE6F0}.kpg-feat-p b{color:#fff;font-size:18px}
+.kpg-feat .kpv-btn{align-self:flex-start;margin-top:8px;height:40px;font-size:14px}
+@media(max-width:600px){a.kpg-feat img{width:110px}.kpg-feat-tx{padding:12px 14px}.kpg-feat-s{display:none}}
+.kp-btns{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 0}
+.kp-warm{background:var(--kp-warm)}
+.kp-dark .kp-ev-card{background:#0F1E33;border-color:var(--kp-night-line)}.kp-dark .kp-ev-when{color:#7FD3E6}.kp-dark .kp-ev-price{color:#fff}
+.kp-dark p{color:#DCE6F0}.kp-dark h2{color:#fff}.kp-dark .kp-h a{color:var(--kp-accent)}
+.kp-dark .kp-rail-dots i{background:var(--kp-night-line)}.kp-dark .kp-rail-dots i.is-on{background:var(--kp-accent)}
+.kp-note{background:var(--kp-surface);border-left:4px solid var(--kp-accent);border-radius:10px;padding:12px 16px;color:var(--kp-text)}
+
+/* Hero photo strip (villas, tours with galleries) */
+.kpa-hero.has-strip.has-img .kpa-hero-tx{padding-bottom:clamp(150px,20vh,190px)}
+.kpv-strip{position:absolute;left:0;right:0;bottom:22px;z-index:2;display:flex;gap:10px;align-items:stretch;max-width:var(--kp-w);margin:0 auto;padding-inline:max(var(--kp-gutter),env(safe-area-inset-left,0px)) max(var(--kp-gutter),env(safe-area-inset-right,0px));overflow-x:auto;scrollbar-width:none}
+.kpv-strip::-webkit-scrollbar{display:none}
+a.kpv-strip-i{position:relative;flex:0 0 auto;width:clamp(104px,11vw,150px);aspect-ratio:3/2;border-radius:12px;overflow:hidden;border:2px solid rgba(255,255,255,.85);box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .15s,border-color .15s}
+a.kpv-strip-i:hover{transform:translateY(-3px);border-color:var(--kp-accent)}
+a.kpv-strip-i img{width:100%;height:100%;object-fit:cover;margin:0}
+a.kpv-strip-i.has-more span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,10,28,.6);color:#fff;font-weight:700;font-size:14px}
+a.kpv-strip-all{flex:0 0 auto;align-self:center;margin-left:4px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.95);color:#0B1F33!important;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+@media(max-width:600px){.kpa-hero.has-strip.has-img .kpa-hero-tx{padding-bottom:128px}.kpv-strip{bottom:16px;gap:8px}a.kpv-strip-i{width:96px}}
+/* Gallery grid */
+.kpv-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin:0 0 28px}
+.kpv-gallery a{display:block;border-radius:12px;overflow:hidden;aspect-ratio:3/2}.kpv-gallery img{width:100%;height:100%;object-fit:cover;margin:0;transition:transform .4s}.kpv-gallery a:hover img{transform:scale(1.04)}
+@media(min-width:900px){.kpv-gallery a:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}}
+/* Lightbox */
+.kp-lb{position:fixed;inset:0;z-index:100000;background:rgba(2,8,18,.94);display:none;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) 16px}
+.kp-lb.is-open{display:flex}
+.kp-lb figure{margin:0;max-width:min(1400px,92vw);display:flex;flex-direction:column;align-items:center;gap:10px}
+.kp-lb img{max-width:100%;max-height:82vh;object-fit:contain;border-radius:8px;margin:0}
+.kp-lb figcaption{color:#C9D6E3;font-size:13.5px;text-align:center}
+.kp-lb button{position:absolute;width:48px!important;height:48px;border-radius:50%!important;background:rgba(255,255,255,.12)!important;color:#fff!important;font-size:30px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.kp-lb button:hover{background:rgba(255,255,255,.25)!important}
+.kp-lb-x{top:max(14px,env(safe-area-inset-top,0px));right:14px}.kp-lb-p{left:14px;top:50%;transform:translateY(-50%)}.kp-lb-n{right:14px;top:50%;transform:translateY(-50%)}
+@media(max-width:600px){.kp-lb-p,.kp-lb-n{top:auto;bottom:18px;transform:none}}
+
+/* Home hero kicker as a solid pill (readable over bright skies) */
+.kpg-hero .kpa-k{display:inline-block;justify-self:start;background:var(--kp-accent);color:var(--kp-accent-ink)!important;font-weight:700;font-size:12px;letter-spacing:.12em;padding:6px 12px;border-radius:999px;margin:0 0 12px}
+.kpg-hero h1{text-shadow:0 2px 24px rgba(0,0,0,.35)}
+/* Tables: drop the min-width floor where the script sets real widths */
+.kp-tbl table:has(tr>:nth-child(5)){min-width:0}
+.kp-tbl table:has(tr>:nth-child(4)) :is(th,td){min-width:6.5em}
