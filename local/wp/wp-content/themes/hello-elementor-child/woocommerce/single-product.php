@@ -42,7 +42,7 @@ while ( have_posts() ) : the_post();
 	// FAQ
 	echo do_shortcode( '[kp_faq title="' . esc_attr( get_the_title() ) . ': FAQ"]' );
 	// Reviews (real Woo reviews only)
-	echo '<section id="reviews">'; comments_template(); echo '</section>';
+	if ( $product->get_review_count() || ( function_exists( 'kpb_review_can' ) && kpb_review_can( $product->get_id() ) ) ) { echo '<section class="kp-reviews">'; comments_template(); echo '</section>'; }
 	// Our H1, lead and booking/enquiry card replace WooCommerce's summary parts on every product (one H1 per page).
 	foreach ( array( 'woocommerce_template_single_title' => 5, 'woocommerce_template_single_rating' => 10, 'woocommerce_template_single_price' => 10, 'woocommerce_template_single_excerpt' => 20, 'woocommerce_template_single_meta' => 40, 'woocommerce_template_single_sharing' => 50 ) as $fn => $pr ) remove_action( 'woocommerce_single_product_summary', $fn, $pr );
 	if ( ! ( function_exists( 'kpb_is_bookable' ) && kpb_is_bookable( $id ) ) ) remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );

@@ -102,5 +102,35 @@ $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-
 		<div class="kp-tiles kp-tiles-6"><?php echo $tiles; // phpcs:ignore ?></div>
 	</section>
 	<?php endif; ?>
+	<section class="kp-sec">
+		<div class="kp-h"><h2>Planning your Koh Samui trip</h2></div>
+		<div class="kp-plan">
+			<div><h3>Getting here</h3><p>Fly direct to Samui airport (USM), about 1 hour 10 minutes from Bangkok. The cheaper way is a flight or night train to Surat Thani, then a coach and ferry, 5 to 7 hours in all. <a href="<?php echo $u( '/how-to-get-to-koh-samui/' ); ?>">Flights, ferries and fares</a>.</p></div>
+			<div><h3>When to go</h3><p>February to April is the driest, calmest time. The rain peaks from October to December, and Ang Thong Marine Park closes every year from 1 November to 15 December. <a href="<?php echo $u( '/koh-samui-weather/' ); ?>">Weather by month</a>.</p></div>
+			<div><h3>Where to stay</h3><p>Chaweng for a first visit, Bophut and Fisherman's Village for food, Lamai for value, Maenam for long stays and the west coast for sunsets and villas. <a href="<?php echo $u( '/where-to-stay-koh-samui/' ); ?>">Where to stay</a>.</p></div>
+			<div><h3>Getting around</h3><p>Taxis don't use meters, so agree the fare first; Grab works best in Chaweng, Bophut and Lamai. To ride a scooter you need an International Driving Permit with the motorcycle category. <a href="<?php echo $u( '/getting-around-koh-samui/' ); ?>">Getting around</a>.</p></div>
+			<div><h3>About the island</h3><p>Koh Samui is Thailand's second-largest island, 228.7 km² in the Gulf of Thailand, with a 51 km ring road and a sea of 28 to 30 °C all year. <a href="<?php echo $u( '/koh-samui-facts/' ); ?>">Koh Samui facts</a>.</p></div>
+			<div><h3>Responsible travel</h3><p>We don't sell elephant rides or animal shows. To meet elephants, choose a no-riding sanctuary visit. <a href="<?php echo $u( '/koh-samui-elephant-sanctuary/' ); ?>">Elephant sanctuaries</a>.</p></div>
+		</div>
+	</section>
+	<?php
+	// Real WooCommerce reviews only (verified buyers); the block appears once there are some.
+	$rv = get_comments( array( 'post_type' => 'product', 'type' => 'review', 'status' => 'approve', 'number' => 3, 'meta_query' => array( array( 'key' => 'rating', 'value' => 4, 'compare' => '>=', 'type' => 'NUMERIC' ) ) ) );
+	if ( $rv ) : ?>
+	<section class="kp-sec">
+		<div class="kp-h"><h2>What our guests say</h2></div>
+		<div class="kp-quotes"><?php foreach ( $rv as $c ) { $r = (int) get_comment_meta( $c->comment_ID, 'rating', true ); echo '<figure><div class="kp-q-st" aria-label="' . $r . ' out of 5">' . str_repeat( '★', $r ) . '</div><blockquote>' . esc_html( wp_trim_words( $c->comment_content, 40, '…' ) ) . '</blockquote><figcaption>' . esc_html( $c->comment_author ) . ' · ' . esc_html( get_comment_date( 'F Y', $c ) ) . ' · <a href="' . esc_url( get_permalink( $c->comment_post_ID ) ) . '">' . esc_html( get_the_title( $c->comment_post_ID ) ) . '</a></figcaption></figure>'; } ?></div>
+	</section>
+	<?php endif; ?>
 	<?php echo do_shortcode( '[kp_faq title="Koh Samui FAQ"]' ); ?>
+	<section class="kp-sec">
+		<div class="kp-h"><h2>Also from our team</h2></div>
+		<p class="kp-sister-lead">Our own sister sites, run by the same local team since 2006.</p>
+		<div class="kp-sister">
+			<div><h3>Speedboat Samui</h3><p>Private speedboat and yacht charters from Koh Samui and Koh Phangan. Book the whole boat for your group, family or celebration.</p><a href="https://speedboatsamui.com/" rel="noopener">Visit speedboatsamui.com →</a></div>
+			<div><h3>Angthong Marine Park Tours</h3><p>Dedicated speedboat trips to Ang Thong National Marine Park and its islands, with a focus on the park.</p><a href="https://angthongmarinepark.com/" rel="noopener">Visit angthongmarinepark.com →</a></div>
+			<div><h3>Pig Island Koh Samui</h3><p>Trips to Koh Madsum and Koh Tan, the islands off Samui's south coast known for their swimming pigs.</p><a href="https://pigislandkohsamui.com/" rel="noopener">Visit pigislandkohsamui.com →</a></div>
+			<div><h3>Koh Phangan</h3><p>Our guide and booking site for the next island north: tours, Full Moon Party dates, villas and retreats.</p><a href="https://kohphangan.com/" rel="noopener">Visit kohphangan.com →</a></div>
+		</div>
+	</section>
 </div>

@@ -1,0 +1,17 @@
+{
+  "_doc": "Hero (featured) photos for pages that had none. Applied once per change on admin load. 'id' = an attachment already in the media library; 'src' = an openly licensed photo downloaded once, with credit, licence and source page stored for /photo-credits/. 'alt' always says what the photo really shows.",
+  "items": [
+    { "slug": "terms-and-conditions", "type": "page", "id": 481 },
+    { "slug": "privacy-policy", "type": "page", "id": 1272 },
+    { "slug": "photo-credits", "type": "page", "id": 1225 },
+    { "slug": "accessibility", "type": "page", "id": 1257 },
+    { "slug": "lad-koh-viewpoint-koh-samui", "type": "kp_place", "id": 1193 },
+    { "slug": "tongson-bay-koh-samui", "type": "kp_place", "id": 1239 },
+    { "slug": "hin-lad-waterfall-koh-samui", "type": "kp_place", "id": 2520 },
+    { "slug": "overlap-stone-koh-samui", "type": "kp_place", "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/View_from_Lamai_viewpoint.jpg", "title": "View over Lamai from the Maret hills", "alt": "View over Lamai bay from the Maret hills above Lamai, the ridge where Overlap Stone sits", "credit": "Christophe95", "licence": "CC BY-SA 4.0", "source_page": "commons.wikimedia.org/wiki/File:View_from_Lamai_viewpoint.jpg" },
+    { "slug": "beach-republic-koh-samui", "type": "kp_place", "src": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lamai_Beach_1.jpg", "title": "Lamai Beach", "alt": "Lamai Beach on Koh Samui, the beach Beach Republic stands on", "credit": "Christophe95", "licence": "CC BY-SA 4.0", "source_page": "commons.wikimedia.org/wiki/File:Lamai_Beach_1.jpg" },
+    { "slug": "ticket-new-years-eve-2026-12-31", "type": "product", "id": 7080 },
+    { "slug": "ticket-christmas-2026-12-25", "type": "product", "id": 7524 },
+    { "slug": "private-van-hire-driver-koh-samui", "type": "product", "src": "https://upload.wikimedia.org/wikipedia/commons/1/14/Toyota_Commuter_in_Lampang.jpg", "title": "Toyota Commuter passenger van", "alt": "A Toyota Commuter passenger van, the type of van used for private transfers in Thailand", "credit": "Patiparn.Nice2002bkk", "licence": "CC0", "source_page": "commons.wikimedia.org/wiki/File:Toyota_Commuter_in_Lampang.jpg" }
+  ]
+}

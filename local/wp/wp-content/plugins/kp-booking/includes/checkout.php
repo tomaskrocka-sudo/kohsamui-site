@@ -39,19 +39,21 @@ add_filter( 'woocommerce_hidden_order_itemmeta', fn( $k ) => array_merge( $k, ar
 add_filter( 'pre_option_woocommerce_enable_guest_checkout', fn() => 'yes' );
 add_filter( 'pre_option_woocommerce_enable_signup_and_login_from_checkout', fn() => 'no' );
 
-/** Day+1 review request (R / I1): schedule when order completes. */
-add_action( 'woocommerce_order_status_completed', function ( $order_id ) {
+/** Day+1 review request (R / I1): scheduled once the order is paid (processing) or completed, for the day after the last trip date. */
+function kpb_schedule_review_request( $order_id ) {
 	$o = wc_get_order( $order_id ); if ( ! $o ) return;
 	$dates = array(); foreach ( $o->get_items() as $it ) if ( $d = $it->get_meta( '_kpb_date' ) ) $dates[] = $d;
 	if ( ! $dates ) return;
 	$when = ( new DateTimeImmutable( max( $dates ) . ' 10:00', kpb_tz() ) )->modify( '+1 day' )->getTimestamp();
-	if ( ! wp_next_scheduled( 'kpb_review_request', array( $order_id ) ) ) wp_schedule_single_event( max( time() + 60, $when ), 'kpb_review_request', array( $order_id ) );
-} );
+	if ( ! wp_next_scheduled( 'kpb_review_request', array( (int) $order_id ) ) ) wp_schedule_single_event( max( time() + 60, $when ), 'kpb_review_request', array( (int) $order_id ) );
+}
+add_action( 'woocommerce_order_status_processing', 'kpb_schedule_review_request' );
+add_action( 'woocommerce_order_status_completed', 'kpb_schedule_review_request' );
 add_action( 'kpb_review_request', function ( $order_id ) {
-	$o = wc_get_order( $order_id ); if ( ! $o || get_post_meta( $order_id, '_kpb_review_sent', true ) ) return;
-	$links = array(); foreach ( $o->get_items() as $it ) $links[] = get_permalink( $it->get_product_id() ) . '#reviews';
+	$o = wc_get_order( $order_id ); if ( ! $o || $o->get_meta( '_kpb_review_sent' ) || ! $o->has_status( array( 'processing', 'completed' ) ) ) return;
+	$links = array(); foreach ( $o->get_items() as $it ) $links[] = kpb_review_link( $o, $it->get_product_id() );
 	$gbp = get_option( 'kp_gbp_review_url' );
-	$body = "Hi " . $o->get_billing_first_name() . ",\n\nThank you for joining us. If you have a minute, a short review helps other travellers and our small local team:\n\n" . implode( "\n", array_unique( $links ) ) . ( $gbp ? "\n\nOr on Google: $gbp" : '' ) . "\n\nSee you on the water again,\nThe " . ( defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' ) ) . " team";
+	$body = "Hi " . $o->get_billing_first_name() . ",\n\nThank you for joining us. If you have a minute, a short review helps other travellers and our small local team. This link opens the review form for your trip, no account needed:\n\n" . implode( "\n", array_unique( $links ) ) . ( $gbp ? "\n\nOr on Google: $gbp" : '' ) . "\n\nSee you on the water again,\nThe " . ( defined( 'KP_BRAND' ) ? KP_BRAND : get_bloginfo( 'name' ) ) . " team";
 	wp_mail( $o->get_billing_email(), 'How was your trip with us?', $body );
-	update_post_meta( $order_id, '_kpb_review_sent', wp_date( 'c' ) );
+	$o->update_meta_data( '_kpb_review_sent', wp_date( 'c' ) ); $o->save();
 } );

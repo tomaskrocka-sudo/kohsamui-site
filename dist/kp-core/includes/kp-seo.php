@@ -83,7 +83,7 @@ add_filter( 'rank_math/sitemap/entry', function ( $url, $type, $obj ) {
 	return $url;
 }, 10, 3 );
 add_action( 'admin_init', function () {
-	if ( get_option( 'kp_sitemap_flush_v' ) === '1' ) return;
+	if ( get_option( 'kp_sitemap_flush_v' ) === '2' ) return;
 	if ( class_exists( '\RankMath\Sitemap\Cache' ) && method_exists( '\RankMath\Sitemap\Cache', 'invalidate_storage' ) ) \RankMath\Sitemap\Cache::invalidate_storage();
-	update_option( 'kp_sitemap_flush_v', '1' );
+	update_option( 'kp_sitemap_flush_v', '2' );
 } );

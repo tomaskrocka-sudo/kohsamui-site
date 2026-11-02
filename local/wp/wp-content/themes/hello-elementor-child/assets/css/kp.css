@@ -715,3 +715,15 @@ html.kpc-on .kp-mbar{bottom:calc(var(--kpc-h,0px))}
 .kpv-gal{scroll-margin-top:110px}
 .kpv-gal + .kpa-w,.kpv-gal + section,.kpv-gal + div{margin-top:var(--kp-sec,48px)}
 .kpa-hero.has-strip .kpa-hero-credit{bottom:auto;top:12px}
+
+/* Homepage: planning grid, guest quotes, sister sites */
+.kp-plan,.kp-sister,.kp-quotes{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.kp-plan>div,.kp-sister>div,.kp-quotes>figure{background:var(--kp-surface);border:1px solid var(--kp-border);border-radius:var(--kp-radius-lg);padding:20px 22px;margin:0;min-width:0}
+.kp-plan h3,.kp-sister h3{font-size:18px;margin:0 0 8px;color:var(--kp-ink)}
+.kp-plan p,.kp-sister p{margin:0;color:var(--kp-text);font-size:15px;line-height:1.55}
+.kp-sister>div{display:flex;flex-direction:column;gap:10px}.kp-sister a{margin-top:auto;font-weight:600}
+.kp-sister-lead{margin:-6px 0 18px;color:var(--kp-muted)}
+.kp-q-st{color:var(--kp-gold);letter-spacing:2px}.kp-quotes blockquote{margin:8px 0 10px;font-size:15px;line-height:1.55;color:var(--kp-text);border:0;padding:0}.kp-quotes figcaption{font-size:13px;color:var(--kp-muted)}
+/* Event date lists */
+.kp-evdates{columns:2 260px;column-gap:28px;padding-left:18px}.kp-evdates li{break-inside:avoid;margin:0 0 6px}
+.kp-evdates-m h3{margin:22px 0 8px;font-size:18px}

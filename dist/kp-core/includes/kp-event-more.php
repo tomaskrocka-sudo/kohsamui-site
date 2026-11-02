@@ -102,6 +102,11 @@ function kp_event_more_html( $id ) {
 	}
 	// Tips
 	$h .= '<h2>Good to know</h2><ul>'; foreach ( kp_event_tips( $cats ) as $t ) $h .= '<li>' . esc_html( $t ) . '</li>'; $h .= '</ul>';
+	// Every date of a dated series (same name and venue), so each night's page is linked from its siblings.
+	if ( ! $rec ) {
+		$key = kp_event_series_key( $title, $venue ); $sib = array_values( array_filter( kp_event_dated(), fn( $x ) => kp_event_series_key( $x['title'], $x['venue'] ) === $key ) );
+		if ( count( $sib ) > 1 ) { $h .= '<h2>All dates</h2><ul class="kp-evdates">'; foreach ( $sib as $x ) $h .= '<li>' . ( (int) $x['id'] === (int) $id ? '<strong>' . esc_html( $x['start']->format( 'l j F Y' ) ) . '</strong> (this page)' : '<a href="' . esc_url( $x['url'] ) . '">' . esc_html( $x['start']->format( 'l j F Y' ) ) . '</a>' ) . '</li>'; $h .= '</ul>'; }
+	}
 	// More at the venue
 	if ( $venue ) { $more = do_shortcode( '[kp_events venue="' . esc_attr( explode( ',', $venue )[0] ) . '" limit="4" to="+60 days" chips="0"]' ); if ( $more && ! str_contains( $more, 'kp-empty' ) ) $h .= '<h2>More at ' . esc_html( explode( ',', $venue )[0] ) . '</h2>' . $more; }
 	return '<div class="kp-evx">' . $h . '</div>';
@@ -120,3 +125,39 @@ add_filter( 'kp_faqs', function ( $faqs, $post ) {
 	$out[] = array( 'q' => "How do I get to $t?", 'a' => 'By taxi, songthaew or a ride-hailing app such as Grab from the main beach areas; agree the fare or ask for the meter first. For groups we can arrange a private van there and back.' );
 	return $out;
 }, 20, 2 );
+
+function kp_event_series_key( $title, $venue ) { return sanitize_title( html_entity_decode( (string) $title, ENT_QUOTES, 'UTF-8' ) ) . '|' . sanitize_title( explode( ',', (string) $venue )[0] ); }
+/** Upcoming dated (not weekly) events for the next 18 months, in date order. Cached for an hour; the sync clears it. */
+function kp_event_dated() {
+	static $cache = null; if ( $cache !== null ) return $cache;
+	$tz = new DateTimeZone( 'Asia/Bangkok' ); $rows = get_transient( 'kp_event_dated' );
+	if ( ! is_array( $rows ) ) {
+		$rows = array(); $now = new DateTimeImmutable( 'now', $tz ); $max = $now->modify( '+18 months' );
+		$q = new WP_Query( array( 'post_type' => 'kp_event', 'post_status' => 'publish', 'posts_per_page' => -1, 'no_found_rows' => true, 'fields' => 'ids',
+			'meta_query' => array( array( 'relation' => 'OR', array( 'key' => 'kp_recurrence', 'compare' => 'NOT EXISTS' ), array( 'key' => 'kp_recurrence', 'value' => '' ) ) ) ) );
+		foreach ( $q->posts as $pid ) {
+			$st = get_post_meta( $pid, 'kp_start', true ); if ( ! $st || get_post_meta( $pid, 'kp_status', true ) === 'cancelled' ) continue;
+			$s = new DateTimeImmutable( $st, $tz ); $en = get_post_meta( $pid, 'kp_end', true ); $e = $en ? new DateTimeImmutable( $en, $tz ) : $s->modify( '+5 hours' );
+			if ( $e < $now || $s > $max ) continue;
+			$rows[] = array( 'id' => $pid, 'title' => get_the_title( $pid ), 'url' => get_permalink( $pid ), 'start' => $s->format( 'c' ), 'venue' => (string) get_post_meta( $pid, 'kp_venue', true ) );
+		}
+		usort( $rows, fn( $a, $b ) => strcmp( $a['start'], $b['start'] ) );
+		set_transient( 'kp_event_dated', $rows, HOUR_IN_SECONDS );
+	}
+	foreach ( $rows as &$r ) $r['start'] = new DateTimeImmutable( $r['start'] ); unset( $r );
+	return $cache = $rows;
+}
+add_action( 'save_post_kp_event', fn() => delete_transient( 'kp_event_dated' ) );
+/** [kp_event_dates match="full moon"]: every upcoming dated event (optionally whose name matches), month by month, each linked to its page. */
+add_shortcode( 'kp_event_dates', function ( $a ) {
+	$a = shortcode_atts( array( 'match' => '' ), $a );
+	$rows = array_filter( kp_event_dated(), fn( $e ) => $a['match'] === '' || stripos( html_entity_decode( $e['title'], ENT_QUOTES, 'UTF-8' ), $a['match'] ) !== false );
+	if ( ! $rows ) return '';
+	$h = '<div class="kp-evdates-m">'; $cur = '';
+	foreach ( $rows as $e ) {
+		$mo = $e['start']->format( 'F Y' );
+		if ( $mo !== $cur ) { $h .= ( $cur ? '</ul>' : '' ) . '<h3>' . esc_html( $mo ) . '</h3><ul class="kp-evdates">'; $cur = $mo; }
+		$h .= '<li><a href="' . esc_url( $e['url'] ) . '">' . esc_html( html_entity_decode( $e['title'], ENT_QUOTES, 'UTF-8' ) ) . '</a> · ' . esc_html( $e['start']->format( 'D j M' ) ) . ( $e['venue'] ? ' · ' . esc_html( explode( ',', $e['venue'] )[0] ) : '' ) . '</li>';
+	}
+	return $h . '</ul></div>';
+} );

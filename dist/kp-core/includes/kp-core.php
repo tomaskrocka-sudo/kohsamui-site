@@ -49,16 +49,17 @@ function kp_year() { return (string) get_option( 'kp_year', wp_date( 'Y' ) ); }
 // ---- No comments anywhere (rule A4.2) ----
 add_action( 'admin_init', function () {
 	foreach ( get_post_types() as $pt ) {
-		if ( post_type_supports( $pt, 'comments' ) ) {
+		if ( $pt !== 'product' && post_type_supports( $pt, 'comments' ) ) { // product reviews stay
 			remove_post_type_support( $pt, 'comments' );
 			remove_post_type_support( $pt, 'trackbacks' );
 		}
 	}
 	remove_menu_page( 'edit-comments.php' );
 } );
-add_filter( 'comments_open', '__return_false', 20, 2 );
+// Comments off everywhere except WooCommerce product reviews.
+add_filter( 'comments_open', fn( $open, $id ) => get_post_type( $id ) === 'product' ? $open : false, 20, 2 );
 add_filter( 'pings_open', '__return_false', 20, 2 );
-add_filter( 'comments_array', '__return_empty_array', 10, 2 );
+add_filter( 'comments_array', fn( $c, $id ) => get_post_type( $id ) === 'product' ? $c : array(), 10, 2 );
 add_action( 'admin_bar_menu', function ( $bar ) { $bar->remove_node( 'comments' ); }, 999 );
 add_action( 'init', function () { if ( is_admin_bar_showing() ) {} }, 1 );
 // WooCommerce product reviews stay on (handled by Woo, uses its own comment type) — keep reviews but only verified owners.
