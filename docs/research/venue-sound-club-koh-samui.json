@@ -1,0 +1,22 @@
+{
+  "place": {
+    "slug": "sound-club-koh-samui",
+    "name": "Sound Club Samui",
+    "type": "nightlife",
+    "area": "Chaweng",
+    "lat": "9.5326",
+    "lng": "100.0629",
+    "hours": "From 22:00 until late nightly (listed to 06:00; event nights to about 03:00)",
+    "hours_spec": "Mo-Su 22:00-06:00",
+    "fee": "Event nights: women free, men 300–500 THB incl. one drink",
+    "free": "no",
+    "short": "Techno and electronic club on Soi Green Mango with guest-DJ nights; fills after 02:00.",
+    "best_for": "Nightlife, Techno and house, Late nights",
+    "sun": "",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": [],
+  "image_notes": "No images collected. The official site (soundclubsamui.co) could not be fetched from this session (permission request timed out); the official Facebook page (facebook.com/p/Sound-Club-Samui-61551714832200/) was not fetched. The phangan.events ESSENCE poster (https://phangan.events/wp-content/uploads/2026/10/1791793987800-hxbzbpy6kde.jpg) is an event flyer hosted by a listings site, not an official venue listing, so it is excluded. Images on thai2siam.com show the earlier, closed Sound Club and must not be used."
+}

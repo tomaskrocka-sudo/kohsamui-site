@@ -1,0 +1,21 @@
+{
+ "place": {
+  "slug": "beach-republic-koh-samui",
+  "name": "Beach Republic",
+  "type": "nightlife",
+  "area": "Lamai",
+  "lat": "9.4729",
+  "lng": "100.0628",
+  "hours": "Beach club closed; hotel Beach Café listed about 08:00–21:00",
+  "hours_spec": "",
+  "fee": "",
+  "free": "",
+  "short": "Former north-Lamai pool club; the club and pool bar have closed and only the hotel and its café operate.",
+  "best_for": "",
+  "sun": "Sunrise",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "status": "closed"
+ },
+ "image_candidates": []
+}

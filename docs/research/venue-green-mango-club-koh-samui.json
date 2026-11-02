@@ -1,0 +1,22 @@
+{
+  "place": {
+    "slug": "green-mango-club-koh-samui",
+    "name": "The Green Mango Club",
+    "type": "nightlife",
+    "area": "Chaweng",
+    "lat": "9.5327",
+    "lng": "100.0635",
+    "hours": "About 21:00–04:00 nightly",
+    "hours_spec": "Mo-Su 21:00-04:00",
+    "fee": "Usually free (pay for drinks; special events may charge)",
+    "free": "yes",
+    "short": "Chaweng's biggest, longest-running club: open-air, two dance floors, free entry, busiest 01:00–03:00.",
+    "best_for": "Nightlife, Groups, Mainstream club music",
+    "sun": "",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": [],
+  "image_notes": "No images collected. The official site (greenmangoclub.com) could not be fetched from this session (permission request timed out) and the official Facebook/Instagram pages were not fetched. Third-party images exist (e.g. khaosanroad.com featured image) but are not official, so they are excluded. Re-try greenmangoclub.com or ask the venue for press photos."
+}

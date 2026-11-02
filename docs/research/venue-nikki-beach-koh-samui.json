@@ -1,0 +1,52 @@
+{
+ "place": {
+  "slug": "nikki-beach-koh-samui",
+  "name": "Nikki Beach Koh Samui",
+  "type": "nightlife",
+  "area": "Lipa Noi",
+  "lat": "9.4992",
+  "lng": "99.9355",
+  "hours": "Beach club 11:00–19:00; Escape restaurant 18:00–23:00",
+  "hours_spec": "Mo-Su 11:00-23:00",
+  "fee": "No entry fee; day beds have a prepaid minimum spend (16+ beach club)",
+  "free": "no",
+  "short": "West-coast beach club and 48-suite resort at Lipa Noi: daily DJs, Sunday brunch and sunsets over the sea.",
+  "best_for": "Sunday brunch, Sunset, Couples",
+  "sun": "Sunset",
+  "confidence": "verified",
+  "last_verified": "2026-11-02",
+  "status": "open"
+ },
+ "image_candidates": [
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2024/11/Samui_pool.jpg",
+   "shows": "Beach-club infinity pool with sun beds and umbrellas (from the page's alt text)",
+   "page": "https://nikkibeach.com/koh-samui/dine-drink/nikki-beach-restaurant-beach-club/"
+  },
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2024/10/Copy-of-DJI_20240426101923_0142_D.jpg",
+   "shows": "Aerial (drone) view of the pool area beside the sand (inferred from placement/filename)",
+   "page": "https://nikkibeach.com/koh-samui/dine-drink/nikki-beach-restaurant-beach-club/"
+  },
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2024/10/Hero.jpg",
+   "shows": "Resort hero image used as the site's social share image (content not confirmed)",
+   "page": "https://nikkibeach.com/koh-samui/"
+  },
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2025/06/IMGL4136-Edit.jpg",
+   "shows": "Amazing Sundays brunch (inferred from placement next to the brunch listing)",
+   "page": "https://nikkibeach.com/koh-samui/happenings/"
+  },
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2025/06/NBHR_KS_BBQ.jpg",
+   "shows": "Friday BBQ dinner at Escape (inferred from filename and placement)",
+   "page": "https://nikkibeach.com/koh-samui/dine-drink/escape/"
+  },
+  {
+   "url": "https://nikkibeach.com/koh-samui/wp-content/uploads/sites/12/2024/09/HPPENINGS-HORIZONTAL.jpg",
+   "shows": "DJ set with a crowd dancing",
+   "page": "https://nikkibeach.com/koh-samui/dine-drink/nikki-beach-restaurant-beach-club/"
+  }
+ ]
+}

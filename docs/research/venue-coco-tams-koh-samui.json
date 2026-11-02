@@ -1,0 +1,21 @@
+{
+  "place": {
+    "slug": "coco-tams-koh-samui",
+    "name": "Coco Tam's",
+    "type": "nightlife",
+    "area": "Bophut (Fisherman's Village)",
+    "lat": "9.5611",
+    "lng": "100.0277",
+    "hours": "About 12:00–24:00 daily; fire shows about 19:15 and 21:00",
+    "hours_spec": "Mo-Su 12:00-00:00",
+    "fee": "Free entry and fire shows; minimum spend on some front and booked tables",
+    "free": "yes",
+    "short": "Beanbag beach bar in Fisherman's Village with free fire shows at about 19:15 and 21:00 every night.",
+    "best_for": "Fire shows, Couples, Families (early show)",
+    "sun": "",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": []
+}

@@ -1,0 +1,52 @@
+{
+  "place": {
+    "slug": "arkbar-beach-club-koh-samui",
+    "name": "ARKbar Beach Club",
+    "type": "nightlife",
+    "area": "Chaweng",
+    "lat": "9.5304",
+    "lng": "100.0645",
+    "hours": "Daily 10:00–02:00; pool party 14:00–19:00; fire shows 20:00–24:00; beach party 20:00–02:00; HIP Restaurant from 07:00",
+    "hours_spec": "Mo-Su 10:00-02:00",
+    "fee": "Free entry; walk-in sunbed 300 THB minimum spend; pool 500 THB minimum spend (non-hotel guests)",
+    "free": "yes",
+    "short": "Chaweng's biggest beach club: daily pool party, free fire shows from 20:00, beach party until 02:00.",
+    "best_for": "Nightlife, Fire shows, Pool parties",
+    "sun": "Sunrise",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": [
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2025/06/Beach-Parties-Koh-Samui.jpg",
+      "shows": "DJ playing a packed night-time beach party at ARKbar with a fire show and the sea behind",
+      "page": "https://www.ark-bar.com/best-beach-club-koh-samui/beach-parties-koh-samui/"
+    },
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2025/06/fire-show-beach-party-koh-samui-arkbar.jpg",
+      "shows": "Fire show on the sand at ARKbar at night",
+      "page": "https://www.ark-bar.com/best-beach-club-koh-samui/beach-parties-koh-samui/"
+    },
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2025/06/arkbar-nightlife-dance-crowd-koh-samui.jpg",
+      "shows": "Dancing crowd at an ARKbar beach party",
+      "page": "https://www.ark-bar.com/best-beach-club-koh-samui/beach-parties-koh-samui/"
+    },
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2026/05/pool-party-koh-samui-chaweng.jpg",
+      "shows": "Friends with cocktails at the ARKbar afternoon pool party, Chaweng Beach",
+      "page": "https://www.ark-bar.com/pool-party-koh-samui/"
+    },
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2026/08/nye-koh-samui-arkbar-fireworks-chaweng-bay.jpg",
+      "shows": "New Year's Eve fireworks over Chaweng Bay above the ARKbar crowd",
+      "page": "https://www.ark-bar.com/new-years-eve-koh-samui/"
+    },
+    {
+      "url": "https://b3867502.assetcdn.net/2.0/3867502/wp-content/uploads/2024/12/Kiddies-pool-slide.jpg",
+      "shows": "ARKbar children's pool with slide",
+      "page": "https://www.ark-bar.com/"
+    }
+  ]
+}
