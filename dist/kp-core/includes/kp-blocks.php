@@ -80,6 +80,15 @@ function kp_events_collapse( $ev, $limit ) {
 /** Picture for an event card: its flyer, else a photo for its category. */
 function kp_event_image( $e ) {
 	if ( ! empty( $e['thumb'] ) ) return $e['thumb'];
+	// No picture of its own (e.g. the listing only has a video): use the latest picture of another night at the same venue.
+	static $by_venue = array(); $v = trim( (string) ( $e['venue'] ?? '' ) );
+	if ( $v !== '' ) {
+		if ( ! array_key_exists( $v, $by_venue ) ) {
+			$q = get_posts( array( 'post_type' => 'kp_event', 'post_status' => 'publish', 'posts_per_page' => 1, 'fields' => 'ids', 'orderby' => 'modified', 'meta_query' => array( array( 'key' => 'kp_venue', 'value' => $v ), array( 'key' => '_thumbnail_id', 'compare' => 'EXISTS' ) ) ) );
+			$by_venue[ $v ] = $q ? get_the_post_thumbnail_url( $q[0], 'medium_large' ) : '';
+		}
+		if ( $by_venue[ $v ] ) return $by_venue[ $v ];
+	}
 	$fb = (array) get_option( 'kp_event_fallbacks', array() );
 	foreach ( (array) ( $e['cats'] ?? array() ) as $c ) { $k = sanitize_title( $c ); if ( ! empty( $fb[ $k ] ) ) return wp_get_attachment_image_url( (int) $fb[ $k ], 'medium_large' ); }
 	return ! empty( $fb['party'] ) ? wp_get_attachment_image_url( (int) $fb['party'], 'medium_large' ) : '';
