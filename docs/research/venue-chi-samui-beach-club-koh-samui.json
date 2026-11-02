@@ -1,0 +1,52 @@
+{
+  "place": {
+    "slug": "chi-samui-beach-club-koh-samui",
+    "name": "Chi Samui (Chi Beach Club)",
+    "type": "nightlife",
+    "area": "Bang Rak",
+    "lat": "9.5576",
+    "lng": "100.0489",
+    "hours": "Daily about 11:00–24:00",
+    "hours_spec": "Mo-Su 11:00-24:00",
+    "fee": "No entry fee; book daybeds in high season",
+    "free": "yes",
+    "short": "Bang Rak beach club with a 25 m saltwater infinity pool, swim-up bar, kids' pool and sunset DJs.",
+    "best_for": "Couples, Families by day, Sunset",
+    "sun": "Sunset views toward Koh Phangan",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": [
+    {
+      "url": "https://media.kalaraco.com/images/projects/chi-slider.jpg",
+      "shows": "Chi Samui hero/slider photo (content not described by the page; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    },
+    {
+      "url": "https://www.kalaraco.com/images/projects/chi.jpg",
+      "shows": "Chi Samui Open Graph/share image (content not described; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    },
+    {
+      "url": "https://media.kalaraco.com/images/projects/chi/chi-20.jpg",
+      "shows": "Chi Samui featured gallery photo (content not described; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    },
+    {
+      "url": "https://media.kalaraco.com/images/projects/chi/chi-01.jpg",
+      "shows": "Chi Samui gallery photo 1 (content not described; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    },
+    {
+      "url": "https://media.kalaraco.com/images/projects/chi/chi-02.jpg",
+      "shows": "Chi Samui gallery photo 2 (content not described; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    },
+    {
+      "url": "https://media.kalaraco.com/images/projects/chi/chi-03.jpg",
+      "shows": "Chi Samui gallery photo 3 (content not described; preview before use)",
+      "page": "https://www.kalaraco.com/development-chi.php"
+    }
+  ]
+}

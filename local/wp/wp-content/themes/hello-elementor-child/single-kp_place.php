@@ -10,10 +10,12 @@ while ( have_posts() ) : the_post();
 	kpt_byline();
 	if ( has_excerpt() ) echo '<p class="kp-lead">' . esc_html( get_the_excerpt() ) . '</p>';
 	if ( count( $photo_ids ) > 2 && function_exists( 'kpt_photo_grid' ) ) echo kpt_photo_grid( $photo_ids, get_the_title() );
-	echo '<h2>At a glance</h2>' . do_shortcode( '[kp_glance]' );
+	$raw = (string) get_post_field( 'post_content', get_the_ID() );
+	// Pages that bring their own at-a-glance table or map don't get a second one from the template.
+	if ( stripos( $raw, 'at a glance' ) === false ) echo '<h2>At a glance</h2>' . do_shortcode( '[kp_glance]' );
 	the_content();
 	$area = get_post_meta( get_the_ID(), 'kp_area', true );
-	echo '<h2>Map and nearby places</h2>' . do_shortcode( '[kp_places_map area="' . esc_attr( $area ) . '" title="' . esc_attr( get_the_title() ) . '"]' );
+	if ( stripos( $raw, '[kp_places_map' ) === false ) echo '<h2>Map and nearby places</h2>' . do_shortcode( '[kp_places_map area="' . esc_attr( $area ) . '" title="' . esc_attr( get_the_title() ) . '"]' );
 	echo do_shortcode( '[kp_faq]' );
 	echo '</article>';
 	kpt_side_card();

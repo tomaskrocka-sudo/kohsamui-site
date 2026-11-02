@@ -1,0 +1,27 @@
+{
+  "place": {
+    "slug": "seen-beach-club-koh-samui",
+    "name": "SEEN Beach Club Samui (CLUB SEEN Koh Samui)",
+    "type": "nightlife",
+    "area": "Chaweng",
+    "lat": "9.5216",
+    "lng": "100.0588",
+    "hours": "Daily 11:00–23:00; UNSEEN Club Room from 23:00 on event nights",
+    "hours_spec": "Mo-Su 11:00-23:00",
+    "fee": "No ticket on ordinary days (minimum spend on beds/tables); events ticketed, e.g. O Beach Sundays from 800 THB",
+    "free": "no",
+    "short": "2,000-capacity pool club beside Avani Chaweng with DJ headliners; 18+ daily 19 Dec 2026–27 Mar 2027.",
+    "best_for": "Nightlife, DJ events, Groups",
+    "sun": "Sunrise",
+    "confidence": "verified",
+    "last_verified": "2026-11-02",
+    "status": "open"
+  },
+  "image_candidates": [
+    {
+      "url": "https://assets.minorhotels.com/image/upload/q_auto,f_auto,c_limit,w_1920/media/minor/avani/images/chaweng-samui/overview/avani_chaweng_samui_pool_1920x1080.jpg",
+      "shows": "Pool at Avani Chaweng Samui Hotel & Beach Club (the adjoining hotel, alt text 'Hotel in Samui l Avani Chaweng Samui Hotel and Beach Club'); NOT confirmed to show the CLUB SEEN pools – check before use",
+      "page": "https://www.minorhotels.com/en/destinations/thailand/koh-samui/avani-chaweng-samui-hotel-and-beach-club"
+    }
+  ]
+}
