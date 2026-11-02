@@ -124,6 +124,26 @@ function kp_page_kind() {
 function kp_is_unverified( $s ) { return (bool) preg_match( '/\[(ask mea|check|confirm|gps|field-check|slug tbc)[^\]]*\]|\[[^\]]*ask mea[^\]]*\]/i', (string) $s ); }
 function kp_public_lines( $lines ) { return array_values( array_filter( (array) $lines, fn( $l ) => ! kp_is_unverified( $l ) ) ); }
 add_filter( 'kp_faqs', function ( $faqs ) { return array_values( array_filter( $faqs, fn( $f ) => ! kp_is_unverified( $f['q'] . ' ' . $f['a'] ) ) ); }, 5 );
+/** Single-value trip facts read as empty outside the editor while they still carry a tag, so cards, the booking box and feeds never print one. */
+add_filter( 'get_post_metadata', function ( $v, $id, $key, $single ) {
+	static $keys = array( 'kp_duration', 'kp_boat', 'kp_pier', 'kp_pickup_window', 'kp_return', 'kp_season', 'kp_park_fee', 'kp_max_guests', 'kp_vip_note', 'kp_child_price', 'kp_cxl_policy', 'kp_per' );
+	static $busy = false;
+	if ( $busy || null !== $v || ! in_array( $key, $keys, true ) || ( is_admin() && ! wp_doing_ajax() ) ) return $v;
+	$busy = true; $raw = get_post_meta( $id, $key, true ); $busy = false;
+	return ( is_string( $raw ) && kp_is_unverified( $raw ) ) ? array( '' ) : $v;
+}, 10, 4 );
+/** Same for the public kp/v1 JSON feeds: a tagged string becomes empty, list items carrying a tag are dropped. */
+function kp_unverified_walk( $d ) {
+	if ( is_string( $d ) ) return kp_is_unverified( $d ) ? '' : $d;
+	if ( ! is_array( $d ) ) return $d;
+	$list = array_is_list( $d ); $o = array();
+	foreach ( $d as $k => $v ) { if ( $list && is_string( $v ) && kp_is_unverified( $v ) ) continue; $o[ $k ] = kp_unverified_walk( $v ); }
+	return $list ? array_values( $o ) : $o;
+}
+add_filter( 'rest_post_dispatch', function ( $res, $server, $req ) {
+	if ( $res instanceof WP_REST_Response && str_starts_with( $req->get_route(), '/kp/v1' ) ) $res->set_data( kp_unverified_walk( $res->get_data() ) );
+	return $res;
+}, 10, 3 );
 /** Remove unverified content from public output: whole <li>/<tr> or the whole sentence carrying a tag; HTML comments too. Never returns less than the input on a regex failure. */
 function kp_strip_unverified( $c ) {
 	if ( ! is_string( $c ) || $c === '' ) return $c;
