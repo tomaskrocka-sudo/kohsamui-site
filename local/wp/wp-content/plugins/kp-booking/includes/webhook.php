@@ -21,7 +21,7 @@ function kpb_order_payload( $order ) {
 		'site' => get_option( 'kpb_site_id', 'kohsamui' ), 'site_url' => home_url( '/' ), 'ref' => kpb_order_ref( $order ), 'order_id' => $order->get_id(), 'status' => $order->get_status(),
 		'created' => $order->get_date_created() ? $order->get_date_created()->date( DATE_ATOM ) : null, 'paid' => $order->get_date_paid() ? $order->get_date_paid()->date( DATE_ATOM ) : null,
 		'currency' => $order->get_currency(), 'total' => (float) $order->get_total(), 'payment_method' => $order->get_payment_method_title(), 'transaction_id' => $order->get_transaction_id(),
-		'customer' => array( 'name' => $order->get_formatted_billing_full_name(), 'email' => $order->get_billing_email(), 'whatsapp' => $order->get_billing_phone(), 'country' => $order->get_billing_country(), 'hotel' => kpb_order_hotel( $order ), 'notes' => $order->get_customer_note() ),
+		'customer' => array( 'name' => $order->get_formatted_billing_full_name(), 'email' => $order->get_billing_email(), 'whatsapp' => $order->get_billing_phone(), 'country' => $order->get_billing_country(), 'hotel' => kpb_order_hotel( $order ), 'room' => kpb_order_room( $order ), 'hotel_map' => kpb_order_hotel_map( $order ), 'notes' => $order->get_customer_note() ),
 		'items' => $items, 'admin_url' => $order->get_edit_order_url(),
 	);
 }

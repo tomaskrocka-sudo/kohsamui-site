@@ -7,6 +7,12 @@ function kpb_cart_needs_hotel() {
 	foreach ( WC()->cart->get_cart() as $it ) { $p = (string) ( $it['kpb']['pickup'] ?? '' ); if ( $p !== '' && $p !== 'Meet at the pier' ) return true; }
 	return false;
 }
+/** Is there anything in the cart besides event tickets (so a hotel is worth asking for)? */
+function kpb_cart_has_trips() {
+	if ( ! function_exists( 'WC' ) || ! WC()->cart ) return false;
+	foreach ( WC()->cart->get_cart() as $it ) if ( ! get_post_meta( (int) $it['product_id'], 'kp_is_ticket', true ) ) return true;
+	return false;
+}
 /** Short checkout: name, email, WhatsApp, hotel (only when a pickup is booked), requests. No postal address: we sell trips, not parcels. */
 add_filter( 'woocommerce_checkout_fields', function ( $f ) {
 	$keep = array( 'billing_first_name', 'billing_last_name', 'billing_email', 'billing_phone' );
@@ -17,7 +23,13 @@ add_filter( 'woocommerce_checkout_fields', function ( $f ) {
 	$f['billing']['billing_email']      = array_merge( $f['billing']['billing_email'], array( 'priority' => 30, 'class' => array( 'form-row-first' ), 'label' => 'Email', 'description' => 'Your booking details go here.' ) );
 	$f['billing']['billing_phone']      = array_merge( $f['billing']['billing_phone'], array( 'priority' => 40, 'class' => array( 'form-row-last' ), 'label' => 'WhatsApp number', 'placeholder' => '+44 7700 900123', 'required' => true, 'description' => 'With country code. We send your pickup time here.' ) );
 	$f['order'] = array();
-	if ( kpb_cart_needs_hotel() ) $f['order']['kpb_hotel'] = array( 'type' => 'text', 'label' => 'Hotel or villa on Koh Samui', 'placeholder' => 'e.g. Chaweng Garden Beach Resort', 'required' => true, 'priority' => 5, 'class' => array( 'form-row-wide' ), 'description' => 'Where we pick you up. Not booked yet? Write "not sure" and send it on WhatsApp later.' );
+	if ( kpb_cart_has_trips() ) {
+		$pick = kpb_cart_needs_hotel();
+		$f['order']['kpb_hotel'] = array( 'type' => 'text', 'label' => 'Hotel or villa on Koh Samui', 'placeholder' => 'Start typing, e.g. Chaweng Garden', 'required' => $pick, 'priority' => 5, 'class' => array( 'form-row-wide', 'kpb-hotel-row' ), 'input_class' => array( 'kpb-hotel-in' ), 'autocomplete' => 'off',
+			'description' => $pick ? 'Pick it from the list so the driver finds it. Not on the list? Just type the name.' : 'Where you are staying, in case we need to reach you.' );
+		$f['order']['kpb_room'] = array( 'type' => 'text', 'label' => 'Room or villa number', 'placeholder' => 'e.g. 214', 'required' => false, 'priority' => 6, 'class' => array( 'form-row-wide', 'kpb-room-row' ), 'autocomplete' => 'off', 'custom_attributes' => array( 'maxlength' => 20 ),
+			'description' => 'If you know it already. You can also send it on WhatsApp later.' );
+	}
 	$f['order']['order_comments'] = array( 'type' => 'textarea', 'label' => 'Special requests', 'placeholder' => 'Diet, mobility, celebrations, anything we should know', 'required' => false, 'priority' => 10, 'class' => array( 'notes', 'form-row-wide' ) );
 	return $f;
 }, 20 );
@@ -35,6 +47,10 @@ add_action( 'woocommerce_review_order_before_submit', function () {
 /** Booking reference and hotel on the order (HPOS-safe: order meta, not post meta). */
 add_action( 'woocommerce_checkout_create_order', function ( $order ) {
 	if ( ! empty( $_POST['kpb_hotel'] ) ) $order->update_meta_data( '_kpb_hotel', sanitize_text_field( wp_unslash( $_POST['kpb_hotel'] ) ) );
+	if ( ! empty( $_POST['kpb_room'] ) ) $order->update_meta_data( '_kpb_room', substr( sanitize_text_field( wp_unslash( $_POST['kpb_room'] ) ), 0, 20 ) );
+	$lat = (float) ( $_POST['kpb_hotel_lat'] ?? 0 ); $lng = (float) ( $_POST['kpb_hotel_lng'] ?? 0 );
+	if ( ! empty( $_POST['kpb_hotel'] ) && $lat > 9.3 && $lat < 9.7 && $lng > 99.85 && $lng < 100.15 ) { $order->update_meta_data( '_kpb_hotel_lat', round( $lat, 5 ) ); $order->update_meta_data( '_kpb_hotel_lng', round( $lng, 5 ) ); }
+	$pid = (string) wp_unslash( $_POST['kpb_hotel_pid'] ?? '' ); if ( ! empty( $_POST['kpb_hotel'] ) && preg_match( '/^[A-Za-z0-9_-]{10,300}$/', $pid ) ) $order->update_meta_data( '_kpb_hotel_pid', $pid );
 } );
 add_action( 'woocommerce_checkout_order_created', function ( $order ) { $order->update_meta_data( '_kpb_ref', kpb_reference( $order->get_id() ) ); $order->save(); } );
 /** Booking reference: KS-YYMM-ORDERID (per-site prefix set in options to match the hub). */
@@ -44,14 +60,19 @@ function kpb_reference( $order_id ) {
 }
 function kpb_order_ref( $order ) { return (string) ( $order->get_meta( '_kpb_ref' ) ?: ( $order->get_id() ? kpb_reference( $order->get_id() ) : get_option( 'kpb_ref_prefix', 'KS' ) . '-' . wp_date( 'ym' ) . '-0000' ) ); }
 function kpb_order_hotel( $order ) { return (string) $order->get_meta( '_kpb_hotel' ); }
+function kpb_order_room( $order ) { return (string) $order->get_meta( '_kpb_room' ); }
+/** "Hotel name, room 214" */
+function kpb_order_stay( $order ) { $h = kpb_order_hotel( $order ); $r = kpb_order_room( $order ); return trim( $h . ( $r !== '' ? ( $h ? ', ' : '' ) . 'room ' . $r : '' ) ); }
+function kpb_order_hotel_map( $order ) { return function_exists( 'kpb_hotel_map_url' ) ? kpb_hotel_map_url( kpb_order_hotel( $order ), (string) $order->get_meta( '_kpb_hotel_lat' ), (string) $order->get_meta( '_kpb_hotel_lng' ), (string) $order->get_meta( '_kpb_hotel_pid' ) ) : ''; }
 
 /** Show reference + hotel in the admin order screen. */
 add_action( 'woocommerce_admin_order_data_after_billing_address', function ( $order ) {
-	echo '<p><strong>Booking ref:</strong> ' . esc_html( kpb_order_ref( $order ) ) . ( kpb_order_hotel( $order ) ? '<br><strong>Hotel:</strong> ' . esc_html( kpb_order_hotel( $order ) ) : '' ) . '</p>';
+	$map = kpb_order_hotel_map( $order );
+	echo '<p><strong>Booking ref:</strong> ' . esc_html( kpb_order_ref( $order ) ) . ( kpb_order_stay( $order ) ? '<br><strong>Hotel:</strong> ' . esc_html( kpb_order_stay( $order ) ) . ( $map ? ' · <a href="' . esc_url( $map ) . '" target="_blank" rel="noopener">Google Maps</a>' . ( $order->get_meta( '_kpb_hotel_lat' ) || $order->get_meta( '_kpb_hotel_pid' ) ? '' : ' (search by name)' ) : '' ) : '' ) . '</p>';
 } );
 /** Other Woo emails (completed, refunded, cancelled…) still get the reference and next steps under the order table. */
 add_action( 'woocommerce_email_after_order_table', function ( $order, $sent_to_admin, $plain ) {
-	$ref = kpb_order_ref( $order ); $hotel = kpb_order_hotel( $order );
+	$ref = kpb_order_ref( $order ); $hotel = kpb_order_stay( $order );
 	if ( $plain ) { echo "\nBooking reference: $ref\n" . ( $hotel ? "Hotel: $hotel\n" : '' ); return; }
 	echo '<p><strong>Booking reference:</strong> ' . esc_html( $ref ) . ( $hotel ? '<br><strong>Hotel:</strong> ' . esc_html( $hotel ) : '' ) . '</p>';
 }, 10, 3 );
@@ -93,3 +114,10 @@ add_action( 'init', function () {
 	remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 	remove_action( 'woocommerce_thankyou', 'woocommerce_order_details_table', 10 ); // the theme's thank-you page shows the booking summary instead
 }, 20 );
+
+/** Hotel picker on the checkout. */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() || is_order_received_page() ) return;
+	wp_enqueue_script( 'kpb-checkout', KPB_URL . 'assets/kpb-checkout.js', array(), KPB_VER, true );
+	wp_localize_script( 'kpb-checkout', 'KPBH', array( 'url' => rest_url( 'kp/v1/hotels' ), 'gkey' => (string) get_option( 'kpb_gmaps_key', '' ) ) );
+} );

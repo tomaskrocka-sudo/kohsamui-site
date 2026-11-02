@@ -22,11 +22,11 @@ function kpb_order_trips( $order ) {
 		else $guests = implode( ', ', array_filter( array( $ad ? $ad . ' adult' . ( $ad > 1 ? 's' : '' ) : '', $ch ? $ch . ' child' . ( $ch > 1 ? 'ren' : '' ) . ' (3–11)' : '', $inf ? $inf . ' infant' . ( $inf > 1 ? 's' : '' ) . ' (0–2)' : '' ) ) );
 		$pickup = (string) $it->get_meta( 'Pickup' ); $pier = $pm( 'kp_pier' ); $window = $pm( 'kp_pickup_window' );
 		if ( $ticket ) $meet = 'Show your booking reference (this email) at the entrance.';
-		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet = 'Hotel pickup from ' . $pickup . ( kpb_order_hotel( $order ) ? ' (' . kpb_order_hotel( $order ) . ')' : '' ) . '. We send your exact pickup time the evening before' . ( $window ? ', usually between ' . $window : '' ) . '.';
+		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet = 'Hotel pickup from ' . $pickup . ( kpb_order_stay( $order ) ? ' (' . kpb_order_stay( $order ) . ')' : '' ) . '. We send your exact pickup time the evening before' . ( $window ? ', usually between ' . $window : '' ) . '.';
 		elseif ( $pier ) $meet = 'Meet the boat at ' . $pier . '. We send the meeting time the evening before.';
 		else $meet = 'We send the meeting point and time the evening before.';
 		if ( $ticket ) $meet_o = 'Event ticket: entry with the booking reference.';
-		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet_o = 'Hotel pickup, area: ' . $pickup . ( kpb_order_hotel( $order ) ? '. Hotel: ' . kpb_order_hotel( $order ) : '' ) . ( $window ? '. Usual pickup ' . $window : '' ) . '.';
+		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet_o = 'Hotel pickup, area: ' . $pickup . ( kpb_order_stay( $order ) ? '. Hotel: ' . kpb_order_stay( $order ) : '' ) . ( $window ? '. Usual pickup ' . $window : '' ) . '.';
 		else $meet_o = 'Guest meets the boat' . ( $pier ? ' at ' . $pier : '' ) . ' (no pickup).';
 		$lines = json_decode( (string) $it->get_meta( '_kpb_lines' ), true ) ?: array();
 		$out[] = array(
@@ -72,7 +72,7 @@ function kpb_owner_summary_html( $order ) {
 	foreach ( kpb_order_trips( $order ) as $t ) $h .= kpb_trip_card_html( $t, true );
 	$row = fn( $k, $v ) => $v === '' ? '' : '<tr><td class="kpe-k">' . esc_html( $k ) . '</td><td class="kpe-v">' . $v . '</td></tr>';
 	$h .= '<h2 class="kpe-h2">Guest</h2><table class="kpe-card" role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td class="kpe-card-in"><table class="kpe-rows" role="presentation" width="100%" cellpadding="0" cellspacing="0">';
-	$h .= $row( 'Name', '<strong>' . esc_html( $order->get_formatted_billing_full_name() ) . '</strong>' ) . $row( 'WhatsApp', esc_html( $order->get_billing_phone() ) ) . $row( 'Email', '<a href="mailto:' . esc_attr( $order->get_billing_email() ) . '">' . esc_html( $order->get_billing_email() ) . '</a>' ) . $row( 'Hotel', esc_html( kpb_order_hotel( $order ) ) ) . $row( 'Requests', nl2br( esc_html( $order->get_customer_note() ) ) );
+	$h .= $row( 'Name', '<strong>' . esc_html( $order->get_formatted_billing_full_name() ) . '</strong>' ) . $row( 'WhatsApp', esc_html( $order->get_billing_phone() ) ) . $row( 'Email', '<a href="mailto:' . esc_attr( $order->get_billing_email() ) . '">' . esc_html( $order->get_billing_email() ) . '</a>' ) . $row( 'Hotel', kpb_order_stay( $order ) === '' ? '' : esc_html( kpb_order_stay( $order ) ) . ( ( $map = kpb_order_hotel_map( $order ) ) ? '<br><a href="' . esc_url( $map ) . '">Open in Google Maps</a>' : '' ) ) . $row( 'Requests', nl2br( esc_html( $order->get_customer_note() ) ) );
 	$h .= $row( 'Payment', esc_html( trim( $order->get_payment_method_title() . ( $order->get_transaction_id() ? ' · ' . $order->get_transaction_id() : '' ) ) ) );
 	$h .= '</table></td></tr></table>';
 	$h .= '<table class="kpe-help" role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td>';
@@ -101,7 +101,7 @@ function kpb_preview_order() {
 	$order = ! empty( $_GET['order'] ) ? wc_get_order( (int) $_GET['order'] ) : null;
 	if ( ! $order ) {
 		$order = new WC_Order(); $order->set_billing_first_name( 'Anna' ); $order->set_billing_last_name( 'Novak' ); $order->set_billing_email( 'anna@example.com' ); $order->set_billing_phone( '+44 7700 900123' );
-		$order->set_customer_note( 'One vegetarian lunch, please.' ); $order->set_payment_method_title( 'Card (Stripe)' ); $order->update_meta_data( '_kpb_hotel', 'Chaweng Garden Beach Resort' ); $order->update_meta_data( '_kpb_ref', 'KS-2612-1042' );
+		$order->set_customer_note( 'One vegetarian lunch, please.' ); $order->set_payment_method_title( 'Card (Stripe)' ); $order->update_meta_data( '_kpb_hotel', 'Chaweng Garden Beach Resort' ); $order->update_meta_data( '_kpb_room', '214' ); $order->update_meta_data( '_kpb_ref', 'KS-2612-1042' );
 		$p = get_page_by_path( 'ang-thong-marine-park-day-tour-koh-samui', OBJECT, 'product' );
 		$it = new WC_Order_Item_Product(); $it->set_name( $p ? get_the_title( $p ) : 'Ang Thong Marine Park Day Tour' ); if ( $p ) $it->set_product_id( $p->ID );
 		$it->set_total( 4700 ); foreach ( array( '_kpb_date' => '2026-12-20', '_kpb_adults' => 2, '_kpb_children' => 1, 'Pickup' => 'Chaweng', '_kpb_lines' => wp_json_encode( array( array( 'label' => 'Adults', 'qty' => 2, 'amount' => 3600 ), array( 'label' => 'Child (3–11)', 'qty' => 1, 'amount' => 1100 ) ) ) ) as $k => $v ) $it->add_meta_data( $k, $v );

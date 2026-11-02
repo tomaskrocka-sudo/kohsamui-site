@@ -43,7 +43,7 @@ function kpb_bookings_page() {
 	$rows = array();
 	foreach ( wc_get_orders( array( 'limit' => -1, 'status' => array( 'processing', 'completed', 'on-hold' ) ) ) as $o ) foreach ( $o->get_items() as $it ) {
 		$d = $it->get_meta( '_kpb_date' ); if ( ! $d || $d < $from || $d > $to ) continue;
-		$rows[] = array( $d, $it->get_name(), $it->get_meta( '_kpb_adults' ), $it->get_meta( '_kpb_children' ), $it->get_meta( '_kpb_infants' ), $it->get_meta( 'Pickup' ), get_post_meta( $o->get_id(), '_kpb_hotel', true ), $o->get_formatted_billing_full_name(), $o->get_billing_phone(), $o->get_billing_email(), get_post_meta( $o->get_id(), '_kpb_ref', true ), $o->get_total(), $o->get_status(), $o->get_id(), $o->get_customer_note() );
+		$rows[] = array( $d, $it->get_name(), $it->get_meta( '_kpb_adults' ), $it->get_meta( '_kpb_children' ), $it->get_meta( '_kpb_infants' ), $it->get_meta( 'Pickup' ), kpb_order_stay( $o ), $o->get_formatted_billing_full_name(), $o->get_billing_phone(), $o->get_billing_email(), kpb_order_ref( $o ), $o->get_total(), $o->get_status(), $o->get_id(), $o->get_customer_note() );
 	}
 	usort( $rows, fn( $a, $b ) => strcmp( $a[0] . $a[1], $b[0] . $b[1] ) );
 	if ( isset( $_GET['csv'] ) ) { header( 'Content-Type: text/csv' ); header( 'Content-Disposition: attachment; filename=bookings-' . $from . '-' . $to . '.csv' ); $out = fopen( 'php://output', 'w' ); fputcsv( $out, array( 'Date', 'Tour', 'Adults', 'Children', 'Infants', 'Pickup', 'Hotel', 'Name', 'WhatsApp', 'Email', 'Ref', 'Total THB', 'Status', 'Order', 'Notes' ) ); foreach ( $rows as $r ) fputcsv( $out, $r ); exit; }
@@ -54,11 +54,11 @@ function kpb_bookings_page() {
 }
 function kpb_settings_page() {
 	if ( isset( $_POST['kpb_save'] ) && check_admin_referer( 'kpb_settings' ) ) {
-		foreach ( array( 'kpb_ref_prefix', 'kpb_hub_url', 'kpb_hub_secret', 'kpb_site_id', 'kp_gbp_review_url', 'kpb_alert_emails' ) as $k ) update_option( $k, sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ) );
+		foreach ( array( 'kpb_ref_prefix', 'kpb_hub_url', 'kpb_hub_secret', 'kpb_site_id', 'kp_gbp_review_url', 'kpb_alert_emails', 'kpb_gmaps_key' ) as $k ) update_option( $k, sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ) );
 		echo '<div class="updated"><p>Saved.</p></div>';
 	}
 	echo '<div class="wrap"><h1>Booking settings</h1><form method="post">'; wp_nonce_field( 'kpb_settings' ); echo '<table class="form-table">';
-	foreach ( array( 'kpb_ref_prefix' => 'Booking reference prefix (e.g. KS)', 'kpb_site_id' => 'Site ID sent to the bookings hub (e.g. kohsamui)', 'kpb_hub_url' => 'Bookings hub webhook URL (https://bookings.speedboatsamui.com/wp-json/…)', 'kpb_hub_secret' => 'Hub shared secret (HMAC)', 'kpb_alert_emails' => 'New-booking alert emails (comma separated)', 'kp_gbp_review_url' => 'Google review link (for the day+1 email)' ) as $k => $l )
+	foreach ( array( 'kpb_ref_prefix' => 'Booking reference prefix (e.g. KS)', 'kpb_site_id' => 'Site ID sent to the bookings hub (e.g. kohsamui)', 'kpb_hub_url' => 'Bookings hub webhook URL (https://bookings.speedboatsamui.com/wp-json/…)', 'kpb_hub_secret' => 'Hub shared secret (HMAC)', 'kpb_alert_emails' => 'New-booking alert emails (comma separated)', 'kpb_gmaps_key' => 'Google Maps API key for the hotel picker (Places API (New), restrict to kohsamuitrips.com/*)', 'kp_gbp_review_url' => 'Google review link (for the day+1 email)' ) as $k => $l )
 		echo '<tr><th><label for="' . $k . '">' . esc_html( $l ) . '</label></th><td><input type="text" class="regular-text" id="' . $k . '" name="' . $k . '" value="' . esc_attr( get_option( $k, '' ) ) . '"></td></tr>';
 	echo '</table><p><button class="button button-primary" name="kpb_save" value="1">Save</button></p></form></div>';
 }
