@@ -110,3 +110,20 @@ els.forEach(function(el){var k=el.getAttribute('data-kp-live'),la=el.getAttribut
 if(k==='weather'){fetch('https://api.open-meteo.com/v1/forecast?latitude='+la+'&longitude='+lo+'&timezone=Asia%2FBangkok&current=temperature_2m,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=1').then(function(x){return x.json()}).then(function(j){el.classList.remove('kp-wx-loading');el.textContent=r(j.current.temperature_2m)+'°C · H '+r(j.daily.temperature_2m_max[0])+'° L '+r(j.daily.temperature_2m_min[0])+'° · rain '+(j.daily.precipitation_probability_max[0]|0)+'% · wind '+r(j.current.wind_speed_10m)+' km/h'}).catch(function(){fail(el)})}
 else{fetch('https://marine-api.open-meteo.com/v1/marine?latitude='+la+'&longitude='+lo+'&timezone=Asia%2FBangkok&hourly=sea_level_height_msl,wave_height&forecast_days=3').then(function(x){return x.json()}).then(function(j){el.classList.remove('kp-wx-loading');if(k==='sea'){var s=sea(j.hourly.wave_height);el.className='kp-sea kp-sea-'+s.l.toLowerCase();el.innerHTML='<strong>'+s.l+'</strong> · waves up to '+s.m+' m today · '+s.v}else{var t=tide(j.hourly.time,j.hourly.sea_level_height_msl);if(!t){fail(el);return}var h='Tide now ('+hm(t.now[0])+') '+t.now[1].toFixed(2)+' m '+t.now[2];if(t.hi){var d=(new Date(t.hi[1])-new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Bangkok'})))/60000;h+=' · Next high tide '+hm(t.hi[1])+' '+t.hi[2].toFixed(2)+' m · in '+Math.floor(d/60)+' h '+Math.round(d%60)+' min'}el.textContent=h}}).catch(function(){fail(el)})}});})();</script>
 <?php }, 40 );
+
+/* ---------- Live widgets: [kp_tides], [kp_forecast], [kp_sun] (rendered in the browser by assets/kp-widgets.js) ---------- */
+function kp_widgets_js() { wp_enqueue_script( 'kp-widgets', KPC_URL . 'assets/kp-widgets.js', array(), '1.0.0', true ); }
+add_shortcode( 'kp_tides', function ( $a ) {
+	kp_widgets_js(); $a = shortcode_atts( array( 'point' => 'chaweng', 'days' => 8, 'nochart' => '' ), $a );
+	$pts = array( 'chaweng' => kp_marine_points()['chaweng'], 'nathon' => kp_marine_points()['nathon'], 'thongkrut' => kp_marine_points()['thongkrut'] ); $p = $pts[ $a['point'] ] ?? $pts['chaweng'];
+	$sw = '<div class="kpw-pts" role="group" aria-label="Tide point">'; foreach ( $pts as $k => $q ) $sw .= '<button type="button" data-kpw-pt data-lat="' . esc_attr( $q[0] ) . '" data-lng="' . esc_attr( $q[1] ) . '" aria-pressed="' . ( $q === $p ? 'true' : 'false' ) . '">' . esc_html( $q[2] ) . '</button>'; $sw .= '</div>';
+	return '<div class="kpw kpw-tides" data-kpw="tides" data-lat="' . esc_attr( $p[0] ) . '" data-lng="' . esc_attr( $p[1] ) . '" data-name="' . esc_attr( $p[2] ) . '" data-days="' . (int) $a['days'] . '"' . ( $a['nochart'] ? ' data-nochart' : '' ) . '>' . $sw . '<div class="kpw-body"><p class="kpw-src">Loading today\'s tides for Koh Samui…</p></div></div>';
+} );
+add_shortcode( 'kp_forecast', function ( $a ) {
+	kp_widgets_js(); $a = shortcode_atts( array( 'mode' => 'weather', 'days' => 7 ), $a );
+	return '<div class="kpw kpw-forecast" data-kpw="forecast" data-mode="' . esc_attr( $a['mode'] ) . '" data-days="' . (int) $a['days'] . '"><div class="kpw-body"><p class="kpw-src">Loading the 7-day forecast for Koh Samui…</p></div></div>';
+} );
+add_shortcode( 'kp_sun', function ( $a ) {
+	kp_widgets_js(); $a = shortcode_atts( array( 'days' => 7 ), $a );
+	return '<div class="kpw kpw-sun" data-kpw="sun" data-days="' . (int) $a['days'] . '"><div class="kpw-body"><p class="kpw-src">Loading sunrise and sunset times…</p></div></div>';
+} );

@@ -185,10 +185,11 @@ function kp_upcoming_events( $args = array() ) {
 			$days = array_map( 'trim', explode( ',', substr( $rec, 7 ) ) );
 			$s = new DateTimeImmutable( $start, $tz ); $e = $end ? new DateTimeImmutable( $end, $tz ) : $s->modify( '+5 hours' );
 			$dur = $e->getTimestamp() - $s->getTimestamp();
-			for ( $d = $from->setTime( 0, 0 ); $d <= $to; $d = $d->modify( '+1 day' ) ) {
+			// From yesterday (an overnight party may still be on), keeping only nights that have not finished yet.
+			for ( $d = $from->setTime( 0, 0 )->modify( '-1 day' ); $d <= $to; $d = $d->modify( '+1 day' ) ) {
 				if ( in_array( $d->format( 'D' ), $days, true ) ) {
-					$os = $d->setTime( (int) $s->format( 'H' ), (int) $s->format( 'i' ) );
-					$occurrences[] = array( $os, $os->modify( '+' . $dur . ' seconds' ) );
+					$os = $d->setTime( (int) $s->format( 'H' ), (int) $s->format( 'i' ) ); $oe = $os->modify( '+' . $dur . ' seconds' );
+					if ( $oe >= $from && $os >= $s->setTime( 0, 0 ) ) $occurrences[] = array( $os, $oe );
 				}
 			}
 		} elseif ( $start ) {

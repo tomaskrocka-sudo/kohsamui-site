@@ -39,7 +39,7 @@ add_shortcode( 'kp_next_party', function () {
 /** Ticker (kpn) */
 add_shortcode( 'kp_ticker', function () {
 	$ev = kp_upcoming_events( array( 'to' => '+2 days', 'limit' => 12 ) ); if ( ! $ev ) return '';
-	$today = wp_date( 'Y-m-d' ); $h = '<div class="kpn" role="region" aria-label="Happening now"><span class="kpn-l"><span class="kpn-dot"></span>Happening now</span><div class="kpn-t"><div class="kpn-w">';
+	$today = wp_date( 'Y-m-d' ); $h = '<div class="kpn" role="region" aria-label="Happening now"><span class="kpn-l"><span class="kpn-dot"></span><span class="kpn-lx">Happening</span>now</span><div class="kpn-t"><div class="kpn-w">';
 	foreach ( $ev as $e ) { [ $title, $venue ] = kp_event_label( $e ); $d = $e['start']->format( 'Y-m-d' ); $when = $e['live'] ? 'Live now' : ( $d === $today ? ( (int) $e['start']->format( 'H' ) >= 18 ? 'Tonight' : 'Today' ) : $e['start']->format( 'D' ) ); $h .= '<a class="kpn-i" href="' . esc_url( $e['url'] ) . '"' . kp_when_attrs( $e ) . '><span class="kpn-v" data-kp-when="ticker">' . esc_html( $when ) . ' ' . esc_html( $e['start']->format( 'H:i' ) ) . '</span> <span class="kpn-n">' . esc_html( $title ) . '</span>' . ( $venue ? ' <span class="kpn-p">· ' . esc_html( $venue ) . '</span>' : '' ) . '</a>'; }
 	return $h . '</div></div></div>';
 } );
@@ -65,15 +65,22 @@ function kp_event_label( $e ) {
 }
 /** Keep one card per weekly regular (its next night, labelled "Every night" / "Every Wed, Fri"), all dated events, up to $limit. */
 function kp_events_collapse( $ev, $limit ) {
-	$out = array(); $seen = array(); $order = array( 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' );
+	$out = array(); $seen = array(); $series = array(); $order = array( 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' );
 	foreach ( $ev as $e ) {
 		$rec = (string) get_post_meta( $e['id'], 'kp_recurrence', true );
 		if ( $rec && str_starts_with( $rec, 'weekly:' ) ) {
 			if ( isset( $seen[ $e['id'] ] ) ) continue; $seen[ $e['id'] ] = 1;
 			$days = array_values( array_intersect( $order, array_map( 'trim', explode( ',', substr( $rec, 7 ) ) ) ) );
 			$e['days'] = $days; $e['rec_label'] = count( $days ) === 7 ? 'Every night' : ( $days === array( 'Fri', 'Sat', 'Sun' ) ? 'Every weekend' : 'Every ' . implode( ', ', $days ) );
+		} else {
+			// A run of dated nights (same name, same venue, e.g. a festive residency): one card, "+N more dates".
+			$sk = 'd|' . sanitize_title( $e['title'] ) . '|' . sanitize_title( (string) $e['venue'] );
+			if ( isset( $series[ $sk ] ) ) { $out[ $series[ $sk ] ]['more'] = ( $out[ $series[ $sk ] ]['more'] ?? 0 ) + 1; continue; }
+			if ( count( $out ) >= $limit ) continue;
+			$series[ $sk ] = count( $out );
 		}
-		$out[] = $e; if ( count( $out ) >= $limit ) break;
+		if ( count( $out ) >= $limit ) { if ( $rec ) continue; else break; }
+		$out[] = $e;
 	}
 	return $out;
 }
@@ -109,7 +116,7 @@ add_shortcode( 'kp_events', function ( $a ) {
 	$today = wp_date( 'Y-m-d' ); $tom = wp_date( 'Y-m-d', strtotime( '+1 day' ) );
 	foreach ( $ev as $e ) { $d = $e['start']->format( 'Y-m-d' ); $dow = (int) $e['start']->format( 'N' ); $tags = array_map( fn( $c ) => sanitize_title( $c ), $e['cats'] ); if ( $e['live'] ) $tags[] = 'live'; if ( $d === $today ) $tags[] = 'today'; if ( $d === $tom ) $tags[] = 'tomorrow'; if ( $dow >= 5 ) $tags[] = 'weekend'; if ( ! empty( $e['days'] ) ) { $td = wp_date( 'D' ); $tmd = wp_date( 'D', strtotime( '+1 day' ) ); if ( in_array( $td, $e['days'], true ) ) $tags[] = 'today'; if ( in_array( $tmd, $e['days'], true ) ) $tags[] = 'tomorrow'; if ( array_intersect( array( 'Fri', 'Sat', 'Sun' ), $e['days'] ) ) $tags[] = 'weekend'; $tags = array_values( array_unique( $tags ) ); }
 		[ $title, $venue ] = kp_event_label( $e ); $img = kp_event_image( $e ); $when = ! empty( $e['rec_label'] ) ? $e['rec_label'] : ( $e['live'] ? 'Live now' : ( $d === $today ? 'Today' : ( $d === $tom ? 'Tomorrow' : $e['start']->format( 'D j M' ) ) ) );
-		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '"' . ( empty( $e['days'] ) ? kp_when_attrs( $e ) : '' ) . '>' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title . ( $venue ? ' at ' . $venue : '' ) . ', Koh Samui' ) . '" loading="lazy" decoding="async" width="768" height="576">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $when . ' · ' . $e['start']->format( 'H:i' ) ) . ( $e['end'] ? '–' . esc_html( $e['end']->format( 'H:i' ) ) : '' ) . '</span><span class="kp-ev-title">' . esc_html( $title ) . '</span>' . ( $venue ? '<span class="kp-ev-venue">' . esc_html( $venue ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">From ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
+		$h .= '<a class="kp-ev-card" href="' . esc_url( $e['url'] ) . '" data-tags="' . esc_attr( implode( ' ', $tags ) ) . '"' . ( empty( $e['days'] ) ? kp_when_attrs( $e ) : '' ) . '>' . ( $img ? '<img src="' . esc_url( $img ) . '" alt="' . esc_attr( $title . ( $venue ? ' at ' . $venue : '' ) . ', Koh Samui' ) . '" loading="lazy" decoding="async" width="768" height="576">' : '' ) . '<span class="kp-ev-cat">' . esc_html( $e['cats'][0] ?? 'Event' ) . '</span><span class="kp-ev-when">' . esc_html( $when . ' · ' . $e['start']->format( 'H:i' ) ) . ( $e['end'] ? '–' . esc_html( $e['end']->format( 'H:i' ) ) : '' ) . ( ! empty( $e['more'] ) ? ' <b class="kp-ev-more">+' . (int) $e['more'] . ' more ' . _n( 'date', 'dates', (int) $e['more'] ) . '</b>' : '' ) . '</span><span class="kp-ev-title">' . esc_html( $title ) . '</span>' . ( $venue ? '<span class="kp-ev-venue">' . esc_html( $venue ) . '</span>' : '' ) . ( $e['price_from'] !== '' && $e['ticket_product'] ? '<span class="kp-ev-price">From ' . number_format( (float) $e['price_from'] ) . ' THB · Book tickets</span>' : '' ) . '</a>'; }
 	return $h . '</div>';
 } );
 /** One product card (kohphangan.com kp-g style): photo + badge, kicker, title, meta, real rating, cancellation, From price. */
@@ -310,6 +317,18 @@ function kp_hero_lead() {
 }
 // The homepage hero sells what is on now: rebuild the cached homepage every hour (SiteGround cache), so new nights and the yacht of the week appear without a manual purge.
 add_action( 'init', function () { if ( ! wp_next_scheduled( 'kp_home_refresh' ) ) wp_schedule_event( time() + 300, 'hourly', 'kp_home_refresh' ); } );
+/** One-off events that finished more than 12 hours ago leave the site (moved to drafts, marked kp_archived; nothing is deleted). */
+function kp_archive_finished_events() {
+	$tz = new DateTimeZone( defined( 'KP_TZ' ) ? KP_TZ : 'Asia/Bangkok' ); $cut = ( new DateTimeImmutable( 'now', $tz ) )->modify( '-12 hours' ); $n = 0;
+	foreach ( get_posts( array( 'post_type' => 'kp_event', 'post_status' => 'publish', 'posts_per_page' => -1, 'fields' => 'ids' ) ) as $eid ) {
+		if ( get_post_meta( $eid, 'kp_recurrence', true ) ) continue;
+		$st = (string) get_post_meta( $eid, 'kp_start', true ); if ( $st === '' ) continue; $en = (string) get_post_meta( $eid, 'kp_end', true );
+		try { $e = $en !== '' ? new DateTimeImmutable( $en, $tz ) : ( new DateTimeImmutable( $st, $tz ) )->modify( '+5 hours' ); } catch ( Exception $x ) { continue; }
+		if ( $e < $cut ) { wp_update_post( array( 'ID' => $eid, 'post_status' => 'draft' ) ); update_post_meta( $eid, 'kp_archived', wp_date( 'Y-m-d' ) ); $n++; }
+	}
+	return $n;
+}
 add_action( 'kp_home_refresh', function () {
+	kp_archive_finished_events();
 	if ( function_exists( 'sg_cachepress_purge_cache' ) ) { sg_cachepress_purge_cache( home_url( '/' ) ); sg_cachepress_purge_cache( home_url( '/koh-samui-events/' ) ); }
 } );

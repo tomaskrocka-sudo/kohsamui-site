@@ -67,6 +67,8 @@ function kp_phev_import( array $events ) {
 			$aid = media_sideload_image( $e['img'], $id, $e['title'] . ( $e['venue'] ? ' at ' . $e['venue'] : '' ) . ', Koh Samui', 'id' );
 			if ( ! is_wp_error( $aid ) ) { set_post_thumbnail( $id, $aid ); update_post_meta( $aid, '_wp_attachment_image_alt', $e['title'] . ( $e['venue'] ? ' at ' . $e['venue'] : '' ) . ', Koh Samui' ); }
 		}
+		// Video promos (the listing has an .mp4 instead of a poster): downloaded once, shown on the event page.
+		if ( $e['img'] && preg_match( '/\.(mp4|webm|mov)(\?|$)/i', $e['img'] ) && ! get_post_meta( $id, 'kp_video_id', true ) ) kp_event_attach_video( $id, $e['img'], $e['title'] );
 		// Tickets: manual price wins, else a price found in the description.
 		$price = get_post_meta( $id, 'kp_ticket_price', true ); $price = $price !== '' ? (float) $price : kp_phev_price_from_text( $e['desc'] );
 		if ( $price && $price > 0 && $start > new DateTimeImmutable( 'now', $tz ) ) { kp_phev_ticket_product( $id, $e, $start, $price ); $t++; }
@@ -119,4 +121,17 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		else { [ $c, $u, $t, $err ] = kp_phev_sync(); if ( $err ) WP_CLI::error( 'Sync failed: ' . ( get_option( 'kp_phev_last' )['error'] ?? '' ) ); }
 		WP_CLI::success( "created $c, updated $u, tickets $t" );
 	} );
+}
+
+/** Download a promo video into the media library (reused across events by source URL) and link it to the event. */
+function kp_event_attach_video( $event_id, $url, $title ) {
+	$prev = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_source_url', 'meta_value' => $url ) );
+	if ( $prev ) { update_post_meta( $event_id, 'kp_video_id', (int) $prev[0] ); return (int) $prev[0]; }
+	require_once ABSPATH . 'wp-admin/includes/media.php'; require_once ABSPATH . 'wp-admin/includes/file.php'; require_once ABSPATH . 'wp-admin/includes/image.php';
+	$tmp = download_url( $url, 90 ); if ( is_wp_error( $tmp ) ) return 0;
+	if ( filesize( $tmp ) > 40 * MB_IN_BYTES ) { @unlink( $tmp ); return 0; }
+	$aid = media_handle_sideload( array( 'name' => sanitize_title( $title ) . '-' . substr( md5( $url ), 0, 6 ) . '.' . strtolower( pathinfo( wp_parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION ) ), 'tmp_name' => $tmp ), $event_id, $title );
+	if ( is_wp_error( $aid ) ) { @unlink( $tmp ); return 0; }
+	update_post_meta( $aid, '_source_url', $url ); update_post_meta( $event_id, 'kp_video_id', (int) $aid );
+	return (int) $aid;
 }

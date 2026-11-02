@@ -14,6 +14,9 @@ while ( have_posts() ) : the_post();
 	if ( $m( 'kp_price_from' ) !== '' ) echo '<tr><th>Price</th><td>' . ( (float) $m( 'kp_price_from' ) > 0 ? 'from ' . number_format( (float) $m( 'kp_price_from' ) ) . ' THB' : 'Free' ) . '</td></tr>';
 	if ( $m( 'kp_confidence' ) && $m( 'kp_confidence' ) !== 'verified' ) echo '<tr><th>Status</th><td>Provisional: confirm locally before you go</td></tr>';
 	echo '</tbody></table>';
+	// Promo video from the organiser, when the listing has one.
+	$vid = (int) $m( 'kp_video_id' ); $vurl = $vid ? wp_get_attachment_url( $vid ) : '';
+	if ( $vurl ) echo '<figure class="kp-ev-video"><video src="' . esc_url( $vurl ) . '" controls muted playsinline loop preload="metadata"' . ( has_post_thumbnail() ? ' poster="' . esc_url( get_the_post_thumbnail_url( $id, 'large' ) ) . '"' : '' ) . '></video></figure>';
 	if ( has_excerpt() ) echo '<p class="kp-lead">' . esc_html( get_the_excerpt() ) . '</p>';
 	the_content();
 	$tp = (int) $m( 'kp_ticket_product' );
