@@ -148,7 +148,7 @@ function kpc_assign() {
 		$post = get_page_by_path( $p['slug'], OBJECT, $p['type'] ); if ( ! $post ) continue;
 		if ( get_post_meta( $post->ID, 'kp_boat_gallery_done', true ) ) continue; // real boat photos win over stand-ins
 		if ( $p['featured'] && ! empty( $map[ $p['featured'] ] ) ) { set_post_thumbnail( $post->ID, $map[ $p['featured'] ] ); $n++; }
-		$g = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $p['gallery'] ?? array() ) ) ); if ( $g && $p['type'] === 'product' ) update_post_meta( $post->ID, '_product_image_gallery', implode( ',', $g ) );
+		$g = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $p['gallery'] ?? array() ) ) ); if ( $g && $p['type'] === 'product' ) update_post_meta( $post->ID, '_product_image_gallery', implode( ',', $g ) ); elseif ( $g ) update_post_meta( $post->ID, 'kp_gallery', implode( ',', $g ) );
 	}
 	$fb = array_values( array_filter( array_map( fn( $k ) => $map[ $k ] ?? 0, $m['options']['kp_hero_fallbacks'] ?? array() ) ) ); if ( $fb ) update_option( 'kp_hero_fallbacks', implode( ',', $fb ) );
 	foreach ( array( 'event_fallbacks' => 'kp_event_fallbacks', 'cat_fallbacks' => 'kp_cat_fallbacks' ) as $mk => $opt ) { $o = array(); foreach ( $m[ $mk ] ?? array() as $slug => $key ) if ( ! empty( $map[ $key ] ) ) $o[ sanitize_title( $slug ) ] = (int) $map[ $key ]; if ( $o ) update_option( $opt, $o ); }

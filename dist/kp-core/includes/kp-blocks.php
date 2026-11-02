@@ -97,7 +97,10 @@ function kp_event_image( $e ) {
 add_shortcode( 'kp_events', function ( $a ) {
 	$a = (array) $a;
 	// Weekly regulars (ARKbar every night, walking streets…) appear once with their days; dated nights are listed one by one.
-	$ev = kp_events_collapse( kp_upcoming_events( array( 'to' => $a['to'] ?? '+30 days', 'limit' => 600, 'category' => $a['category'] ?? '' ) ), (int) ( $a['limit'] ?? 30 ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
+	$all = kp_upcoming_events( array( 'to' => $a['to'] ?? '+30 days', 'limit' => 600, 'category' => $a['category'] ?? '' ) );
+	// [kp_events venue="ARKbar"]: only nights at that venue (matched in the venue name or the title).
+	if ( ! empty( $a['venue'] ) ) { $vn = strtolower( remove_accents( $a['venue'] ) ); $all = array_values( array_filter( $all, fn( $e ) => str_contains( strtolower( remove_accents( $e['venue'] . ' ' . $e['title'] ) ), $vn ) ) ); if ( ! $all ) return '<p class="kp-empty">No dated events listed here right now. Regular nights are in the schedule above; new listings appear automatically.</p>'; }
+	$ev = kp_events_collapse( $all, (int) ( $a['limit'] ?? 30 ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
 	$rail = ( $a['layout'] ?? '' ) === 'rail'; $chips_on = ! $rail && ( $a['chips'] ?? '1' ) !== '0'; $h = '';
 	if ( $chips_on ) { $chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
 		$present = array(); foreach ( $ev as $e ) foreach ( $e['cats'] as $c ) $present[ sanitize_title( $c ) ] = 1;

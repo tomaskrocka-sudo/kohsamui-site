@@ -129,10 +129,16 @@ function kpt_menu_raw() {
 		array( 'label' => 'Villas', 'url' => '/koh-samui-villas/', 'cols' => array( array( array( 'cat' => '', 'items' => array(
 			array( 'All villas with live prices', '/koh-samui-villas/' ), array( 'Where to stay', '/where-to-stay-koh-samui/' ), array( 'Chaweng vs Lamai', '/chaweng-vs-lamai/' ),
 		) ) ) ) ),
-		array( 'label' => 'Events', 'url' => '/koh-samui-events/', 'cols' => array( array( array( 'cat' => '', 'items' => array(
-			array( 'Events this week', '/koh-samui-events/' ), array( 'Full Moon Party from Samui', '/full-moon-party-from-koh-samui/' ), array( 'Full Moon Party dates', '/full-moon-party-dates/' ),
-			array( 'Party calendar 2026–2027', '/koh-samui-party-calendar-2026-2027/' ), array( 'Loy Krathong', '/koh-samui-loy-krathong/' ), array( 'Christmas and New Year', '/koh-samui-christmas-new-year/' ), array( 'Songkran', '/koh-samui-songkran/' ), array( 'Chinese New Year', '/koh-samui-chinese-new-year/' ), array( 'Buffalo fighting', '/koh-samui-buffalo-fighting/' )
-		) ) ) ) ),
+		array( 'label' => 'Events', 'url' => '/koh-samui-events/', 'cols' => array(
+			array( array( 'cat' => 'What\'s on', 'items' => array(
+				array( 'Events this week', '/koh-samui-events/' ), array( 'Full Moon Party from Samui', '/full-moon-party-from-koh-samui/' ), array( 'Full Moon Party dates', '/full-moon-party-dates/' ),
+				array( 'Party calendar 2026–2027', '/koh-samui-party-calendar-2026-2027/' ), array( 'Loy Krathong', '/koh-samui-loy-krathong/' ), array( 'Christmas and New Year', '/koh-samui-christmas-new-year/' ), array( 'Songkran', '/koh-samui-songkran/' ), array( 'Chinese New Year', '/koh-samui-chinese-new-year/' ), array( 'Buffalo fighting', '/koh-samui-buffalo-fighting/' ), array( 'Muay Thai fight nights', '/koh-samui-muay-thai-fight-nights/' ),
+			) ) ),
+			array( array( 'cat' => 'Beach clubs and venues', 'items' => array(
+				array( 'ARKbar Beach Club, Chaweng', '/arkbar-beach-club-koh-samui/' ), array( 'Nikki Beach, Lipa Noi', '/nikki-beach-koh-samui/' ), array( 'Beach Republic, Lamai', '/beach-republic-koh-samui/' ), array( 'SEEN Beach Club, Chaweng', '/seen-beach-club-koh-samui/' ), array( 'Chi Samui, Bang Rak', '/chi-samui-beach-club-koh-samui/' ), array( 'Coco Tam\'s, Fisherman\'s Village', '/coco-tams-koh-samui/' ), array( 'Green Mango Club, Chaweng', '/green-mango-club-koh-samui/' ), array( 'Sound Club, Chaweng', '/sound-club-koh-samui/' ),
+			) ),
+			array( 'cat' => 'Nightlife guides', 'items' => array( array( 'Beach clubs', '/koh-samui-beach-clubs/' ), array( 'Nightlife', '/koh-samui-nightlife/' ), array( 'Chaweng nightlife', '/chaweng-nightlife-koh-samui/' ), array( 'Lamai nightlife', '/lamai-nightlife-koh-samui/' ), array( 'Parties', '/koh-samui-parties/' ) ) ) ),
+		) ),
 		array( 'label' => 'News', 'url' => '/koh-samui-news/' ),
 	);
 }
