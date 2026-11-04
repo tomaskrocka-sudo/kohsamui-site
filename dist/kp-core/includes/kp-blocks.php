@@ -253,9 +253,10 @@ function kp_hero_offers() {
 	$img = fn( $id ) => ( $i = kp_card_image_id( $id ) ) ? wp_get_attachment_image_url( $i, 'medium_large' ) : '';
 	$price = fn( $id ) => (float) get_post_meta( $id, '_price', true );
 	$events = array(); $used = array();
-	foreach ( kp_upcoming_events( array( 'to' => '+40 days', 'limit' => 200 ) ) as $e ) {
+	foreach ( kp_upcoming_events( array( 'to' => '+40 days', 'limit' => 500, 'sellable' => true ) ) as $e ) {
 		if ( $e['start'] < $tomorrow ) continue; // online booking closes at midnight the day before
 		$t = strtolower( $e['title'] ); $o = null;
+		if ( str_contains( $t, 'muay thai' ) ) continue; // not hero material: the hero sells the big nights (Full Moon, Half Moon) and The Xperience
 		if ( str_contains( $t, 'full moon party' ) && ( $p = $prod( 'full-moon-party-speedboat-koh-samui' ) ) ) {
 			$o = array( 'k' => 'Full Moon Party', 'title' => 'Full Moon Party speedboat from your hotel', 'sub' => 'Haad Rin and back the same night', 'price' => (float) ( $e['price_from'] ?: $price( $p->ID ) ), 'unit' => 'per person return', 'url' => get_permalink( $p ), 'img' => $img( $p->ID ), 'key' => 'fmp' );
 		} elseif ( str_contains( $t, 'half moon' ) && ( $p = $prod( 'half-moon-festival-package-koh-samui' ) ) ) {
