@@ -191,7 +191,11 @@
   pay.addEventListener('focusin', function () { set(3); });
   pay.addEventListener('pointerdown', function () { set(3); });
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio > 0.6) set(3); }); }, { threshold: [0.6] }).observe(pay);
-  /* Countdowns ([kp_countdown]): tick every second; switch to "on now" during the event. */
+})();
+
+/* Countdowns ([kp_countdown]): tick every second; switch to "on now" during the event. Own block so other page scripts' early returns can't skip it. */
+(function () {
+  var d = document;
   d.querySelectorAll('[data-kp-countdown]').forEach(function (el) {
     var st = +el.dataset.start * 1000, en = +el.dataset.end * 1000, u = {}; ['d', 'h', 'm', 's'].forEach(function (k) { u[k] = el.querySelector('[data-u="' + k + '"]'); });
     function p2(n) { return (n < 10 ? '0' : '') + n; }
