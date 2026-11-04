@@ -923,5 +923,9 @@ html:not(.kpts-dark) .kpg-hero .kpg-sell-p b{color:var(--kp-ink)}
 html:not(.kpts-dark) .kpg-sell-b{background:var(--kp-ink);color:#fff}
 html:not(.kpts-dark) .kpg-sell-i:hover .kpg-sell-b{background:var(--kp-accent);color:var(--kp-accent-ink)}
 html:not(.kpts-dark) .kpg-sell-more a{text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration-color:rgba(255,255,255,.7)}
-/* Header logo, light mode: calmer, deeper teal instead of the bright neon gradient (dark mode keeps the white logo). */
-html:not(.kpts-dark) .kph-logo img{filter:saturate(.55) brightness(.74) contrast(1.12)}
+/* Header logo hover, light mode: same neon effect as the Customizer CSS but softer (less brightness, saturation and glow). Original logo untouched; dark mode unchanged. */
+@keyframes kp-neon-glow-soft{
+ from{filter:brightness(1.02) saturate(1.06) drop-shadow(0 0 1px rgba(255,255,255,.55)) drop-shadow(0 0 2px rgba(76,195,203,.5)) drop-shadow(0 0 6px rgba(76,195,203,.3))}
+ to{filter:brightness(1.05) saturate(1.12) drop-shadow(0 0 1px rgba(255,255,255,.7)) drop-shadow(0 0 3px rgba(76,195,203,.6)) drop-shadow(0 0 9px rgba(76,195,203,.4))}}
+html:not(.kpts-dark) .kph-logo:hover img{animation:kst-neon-on .7s linear 1,kp-neon-glow-soft 1.4s ease-in-out .7s infinite alternate;filter:brightness(1.02) saturate(1.06) drop-shadow(0 0 1px rgba(255,255,255,.55)) drop-shadow(0 0 2px rgba(76,195,203,.5)) drop-shadow(0 0 6px rgba(76,195,203,.3))}
+html:not(.kpts-dark) .kph-logo:focus-visible img{filter:brightness(1.03) saturate(1.1) drop-shadow(0 0 2px rgba(76,195,203,.6)) drop-shadow(0 0 7px rgba(76,195,203,.4))}
