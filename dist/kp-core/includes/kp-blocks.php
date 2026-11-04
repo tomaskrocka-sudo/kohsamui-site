@@ -109,7 +109,7 @@ add_shortcode( 'kp_events', function ( $a ) {
 	if ( ! empty( $a['venue'] ) ) { $vn = strtolower( remove_accents( $a['venue'] ) ); $all = array_values( array_filter( $all, fn( $e ) => str_contains( strtolower( remove_accents( $e['venue'] . ' ' . $e['title'] ) ), $vn ) ) ); if ( ! $all ) return '<p class="kp-empty">No dated events listed here right now. Regular nights are in the schedule above; new listings appear automatically.</p>'; }
 	$ev = kp_events_collapse( $all, (int) ( $a['limit'] ?? 30 ) ); if ( ! $ev ) return '<p class="kp-empty">No events listed for the next days yet. Check the party calendar or ask us on WhatsApp.</p>';
 	$rail = ( $a['layout'] ?? '' ) === 'rail'; $chips_on = ! $rail && ( $a['chips'] ?? '1' ) !== '0'; $h = '';
-	if ( $chips_on ) { $chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
+	if ( $chips_on ) { $chips = array( 'all' => 'All', 'live' => 'Live now', 'today' => 'Today', 'tomorrow' => 'Tomorrow', 'weekend' => 'This weekend', 'party' => 'Party', 'market' => 'Market', 'live-music' => 'Live Music', 'festival' => 'Festival', 'community' => 'Community', 'art' => 'Art', 'family' => 'Family', 'sport' => 'Sport', 'muay-thai' => 'Muay Thai' );
 		$present = array(); foreach ( $ev as $e ) foreach ( $e['cats'] as $c ) $present[ sanitize_title( $c ) ] = 1;
 		$h .= '<div class="kp-ev-filters" role="tablist">'; foreach ( $chips as $k => $l ) { if ( ! in_array( $k, array( 'all', 'live', 'today', 'tomorrow', 'weekend' ), true ) && empty( $present[ $k ] ) ) continue; $h .= '<button type="button" class="kp-ev-chip' . ( $k === 'all' ? ' is-on' : '' ) . '" data-f="' . $k . '">' . $l . '</button>'; } $h .= '</div>'; }
 	$h .= $rail ? '<div class="kp-rail kp-ev-grid" data-rail>' : '<div class="kp-ev-grid">';
@@ -290,9 +290,15 @@ function kp_hero_offers() {
 		$w = (int) $now->format( 'oW' ); $p = $yachts[ $w % count( $yachts ) ];
 		$boat[] = array( 'k' => 'Private yacht of the week', 'title' => kp_short_product_name( get_the_title( $p ) ), 'sub' => 'Your own boat, crew and route for the day', 'price' => $price( $p->ID ), 'unit' => 'per boat', 'url' => get_permalink( $p ), 'img' => $img( $p->ID ), 'cta' => 'See the boat', 'key' => 'yacht' );
 	}
+	// Pinned: The Xperience art park (new in 2026, open Wed–Sun), always first while its ticket is on sale.
+	$pin = array(); $xp = $prod( 'the-xperience-koh-samui-tickets' );
+	if ( $xp && ( $xw = wc_get_product( $xp->ID ) ) && $xw->is_purchasable() ) {
+		$pin[] = array( 'k' => 'New · Open Wed–Sun', 'title' => 'The Xperience art park', 'sub' => 'Lipa Noi: 12 art zones, lagoon beach club, night light and fire show', 'price' => $price( $xp->ID ), 'unit' => 'per person', 'url' => get_permalink( $xp ), 'img' => $img( $xp->ID ), 'cta' => 'Book', 'key' => 'xperience' );
+		$events = array_values( array_filter( $events, fn( $o ) => ! ( isset( $o['url'] ) && $o['url'] === get_permalink( $xp ) ) ) );
+	}
 	// Two nearest events, then the season's day trip, the yacht, the remaining events and tours as spares.
-	$out = array_merge( array_slice( $events, 0, 2 ), array_slice( $tours, 0, 1 ), $boat, array_slice( $events, 2 ), array_slice( $tours, 1 ) );
-	return array_slice( $out, 0, 7 );
+	$out = array_merge( $pin, array_slice( $events, 0, 2 ), array_slice( $tours, 0, 1 ), $boat, array_slice( $events, 2 ), array_slice( $tours, 1 ) );
+	return array_slice( $out, 0, 8 );
 }
 /** One-line "what's on" lead for the hero, from the season and the next big nights. */
 function kp_hero_lead() {
@@ -332,3 +338,51 @@ add_action( 'kp_home_refresh', function () {
 	kp_archive_finished_events();
 	if ( function_exists( 'sg_cachepress_purge_cache' ) ) { sg_cachepress_purge_cache( home_url( '/' ) ); sg_cachepress_purge_cache( home_url( '/koh-samui-events/' ) ); }
 } );
+
+/**
+ * [kp_ticket_box product="slug"]: ticket card for a venue page (photo, price, key facts, Book button). Defaults to the page's kp_ticket_product.
+ * Dark "night" card in both themes; the price carries data-thb so the header currency switch converts it.
+ */
+add_shortcode( 'kp_ticket_box', function ( $a ) {
+	if ( ! function_exists( 'wc_get_product' ) ) return '';
+	$a = shortcode_atts( array( 'product' => '' ), (array) $a );
+	$po = $a['product'] ? get_page_by_path( $a['product'], OBJECT, 'product' ) : null; $pid = $po ? $po->ID : (int) get_post_meta( get_the_ID(), 'kp_ticket_product', true );
+	$p = $pid ? wc_get_product( $pid ) : null; if ( ! $p || $p->get_status() !== 'publish' ) return '';
+	$img = kp_card_image_id( $p->get_id() ); $price = (float) $p->get_price();
+	$facts = array_slice( array_filter( preg_split( '/\r?\n/', (string) get_post_meta( $p->get_id(), 'kp_included', true ) ) ), 0, 4 );
+	$h = '<aside class="kp-tix" aria-label="Tickets">';
+	if ( $img ) $h .= '<a class="kp-tix-img" href="' . esc_url( $p->get_permalink() ) . '" tabindex="-1" aria-hidden="true">' . wp_get_attachment_image( $img, 'medium_large', false, array( 'loading' => 'lazy', 'sizes' => '(max-width:700px) 100vw, 360px', 'alt' => '' ) ) . '</a>';
+	$wd = array_values( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->get_id(), 'kp_weekdays', true ) ) ) ) );
+	$h .= '<div class="kp-tix-b"><p class="kp-tix-k">Tickets · ' . esc_html( $wd ? 'Open ' . ( count( $wd ) > 2 ? $wd[0] . '–' . end( $wd ) : implode( ' and ', $wd ) ) : 'Book online' ) . '</p>';
+	$h .= '<p class="kp-tix-t">' . esc_html( function_exists( 'kp_short_product_name' ) ? preg_replace( '/\s*Tickets$/i', '', kp_short_product_name( $p->get_name() ) ) . ' Day Pass' : $p->get_name() ) . '</p>';
+	$h .= '<p class="kp-tix-p"><span data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</span> <small>per person · children 0–2 free</small></p>';
+	if ( $facts ) { $h .= '<ul class="kp-tix-l">'; foreach ( $facts as $f ) $h .= '<li>' . esc_html( $f ) . '</li>'; $h .= '</ul>'; }
+	$h .= '<p class="kp-tix-a"><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">Book tickets</a><span>Secure card payment in THB · full refund up to 48 hours before</span></p>';
+	return $h . '</div></aside>';
+} );
+
+/** Homepage feature band for The Xperience (rendered by the theme right under the hero). Empty when the ticket isn't on sale. */
+function kp_xperience_feature() {
+	if ( ! function_exists( 'wc_get_product' ) ) return '';
+	$po = get_page_by_path( 'the-xperience-koh-samui-tickets', OBJECT, 'product' ); $p = $po ? wc_get_product( $po->ID ) : null;
+	if ( ! $p || $p->get_status() !== 'publish' || ! $p->is_purchasable() ) return '';
+	$place = get_page_by_path( 'the-xperience-koh-samui', OBJECT, 'kp_place' ); $guide = $place && $place->post_status === 'publish' ? get_permalink( $place ) : '';
+	$ids = array_values( array_unique( array_filter( array_merge( array( (int) $p->get_image_id() ), array_map( 'intval', $p->get_gallery_image_ids() ) ) ) ) );
+	$pick = array_slice( $ids, 0, 1 ); foreach ( array( 0, 3 ) as $i ) if ( isset( $p->get_gallery_image_ids()[ $i ] ) ) $pick[] = (int) $p->get_gallery_image_ids()[ $i ]; // hero night shot, lagoon from above, park lit up
+	$price = (float) $p->get_price(); $tz = new DateTimeZone( defined( 'KP_TZ' ) ? KP_TZ : 'Asia/Bangkok' ); $now = new DateTimeImmutable( 'now', $tz );
+	// Next Friday After Dark (today counts until the evening).
+	$fri = (int) $now->format( 'N' ) === 5 && (int) $now->format( 'G' ) < 20 ? $now : $now->modify( 'next friday' );
+	$h = '<section class="kpg-xp" aria-labelledby="kpg-xp-h"><div class="kp-w kpg-xp-in"><div class="kpg-xp-tx">';
+	$h .= '<p class="kpa-k">New on Koh Samui · Open Wednesday to Sunday</p>';
+	$h .= '<h2 id="kpg-xp-h">The Xperience: Samui\'s new art park, by day and by night</h2>';
+	$h .= '<p class="kpg-xp-lead">Twelve zones of giant sculptures and light art in the jungle above Lipa Noi, a white-sand beach club around a heart-shaped lagoon, infinity pools, and projection mapping and fire shows after dark.</p>';
+	$h .= '<ul class="kpg-xp-f"><li><b>11:00–22:00</b> Wed–Sun</li><li><b>Fridays</b> After Dark to midnight · next ' . esc_html( $fri->format( 'D j M' ) ) . '</li><li><b>Family Days</b> Thu, Sat, Sun</li><li><b>0–2</b> free</li></ul>';
+	$h .= '<p class="kpg-xp-p">Day Pass <b data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</b> per person</p>';
+	$h .= '<p class="kpg-xp-a"><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">Book tickets</a>' . ( $guide ? '<a class="kpv-btn kpv-btn-o" href="' . esc_url( $guide ) . '">Explore the park</a>' : '' ) . '</p></div>';
+	if ( $pick ) {
+		$h .= '<div class="kpg-xp-ph">';
+		foreach ( $pick as $i => $aid ) $h .= '<a href="' . esc_url( $guide ?: $p->get_permalink() ) . '" class="kpg-xp-i kpg-xp-i' . $i . '" tabindex="-1">' . wp_get_attachment_image( $aid, $i ? 'medium_large' : 'large', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => $i ? '(max-width:900px) 50vw, 300px' : '(max-width:900px) 100vw, 640px' ) ) . '</a>';
+		$h .= '</div>';
+	}
+	return $h . '</div></section>';
+}

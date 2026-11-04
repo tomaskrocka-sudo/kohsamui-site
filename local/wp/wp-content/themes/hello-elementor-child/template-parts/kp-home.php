@@ -39,6 +39,9 @@ $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-
 
 <div class="kp-bar"><div class="kp-w"><span>On Koh Samui since 2006</span><span>Licensed by the Tourism Authority of Thailand (43/01467)</span><span>Secure card payment in THB</span><span>WhatsApp support 7 days</span></div></div>
 
+<?php echo function_exists( 'kp_xperience_feature' ) ? kp_xperience_feature() : ''; // New venue: The Xperience art park (tickets on sale) ?>
+
+
 <div class="kp-w">
 	<div class="kp-live" aria-label="Koh Samui now"><span><strong>Samui time</strong> <?php echo do_shortcode( '[kp_time]' ); ?></span><span><strong>Weather</strong> <?php echo do_shortcode( '[kp_weather_now]' ); ?></span><span><strong>Sea</strong> <?php echo do_shortcode( '[kp_sea_now]' ); ?></span><span><strong>Tide</strong> <?php echo do_shortcode( '[kp_tide_now]' ); ?></span></div>
 

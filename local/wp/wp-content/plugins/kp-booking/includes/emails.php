@@ -19,13 +19,13 @@ function kpb_order_trips( $order ) {
 		$ad = (int) $it->get_meta( '_kpb_adults' ); $ch = (int) $it->get_meta( '_kpb_children' ); $inf = (int) $it->get_meta( '_kpb_infants' );
 		$boat = $pm( 'kp_per' ) === 'boat'; $ticket = (bool) $pm( 'kp_is_ticket' );
 		if ( $boat ) $guests = ( $ad + $ch + $inf ) . ' guest' . ( $ad + $ch + $inf === 1 ? '' : 's' ) . ' · private boat';
-		else $guests = implode( ', ', array_filter( array( $ad ? $ad . ' adult' . ( $ad > 1 ? 's' : '' ) : '', $ch ? $ch . ' child' . ( $ch > 1 ? 'ren' : '' ) . ' (3–11)' : '', $inf ? $inf . ' infant' . ( $inf > 1 ? 's' : '' ) . ' (0–2)' : '' ) ) );
+		else $guests = implode( ', ', array_filter( array( $ad ? $ad . ' adult' . ( $ad > 1 ? 's' : '' ) : '', $ch ? $ch . ' child' . ( $ch > 1 ? 'ren' : '' ) . ' (' . ( preg_match( '/\((\d+–\d+)\)/u', $pm( 'kp_child_label' ), $cl ) ? $cl[1] : '3–11' ) . ')' : '', $inf ? $inf . ' infant' . ( $inf > 1 ? 's' : '' ) . ' (0–2)' : '' ) ) );
 		$pickup = (string) $it->get_meta( 'Pickup' ); $pier = $pm( 'kp_pier' ); $window = $pm( 'kp_pickup_window' );
-		if ( $ticket ) $meet = 'Show your booking reference (this email) at the entrance.';
+		if ( $ticket ) $meet = $pm( 'kp_ticket_how' ) ?: 'Show your booking reference (this email) at the entrance.';
 		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet = 'Hotel pickup from ' . $pickup . ( kpb_order_stay( $order ) ? ' (' . kpb_order_stay( $order ) . ')' : '' ) . '. We send your exact pickup time the evening before' . ( $window ? ', usually between ' . $window : '' ) . '.';
 		elseif ( $pier ) $meet = 'Meet the boat at ' . $pier . '. We send the meeting time the evening before.';
 		else $meet = 'We send the meeting point and time the evening before.';
-		if ( $ticket ) $meet_o = 'Event ticket: entry with the booking reference.';
+		if ( $ticket ) $meet_o = $pm( 'kp_ticket_how' ) ? 'Ticket to buy for the guest: book their entry with the venue for this date in the guest\'s name and email them the confirmation.' : 'Event ticket: entry with the booking reference.';
 		elseif ( $pickup !== '' && $pickup !== 'Meet at the pier' ) $meet_o = 'Hotel pickup, area: ' . $pickup . ( kpb_order_stay( $order ) ? '. Hotel: ' . kpb_order_stay( $order ) : '' ) . ( $window ? '. Usual pickup ' . $window : '' ) . '.';
 		else $meet_o = 'Guest meets the boat' . ( $pier ? ' at ' . $pier : '' ) . ' (no pickup).';
 		$lines = json_decode( (string) $it->get_meta( '_kpb_lines' ), true ) ?: array();

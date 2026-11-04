@@ -1,0 +1,257 @@
+{
+ "version": "1",
+ "media": [
+  {
+   "key": "x1",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/04/Untitled-design-1.jpg",
+   "alt": "The Xperience Koh Samui at night: a giant statue lit by projection mapping between glowing spires and palms in Lipa Noi",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x2",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-1.jpg",
+   "alt": "Aerial view of the heart-shaped lagoon and white-sand beach club at The Playa, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x3",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/03/Playa.jpg",
+   "alt": "Violinist on a floating platform in The Playa lagoon with giant white sculptures behind, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x4",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/04/1.jpg",
+   "alt": "Pink sandstone fantasy village with giant stone hands and winged performers at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x5",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/04/Untitled-design.jpg",
+   "alt": "Costumed guests riding a frog-shaped golf cart past sculptures at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x6",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/03/Playa-10.jpg",
+   "alt": "The Xperience Koh Samui lit up in neon colours after dark, with glowing trees and a fountain",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x7",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-6.jpg",
+   "alt": "Infinity pool on the hillside at the Sky Bar, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x8",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-2.jpg",
+   "alt": "Tall metal fire spires in the AfrikaBurn zone at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x9",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-7.jpg",
+   "alt": "Glowing interactive light installation in the Labyrinth Lights maze at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x10",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-9.jpg",
+   "alt": "Giant metal creature sculpture in the Alien Jungle zone at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x11",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/03/Playa-4.jpg",
+   "alt": "Guest relaxing in a hammock under palms beside the lagoon at The Playa, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x12",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/12/Wellness-Cafe.jpg",
+   "alt": "Pink sandstone arches of the Mystic Café in Mystic Village, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x13",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2026/03/Playa-7.jpg",
+   "alt": "Guest on a white day bed by the turquoise lagoon at The Playa Beach Club, The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  },
+  {
+   "key": "x14",
+   "url": "https://thexperienceworld.com/wp-content/uploads/2025/11/zones-vignettes-3.jpg",
+   "alt": "Neon owl artwork glowing in the Luna zone at The Xperience Koh Samui",
+   "credit": "The Xperience Samui"
+  }
+ ],
+ "place": {
+  "slug": "the-xperience-koh-samui",
+  "file": "the-xperience-koh-samui.html",
+  "type": "attraction",
+  "area": "Lipa Noi",
+  "lat": "9.5020",
+  "lng": "99.9570",
+  "hours": "Wed–Sun 11:00–22:00; Fri until 24:00; closed Mon–Tue",
+  "hours_spec": "We,Th,Sa,Su 11:00-22:00; Fr 11:00-24:00",
+  "fee": "Day Pass 1,500 THB (children 0–2 free); Samui residents 500 THB",
+  "free": "no",
+  "phone": "+66 77 955 276",
+  "short": "Immersive art park in the hills of Lipa Noi: 12 zones of giant sculptures, a heart-shaped lagoon beach club, pools and a night light and fire show.",
+  "best_for": "Couples, Friends, Families (Thu, Sat, Sun), Night out",
+  "sun": "Sunset",
+  "swim": "Lagoon and pools",
+  "status": "open",
+  "confidence": "verified",
+  "last_verified": "2026-11-04",
+  "ticket_product": "the-xperience-koh-samui-tickets",
+  "featured": "x1",
+  "gallery": [
+   "x2",
+   "x3",
+   "x4",
+   "x6",
+   "x7",
+   "x5",
+   "x8",
+   "x9",
+   "x10",
+   "x11",
+   "x13",
+   "x12",
+   "x14"
+  ]
+ },
+ "product": {
+  "slug": "the-xperience-koh-samui-tickets",
+  "file": "product-the-xperience-koh-samui-tickets.html",
+  "name": "The Xperience Koh Samui Tickets: Art Park Day Pass",
+  "price": 1500,
+  "child": 1500,
+  "short": "Day Pass to The Xperience, Koh Samui's immersive art park in Lipa Noi: 12 zones of giant sculptures, a heart-shaped lagoon beach club, pools, and a projection-mapping and fire show after dark. Open Wednesday to Sunday, 11:00–22:00 (Fridays to midnight).",
+  "cat": [
+   "Tickets",
+   "Activities"
+  ],
+  "duration": "Full day, 11:00–22:00 (Fri to 24:00)",
+  "weekdays": "Wed,Thu,Fri,Sat,Sun",
+  "family_days": "Thu,Sat,Sun",
+  "adult_label": "Adult (16+)",
+  "child_label": "Child or teen (3–15)",
+  "cxl": "ticket",
+  "max_pax": 20,
+  "notice": "Open Wednesday to Sunday. Under-16s only on Family Days: Thursday, Saturday and Sunday.",
+  "included": [
+   "Day Pass entry for your date, 11:00–22:00 (Fridays until midnight)",
+   "All 12 public art zones and 100+ artworks",
+   "The Playa lagoon beach club and the park's pools",
+   "Workshops and live events of the day",
+   "Projection mapping and fire show after dark",
+   "Friday After Dark DJs (Fridays)",
+   "Children 0–2 free on Family Days"
+  ],
+  "not_included": [
+   "Food and drinks (no outside food or drink allowed)",
+   "Hotel transfers: add a private van with driver",
+   "VIP areas and day-bed sets",
+   "Wellness sessions in Mystic Village",
+   "Private chef dinners"
+  ],
+  "itinerary": [
+   "15:00 | Arrive and take a golf cart to the top of the park",
+   "15:15 | Sky Bar, Art House, Alien Jungle and The Woods in daylight",
+   "16:30 | Swim at The Playa lagoon; early dinner at the beach club",
+   "17:55 | Sunset (November; later in summer) as the park lights up",
+   "18:30 | Labyrinth Lights, Luna projection mapping and the AfrikaBurn fire show",
+   "22:00 | Park closes (Fridays at midnight)"
+  ],
+  "faq": [
+   "What does The Xperience Day Pass include? | Entry for the whole day you choose, 11:00 to 22:00 (midnight on Fridays): all 12 public art zones, the lagoon and pools, the workshops and live events of the day, and the projection mapping and fire show after dark. Food, drinks, VIP areas and transport are extra.",
+   "How much are The Xperience tickets? | 1,500 THB per person, the park's own price, for adults and children aged 3 and over. Children aged 0–2 go free.",
+   "Which days can I book? | Wednesday to Sunday. The park is closed on Mondays and Tuesdays. Online booking for tomorrow closes at midnight Thailand time.",
+   "Can I bring children? | Yes, on Family Days: Thursday, Saturday and Sunday. Wednesdays and Fridays are 16+ only, and the booking form only accepts children on Family Days.",
+   "How do I get my ticket? | After payment we book your entry with the park in your name for your date and email your confirmation. Show it at the entrance in Lipa Noi.",
+   "Is hotel pickup included? | No. The Xperience is in Lipa Noi on the west coast, 40–50 minutes from Chaweng. Add our private van with driver (8 hours, 4,500 THB for up to 10 people), and the driver waits and brings you back after the night show.",
+   "What is the cancellation policy? | Full refund if you cancel 48 hours or more before your visit date. No refund under 48 hours or for a no-show. If the park closes on your date, you choose a full refund or a new date.",
+   "What time should I arrive? | Around 15:00. Explore and swim while it's light, stay for sunset, then the light show and fire show. Plan 5–6 hours in total.",
+   "Can I bring food and drink? | No. Outside food and drink are not allowed; The Playa Beach Club, Mystic Café and the bars serve food and drinks in the park."
+  ]
+ },
+ "events": [
+  {
+   "slug": "the-xperience-after-dark-friday",
+   "title": "The Xperience After Dark",
+   "start": "2026-11-06T11:00:00+07:00",
+   "end": "2026-11-07T00:00:00+07:00",
+   "recurrence": "weekly:Fri",
+   "cats": [
+    "Party",
+    "Art"
+   ],
+   "excerpt": "Every Friday The Xperience art park in Lipa Noi stays open until midnight: DJs, illuminated sculptures, projection mapping and fire performers. 16+. Day Pass 1,500 THB.",
+   "content": "<p>Every Friday, The Xperience art park in Lipa Noi stays open from 11:00 until midnight. Spend the afternoon at the lagoon and pools, then stay as the 12 art zones light up: live DJs, illuminated sculptures, projection mapping on the giant figures, fire performers and sunset cocktails. Friday is 16+ only. The 1,500 THB Day Pass covers the whole day and night. Everything about the park is in our <a href=\"/the-xperience-koh-samui/\">guide to The Xperience</a>.</p>"
+  },
+  {
+   "slug": "the-xperience-family-days",
+   "title": "Family Day at The Xperience",
+   "start": "2026-11-05T11:00:00+07:00",
+   "end": "2026-11-05T22:00:00+07:00",
+   "recurrence": "weekly:Thu,Sat,Sun",
+   "cats": [
+    "Family",
+    "Art"
+   ],
+   "excerpt": "Thursdays, Saturdays and Sundays are Family Days at The Xperience art park in Lipa Noi: all ages welcome, children 0–2 free, night light and fire show. Day Pass 1,500 THB.",
+   "content": "<p>On Thursdays, Saturdays and Sundays, The Xperience art park in Lipa Noi welcomes all ages from 11:00 to 22:00. Explore 12 zones of giant sculptures, swim at the heart-shaped lagoon and stay for the night light show and fire show. Children 0–2 go free; from age 3 everyone pays the 1,500 THB Day Pass, and children must stay with a parent. Everything about the park is in our <a href=\"/the-xperience-koh-samui/\">guide to The Xperience</a>.</p>"
+  }
+ ],
+ "event_common": {
+  "venue": "The Xperience, Lipa Noi",
+  "area": "Lipa Noi",
+  "lat": "9.5020",
+  "lng": "99.9570",
+  "price_from": "1500",
+  "ticket_product": "the-xperience-koh-samui-tickets",
+  "organizer": "The Xperience Samui",
+  "confidence": "verified",
+  "last_verified": "2026-11-04",
+  "image": "x6"
+ },
+ "links": [
+  {
+   "slug": "nikki-beach-koh-samui",
+   "type": "kp_place",
+   "before": "<li><a href=\"/lipa-noi-koh-samui/\">Lipa Noi</a>",
+   "html": "<li><a href=\"/the-xperience-koh-samui/\">The Xperience</a>, 5 minutes away: the island's new art park with a lagoon beach club, pools and a night light and fire show (Day Pass 1,500 THB).</li>\n"
+  },
+  {
+   "slug": "lipa-noi-koh-samui",
+   "type": "kp_place",
+   "before": "<h2>Best time to visit Lipa Noi</h2>",
+   "html": "<h2>The Xperience art park</h2>\n<p>In the hills above Lipa Noi, <a href=\"/the-xperience-koh-samui/\">The Xperience</a> is Koh Samui's new immersive art park: 12 zones of giant sculptures, a heart-shaped lagoon beach club, pools and a projection-mapping and fire show after dark. It opens Wednesday to Sunday from 11:00 (Fridays until midnight); <a href=\"/product/the-xperience-koh-samui-tickets/\">Day Pass tickets are 1,500 THB</a>.</p>\n\n"
+  },
+  {
+   "slug": "koh-samui-with-kids",
+   "type": "page",
+   "before": "<h2>Getting around with kids</h2>",
+   "html": "<h2>The Xperience art park on Family Days</h2>\n<p>On Thursdays, Saturdays and Sundays, <a href=\"/the-xperience-koh-samui/\">The Xperience</a> in Lipa Noi welcomes children: giant sculptures, a heart-shaped lagoon, pools and a light show after dark. Children 0–2 go free and everyone from age 3 pays the 1,500 THB Day Pass. Wednesdays and Fridays are 16+ only. <a href=\"/product/the-xperience-koh-samui-tickets/\">Book Family Day tickets</a>.</p>\n\n"
+  },
+  {
+   "slug": "activities",
+   "type": "page",
+   "before": "<h2>Rainy-day and November ideas</h2>",
+   "html": "<h2>New in 2026: The Xperience art park</h2>\n<p><a href=\"/the-xperience-koh-samui/\">The Xperience</a> in Lipa Noi is a full afternoon and evening out: 12 zones of giant sculptures and light art, a lagoon beach club and pools, and projection mapping and fire shows after dark. Open Wednesday to Sunday, Day Pass 1,500 THB. <a href=\"/product/the-xperience-koh-samui-tickets/\">Book tickets</a>.</p>\n\n"
+  },
+  {
+   "slug": "koh-samui-nightlife",
+   "type": "page",
+   "before": "<h2>Getting home</h2>",
+   "html": "<h2>Friday nights at The Xperience</h2>\n<p>Every Friday, <a href=\"/the-xperience-koh-samui/\">The Xperience</a> art park in Lipa Noi stays open until midnight with DJs, illuminated sculptures, projection mapping and fire performers (16+, Day Pass 1,500 THB). It's 40–50 minutes from Chaweng, so book a driver for the way home.</p>\n\n"
+  }
+ ],
+ "menu": {
+  "label": "The Xperience, Lipa Noi",
+  "url": "/the-xperience-koh-samui/"
+ }
+}

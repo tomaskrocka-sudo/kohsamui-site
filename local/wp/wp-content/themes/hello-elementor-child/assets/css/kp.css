@@ -841,3 +841,37 @@ html.kpts-dark .kpe-web .kpe-ref{background:#0B1F33}
 .kph-bag:hover{border-color:var(--kp-ink)}
 .kph-bag i{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--kp-accent);box-shadow:0 0 0 2px var(--kpd-card,#fff)}
 @media(max-width:1239px){.kph-bag span{display:none}.kph-bag{width:38px;padding:0;justify-content:center}}
+
+/* Ticket card on venue pages ([kp_ticket_box]) and the homepage feature for The Xperience: deliberately dark "night" cards in both themes. */
+.kp-tix{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:0;margin:24px 0 32px;background:var(--kp-night);color:#E6EDF5;border:1px solid var(--kp-night-line);border-radius:var(--kp-radius-lg);overflow:hidden}
+.kp-tix-img{display:block;position:relative;min-height:220px;background:#0B1F33}
+.kp-tix-img img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none;object-fit:cover;margin:0}
+.kp-tix-b{padding:22px 24px;min-width:0}
+.kp-tix-k{font:700 12px/1.3 var(--kp-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--kp-accent);margin:0 0 6px}
+.kp-tix-t{font:600 24px/1.2 var(--kp-serif);color:#fff;margin:0 0 6px}
+.kp-tix-p{margin:0 0 12px;color:#C9D4E0}.kp-tix-p span{font-size:22px;font-weight:700;color:#fff}.kp-tix-p small{font-size:14px;color:#C9D4E0}
+.kp-tix-l{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.kp-tix-l li{position:relative;padding-left:22px;font-size:15px;line-height:1.45;color:#DCE6F0}
+.kp-tix-l li::before{content:"";position:absolute;left:2px;top:7px;width:10px;height:6px;border-left:2px solid var(--kp-accent);border-bottom:2px solid var(--kp-accent);transform:rotate(-45deg)}
+.kp-tix-a{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin:0}.kp-tix-a span{font-size:13px;color:#A9B6C6}
+@media(max-width:700px){.kp-tix{grid-template-columns:1fr}.kp-tix-img{min-height:0;aspect-ratio:16/9}.kp-tix-b{padding:18px}.kp-tix-a .kpv-btn{width:100%}}
+
+.kpg-xp{background:radial-gradient(120% 140% at 85% 0%,#1B2A55 0%,var(--kp-night) 55%);color:#E6EDF5;padding:clamp(36px,4.4vw,56px) 0}
+.kpg-xp-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,48px);align-items:center}
+.kpg-xp h2{color:#fff;font-size:clamp(26px,3.2vw,38px);text-wrap:balance;margin:0 0 12px}
+.kpg-xp .kpa-k{color:var(--kp-accent)}
+.kpg-xp-lead{font-size:17px;line-height:1.55;color:#C9D4E0;margin:0 0 16px;max-width:60ch}
+.kpg-xp-f{list-style:none;margin:0 0 18px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.kpg-xp-f li{border:1px solid rgba(255,255,255,.18);border-radius:var(--kp-radius-pill);padding:6px 12px;font-size:14px;color:#DCE6F0;background:rgba(255,255,255,.04)}
+.kpg-xp-f b{color:#fff}
+.kpg-xp-p{font-size:15px;color:#C9D4E0;margin:0 0 14px}.kpg-xp-p b{font-size:24px;color:#fff;margin:0 4px}
+.kpg-xp-a{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+.kpg-xp .kpv-btn-o{border-color:rgba(255,255,255,.4);color:#fff!important}.kpg-xp .kpv-btn-o:hover{border-color:#fff}
+.kpg-xp-ph{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px}
+.kpg-xp-i{display:block;position:relative;overflow:hidden;border-radius:14px;background:#0B1F33}
+.kpg-xp-i img{width:100%;height:100%;object-fit:cover;margin:0;transition:transform .5s}
+.kpg-xp-i:hover img{transform:scale(1.04)}
+.kpg-xp-i0{grid-column:1/-1;aspect-ratio:16/9}
+.kpg-xp-i1,.kpg-xp-i2{aspect-ratio:4/3}
+@media(max-width:900px){.kpg-xp-in{grid-template-columns:1fr}.kpg-xp-ph{order:-1}}
+@media(max-width:600px){.kpg-xp-a .kpv-btn{flex:1 1 100%}.kpg-xp-f li{font-size:13px}}

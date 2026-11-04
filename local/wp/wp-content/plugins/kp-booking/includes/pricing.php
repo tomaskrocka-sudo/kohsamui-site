@@ -13,7 +13,7 @@ function kpb_config( $product_id ) {
 		'adult'        => (float) $p->get_price(),
 		'child'        => $m( 'kp_child_price' ) !== '' ? (float) $m( 'kp_child_price' ) : null,
 		'infant'       => 0.0,
-		'child_label'  => 'Child (3–11)',
+		'child_label'  => $m( 'kp_child_label', 'Child (3–11)' ),
 		'adult_label'  => $m( 'kp_adult_label', 'Adult (12+)' ),
 		'infant_label' => 'Infant (0–2, free)',
 		'min_adults'   => (int) $m( 'kp_min_adults', 1 ),
@@ -30,6 +30,7 @@ function kpb_config( $product_id ) {
 		'pier'         => $m( 'kp_pier' ),
 		'first_date'   => kpb_first_bookable_date( $product_id ),
 		'closed'       => kpb_closed_dates( $product_id ),       // Y-m-d list (seasonal closure + blackouts + sold out)
+		'family_days'  => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_family_days' ) ) ) ) ), // days when under-16s may come (e.g. Thu,Sat,Sun); empty = every open day
 		'weekdays'     => array_values( array_filter( array_map( 'trim', explode( ',', (string) $m( 'kp_weekdays' ) ) ) ) ), // e.g. Mon,Wed,Sat; empty = daily
 		'notice'       => trim( preg_replace( array( '/\s*\[[^\]]{0,300}\]/', '/\s+\./' ), array( '', '.' ), (string) $m( 'kp_booking_notice' ) ) ), // e.g. "Season reopens 16 December"; [editor notes] never shown
 		'open_dates'   => array_keys( $ev = kpb_event_dates( $product_id ) ),   // non-empty = only these dates (party boats)
@@ -47,6 +48,12 @@ function kpb_option_closure( $label ) {
 	return preg_match( '/ang\s?thong/i', (string) $label ) ? array( '11-01', '12-15' ) : null;
 }
 
+/** "Thu, Sat and Sun" → "Thursday, Saturday and Sunday". */
+function kpb_day_list( $days ) {
+	$n = array( 'Mon' => 'Monday', 'Tue' => 'Tuesday', 'Wed' => 'Wednesday', 'Thu' => 'Thursday', 'Fri' => 'Friday', 'Sat' => 'Saturday', 'Sun' => 'Sunday' );
+	$d = array_map( fn( $x ) => $n[ $x ] ?? $x, array_values( $days ) ); $last = array_pop( $d );
+	return $d ? implode( ', ', $d ) . ' and ' . $last : (string) $last;
+}
 /** Price options from kp_options meta: one per line "Label | price | child price | max guests" (child/max optional). */
 function kpb_options( $product_id ) {
 	$out = array();
@@ -92,6 +99,7 @@ function kpb_price( $product_id, $sel ) {
 	elseif ( in_array( $date, $cfg['closed'], true ) ) $errors[] = 'This date is not available. ' . ( $cfg['notice'] ?: 'Please choose another date.' );
 	elseif ( $cfg['open_dates'] && ! in_array( $date, $cfg['open_dates'], true ) ) $errors[] = 'This runs on set dates only. Please choose one of the highlighted dates.';
 	elseif ( $cfg['weekdays'] && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['weekdays'], true ) ) $errors[] = 'This trip runs on ' . implode( ', ', $cfg['weekdays'] ) . ' only.';
+	elseif ( $cfg['family_days'] && ( $children || $infants ) && ! in_array( ( new DateTimeImmutable( $date ) )->format( 'D' ), $cfg['family_days'], true ) ) $errors[] = 'Under-16s can only come on ' . kpb_day_list( $cfg['family_days'] ) . '. Choose one of those days, or book adults only.';
 	elseif ( ( $oc = kpb_option_closure( $opt_label ) ) && substr( $date, 5 ) >= $oc[0] && substr( $date, 5 ) <= $oc[1] ) $errors[] = 'Ang Thong Marine Park is closed from 1 November to 15 December. Choose a date from 16 December, or another trip on this boat.';
 
 	if ( $cfg['per'] === 'boat' ) {

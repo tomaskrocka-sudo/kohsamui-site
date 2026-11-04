@@ -95,6 +95,7 @@ function kp_cancellation_text( $key = 'day' ) {
 	$t = array(
 		'day' => 'Full refund if you cancel 48 hours or more before departure. 50% refund between 24 and 48 hours before departure. No refund under 24 hours or for a no-show. If we cancel because of weather or sea conditions, you choose a full refund or a new date.',
 		'angthong' => 'Full refund if you cancel 48 hours or more before departure. No refund under 48 hours or for a no-show. If we cancel because of weather or sea conditions, you choose a full refund or a new date.',
+		'ticket' => 'Full refund if you cancel 48 hours or more before your visit date. No refund under 48 hours or for a no-show. If the venue closes on your date, you choose a full refund or a new date.',
 		'partner' => 'Full refund minus the bank fee if you cancel 4 days or more before departure. 50% refund if you cancel 1 to 3 days before departure. No refund under 24 hours or for a no-show. If the trip is cancelled because of weather or sea conditions, you choose a full refund or a new date.',
 	);
 	return $t[ $key ] ?? $t['day'];

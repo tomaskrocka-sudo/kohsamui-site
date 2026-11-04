@@ -132,9 +132,9 @@ function kp_schema_product( $url ) {
 		$max = get_post_meta( $pid, 'kp_max_guests', true ); if ( $max ) $offers['eligibleQuantity'] = array( '@type' => 'QuantitativeValue', 'maxValue' => (int) $max, 'unitText' => 'guests' );
 	} elseif ( $child !== '' && $child !== null ) {
 		$offers = array( '@type' => 'AggregateOffer', '@id' => kp_id( 'offer', $url ), 'priceCurrency' => 'THB', 'lowPrice' => (string) $child, 'highPrice' => $price, 'offerCount' => 2, 'availability' => 'https://schema.org/InStock', 'url' => $url,
-			'offers' => array( array( '@type' => 'Offer', 'name' => 'Adult (12+)', 'price' => $price ) + $offer_common, array( '@type' => 'Offer', 'name' => 'Child (3–11)', 'price' => (string) $child ) + $offer_common ) );
+			'offers' => array( array( '@type' => 'Offer', 'name' => get_post_meta( $pid, 'kp_adult_label', true ) ?: 'Adult (12+)', 'price' => $price ) + $offer_common, array( '@type' => 'Offer', 'name' => get_post_meta( $pid, 'kp_child_label', true ) ?: 'Child (3–11)', 'price' => (string) $child ) + $offer_common ) );
 	} else {
-		$offers = array( '@type' => 'Offer', '@id' => kp_id( 'offer', $url ), 'name' => 'Adult (12+)', 'price' => $price ) + $offer_common;
+		$offers = array( '@type' => 'Offer', '@id' => kp_id( 'offer', $url ), 'name' => get_post_meta( $pid, 'kp_adult_label', true ) ?: 'Adult (12+)', 'price' => $price ) + $offer_common;
 	}
 	$product = array( '@type' => 'Product', '@id' => kp_id( 'product', $url ), 'name' => $p->get_name(), 'description' => kp_meta_description(), 'image' => $images, 'sku' => $p->get_sku() ?: 'KS-' . $pid, 'brand' => array( '@id' => kp_site_id( 'organization' ) ),
 		'category' => implode( ' > ', wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'names' ) ) ), 'offers' => $offers );
