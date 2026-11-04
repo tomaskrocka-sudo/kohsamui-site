@@ -11,7 +11,7 @@ add_action( 'admin_init', function () {
 	$list = json_decode( (string) file_get_contents( $f ), true ); if ( ! is_array( $list ) ) return;
 	$sig = md5( (string) file_get_contents( $f ) ); foreach ( $list as $u ) { $cf = KPC_DIR . 'content/' . $u['file']; $sig .= file_exists( $cf ) ? md5_file( $cf ) : ''; }
 	$sig = md5( $sig ); if ( get_option( 'kp_page_updates_sig' ) === $sig ) return;
-	$log = array();
+	$log = array(); $retry = false;
 	foreach ( $list as $u ) {
 		$p = get_page_by_path( $u['slug'], OBJECT, $u['type'] ?? 'page' ); if ( ! $p ) { $log[] = 'missing ' . $u['slug']; continue; }
 		$raw = (string) @file_get_contents( KPC_DIR . 'content/' . $u['file'] ); if ( ! preg_match( '/^---\n(.*?)\n---\n(.*)$/s', $raw, $m ) ) { $log[] = 'bad file ' . $u['file']; continue; }
@@ -26,8 +26,10 @@ add_action( 'admin_init', function () {
 			if ( is_string( $v ) && str_starts_with( $v, 'product:' ) ) { $pp = get_page_by_path( substr( $v, 8 ), OBJECT, 'product' ); $v = $pp ? (string) $pp->ID : ''; }
 			update_post_meta( $p->ID, $k, $v );
 		}
+		// Hero photo: downloaded once, converted to WebP, set as the page's featured image.
+		if ( ! empty( $u['hero']['url'] ) && function_exists( 'kpx_media' ) ) { $mm = kpx_media( array( array( 'key' => 'hero', 'url' => $u['hero']['url'], 'alt' => $u['hero']['alt'], 'credit' => $u['hero']['credit'] ?? '', 'source' => $u['hero']['source'] ?? '' ) ), 1, $log ); if ( ! empty( $mm['hero'] ) ) set_post_thumbnail( $p->ID, $mm['hero'] ); else { $log[] = 'hero pending for ' . $u['slug']; $retry = true; } }
 		$log[] = 'updated ' . $u['slug'];
 	}
-	update_option( 'kp_page_updates_sig', $sig, false ); update_option( 'kp_page_updates_log', array_merge( array( wp_date( 'Y-m-d H:i' ) ), $log ), false );
+	if ( empty( $retry ) ) update_option( 'kp_page_updates_sig', $sig, false ); update_option( 'kp_page_updates_log', array_merge( array( wp_date( 'Y-m-d H:i' ) ), $log ), false );
 	foreach ( array( 'kp_llms_txt', 'kp_llms_full', 'kp_llms_faq' ) as $t ) delete_transient( $t );
 }, 25 );

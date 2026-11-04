@@ -958,3 +958,8 @@ html.kpts-dark .kpg-row-l{color:var(--kp-accent)}
 
 .kp-cd a.kp-cd-link{color:#fff;text-decoration:none}.kp-cd a.kp-cd-link:hover{text-decoration:underline}.kp-cd-next a.kp-cd-link{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
 .kp-hrmap .kpg-dot-beach{background:#0EA5B7}
+/* Haad Rin map: map full width on top (the article column is too narrow for side by side), list underneath. */
+@media(min-width:900px){.kpg-split.kp-hrmap{grid-template-columns:1fr}}
+.kp-hrmap .kpg-map{min-height:440px}
+.kp-hrmap .kpg-list{max-height:420px}
+@media(max-width:600px){.kp-hrmap .kpg-map{min-height:380px}}

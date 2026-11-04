@@ -1,3 +1,18 @@
 [
- {"slug":"full-moon-party-dates","type":"page","file":"full-moon-party-dates.html","meta":{"kp_ticket_product":"product:full-moon-party-speedboat-koh-samui","kp_side_also":"full-moon-party-private-speedboat-koh-samui","kp_side_title":"Book the boat"}}
+ {
+  "slug": "full-moon-party-dates",
+  "type": "page",
+  "file": "full-moon-party-dates.html",
+  "meta": {
+   "kp_ticket_product": "product:full-moon-party-speedboat-koh-samui",
+   "kp_side_also": "full-moon-party-private-speedboat-koh-samui",
+   "kp_side_title": "Book the boat"
+  },
+  "hero": {
+   "url": "https://kohphangan.com/wp-content/uploads/2026/10/hero-hd-poster.jpg",
+   "alt": "Laser show over thousands of partygoers at a main stage of the Full Moon Party, Koh Phangan",
+   "credit": "KohPhangan.com",
+   "source": "kohphangan.com"
+  }
+ }
 ]

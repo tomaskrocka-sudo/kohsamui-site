@@ -54,7 +54,7 @@ function kpx_media( $items, $max_new, &$log ) {
 		if ( is_wp_error( $aid ) ) { @unlink( $file ); $log[] = 'Photo import failed: ' . $aid->get_error_message(); continue; }
 		update_post_meta( $aid, '_wp_attachment_image_alt', $it['alt'] );
 		wp_update_post( array( 'ID' => $aid, 'post_excerpt' => 'Photo: ' . $it['credit'] ) );
-		update_post_meta( $aid, 'kp_credit', $it['credit'] ); update_post_meta( $aid, 'kp_source_page', 'thexperienceworld.com' );
+		update_post_meta( $aid, 'kp_credit', $it['credit'] ); update_post_meta( $aid, 'kp_source_page', $it['source'] ?? 'thexperienceworld.com' );
 		$map[ $uk ] = (int) $aid; $out[ $it['key'] ] = (int) $aid; $log[] = "Photo #$aid {$it['key']}";
 		update_option( 'kpx_media', $map, false );
 	}
