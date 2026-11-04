@@ -923,3 +923,5 @@ html:not(.kpts-dark) .kpg-hero .kpg-sell-p b{color:var(--kp-ink)}
 html:not(.kpts-dark) .kpg-sell-b{background:var(--kp-ink);color:#fff}
 html:not(.kpts-dark) .kpg-sell-i:hover .kpg-sell-b{background:var(--kp-accent);color:var(--kp-accent-ink)}
 html:not(.kpts-dark) .kpg-sell-more a{text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration-color:rgba(255,255,255,.7)}
+/* Header logo, light mode: calmer, deeper teal instead of the bright neon gradient (dark mode keeps the white logo). */
+html:not(.kpts-dark) .kph-logo img{filter:saturate(.55) brightness(.74) contrast(1.12)}
