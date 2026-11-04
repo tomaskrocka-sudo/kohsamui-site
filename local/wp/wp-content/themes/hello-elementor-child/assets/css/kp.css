@@ -909,3 +909,17 @@ html.kpts-dark :is(.kpa-body,.kpv-product,.kp-sec) :is(p,li,td,dd) a:not(.kpv-bt
 .kpg-sell-f{flex-direction:column;align-items:stretch;gap:12px}
 .kpg-hero .kpg-sell-p b{white-space:nowrap}
 .kpg-sell-b{width:100%;height:44px;font-size:15px}
+/* Hero v4, light mode: calmer — brighter photo, white cards, olive labels and navy Book buttons (lime only on hover). Dark mode keeps the night look. */
+html:not(.kpts-dark) .kpg-hero .kpg-hero-g{background:linear-gradient(180deg,rgba(2,10,28,.30) 0%,rgba(2,10,28,.22) 40%,rgba(2,10,28,.45) 100%)}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-top h1{text-shadow:0 2px 18px rgba(0,0,0,.45)}
+html:not(.kpts-dark) .kpg-sell-day{color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-i{background:#fff;border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 30px rgba(2,10,28,.25);-webkit-backdrop-filter:none;backdrop-filter:none;color:var(--kp-ink)!important}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-i:hover{border-color:#fff;box-shadow:0 14px 36px rgba(2,10,28,.35)}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-k{color:var(--kp-accent-dark)}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-tx strong{color:var(--kp-ink)}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-s{color:#4A5563}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-p{color:#4A5563}
+html:not(.kpts-dark) .kpg-hero .kpg-sell-p b{color:var(--kp-ink)}
+html:not(.kpts-dark) .kpg-sell-b{background:var(--kp-ink);color:#fff}
+html:not(.kpts-dark) .kpg-sell-i:hover .kpg-sell-b{background:var(--kp-accent);color:var(--kp-accent-ink)}
+html:not(.kpts-dark) .kpg-sell-more a{text-shadow:0 1px 8px rgba(0,0,0,.5);text-decoration-color:rgba(255,255,255,.7)}
