@@ -1,5 +1,5 @@
 {
- "version": "1",
+ "version": "2",
  "media": [
   {
    "key": "x1",
@@ -126,7 +126,7 @@
  "product": {
   "slug": "the-xperience-koh-samui-tickets",
   "file": "product-the-xperience-koh-samui-tickets.html",
-  "name": "The Xperience Koh Samui Tickets: Art Park Day Pass",
+  "name": "The Xperience Koh Samui Day Pass: Art Park Tickets",
   "price": 1500,
   "child": 1500,
   "short": "Day Pass to The Xperience, Koh Samui's immersive art park in Lipa Noi: 12 zones of giant sculptures, a heart-shaped lagoon beach club, pools, and a projection-mapping and fire show after dark. Open Wednesday to Sunday, 11:00–22:00 (Fridays to midnight).",
@@ -186,8 +186,7 @@
    "end": "2026-11-07T00:00:00+07:00",
    "recurrence": "weekly:Fri",
    "cats": [
-    "Party",
-    "Art"
+    "Party"
    ],
    "excerpt": "Every Friday The Xperience art park in Lipa Noi stays open until midnight: DJs, illuminated sculptures, projection mapping and fire performers. 16+. Day Pass 1,500 THB.",
    "content": "<p>Every Friday, The Xperience art park in Lipa Noi stays open from 11:00 until midnight. Spend the afternoon at the lagoon and pools, then stay as the 12 art zones light up: live DJs, illuminated sculptures, projection mapping on the giant figures, fire performers and sunset cocktails. Friday is 16+ only. The 1,500 THB Day Pass covers the whole day and night. Everything about the park is in our <a href=\"/the-xperience-koh-samui/\">guide to The Xperience</a>.</p>"
@@ -199,8 +198,7 @@
    "end": "2026-11-05T22:00:00+07:00",
    "recurrence": "weekly:Thu,Sat,Sun",
    "cats": [
-    "Family",
-    "Art"
+    "Family"
    ],
    "excerpt": "Thursdays, Saturdays and Sundays are Family Days at The Xperience art park in Lipa Noi: all ages welcome, children 0–2 free, night light and fire show. Day Pass 1,500 THB.",
    "content": "<p>On Thursdays, Saturdays and Sundays, The Xperience art park in Lipa Noi welcomes all ages from 11:00 to 22:00. Explore 12 zones of giant sculptures, swim at the heart-shaped lagoon and stay for the night light show and fire show. Children 0–2 go free; from age 3 everyone pays the 1,500 THB Day Pass, and children must stay with a parent. Everything about the park is in our <a href=\"/the-xperience-koh-samui/\">guide to The Xperience</a>.</p>"

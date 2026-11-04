@@ -204,6 +204,13 @@ function kp_upcoming_events( $args = array() ) {
 				'live' => ( $s <= new DateTimeImmutable( 'now', $tz ) && $e >= new DateTimeImmutable( 'now', $tz ) ) );
 		}
 	}
+	// A dated listing that repeats one of our weekly series (same venue, day, start time and name, e.g. a synced "Friday After Dark Party"
+	// on a Friday when "The Xperience After Dark" runs every Friday) is shown once: the weekly series, which carries our ticket.
+	$core = function ( $t ) { $t = strtolower( preg_replace( '/[^a-z0-9 ]+/i', ' ', remove_accents( html_entity_decode( (string) $t, ENT_QUOTES, 'UTF-8' ) ) ) ); $t = preg_replace( '/\b(the|party|night|nights|weekly|every|at|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/', ' ', $t ); return trim( preg_replace( '/\s+/', ' ', $t ) ); };
+	$vkey = function ( $v ) { $w = array_values( array_diff( explode( ' ', strtolower( preg_replace( '/[^a-z0-9]+/i', ' ', explode( ',', (string) $v )[0] ) ) ), array( '', 'the' ) ) ); return $w[0] ?? ''; };
+	$weekly = array();
+	foreach ( $out as $o ) if ( get_post_meta( $o['id'], 'kp_recurrence', true ) && $vkey( $o['venue'] ) !== '' ) { $v = $vkey( $o['venue'] ); $weekly[ $v . '|' . $o['start']->format( 'Y-m-d H:i' ) . '|' . trim( str_replace( $v, '', $core( $o['title'] ) ) ) ] = 1; }
+	if ( $weekly ) $out = array_values( array_filter( $out, function ( $o ) use ( $weekly, $core, $vkey ) { if ( get_post_meta( $o['id'], 'kp_recurrence', true ) ) return true; $v = $vkey( $o['venue'] ); return ! isset( $weekly[ $v . '|' . $o['start']->format( 'Y-m-d H:i' ) . '|' . trim( str_replace( $v, '', $core( $o['title'] ) ) ) ] ); } ) );
 	usort( $out, fn( $a, $b ) => $a['start'] <=> $b['start'] );
 	return array_slice( $out, 0, $args['limit'] );
 }

@@ -37,8 +37,9 @@ function kpb_render_booking_card() {
 	?>
 	<div class="kpb" id="kpb" data-product="<?php echo (int) $pid; ?>">
 		<div class="kpb-head">
+		<?php $kpb_ticket = (bool) get_post_meta( $pid, 'kp_is_ticket', true ); ?>
 			<div class="kpb-price"><span class="kpb-amt" data-thb="<?php echo esc_attr( $cfg['adult'] ); ?>"><?php echo esc_html( number_format( $cfg['adult'] ) ); ?> THB</span>
-				<span class="kpb-per"><?php echo $cfg['per'] === 'boat' ? 'per boat' : '/ adult'; ?></span></div>
+				<span class="kpb-per"><?php echo $cfg['per'] === 'boat' ? 'per boat' : ( $kpb_ticket ? '/ person' : '/ adult' ); ?></span></div>
 			<?php if ( $cfg['duration'] ) : ?><div class="kpb-dur"><?php echo esc_html( $cfg['duration'] ); ?></div><?php endif; ?>
 			<?php if ( $p->get_review_count() ) : ?><div class="kpb-rating">★ <?php echo esc_html( $p->get_average_rating() ); ?> · <?php echo (int) $p->get_review_count(); ?> reviews</div><?php endif; ?>
 		</div>
@@ -46,10 +47,10 @@ function kpb_render_booking_card() {
 		<form class="kpb-form" method="post" action="<?php echo esc_url( wc_get_cart_url() ); ?>" novalidate>
 			<?php wp_nonce_field( 'kpb_add', 'kpb_nonce' ); ?>
 			<input type="hidden" name="kpb_add" value="<?php echo (int) $pid; ?>">
-			<div class="kpb-field"><span id="kpb_date_l">Departure date</span>
+			<div class="kpb-field"><span id="kpb_date_l"><?php echo $kpb_ticket ? 'Visit date' : 'Departure date'; ?></span>
 				<input type="hidden" name="kpb_date" id="kpb_date" value="">
 				<button type="button" class="kpb-datebtn" id="kpb_datebtn" aria-labelledby="kpb_date_l kpb_datebtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="kpb_cal"><span class="kpb-datev">Choose a date</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg></button>
-				<div class="kpb-cal" id="kpb_cal" role="dialog" aria-label="Choose a departure date" hidden></div>
+				<div class="kpb-cal" id="kpb_cal" role="dialog" aria-label="<?php echo $kpb_ticket ? 'Choose your visit date' : 'Choose a departure date'; ?>" hidden></div>
 				<small class="kpb-hint">Next-day bookings close at midnight Thailand time. Same-day: <a href="<?php echo esc_url( 'https://wa.me/' . ( defined( 'KP_WHATSAPP' ) ? KP_WHATSAPP : '66637040888' ) ); ?>">WhatsApp us</a>.</small>
 			</div>
 			<?php if ( $cfg['options'] ) : ?>
@@ -96,7 +97,7 @@ function kpb_render_booking_card() {
 			<p class="kpb-charged">Charged in THB. EUR and USD are shown for reference only. Confirmation by email or WhatsApp after payment.</p>
 		</form>
 		<ul class="kpb-trust">
-			<li>Full refund 48 h or more before departure</li>
+			<li>Full refund 48 h or more before <?php echo $kpb_ticket ? 'your visit' : 'departure'; ?></li>
 			<li>Secure card payment</li>
 			<li>Local team on Koh Samui since 2006</li>
 		</ul>

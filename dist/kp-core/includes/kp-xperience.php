@@ -84,7 +84,7 @@ function kpx_product( $d, $media, &$log ) {
 	$id = $p->save(); if ( ! $id ) return 0;
 	$meta = array( 'kp_bookable' => '1', 'kp_per' => 'person', 'kp_child_price' => (string) $d['child'], 'kp_adult_label' => $d['adult_label'], 'kp_child_label' => $d['child_label'],
 		'kp_duration' => $d['duration'], 'kp_weekdays' => $d['weekdays'], 'kp_family_days' => $d['family_days'], 'kp_cxl_policy' => $d['cxl'], 'kp_booking_notice' => $d['notice'],
-		'kp_max_pax' => (string) $d['max_pax'], 'kp_is_ticket' => '1', 'kp_pickup_enabled' => '', 'kp_pickup_meet' => '', 'kp_kind' => 'money', 'kp_pier' => '', 'kp_boat' => '',
+		'kp_max_pax' => (string) $d['max_pax'], 'kp_is_ticket' => '1', 'kp_pickup_enabled' => '0', 'kp_pickup_meet' => '0', 'kp_kind' => 'money', 'kp_pier' => '', 'kp_boat' => '',
 		'kp_ticket_how' => 'We book your entry with The Xperience in your name for this date and email your entry confirmation before your visit. Show it at the park entrance (11/45 Moo 4, Lipa Noi). Open from 11:00; under-16s only on Thursday, Saturday and Sunday.',
 		'kp_pickup_note' => 'No hotel pickup: the park is in Lipa Noi. Take a Grab or taxi, or book our private van with driver, who waits and brings you back after the night show.',
 		'kp_included' => implode( "\n", $d['included'] ), 'kp_not_included' => implode( "\n", $d['not_included'] ), 'kp_itinerary' => implode( "\n", $d['itinerary'] ), 'kp_faq' => implode( "\n", $d['faq'] ),

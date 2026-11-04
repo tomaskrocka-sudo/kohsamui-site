@@ -5,7 +5,7 @@ get_header();
 while ( have_posts() ) : the_post();
 	global $product; $product = wc_get_product( get_the_ID() ); $id = $product->get_id(); $m = fn( $k ) => get_post_meta( $id, $k, true );
 	$lines = fn( $k ) => kp_public_lines( array_filter( array_map( 'trim', preg_split( '/\r?\n/', (string) $m( $k ) ) ) ) );
-	$per = $m( 'kp_per' ) === 'boat' ? 'per boat' : 'per adult';
+	$per = $m( 'kp_per' ) === 'boat' ? 'per boat' : ( $m( 'kp_is_ticket' ) ? 'per person' : 'per adult' );
 	$photo_ids = array_values( array_filter( array_merge( array( $product->get_image_id() ?: ( function_exists( 'kpt_hero_id' ) ? kpt_hero_id() : 0 ) ), $product->get_gallery_image_ids() ) ) );
 	kpt_hero( array( 'strip' => kpt_photo_strip( $photo_ids ) ) );
 	echo '<div class="kpa-w" style="padding-top:22px">';
@@ -15,7 +15,7 @@ while ( have_posts() ) : the_post();
 	// At a glance
 	echo '<h2>' . esc_html( get_the_title() ) . ' at a glance</h2><table class="kp-glance"><tbody>';
 	foreach ( array( 'kp_duration' => 'Duration', 'kp_boat' => 'Boat', 'kp_pier' => 'Departure pier', 'kp_pickup_window' => 'Pickup', 'kp_return' => 'Return', 'kp_season' => 'Season', 'kp_park_fee' => 'Fees not included' ) as $k => $l ) { $v = $m( $k ); if ( $v && ! kp_is_unverified( $v ) ) echo '<tr><th>' . esc_html( $l ) . '</th><td>' . esc_html( $v ) . '</td></tr>'; }
-	echo '<tr><th>Price</th><td>' . number_format( (float) $product->get_price() ) . ' THB ' . esc_html( $per ) . ( $m( 'kp_child_price' ) !== '' ? ' · child (3–11) ' . number_format( (float) $m( 'kp_child_price' ) ) . ' THB' : '' ) . ( $m( 'kp_per' ) !== 'boat' ? ' · infants (0–2) free' : '' ) . '</td></tr>';
+	echo '<tr><th>Price</th><td>' . number_format( (float) $product->get_price() ) . ' THB ' . esc_html( $per ) . ( $m( 'kp_child_price' ) !== '' ? ' · ' . strtolower( $m( 'kp_child_label' ) ?: 'Child (3–11)' ) . ' ' . number_format( (float) $m( 'kp_child_price' ) ) . ' THB' : '' ) . ( $m( 'kp_per' ) !== 'boat' ? ' · infants (0–2) free' : '' ) . '</td></tr>';
 	echo '<tr><th>Pickup</th><td>' . esc_html( kp_pickup_text( $id ) ) . '</td></tr>';
 	echo '</tbody></table>';
 	if ( $m( 'kp_vip_note' ) ) echo '<p class="kp-note"><strong>' . esc_html( $m( 'kp_vip_note' ) ) . '</strong></p>';
@@ -33,7 +33,7 @@ while ( have_posts() ) : the_post();
 	$exs = function ( $e ) { return $e ? '<br><small>Guests ' . ( $e['incl'] + 1 ) . '–' . $e['cap'] . ': +' . number_format( $e['adult'] ) . ' THB each' . ( $e['child'] !== null ? ' (children' . ( $e['child_band'] ? ' ' . esc_html( $e['child_band'] ) : '' ) . ' +' . number_format( $e['child'] ) . ' THB' . ( $e['free_band'] ? ', ' . esc_html( $e['free_band'] ) . ' free' : '' ) . ')' : '' ) . '</small>' : ''; };
 	if ( $opts ) foreach ( $opts as $k => $o ) echo '<tr><td>' . esc_html( $o['label'] ) . ( $o['max_guests'] && ! str_contains( $o['label'], 'up to' ) ? ' (up to ' . (int) $o['max_guests'] . ' guests)' : '' ) . '</td><td>' . number_format( $o['price'] ) . ( $m( 'kp_per' ) === 'boat' ? ' per boat' : ' per adult' ) . ( $o['child'] !== null ? ' · child ' . number_format( $o['child'] ) : '' ) . $exs( $exr[ $k ] ?? null ) . '</td></tr>';
 	elseif ( $m( 'kp_per' ) === 'boat' ) echo '<tr><td>Private boat' . ( $m( 'kp_max_guests' ) && ! str_contains( $m( 'kp_max_guests' ), '[' ) ? ' (up to ' . esc_html( $m( 'kp_max_guests' ) ) . ' guests)' : '' ) . '</td><td>' . number_format( (float) $product->get_price() ) . $exs( $exr[0] ?? null ) . '</td></tr>';
-	if ( ! $opts && $m( 'kp_per' ) !== 'boat' ) { echo '<tr><td>Adult (12+)</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>'; echo '<tr><td>Child (3–11)</td><td>' . ( $m( 'kp_child_price' ) !== '' ? number_format( (float) $m( 'kp_child_price' ) ) : 'Ask us on WhatsApp' ) . '</td></tr><tr><td>Infant (0–2)</td><td>Free</td></tr>'; }
+	if ( ! $opts && $m( 'kp_per' ) !== 'boat' ) { echo '<tr><td>' . esc_html( $m( 'kp_adult_label' ) ?: 'Adult (12+)' ) . '</td><td>' . number_format( (float) $product->get_price() ) . '</td></tr>'; echo '<tr><td>' . esc_html( $m( 'kp_child_label' ) ?: 'Child (3–11)' ) . '</td><td>' . ( $m( 'kp_child_price' ) !== '' ? number_format( (float) $m( 'kp_child_price' ) ) : 'Ask us on WhatsApp' ) . '</td></tr><tr><td>Infant (0–2)</td><td>Free</td></tr>'; }
 	if ( $opts && $m( 'kp_per' ) !== 'boat' ) echo '<tr><td>Infant (0–2)</td><td>Free</td></tr>';
 	if ( get_post_meta( $id, 'kp_pickup_enabled', true ) ) echo '<tr><td>Remote-area pickup (per person, return)</td><td>+400 (see pickup areas)</td></tr>';
 	echo '</tbody></table>';

@@ -658,7 +658,7 @@ html.kpts-dark .kpw-calm{background:rgba(91,203,147,.18);color:#8BE8B4}html.kpts
 .kpc-set[hidden]{display:none}
 .kpc-row{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;cursor:pointer}.kpc-row input{margin-top:3px;width:18px;height:18px;accent-color:#5E6E00;flex:none}.kpc-row b{display:block}
 .kpc-b{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
-.kpc-btn{appearance:none;border-radius:999px;padding:10px 18px;font:700 14px/1 var(--kp-sans);cursor:pointer;border:1px solid var(--kpd-line,#E7E9EC);background:transparent;color:var(--kpd-text,#0B1F33)}
+.kpc-btn{appearance:none;border-radius:999px;padding:10px 18px;font:700 14px/1 var(--kp-sans);cursor:pointer;text-align:center;display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--kpd-line,#E7E9EC);background:transparent;color:var(--kpd-text,#0B1F33)}
 .kpc-btn[hidden]{display:none}
 .kpc-p{background:var(--kp-accent);border-color:var(--kp-accent);color:var(--kp-accent-ink)}
 .kpc-btn:hover{filter:brightness(.97)}
@@ -875,3 +875,9 @@ html.kpts-dark .kpe-web .kpe-ref{background:#0B1F33}
 .kpg-xp-i1,.kpg-xp-i2{aspect-ratio:4/3}
 @media(max-width:900px){.kpg-xp-in{grid-template-columns:1fr}.kpg-xp-ph{order:-1}}
 @media(max-width:600px){.kpg-xp-a .kpv-btn{flex:1 1 100%}.kpg-xp-f li{font-size:13px}}
+/* Links inside running text are underlined so they can be told apart from plain text (accessibility); buttons and cards are unaffected. */
+:is(.kpa-body,.kpv-product,.kp-sec) :is(p,li,td,dd) a:not(.kpv-btn):not([class*="kp-"]):not([class*="kpg-"]){text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;text-decoration-color:color-mix(in srgb,var(--kp-accent-dark) 70%,transparent)}
+:is(.kpa-body,.kpv-product,.kp-sec) :is(p,li,td,dd) a:not(.kpv-btn):not([class*="kp-"]):not([class*="kpg-"]):hover{text-decoration-color:currentColor}
+html.kpts-dark :is(.kpa-body,.kpv-product,.kp-sec) :is(p,li,td,dd) a:not(.kpv-btn):not([class*="kp-"]):not([class*="kpg-"]){text-decoration-color:color-mix(in srgb,var(--kpd-link) 70%,transparent)}
+/* Every pill button centres its label, including <button> and <input> buttons and ones made full width. */
+.kpv-btn,.kph-cta,button.kpv-btn,input.kpv-btn,.woocommerce #place_order,.woocommerce button.button,.woocommerce a.button{text-align:center;justify-content:center}

@@ -24,7 +24,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 				<section class="kpc-card" id="customer_details" data-kpc-step="2">
 					<h2 class="kpc-h"><span class="kpc-n">1</span>Your details</h2>
-					<p class="kpc-sub">We only need this to send your booking and pickup time. No address needed.</p>
+					<p class="kpc-sub"><?php echo ( function_exists( 'kpb_cart_needs_hotel' ) && ! kpb_cart_needs_hotel() ) ? 'We only need this to send your booking confirmation. No address needed.' : 'We only need this to send your booking and pickup time. No address needed.'; ?></p>
 					<?php do_action( 'woocommerce_checkout_billing' ); ?>
 					<?php do_action( 'woocommerce_checkout_shipping' ); ?>
 				</section>

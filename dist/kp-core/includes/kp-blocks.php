@@ -208,8 +208,10 @@ function kp_map_types_for( $id ) {
 add_shortcode( 'kp_places_map', function ( $a ) {
 	$places = kp_places( $a['type'] ?? '', $a['area'] ?? '' );
 	// No filter given: show only places that fit the page's topic (a spa or hospital page must not map beach clubs).
-	if ( empty( $a['type'] ) && empty( $a['area'] ) && empty( $a['ids'] ) ) { $want = kp_map_types_for( get_queried_object_id() ); $self = get_queried_object_id(); $places = array_values( array_filter( $places, fn( $p ) => in_array( $p['type'], $want, true ) || $p['id'] === $self ) ); }
+	if ( empty( $a['type'] ) && empty( $a['area'] ) && empty( $a['ids'] ) && empty( $a['slugs'] ) ) { $want = kp_map_types_for( get_queried_object_id() ); $self = get_queried_object_id(); $places = array_values( array_filter( $places, fn( $p ) => in_array( $p['type'], $want, true ) || $p['id'] === $self ) ); }
 	if ( ! empty( $a['ids'] ) ) { $ids = array_map( 'intval', explode( ',', $a['ids'] ) ); $places = array_filter( $places, fn( $p ) => in_array( $p['id'], $ids, true ) ); }
+	// [kp_places_map slugs="a,b,c"]: exactly these places, in this order (the page's own place first).
+	if ( ! empty( $a['slugs'] ) ) { $want = array_map( 'trim', explode( ',', $a['slugs'] ) ); $by = array(); foreach ( kp_places() as $p ) $by[ $p['slug'] ] = $p; $places = array_values( array_filter( array_map( fn( $sl ) => $by[ $sl ] ?? null, $want ) ) ); }
 	$places = array_values( array_filter( $places, fn( $p ) => $p['lat'] && $p['lng'] ) );
 	if ( ! $places ) { $q = trim( preg_replace( '/\s*[:(].*$/', '', wp_strip_all_tags( get_the_title( get_queried_object_id() ) ) ) ); return $q ? '<p class="kp-note">Open <a href="https://www.google.com/maps/search/?api=1&amp;query=' . rawurlencode( $q ) . '" target="_blank" rel="noopener">' . esc_html( $q ) . ' in Google Maps</a> for exact locations and directions.</p>' : ''; }
 	$lv = get_stylesheet_directory_uri() . '/assets/vendor/leaflet/'; wp_enqueue_style( 'leaflet', $lv . 'leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', $lv . 'leaflet.js', array(), '1.9.4', true );
@@ -354,7 +356,7 @@ add_shortcode( 'kp_ticket_box', function ( $a ) {
 	if ( $img ) $h .= '<a class="kp-tix-img" href="' . esc_url( $p->get_permalink() ) . '" tabindex="-1" aria-hidden="true">' . wp_get_attachment_image( $img, 'medium_large', false, array( 'loading' => 'lazy', 'sizes' => '(max-width:700px) 100vw, 360px', 'alt' => '' ) ) . '</a>';
 	$wd = array_values( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->get_id(), 'kp_weekdays', true ) ) ) ) );
 	$h .= '<div class="kp-tix-b"><p class="kp-tix-k">Tickets · ' . esc_html( $wd ? 'Open ' . ( count( $wd ) > 2 ? $wd[0] . '–' . end( $wd ) : implode( ' and ', $wd ) ) : 'Book online' ) . '</p>';
-	$h .= '<p class="kp-tix-t">' . esc_html( function_exists( 'kp_short_product_name' ) ? preg_replace( '/\s*Tickets$/i', '', kp_short_product_name( $p->get_name() ) ) . ' Day Pass' : $p->get_name() ) . '</p>';
+	$h .= '<p class="kp-tix-t">' . esc_html( trim( explode( ':', $p->get_name() )[0] ) ) . '</p>';
 	$h .= '<p class="kp-tix-p"><span data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</span> <small>per person · children 0–2 free</small></p>';
 	if ( $facts ) { $h .= '<ul class="kp-tix-l">'; foreach ( $facts as $f ) $h .= '<li>' . esc_html( $f ) . '</li>'; $h .= '</ul>'; }
 	$h .= '<p class="kp-tix-a"><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">Book tickets</a><span>Secure card payment in THB · full refund up to 48 hours before</span></p>';

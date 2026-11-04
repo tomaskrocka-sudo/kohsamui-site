@@ -58,6 +58,7 @@ function kpb_event_dates( $product_id ) {
 	$out = array(); $today = kpb_now()->format( 'Y-m-d' );
 	foreach ( $q->posts as $eid ) {
 		if ( in_array( get_post_meta( $eid, 'kp_status', true ), array( 'cancelled', 'postponed' ), true ) ) continue;
+		if ( get_post_meta( $eid, 'kp_recurrence', true ) ) { $out = array(); $weekly = true; break; } // sold by a weekly series (e.g. a venue ticket): open on its normal days, not on set dates
 		$d = substr( (string) get_post_meta( $eid, 'kp_start', true ), 0, 10 ); if ( ! $d || $d < $today ) continue;
 		$pf = get_post_meta( $eid, 'kp_price_from', true );
 		$out[ $d ] = ( $pid === $product_id && is_numeric( $pf ) && (float) $pf > 0 ) ? (float) $pf : null; // per-date price only for the product the event sells

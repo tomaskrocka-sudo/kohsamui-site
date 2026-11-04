@@ -13,13 +13,15 @@
 
   /* Calendar: two months, keyboard accessible */
   var firstOpen = open.filter(function (x) { return x >= cfg.first_date; })[0] || cfg.first_date;
+  // Seasonal closures (e.g. Ang Thong 1 Nov–15 Dec) and weekday rules: start the calendar on the first month with a bookable day.
+  (function () { var d = new Date(firstOpen + 'T00:00:00'); for (var i = 0; i < 400; i++) { var s = ymd(d); if (isOpen(s, d)) { firstOpen = s; return; } d.setDate(d.getDate() + 1); } })();
   var view = new Date(firstOpen + 'T00:00:00'); view.setDate(1);
   function render() {
     var html = '';
     for (var m = 0; m < 1; m++) {
       var first = new Date(view.getFullYear(), view.getMonth() + m, 1);
       var label = first.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
-      html += '<div class="kpb-month"><div class="kpb-mhead">' + (m === 0 ? '<button type="button" class="kpb-nav" data-nav="-1" aria-label="Previous month">‹</button>' : '<span></span>') + '<strong>' + label + '</strong>' + '<button type="button" class="kpb-nav" data-nav="1" aria-label="Next month">›</button>' + '</div><div class="kpb-grid" role="grid">';
+      html += '<div class="kpb-month"><div class="kpb-mhead">' + (m === 0 ? '<button type="button" class="kpb-nav" data-nav="-1" aria-label="Previous month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>' : '<span></span>') + '<strong>' + label + '</strong>' + '<button type="button" class="kpb-nav" data-nav="1" aria-label="Next month"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>' + '</div><div class="kpb-grid" role="grid">';
       ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'].forEach(function (d) { html += '<span class="kpb-dow">' + d + '</span>'; });
       var offset = (first.getDay() + 6) % 7; for (var i = 0; i < offset; i++) html += '<span></span>';
       var days = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
@@ -110,7 +112,7 @@
   boatUi();
   document.addEventListener('kp:currency', quote);
   form.addEventListener('submit', function (e) {
-    var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a departure date.</p>'; if (dateBtn) { dateBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); openCal(); } return; }
+    var s = sel(); if (!s.date) { e.preventDefault(); errEl.innerHTML = '<p>Please choose a ' + ((document.getElementById('kpb_date_l') || {}).textContent || 'departure date').toLowerCase() + '.</p>'; if (dateBtn) { dateBtn.scrollIntoView({ behavior: 'smooth', block: 'center' }); openCal(); } return; }
     if (cfg.pickup && cfg.pickup.enabled && !s.pickup) { e.preventDefault(); errEl.innerHTML = '<p>Please choose your pickup area.</p>'; return; }
     var btn = root.querySelector('#kpb_submit'); btn.disabled = true; btn.textContent = KPB.i18n.adding;
   });
