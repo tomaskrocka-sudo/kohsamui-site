@@ -1,0 +1,125 @@
+{
+ "source": "kohphangan.com party map (our sister site), checked Nov 2026",
+ "points": [
+  {
+   "name": "Haad Rin Nok (Sunrise Beach)",
+   "lat": 9.676911,
+   "lng": 100.068052,
+   "type": "beach",
+   "label": "The party",
+   "desc": "The main party beach, facing east. On the biggest nights up to about 30,000 people dance along the sand."
+  },
+  {
+   "name": "Tommy Resort",
+   "lat": 9.677551,
+   "lng": 100.067908,
+   "type": "stage",
+   "label": "Dance · EDM · house",
+   "desc": "One of the main stages at the north end, with the biggest sound and light rig on the beach and fire shows."
+  },
+  {
+   "name": "Cactus Bar",
+   "lat": 9.675717,
+   "lng": 100.067917,
+   "type": "stage",
+   "label": "Live music · fire shows",
+   "desc": "One of the most popular bars on the beach, with fire shows, fire limbo and live music."
+  },
+  {
+   "name": "Moonrise Beach Bar",
+   "lat": 9.675265,
+   "lng": 100.067796,
+   "type": "stage",
+   "label": "DJ sets · performances",
+   "desc": "A stage right on the sand with resident DJs and live performances, busy through the middle of the night."
+  },
+  {
+   "name": "Drop In Bar (DOP)",
+   "lat": 9.674984,
+   "lng": 100.068004,
+   "type": "stage",
+   "label": "Commercial · EDM",
+   "desc": "One of the oldest names on Haad Rin, playing big commercial and EDM tracks until about 04:00."
+  },
+  {
+   "name": "Paradise Bungalows",
+   "lat": 9.674128,
+   "lng": 100.06819,
+   "type": "stage",
+   "label": "The original vibe",
+   "desc": "At the south end of the beach, where the Full Moon Party began in the 1980s."
+  },
+  {
+   "name": "Disco Zoo Bar & Hostel",
+   "lat": 9.676777,
+   "lng": 100.067206,
+   "type": "bar",
+   "label": "Bar · open late",
+   "desc": "A bar and hostel just behind the beach, open late."
+  },
+  {
+   "name": "Haad Rin Nai (Sunset Beach)",
+   "lat": 9.681041,
+   "lng": 100.059294,
+   "type": "beach",
+   "label": "Chill-out",
+   "desc": "The quieter beach on the other side of the village, facing west towards Koh Samui."
+  },
+  {
+   "name": "Haad Rin Pier",
+   "lat": 9.674306,
+   "lng": 100.063668,
+   "type": "pier",
+   "label": "Boats",
+   "desc": "Ferries and speedboats to and from Koh Samui. Our shared boats include the pier fee."
+  },
+  {
+   "name": "Walking Street",
+   "lat": 9.675415,
+   "lng": 100.065974,
+   "type": "service",
+   "label": "Food · shops",
+   "desc": "Food stalls, bars and shops on the way between the pier and the beach."
+  },
+  {
+   "name": "7-Eleven, taxi meeting point",
+   "lat": 9.677532,
+   "lng": 100.066069,
+   "type": "service",
+   "label": "Taxis · 24 hours",
+   "desc": "A 24-hour shop and the main meeting point for taxis."
+  },
+  {
+   "name": "ATM and money exchange",
+   "lat": 9.677651,
+   "lng": 100.067238,
+   "type": "service",
+   "label": "Cash · 24 hours",
+   "desc": "ATM and money exchange, open 24 hours. Bring cash from Samui: queues are long on party night."
+  },
+  {
+   "name": "Haad Rin police booth",
+   "lat": 9.676708,
+   "lng": 100.066267,
+   "type": "help",
+   "label": "Police",
+   "desc": "The first place to go for theft, accidents or emergencies on party night. Tourist Police: 1155."
+  },
+  {
+   "name": "Doctor Takecare Clinic",
+   "lat": 9.675495,
+   "lng": 100.065652,
+   "type": "help",
+   "label": "Clinic · 24 hours",
+   "desc": "The closest clinic to the party, open 24 hours."
+  },
+  {
+   "name": "Ocean Medical Clinic",
+   "lat": 9.675404,
+   "lng": 100.067061,
+   "type": "help",
+   "label": "Clinic · until midnight",
+   "desc": "Clinic in Haad Rin for wound care and other treatment, open until midnight."
+  }
+ ]
+}

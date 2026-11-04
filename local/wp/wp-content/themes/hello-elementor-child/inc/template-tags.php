@@ -48,12 +48,13 @@ function kpt_side_card() {
 	// Venue pages that sell tickets (kp_ticket_product): the ticket comes first and is the main button.
 	$tix = is_singular() ? (int) get_post_meta( get_the_ID(), 'kp_ticket_product', true ) : 0; $tp = $tix && function_exists( 'wc_get_product' ) ? wc_get_product( $tix ) : null;
 	if ( $tp && $tp->get_status() === 'publish' ) {
-		$van = get_page_by_path( 'private-van-hire-driver-koh-samui', OBJECT, 'product' );
-		echo '<aside class="kpa-side"><div class="kpa-sd"><div class="kpa-sd-h">Tickets</div><div class="kpa-sd-ts">Choose your date and pay securely online</div>';
+		$also = get_post_meta( get_the_ID(), 'kp_side_also', true ) ?: 'private-van-hire-driver-koh-samui';
+		$van = get_page_by_path( $also, OBJECT, 'product' ); $is_tix = (bool) get_post_meta( $tp->get_id(), 'kp_is_ticket', true ) && ! get_post_meta( $tp->get_id(), 'kp_pickup_enabled', true );
+		echo '<aside class="kpa-side"><div class="kpa-sd"><div class="kpa-sd-h">' . esc_html( get_post_meta( get_the_ID(), 'kp_side_title', true ) ?: 'Tickets' ) . '</div><div class="kpa-sd-ts">Choose your date and pay securely online</div>';
 		echo '<a class="kpa-sd-l" href="' . esc_url( $tp->get_permalink() ) . '"><span class="kpa-sd-t">' . esc_html( preg_replace( '/:.*$/', '', $tp->get_name() ) ) . '</span><span class="kpa-sd-p">' . esc_html( number_format( (float) $tp->get_price() ) ) . ' THB</span></a>';
-		if ( $van && $van->post_status === 'publish' ) echo '<a class="kpa-sd-l" href="' . esc_url( get_permalink( $van ) ) . '"><span class="kpa-sd-t">Private van with driver, waits for you</span><span class="kpa-sd-p">from ' . esc_html( number_format( (float) get_post_meta( $van->ID, '_price', true ) ) ) . ' THB</span></a>';
-		echo '<a class="kpv-btn" style="width:100%" href="' . esc_url( $tp->get_permalink() ) . '">Book tickets</a>';
-		echo '<ul class="kpa-sd-b"><li>Local team on Koh Samui since 2006</li><li>TAT licence ' . esc_html( KP_TAT_LICENCE ) . '</li><li>Secure card payment in THB</li><li>Full refund 48 hours or more before your visit</li></ul></div></aside>';
+		if ( $van && $van->post_status === 'publish' ) echo '<a class="kpa-sd-l" href="' . esc_url( get_permalink( $van ) ) . '"><span class="kpa-sd-t">' . esc_html( $also === 'private-van-hire-driver-koh-samui' ? 'Private van with driver, waits for you' : preg_replace( '/:.*$/', '', get_the_title( $van ) ) ) . '</span><span class="kpa-sd-p">from ' . esc_html( number_format( (float) get_post_meta( $van->ID, '_price', true ) ) ) . ' THB</span></a>';
+		echo '<a class="kpv-btn" style="width:100%" href="' . esc_url( $tp->get_permalink() ) . '">' . ( $is_tix ? 'Book tickets' : 'Book now' ) . '</a>';
+		echo '<ul class="kpa-sd-b"><li>Local team on Koh Samui since 2006</li><li>TAT licence ' . esc_html( KP_TAT_LICENCE ) . '</li><li>Secure card payment in THB</li><li>Full refund 48 hours or more before ' . ( $is_tix ? 'your visit' : 'departure' ) . '</li></ul></div></aside>';
 		return;
 	}
 	echo '<aside class="kpa-side"><div class="kpa-sd"><div class="kpa-sd-h">Plan with locals</div><div class="kpa-sd-ts">Book your Koh Samui days with our Chaweng team</div>';

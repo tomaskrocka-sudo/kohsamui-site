@@ -215,7 +215,7 @@ add_shortcode( 'kp_places_map', function ( $a ) {
 	$places = array_values( array_filter( $places, fn( $p ) => $p['lat'] && $p['lng'] ) );
 	if ( ! $places ) { $q = trim( preg_replace( '/\s*[:(].*$/', '', wp_strip_all_tags( get_the_title( get_queried_object_id() ) ) ) ); return $q ? '<p class="kp-note">Open <a href="https://www.google.com/maps/search/?api=1&amp;query=' . rawurlencode( $q ) . '" target="_blank" rel="noopener">' . esc_html( $q ) . ' in Google Maps</a> for exact locations and directions.</p>' : ''; }
 	$lv = get_stylesheet_directory_uri() . '/assets/vendor/leaflet/'; wp_enqueue_style( 'leaflet', $lv . 'leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', $lv . 'leaflet.js', array(), '1.9.4', true );
-	wp_enqueue_script( 'kp-map', get_stylesheet_directory_uri() . '/assets/js/kp-map.js', array( 'leaflet' ), '0.1', true );
+	wp_enqueue_script( 'kp-map', get_stylesheet_directory_uri() . '/assets/js/kp-map.js', array( 'leaflet' ), defined( 'KPT_VER' ) ? KPT_VER : '0.2', true );
 	$types = array_unique( array_column( $places, 'type' ) );
 	$h = '<div class="kpg-split" data-tiles="' . esc_attr( get_option( 'kp_tiles_url', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' ) ) . '">';
 	$h .= '<div class="kpg-chips">'; foreach ( $types as $t ) $h .= '<button type="button" class="kpg-chip is-on" data-type="' . esc_attr( $t ) . '">' . esc_html( ucfirst( $t ) ) . '</button>'; $h .= '</div>';
@@ -348,7 +348,7 @@ add_action( 'kp_home_refresh', function () {
  */
 add_shortcode( 'kp_ticket_box', function ( $a ) {
 	if ( ! function_exists( 'wc_get_product' ) ) return '';
-	$a = shortcode_atts( array( 'product' => '' ), (array) $a );
+	$a = shortcode_atts( array( 'product' => '', 'kicker' => '', 'title' => '' ), (array) $a );
 	$po = $a['product'] ? get_page_by_path( $a['product'], OBJECT, 'product' ) : null; $pid = $po ? $po->ID : (int) get_post_meta( get_the_ID(), 'kp_ticket_product', true );
 	$p = $pid ? wc_get_product( $pid ) : null; if ( ! $p || $p->get_status() !== 'publish' ) return '';
 	$img = kp_card_image_id( $p->get_id() ); $price = (float) $p->get_price();
@@ -356,11 +356,12 @@ add_shortcode( 'kp_ticket_box', function ( $a ) {
 	$h = '<aside class="kp-tix" aria-label="Tickets">';
 	if ( $img ) $h .= '<a class="kp-tix-img" href="' . esc_url( $p->get_permalink() ) . '" tabindex="-1" aria-hidden="true">' . wp_get_attachment_image( $img, 'medium_large', false, array( 'loading' => 'lazy', 'sizes' => '(max-width:700px) 100vw, 360px', 'alt' => '' ) ) . '</a>';
 	$wd = array_values( array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $p->get_id(), 'kp_weekdays', true ) ) ) ) );
-	$h .= '<div class="kp-tix-b"><p class="kp-tix-k">Tickets · ' . esc_html( $wd ? 'Open ' . ( count( $wd ) > 2 ? $wd[0] . '–' . end( $wd ) : implode( ' and ', $wd ) ) : 'Book online' ) . '</p>';
-	$h .= '<p class="kp-tix-t">' . esc_html( trim( explode( ':', $p->get_name() )[0] ) ) . '</p>';
-	$h .= '<p class="kp-tix-p"><span data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</span> <small>per person · children 0–2 free</small></p>';
+	$h .= '<div class="kp-tix-b"><p class="kp-tix-k">' . esc_html( $a['kicker'] ?: 'Tickets · ' . ( $wd ? 'Open ' . ( count( $wd ) > 2 ? $wd[0] . '–' . end( $wd ) : implode( ' and ', $wd ) ) : 'Book online' ) ) . '</p>';
+	$per = get_post_meta( $p->get_id(), 'kp_per', true ) === 'boat' ? 'per boat' : 'per person'; $fam = get_post_meta( $p->get_id(), 'kp_child_price', true ) !== '' || get_post_meta( $p->get_id(), 'kp_family_days', true );
+	$h .= '<p class="kp-tix-t">' . esc_html( $a['title'] ?: trim( explode( ':', $p->get_name() )[0] ) ) . '</p>';
+	$h .= '<p class="kp-tix-p"><span data-thb="' . esc_attr( $price ) . '">' . esc_html( number_format( $price ) ) . ' THB</span> <small>' . esc_html( $per . ( $fam ? ' · children 0–2 free' : '' ) ) . '</small></p>';
 	if ( $facts ) { $h .= '<ul class="kp-tix-l">'; foreach ( $facts as $f ) $h .= '<li>' . esc_html( $f ) . '</li>'; $h .= '</ul>'; }
-	$h .= '<p class="kp-tix-a"><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">Book tickets</a><span>Secure card payment in THB · full refund up to 48 hours before</span></p>';
+	$h .= '<p class="kp-tix-a"><a class="kpv-btn" href="' . esc_url( $p->get_permalink() ) . '">' . ( get_post_meta( $p->get_id(), 'kp_is_ticket', true ) && ! get_post_meta( $p->get_id(), 'kp_pickup_enabled', true ) ? 'Book tickets' : 'Book now' ) . '</a><span>Secure card payment in THB · full refund up to 48 hours before</span></p>';
 	return $h . '</div></aside>';
 } );
 
@@ -389,3 +390,47 @@ function kp_xperience_feature() {
 	}
 	return $h . '</div></section>';
 }
+
+/**
+ * [kp_countdown match="full moon party" product="slug" alt="slug"]: live countdown to the next event whose title matches, with the boats we sell for it.
+ * Server renders the numbers (crawlers and no-JS visitors see them); kp.js ticks them every second. Next two dates are listed underneath.
+ */
+add_shortcode( 'kp_countdown', function ( $a ) {
+	$a = shortcode_atts( array( 'match' => 'full moon party', 'product' => 'full-moon-party-speedboat-koh-samui', 'alt' => 'full-moon-party-private-speedboat-koh-samui', 'label' => 'Next Full Moon Party' ), (array) $a );
+	if ( ! function_exists( 'kp_upcoming_events' ) ) return '';
+	$tz = new DateTimeZone( defined( 'KP_TZ' ) ? KP_TZ : 'Asia/Bangkok' ); $now = new DateTimeImmutable( 'now', $tz );
+	$ev = array_values( array_filter( kp_upcoming_events( array( 'to' => '+400 days', 'limit' => 500, 'sellable' => true ) ), fn( $e ) => str_contains( strtolower( $e['title'] ), strtolower( $a['match'] ) ) && $e['end'] > $now ) );
+	if ( ! $ev ) return '';
+	$e = $ev[0]; $s = $e['start']; $live = $s <= $now;
+	$d = max( 0, $s->getTimestamp() - $now->getTimestamp() ); $u = array( 'd' => intdiv( $d, 86400 ), 'h' => intdiv( $d % 86400, 3600 ), 'm' => intdiv( $d % 3600, 60 ), 's' => $d % 60 );
+	$note = ''; if ( preg_match( '/\(([^)]+)\)/', $e['title'], $m ) ) $note = $m[1]; elseif ( $s->format( 'm-d' ) === '12-31' ) $note = 'New Year\'s Eve countdown';
+	$special = array( '2026-11-24' => 'Loy Krathong night', '2026-12-24' => 'Christmas Eve', '2027-11-13' => 'Loy Krathong night' ); if ( ! $note && isset( $special[ $s->format( 'Y-m-d' ) ] ) ) $note = $special[ $s->format( 'Y-m-d' ) ];
+	$prod = function ( $slug ) { $po = $slug ? get_page_by_path( $slug, OBJECT, 'product' ) : null; $p = $po && function_exists( 'wc_get_product' ) ? wc_get_product( $po->ID ) : null; return $p && $p->get_status() === 'publish' ? $p : null; };
+	$p1 = $prod( $a['product'] ); $p2 = $prod( $a['alt'] );
+	$h = '<section class="kp-cd' . ( $live ? ' is-live' : '' ) . '" data-kp-countdown data-start="' . (int) $s->getTimestamp() . '" data-end="' . (int) $e['end']->getTimestamp() . '" aria-label="' . esc_attr( $a['label'] ) . ' countdown">';
+	$h .= '<div class="kp-cd-tx"><p class="kp-cd-k">' . esc_html( $a['label'] ) . ( $note ? ' · ' . esc_html( $note ) : '' ) . '</p>';
+	$h .= '<p class="kp-cd-date"><a class="kp-cd-link" href="' . esc_url( $e['url'] ) . '">' . esc_html( $s->format( 'l j F Y' ) ) . '</a></p>';
+	$h .= '<p class="kp-cd-where">Haad Rin Sunrise Beach, Koh Phangan · from ' . esc_html( $s->format( 'H:i' ) ) . ' until sunrise · entry about 200 THB cash at the beach</p></div>';
+	$h .= '<div class="kp-cd-clock" role="timer" aria-live="off"><p class="kp-cd-on">The party is on now</p>';
+	foreach ( array( 'd' => 'days', 'h' => 'hours', 'm' => 'min', 's' => 'sec' ) as $k => $l ) $h .= '<span class="kp-cd-u"><b data-u="' . $k . '">' . ( $k === 'd' ? $u[ $k ] : sprintf( '%02d', $u[ $k ] ) ) . '</b><small>' . $l . '</small></span>';
+	$h .= '</div><div class="kp-cd-act">';
+	if ( $p1 ) $h .= '<a class="kpv-btn" href="' . esc_url( $p1->get_permalink() ) . '">Book the speedboat: <span data-thb="' . esc_attr( $p1->get_price() ) . '">' . esc_html( number_format( (float) $p1->get_price() ) ) . ' THB</span></a>';
+	if ( $p2 ) $h .= '<a class="kpv-btn kpv-btn-o" href="' . esc_url( $p2->get_permalink() ) . '">Private speedboat from <span data-thb="' . esc_attr( $p2->get_price() ) . '">' . esc_html( number_format( (float) $p2->get_price() ) ) . ' THB</span></a>';
+	$next = array_slice( $ev, 1, 3 );
+	if ( $next ) { $h .= '<p class="kp-cd-next">Then: '; $bits = array(); foreach ( $next as $n ) $bits[] = '<a class="kp-cd-link" href="' . esc_url( $n['url'] ) . '">' . esc_html( $n['start']->format( 'D j M Y' ) ) . '</a>'; $h .= implode( ' · ', $bits ) . '</p>'; }
+	return $h . '</div></section>';
+} );
+
+/** [kp_haadrin_map]: Haad Rin party map (stages, bars, pier, taxis, cash, police, clinics) on the shared Leaflet split view. Points in data/haadrin.json. */
+add_shortcode( 'kp_haadrin_map', function () {
+	$d = json_decode( (string) @file_get_contents( KPC_DIR . 'data/haadrin.json' ), true ); $pts = $d['points'] ?? array(); if ( ! $pts ) return '';
+	$lv = get_stylesheet_directory_uri() . '/assets/vendor/leaflet/'; wp_enqueue_style( 'leaflet', $lv . 'leaflet.css', array(), '1.9.4' ); wp_enqueue_script( 'leaflet', $lv . 'leaflet.js', array(), '1.9.4', true );
+	wp_enqueue_script( 'kp-map', get_stylesheet_directory_uri() . '/assets/js/kp-map.js', array( 'leaflet' ), defined( 'KPT_VER' ) ? KPT_VER : '0.2', true );
+	$labels = array( 'beach' => 'Beaches', 'stage' => 'Party stages', 'bar' => 'Bars', 'pier' => 'Pier', 'service' => 'Taxis, food and cash', 'help' => 'Police and clinics' );
+	$h = '<div class="kpg-split kp-hrmap" data-zoom="17" data-fit="stage,bar,help,service" data-tiles="' . esc_attr( get_option( 'kp_tiles_url', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png' ) ) . '"><div class="kpg-chips">';
+	foreach ( array_unique( array_column( $pts, 'type' ) ) as $t ) $h .= '<button type="button" class="kpg-chip is-on" aria-pressed="true" data-type="' . esc_attr( $t ) . '">' . esc_html( $labels[ $t ] ?? ucfirst( $t ) ) . '</button>';
+	$h .= '</div><div class="kpg-map" aria-label="Map of Haad Rin on Full Moon Party night"></div><ol class="kpg-list">';
+	foreach ( $pts as $i => $p ) { $url = 'https://www.google.com/maps/search/?api=1&query=' . $p['lat'] . ',' . $p['lng'];
+		$h .= '<li class="kpg-row" data-i="' . $i . '" data-lat="' . esc_attr( $p['lat'] ) . '" data-lng="' . esc_attr( $p['lng'] ) . '" data-type="' . esc_attr( $p['type'] ) . '" data-name="' . esc_attr( $p['name'] ) . '" data-url="' . esc_url( $url ) . '"><span class="kpg-dot kpg-dot-' . esc_attr( $p['type'] ) . '">' . ( $i + 1 ) . '</span><a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">' . esc_html( $p['name'] ) . '</a><span class="kpg-row-l">' . esc_html( $p['label'] ) . '</span><span class="kpg-row-m">' . esc_html( $p['desc'] ) . '</span></li>'; }
+	return $h . '</ol></div><p class="kp-small">Bars on Haad Rin change names and music often; we re-check the map before each season. Map data © OpenStreetMap contributors.</p>';
+} );

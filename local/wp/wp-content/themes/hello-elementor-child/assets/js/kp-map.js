@@ -1,7 +1,7 @@
 /* Places map: Leaflet split view (map + numbered list), type chips, list ↔ marker sync. Lazy-inits when the map scrolls into view. */
 (function () {
   if (!window.L) return;
-  var COLORS = { beach: '#0EA5B7', temple: '#C2410C', viewpoint: '#7C3AED', waterfall: '#2563EB', island: '#16A34A', area: '#0B1F33', market: '#DB2777', pier: '#475569', service: '#64748B' };
+  var COLORS = { beach: '#0EA5B7', temple: '#C2410C', viewpoint: '#7C3AED', waterfall: '#2563EB', island: '#16A34A', area: '#0B1F33', market: '#DB2777', pier: '#475569', service: '#64748B', stage: '#7C3AED', bar: '#DB2777', help: '#DC2626', attraction: '#0EA5B7', nightlife: '#7C3AED' };
   function icon(n, type) {
     return L.divIcon({ className: 'kpg-pin', html: '<span style="background:' + (COLORS[type] || '#0B1F33') + '">' + n + '</span>', iconSize: [26, 26], iconAnchor: [13, 13] });
   }
@@ -15,10 +15,11 @@
       var m = L.marker(ll, { icon: icon(i + 1, r.dataset.type), title: r.dataset.name, keyboard: true }).addTo(map);
       m.bindPopup('<strong><a href="' + r.dataset.url + '">' + r.dataset.name + '</a></strong><br><a href="https://www.google.com/maps/dir/?api=1&destination=' + ll.join(',') + '" rel="noopener" target="_blank">Directions</a>');
       m.on('click', function () { rows.forEach(function (x) { x.classList.toggle('is-active', x === r); }); r.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
-      r.addEventListener('click', function (e) { if (e.target.closest('a')) return; map.setView(ll, 14); m.openPopup(); rows.forEach(function (x) { x.classList.toggle('is-active', x === r); }); });
+      r.addEventListener('click', function (e) { if (e.target.closest('a')) return; map.setView(ll, parseInt(split.dataset.zoom || '14', 10)); m.openPopup(); rows.forEach(function (x) { x.classList.toggle('is-active', x === r); }); });
       markers.push(m);
     });
-    if (bounds.length > 1) map.fitBounds(bounds, { padding: [24, 24] }); else map.setView(bounds[0], 14);
+    var fit = (split.dataset.fit || '').split(',').filter(Boolean); if (fit.length) { var fb = rows.filter(function (r) { return fit.indexOf(r.dataset.type) > -1; }).map(function (r) { return [parseFloat(r.dataset.lat), parseFloat(r.dataset.lng)]; }); if (fb.length > 1) bounds = fb; }
+    if (bounds.length > 1) map.fitBounds(bounds, { padding: [24, 24], maxZoom: parseInt(split.dataset.zoom || '16', 10) }); else map.setView(bounds[0], parseInt(split.dataset.zoom || '14', 10));
     split.querySelectorAll('.kpg-chip').forEach(function (chip) {
       chip.addEventListener('click', function () {
         chip.classList.toggle('is-on'); chip.setAttribute('aria-pressed', chip.classList.contains('is-on'));

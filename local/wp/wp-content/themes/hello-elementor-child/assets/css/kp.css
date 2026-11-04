@@ -929,3 +929,32 @@ html:not(.kpts-dark) .kpg-sell-more a{text-shadow:0 1px 8px rgba(0,0,0,.5);text-
  to{filter:brightness(1.05) saturate(1.12) drop-shadow(0 0 1px rgba(255,255,255,.7)) drop-shadow(0 0 3px rgba(76,195,203,.6)) drop-shadow(0 0 9px rgba(76,195,203,.4))}}
 html:not(.kpts-dark) .kph-logo:hover img{animation:kst-neon-on .7s linear 1,kp-neon-glow-soft 1.4s ease-in-out .7s infinite alternate;filter:brightness(1.02) saturate(1.06) drop-shadow(0 0 1px rgba(255,255,255,.55)) drop-shadow(0 0 2px rgba(76,195,203,.5)) drop-shadow(0 0 6px rgba(76,195,203,.3))}
 html:not(.kpts-dark) .kph-logo:focus-visible img{filter:brightness(1.03) saturate(1.1) drop-shadow(0 0 2px rgba(76,195,203,.6)) drop-shadow(0 0 7px rgba(76,195,203,.4))}
+
+/* [kp_countdown]: next big night with a live countdown and the boats we sell. Night card in both themes. */
+.kp-cd{display:grid;grid-template-columns:minmax(0,1.1fr) auto;gap:18px 28px;align-items:center;margin:22px 0 30px;padding:24px 26px;border-radius:var(--kp-radius-lg);background:radial-gradient(120% 160% at 100% 0%,#1E2F62 0%,var(--kp-night) 60%);color:#E6EDF5;border:1px solid var(--kp-night-line)}
+.kp-cd-tx{min-width:0}
+.kp-cd-k{font:700 12px/1.3 var(--kp-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--kp-accent);margin:0 0 6px}
+.kp-cd-date{font:600 clamp(22px,2.4vw,30px)/1.15 var(--kp-serif);margin:0 0 8px}
+.kpa-body .kp-cd-date a,.kp-cd-date a{color:#fff;text-decoration:none}
+.kp-cd-date a:hover{text-decoration:underline}
+.kp-cd-where{font-size:14px;line-height:1.5;color:#C9D4E0;margin:0}
+.kp-cd-clock{display:flex;gap:10px;align-items:stretch}
+.kp-cd-u{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:70px;padding:10px 6px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14)}
+.kp-cd-u b{font:700 30px/1 var(--kp-sans);color:#fff;font-variant-numeric:tabular-nums}
+.kp-cd-u small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#A9B6C6;margin-top:6px}
+.kp-cd-on{display:none;margin:0;align-self:center;font:700 18px/1.2 var(--kp-sans);color:var(--kp-accent)}
+.kp-cd.is-live .kp-cd-u{display:none}.kp-cd.is-live .kp-cd-on{display:block}
+.kp-cd-act{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px}
+.kp-cd .kpv-btn-o{border-color:rgba(255,255,255,.4);color:#fff!important}.kp-cd .kpv-btn-o:hover{border-color:#fff}
+.kp-cd-next{flex-basis:100%;margin:4px 0 0;font-size:14px;color:#C9D4E0}
+.kpa-body .kp-cd-next a,.kp-cd-next a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,255,255,.4);text-underline-offset:3px}
+@media(max-width:760px){.kp-cd{grid-template-columns:1fr;padding:20px 18px}.kp-cd-clock{justify-content:space-between}.kp-cd-u{flex:1;min-width:0}.kp-cd-u b{font-size:26px}.kp-cd-act .kpv-btn{flex:1 1 100%}}
+
+/* Haad Rin party map rows: music/type label under the name. */
+.kpg-row-l{grid-column:2/4;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--kp-accent-dark)}
+html.kpts-dark .kpg-row-l{color:var(--kp-accent)}
+.kpg-dot-stage{background:#7C3AED}.kpg-dot-bar{background:#DB2777}.kpg-dot-help{background:#DC2626}.kpg-dot-pier{background:#475569}.kpg-dot-service{background:#64748B}
+.kp-small{font-size:13px;color:var(--kp-muted)}
+
+.kp-cd a.kp-cd-link{color:#fff;text-decoration:none}.kp-cd a.kp-cd-link:hover{text-decoration:underline}.kp-cd-next a.kp-cd-link{text-decoration:underline;text-decoration-color:rgba(255,255,255,.35);text-underline-offset:3px}
+.kp-hrmap .kpg-dot-beach{background:#0EA5B7}

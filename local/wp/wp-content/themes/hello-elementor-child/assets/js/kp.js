@@ -191,4 +191,11 @@
   pay.addEventListener('focusin', function () { set(3); });
   pay.addEventListener('pointerdown', function () { set(3); });
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio > 0.6) set(3); }); }, { threshold: [0.6] }).observe(pay);
+  /* Countdowns ([kp_countdown]): tick every second; switch to "on now" during the event. */
+  d.querySelectorAll('[data-kp-countdown]').forEach(function (el) {
+    var st = +el.dataset.start * 1000, en = +el.dataset.end * 1000, u = {}; ['d', 'h', 'm', 's'].forEach(function (k) { u[k] = el.querySelector('[data-u="' + k + '"]'); });
+    function p2(n) { return (n < 10 ? '0' : '') + n; }
+    function tick() { var now = Date.now(), x = Math.max(0, Math.floor((st - now) / 1000)); el.classList.toggle('is-live', now >= st && now < en); if (u.d) { u.d.textContent = Math.floor(x / 86400); u.h.textContent = p2(Math.floor(x % 86400 / 3600)); u.m.textContent = p2(Math.floor(x % 3600 / 60)); u.s.textContent = p2(x % 60); } }
+    tick(); setInterval(tick, 1000);
+  });
 })();
