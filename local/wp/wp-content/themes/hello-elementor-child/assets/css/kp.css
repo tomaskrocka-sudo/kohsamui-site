@@ -881,3 +881,31 @@ html.kpts-dark .kpe-web .kpe-ref{background:#0B1F33}
 html.kpts-dark :is(.kpa-body,.kpv-product,.kp-sec) :is(p,li,td,dd) a:not(.kpv-btn):not([class*="kp-"]):not([class*="kpg-"]){text-decoration-color:color-mix(in srgb,var(--kpd-link) 70%,transparent)}
 /* Every pill button centres its label, including <button> and <input> buttons and ones made full width. */
 .kpv-btn,.kph-cta,button.kpv-btn,input.kpv-btn,.woocommerce #place_order,.woocommerce button.button,.woocommerce a.button{text-align:center;justify-content:center}
+
+/* Homepage hero v4 (Nov 2026): sells from the first screen. One short headline, then four big bookable cards with price and a Book button. */
+.kpg-hero{min-height:0!important;display:block;align-items:initial}
+.kpg-hero .kpg-hero-g{background:linear-gradient(180deg,rgba(2,10,28,.55) 0%,rgba(2,10,28,.62) 45%,rgba(2,10,28,.9) 100%)}
+.kpg-hero .kpg-hero-tx{padding-block:clamp(18px,2.6vw,32px) clamp(22px,3vw,36px)}
+.kpg-sell-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 16px;margin:0 0 14px}
+.kpg-hero .kpg-sell-top h1{font-size:clamp(22px,2.4vw,30px);max-width:none;margin:0;letter-spacing:-.01em}
+.kpg-sell-day{font:700 12px/1.3 var(--kp-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--kp-accent)}
+.kpg-hero .kpg-sell{margin:0;gap:16px}
+.kpg-hero .kpg-sell-i{background:rgba(7,20,31,.82);border-radius:18px}
+.kpg-hero .kpg-sell-img{aspect-ratio:4/3}
+.kpg-hero .kpg-sell-tx{padding:16px 16px 16px;gap:6px}
+.kpg-hero .kpg-sell-k{font-size:12px}
+.kpg-hero .kpg-sell-tx strong{font-size:clamp(19px,1.6vw,22px);line-height:1.22}
+.kpg-hero .kpg-sell-s{font-size:14px;color:#D3DEEA}
+.kpg-sell-f{margin-top:auto;padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.kpg-hero .kpg-sell-p{margin:0;padding:0;font-size:13px;color:#DCE6F0}
+.kpg-hero .kpg-sell-p b{font-size:20px;color:#fff}
+.kpg-sell-b{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 18px;border-radius:999px;background:var(--kp-accent);color:var(--kp-accent-ink);font:700 14px/1 var(--kp-sans);white-space:nowrap;transition:background .15s}
+.kpg-sell-i:hover .kpg-sell-b{background:var(--kp-accent-hover)}
+.kpg-sell-more{display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0 0}
+.kpg-sell-more a{color:#fff!important;font-size:14px;font-weight:600;text-decoration:underline;text-decoration-color:rgba(193,223,15,.7);text-underline-offset:4px}
+.kpg-sell-more a:hover{text-decoration-color:#fff}
+@media(max-width:900px){.kpg-hero .kpg-sell{grid-auto-columns:minmax(260px,84%);gap:12px}}
+@media(max-width:600px){.kpg-hero .kpg-sell-s{display:-webkit-box}.kpg-hero .kpg-sell-tx strong{font-size:20px}.kpg-sell-top{margin-bottom:10px}.kpg-sell-more{gap:6px 14px}.kpg-sell-more a{font-size:13.5px}}
+.kpg-sell-f{flex-direction:column;align-items:stretch;gap:12px}
+.kpg-hero .kpg-sell-p b{white-space:nowrap}
+.kpg-sell-b{width:100%;height:44px;font-size:15px}

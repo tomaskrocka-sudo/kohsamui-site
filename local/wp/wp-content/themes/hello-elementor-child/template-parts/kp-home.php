@@ -15,25 +15,23 @@ $own = 'pig-island-speedboat-tour,koh-tao-koh-nang-yuan-day-trip-koh-samui,full-
 	<?php if ( $hero ) : $hset = wp_get_attachment_image_srcset( $hero_id, 'kp-hero' ); ?><img class="kpg-hero-img" src="<?php echo esc_url( $hero ); ?>"<?php if ( $hset ) : ?> srcset="<?php echo esc_attr( $hset ); ?>" sizes="100vw"<?php endif; ?> alt="<?php echo esc_attr( get_post_meta( $hero_id, '_wp_attachment_image_alt', true ) ?: 'Koh Samui from the water' ); ?>" fetchpriority="high" width="2000" height="1125"><?php endif; ?>
 	<div class="kpg-hero-g"></div>
 	<div class="kp-w kpg-hero-tx">
-		<p class="kpa-k"><span data-kp-today><?php echo esc_html( wp_date( 'D j M' ) ); ?></span> · what's on and what to book</p>
-		<h1>Koh Samui boat trips, island guide and parties</h1>
-		<p class="kpg-hero-lead"><?php $lp = explode( 'Private yachts, ', $lead, 2 ); echo esc_html( $lp[0] ); if ( isset( $lp[1] ) ) echo '<span class="kpg-lead-more">' . esc_html( 'Private yachts, ' . $lp[1] ) . '</span>'; ?></p>
-		<p class="kpg-hero-cta"><a class="kpv-btn" href="<?php echo $u( '/koh-samui-tours/' ); ?>">All tours and prices</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-boat-charter/' ); ?>">Yachts and boats</a><a class="kpv-btn kpv-btn-o" href="<?php echo $u( '/koh-samui-villas/' ); ?>">Find a villa</a></p>
+		<div class="kpg-sell-top"><h1>Book Koh Samui tours, boats and tickets</h1><span class="kpg-sell-day"><span data-kp-today><?php echo esc_html( wp_date( 'D j M' ) ); ?></span> · on sale now</span></div>
 		<?php if ( $offers ) : ?>
 		<div class="kpg-sell" data-kp-offers data-max="4" aria-label="Book now on Koh Samui">
 			<?php foreach ( $offers as $i => $o ) : $dated = ! empty( $o['start'] ); ?>
 			<a class="kpg-sell-i<?php echo $i >= 4 ? ' is-spare' : ''; ?>" href="<?php echo esc_url( $o['url'] ); ?>"<?php if ( $dated ) : ?> data-kp-start="<?php echo (int) $o['start']; ?>" data-kp-end="<?php echo (int) $o['end']; ?>"<?php endif; ?>>
-				<span class="kpg-sell-img"><?php if ( $o['img'] ) : ?><img src="<?php echo esc_url( $o['img'] ); ?>" alt="<?php echo esc_attr( $o['title'] ); ?>" width="400" height="300" loading="<?php echo $i < 4 ? 'eager' : 'lazy'; ?>" decoding="async"><?php endif; ?></span>
+				<span class="kpg-sell-img"><?php if ( $o['img'] ) : ?><img src="<?php echo esc_url( $o['img'] ); ?>" alt="<?php echo esc_attr( $o['title'] ); ?>" width="768" height="576" sizes="(max-width:900px) 85vw, 300px" loading="<?php echo $i < 4 ? 'eager' : 'lazy'; ?>" decoding="async"><?php endif; ?></span>
 				<span class="kpg-sell-tx">
 					<span class="kpg-sell-k"><?php echo esc_html( $o['k'] ); ?><?php if ( $dated ) : ?> · <span data-kp-when="<?php echo $o['time'] ? 'time' : 'date'; ?>"><?php echo esc_html( $o['when'] ); ?></span><?php endif; ?></span>
 					<strong><?php echo esc_html( $o['title'] ); ?></strong>
 					<?php if ( $o['sub'] ) : ?><span class="kpg-sell-s"><?php echo esc_html( $o['sub'] ); ?></span><?php endif; ?>
-					<?php if ( $o['price'] ) : ?><span class="kpg-sell-p">From <b><?php echo esc_html( number_format( $o['price'] ) ); ?> THB</b> <?php echo esc_html( $o['unit'] ); ?></span><?php endif; ?>
+					<span class="kpg-sell-f"><?php if ( $o['price'] ) : ?><span class="kpg-sell-p">From <b data-thb="<?php echo esc_attr( $o['price'] ); ?>"><?php echo esc_html( number_format( $o['price'] ) ); ?> THB</b> <?php echo esc_html( $o['unit'] ); ?></span><?php endif; ?><span class="kpg-sell-b" aria-hidden="true"><?php echo esc_html( ( $o['cta'] ?? 'Book' ) === 'See the boat' ? 'See the boat' : 'Book now' ); ?></span></span>
 				</span>
 			</a>
 			<?php endforeach; ?>
 		</div>
 		<?php endif; ?>
+		<nav class="kpg-sell-more" aria-label="More to book"><a href="<?php echo $u( '/koh-samui-tours/' ); ?>">All tours and prices</a><a href="<?php echo $u( '/koh-samui-boat-charter/' ); ?>">Private boats and yachts</a><a href="<?php echo $u( '/koh-samui-events/' ); ?>">Events and parties</a><a href="<?php echo $u( '/koh-samui-villas/' ); ?>">Villas</a></nav>
 	</div>
 </section>
 
