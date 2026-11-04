@@ -100,7 +100,8 @@ function kp_slg_import( array $occ ) {
 			$vn = trim( explode( ',', (string) $o['venue'] )[0] );
 			$own = sprintf( '%s%s, Koh Samui: %s.%s %s', $o['title'], $vn !== '' && stripos( $o['title'], $vn ) !== false ? '' : ' at ' . ( $o['venue'] ?: 'a venue on Koh Samui' ), $when, $price ? ' Entry: ' . $price . '.' : '', 'Times and line-ups can change, so check on the day. Need a taxi there and back or a table? Message us on WhatsApp.' );
 			$arr = array( 'ID' => $id, 'post_type' => 'kp_event', 'post_status' => 'publish', 'post_title' => $o['title'], 'post_name' => sanitize_title( $o['title'] . ( $rec ? '-' . $o['venue'] : '-' . $start->format( 'Y-m-d' ) ) ), 'post_content' => '<p>' . esc_html( $own ) . '</p>', 'post_excerpt' => wp_trim_words( $own, 30, '…' ) );
-			$id = $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true ); if ( is_wp_error( $id ) ) continue;
+			$same = $id && get_post_field( 'post_title', $id ) === $arr['post_title'] && get_post_field( 'post_content', $id ) === $arr['post_content'] && get_post_status( $id ) === 'publish'; // unchanged: no re-save, no cache purge
+			$id = $same ? $id : ( $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true ) ); if ( is_wp_error( $id ) ) continue;
 			$ex ? $u++ : $c++;
 			$pf = stripos( $price, 'free' ) !== false ? '0' : ( preg_match( '/(\d[\d,]*)/', $price, $pm ) ? str_replace( ',', '', $pm[1] ) : '' );
 			foreach ( array( 'kp_start' => $start->format( 'c' ), 'kp_end' => $end ? $end->format( 'c' ) : '', 'kp_venue' => $o['venue'], 'kp_recurrence' => $rec, 'kp_price_from' => $pf, 'kp_status' => 'scheduled', 'kp_confidence' => 'listed', 'kp_last_verified' => wp_date( 'Y-m-d' ), 'kp_source' => 'samuilifeguide', 'kp_source_key' => $skey, 'kp_last_seen' => time(), 'kp_content_updated' => wp_date( 'Y-m-d' ) ) as $k => $v ) update_post_meta( $id, $k, $v );

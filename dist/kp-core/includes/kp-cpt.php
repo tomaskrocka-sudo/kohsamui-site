@@ -163,23 +163,46 @@ add_action( 'save_post', function ( $post_id ) {
 /* ---------------------------------------------------------------------------
  * Query helpers
  * ------------------------------------------------------------------------- */
-/** Upcoming events (expands weekly recurrences), ordered by start. */
+/**
+ * Per-event data that doesn't depend on the date (title, link, venue, price, categories, photo…), built once and cached for 10 minutes.
+ * The homepage alone asks for upcoming events five times (ticker, hero, lead, rail, promo); before this each call re-read every event.
+ */
+function kp_events_base() {
+	static $base = null; if ( $base !== null ) return $base;
+	$base = get_transient( 'kp_events_base_v1' ); if ( is_array( $base ) ) return $base;
+	$q = new WP_Query( array( 'post_type' => 'kp_event', 'posts_per_page' => -1, 'post_status' => 'publish', 'no_found_rows' => true ) );
+	$base = array();
+	foreach ( $q->posts as $p ) {
+		$m = fn( $k ) => (string) get_post_meta( $p->ID, $k, true );
+		$base[] = array( 'id' => $p->ID, 'title' => get_the_title( $p ), 'url' => get_permalink( $p ), 'venue' => $m( 'kp_venue' ), 'area' => $m( 'kp_venue_area' ), 'price_from' => $m( 'kp_price_from' ),
+			'ticket_product' => (int) $m( 'kp_ticket_product' ), 'status' => $m( 'kp_status' ) ?: 'scheduled', 'rec' => $m( 'kp_recurrence' ), 'start' => $m( 'kp_start' ), 'end' => $m( 'kp_end' ),
+			'cats' => wp_get_post_terms( $p->ID, 'kp_event_cat', array( 'fields' => 'names' ) ), 'cat_slugs' => wp_get_post_terms( $p->ID, 'kp_event_cat', array( 'fields' => 'slugs' ) ), 'thumb' => (string) get_the_post_thumbnail_url( $p, 'medium_large' ) );
+	}
+	set_transient( 'kp_events_base_v1', $base, 10 * MINUTE_IN_SECONDS );
+	return $base;
+}
+function kp_events_base_flush( $id = 0 ) { if ( ! $id || get_post_type( $id ) === 'kp_event' ) delete_transient( 'kp_events_base_v1' ); }
+add_action( 'save_post_kp_event', 'kp_events_base_flush' );
+add_action( 'deleted_post', 'kp_events_base_flush' );
+add_action( 'trashed_post', 'kp_events_base_flush' );
+add_action( 'set_object_terms', 'kp_events_base_flush' );
+add_action( 'updated_post_meta', function ( $mid, $id ) { kp_events_base_flush( $id ); }, 10, 2 );
+add_action( 'added_post_meta', function ( $mid, $id ) { kp_events_base_flush( $id ); }, 10, 2 );
+
+/** Upcoming events (expands weekly recurrences), ordered by start. Results are memoised per request. */
 function kp_upcoming_events( $args = array() ) {
 	$args = wp_parse_args( $args, array( 'from' => 'now', 'to' => '+60 days', 'limit' => 50, 'category' => '', 'sellable' => false ) );
+	static $memo = array(); $mk = md5( wp_json_encode( $args ) ); if ( isset( $memo[ $mk ] ) ) return $memo[ $mk ];
 	$tz   = new DateTimeZone( KP_TZ );
 	$from = new DateTimeImmutable( $args['from'], $tz );
 	$to   = new DateTimeImmutable( $args['to'], $tz );
-	$q = new WP_Query( array( 'post_type' => 'kp_event', 'posts_per_page' => -1, 'post_status' => 'publish', 'no_found_rows' => true,
-		'tax_query' => $args['category'] ? array( array( 'taxonomy' => 'kp_event_cat', 'field' => 'slug', 'terms' => $args['category'] ) ) : array() ) );
+	$now  = new DateTimeImmutable( 'now', $tz );
 	$out = array();
-	foreach ( $q->posts as $p ) {
-		$status = get_post_meta( $p->ID, 'kp_status', true ) ?: 'scheduled';
-		if ( $status === 'cancelled' ) continue;
-		$rec = get_post_meta( $p->ID, 'kp_recurrence', true );
-		$start = get_post_meta( $p->ID, 'kp_start', true );
-		$end   = get_post_meta( $p->ID, 'kp_end', true );
-		$ticket = (int) get_post_meta( $p->ID, 'kp_ticket_product', true );
-		if ( $args['sellable'] && ! $ticket ) continue;
+	foreach ( kp_events_base() as $b ) {
+		if ( $b['status'] === 'cancelled' ) continue;
+		if ( $args['sellable'] && ! $b['ticket_product'] ) continue;
+		if ( $args['category'] && ! in_array( $args['category'], $b['cat_slugs'], true ) ) continue;
+		$rec = $b['rec']; $start = $b['start']; $end = $b['end'];
 		$occurrences = array();
 		if ( $rec && str_starts_with( $rec, 'weekly:' ) && $start ) {
 			$days = array_map( 'trim', explode( ',', substr( $rec, 7 ) ) );
@@ -197,22 +220,20 @@ function kp_upcoming_events( $args = array() ) {
 			if ( $e >= $from && $s <= $to ) $occurrences[] = array( $s, $e );
 		}
 		foreach ( $occurrences as [ $s, $e ] ) {
-			$out[] = array( 'id' => $p->ID, 'title' => get_the_title( $p ), 'url' => get_permalink( $p ), 'start' => $s, 'end' => $e,
-				'venue' => get_post_meta( $p->ID, 'kp_venue', true ), 'area' => get_post_meta( $p->ID, 'kp_venue_area', true ),
-				'price_from' => get_post_meta( $p->ID, 'kp_price_from', true ), 'ticket_product' => $ticket, 'status' => $status,
-				'cats' => wp_get_post_terms( $p->ID, 'kp_event_cat', array( 'fields' => 'names' ) ), 'thumb' => get_the_post_thumbnail_url( $p, 'medium_large' ),
-				'live' => ( $s <= new DateTimeImmutable( 'now', $tz ) && $e >= new DateTimeImmutable( 'now', $tz ) ) );
+			$out[] = array( 'id' => $b['id'], 'title' => $b['title'], 'url' => $b['url'], 'start' => $s, 'end' => $e, 'venue' => $b['venue'], 'area' => $b['area'],
+				'price_from' => $b['price_from'], 'ticket_product' => $b['ticket_product'], 'status' => $b['status'], 'cats' => $b['cats'], 'thumb' => $b['thumb'],
+				'live' => ( $s <= $now && $e >= $now ), 'rec' => $rec );
 		}
 	}
 	// A dated listing that repeats one of our weekly series (same venue, day, start time and name, e.g. a synced "Friday After Dark Party"
 	// on a Friday when "The Xperience After Dark" runs every Friday) is shown once: the weekly series, which carries our ticket.
 	$core = function ( $t ) { $t = strtolower( preg_replace( '/[^a-z0-9 ]+/i', ' ', remove_accents( html_entity_decode( (string) $t, ENT_QUOTES, 'UTF-8' ) ) ) ); $t = preg_replace( '/\b(the|party|night|nights|weekly|every|at|monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/', ' ', $t ); return trim( preg_replace( '/\s+/', ' ', $t ) ); };
 	$vkey = function ( $v ) { $w = array_values( array_diff( explode( ' ', strtolower( preg_replace( '/[^a-z0-9]+/i', ' ', explode( ',', (string) $v )[0] ) ) ), array( '', 'the' ) ) ); return $w[0] ?? ''; };
-	$weekly = array();
-	foreach ( $out as $o ) if ( get_post_meta( $o['id'], 'kp_recurrence', true ) && $vkey( $o['venue'] ) !== '' ) { $v = $vkey( $o['venue'] ); $weekly[ $v . '|' . $o['start']->format( 'Y-m-d H:i' ) . '|' . trim( str_replace( $v, '', $core( $o['title'] ) ) ) ] = 1; }
-	if ( $weekly ) $out = array_values( array_filter( $out, function ( $o ) use ( $weekly, $core, $vkey ) { if ( get_post_meta( $o['id'], 'kp_recurrence', true ) ) return true; $v = $vkey( $o['venue'] ); return ! isset( $weekly[ $v . '|' . $o['start']->format( 'Y-m-d H:i' ) . '|' . trim( str_replace( $v, '', $core( $o['title'] ) ) ) ] ); } ) );
+	$key = function ( $o ) use ( $core, $vkey ) { $v = $vkey( $o['venue'] ); return $v . '|' . $o['start']->format( 'Y-m-d H:i' ) . '|' . trim( str_replace( $v, '', $core( $o['title'] ) ) ); };
+	$weekly = array(); foreach ( $out as $o ) if ( $o['rec'] && $vkey( $o['venue'] ) !== '' ) $weekly[ $key( $o ) ] = 1;
+	if ( $weekly ) $out = array_values( array_filter( $out, fn( $o ) => $o['rec'] || ! isset( $weekly[ $key( $o ) ] ) ) );
 	usort( $out, fn( $a, $b ) => $a['start'] <=> $b['start'] );
-	return array_slice( $out, 0, $args['limit'] );
+	return $memo[ $mk ] = array_slice( $out, 0, $args['limit'] );
 }
 
 /** Places as array (for maps / schema / llms). */

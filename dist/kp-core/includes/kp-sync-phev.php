@@ -55,7 +55,9 @@ function kp_phev_import( array $events ) {
 		$when = $start->format( 'l j F Y' ) . ', ' . $start->format( 'H:i' ) . ( $end ? '–' . $end->format( 'H:i' ) : '' );
 		$own = sprintf( '%s at %s, Koh Samui, on %s. %s', $e['title'], $e['venue'] ?: 'a venue on Koh Samui', $when, 'Times and line-ups can change; check on the night. Need a taxi or a table? Message us on WhatsApp.' );
 		$arr = array( 'ID' => $id, 'post_type' => 'kp_event', 'post_status' => 'publish', 'post_title' => $e['title'], 'post_name' => $slug, 'post_content' => '<p>' . esc_html( $own ) . '</p>', 'post_excerpt' => wp_trim_words( $own, 30, '…' ) );
-		$id = $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true );
+		// Unchanged listing: don't re-save the post (a save purges the page cache for the whole site).
+		$same = $id && get_post_field( 'post_title', $id ) === $arr['post_title'] && get_post_field( 'post_content', $id ) === $arr['post_content'] && get_post_status( $id ) === 'publish';
+		$id = $same ? $id : ( $id ? wp_update_post( $arr, true ) : wp_insert_post( $arr, true ) );
 		if ( is_wp_error( $id ) ) continue;
 		$existing ? $u++ : $c++;
 		foreach ( array( 'kp_start' => $start->format( 'c' ), 'kp_end' => $end ? $end->format( 'c' ) : '', 'kp_venue' => $e['venue'], 'kp_status' => 'scheduled', 'kp_confidence' => 'listed', 'kp_last_verified' => wp_date( 'Y-m-d' ), 'kp_source_url' => $e['url'], 'kp_source' => 'phangan.events', 'kp_source_desc' => $e['desc'], 'kp_content_updated' => wp_date( 'Y-m-d' ) ) as $k => $v ) update_post_meta( $id, $k, $v );

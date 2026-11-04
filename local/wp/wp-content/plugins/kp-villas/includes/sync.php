@@ -36,6 +36,8 @@ function kpv_sync_one( $slug, $info ) {
 	$id = kpv_post_id( $slug );
 	if ( ! $d ) { if ( $id ) update_post_meta( $id, 'kpv_synced', time() ); kpv_log( "Parse failed: $slug" ); return 0; }
 	if ( $id && get_post_meta( $id, 'kpv_locked', true ) ) { update_post_meta( $id, 'kpv_synced', time() ); return $id; } // hand-edited: keep
+	// Nothing changed at the source: just mark it checked. Re-saving the post would purge the page cache every 5 minutes and slow the whole site.
+	if ( $id && get_post_meta( $id, 'kpv_data_hash', true ) === md5( wp_json_encode( $d ) ) && get_post_status( $id ) === 'publish' ) { update_post_meta( $id, 'kpv_synced', time() ); return $id; }
 	$title = preg_replace( '/\s+in\s+.+$/i', '', $d['name'] ) ?: $d['name'];
 	$area = $d['area_name'] ?? ucwords( str_replace( '-', ' ', $info['area'] ) );
 	$content = $d['description'] ? '<p>' . esc_html( $d['description'] ) . '</p>' : '';

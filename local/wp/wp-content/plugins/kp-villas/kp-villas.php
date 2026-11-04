@@ -2,7 +2,7 @@
 /**
  * Plugin Name: KP Villas (samui-villa.com sync)
  * Description: Imports every Koh Samui villa from samui-villa.com (with the owner's permission) into kp_villa posts and keeps them current automatically: villa list and details (rates by season and bedrooms, minimum stay, discounts, house rules, payment and cancellation terms, features, photos, location) are refreshed every hour in small batches; availability and live prices for the coming weeks are refreshed every hour; any dates a guest picks are priced live (cached 1 hour). Guests send a booking request (email + WhatsApp); payment follows our confirmation.
- * Version: 0.2.1
+ * Version: 0.2.2
  */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
